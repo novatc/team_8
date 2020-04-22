@@ -6,8 +6,12 @@ Team8 ist eine Webseite, die die Suche nach „Teammates“ für ein beliebiges 
 
 
 **Ziel:** Unser Ziel ist es Personen eine Plattform zugeben, mit denen sie neue Leute kennenlernen können und das alles im Rahmen des Online-Gamings.
+
 **Zielgruppe:** Die Webseite richtet sich vor allem an Jugendliche und junge Erwachsene, die ihrer Freizeit gerne mit Online-Spielen vertreiben. 
+
 **Unterstütze Geräte:** Ziel ist es das die Webseite sowohl auf mobilen Geräten als auch Desktopcomputern mit verschiedenen Auflösungen nutzbar ist.
+
 **Einschränkungen:** Zunächst soll nur eine bestimmte Auswahl an Spielen unterstützt werden
+
 
 **Aufbau:**
