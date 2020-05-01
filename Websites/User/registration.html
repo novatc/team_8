@@ -12,13 +12,13 @@
 </div>
 <div id="wrapper">
 
-    <div id="textbereich">
+    <div id="textarea">
         <h2>Registrierung</h2>
 
         <form id="registrationform"
             action="register.php" method="post">
-            
-            <div><fieldset><legend>Nutzerdaten</legend>
+            <fieldset><legend>Nutzerdaten</legend>
+            <div>
                 <label for="username">Benutzername:</label> <input type="text"
                     id="username" name="username" required>
             </div>
@@ -35,14 +35,34 @@
                     id="password" name="password" required>
             </div>
             </fieldset>
-            <fieldset><legend>Nutzerdaten</legend>
+            <fieldset><legend>Beschreibung</legend>
                 <div>
-                    <label for="password">Spiele:</label> <input type="text"
-                        id="password" name="password">
+                    <label>Spiele:</label> <br>
+                    <label>
+                        <input type="checkbox" name="games" value="valorant">
+                        Valorant
+                    </label>
+                    <label>
+                        <input type="checkbox" name="games" value="lol">
+                        League of Legends
+                    </label>
+                    <label>
+                        <input type="checkbox" name="games" value="csgo">
+                        Counter Strike: Global Offensive
+                    </label>
+                    <label>
+                        <input type="checkbox" name="games" value="cod">
+                        Call of Duty
+                    </label>
+                    <label>
+                        <input type="checkbox" name="games" value="other">
+                        Sonstige
+                    </label>
+                      
                 </div>
                 <div>
-					<label for="nachricht">Beschreibung:</label>
-					<textarea id="nachricht" name="nachricht" cols="20" rows="5"></textarea>
+					<label for="description">Beschreibung:</label>
+					<textarea id="description" name="description" cols="20" rows="5"></textarea>
 				</div>   
             </fieldset>
             <div>
