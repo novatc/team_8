@@ -10,7 +10,29 @@
     <a class="register" href="register.html">Registrieren</a>
     <a class="player" href="playerpage.html">Spieler</a>
 </div>
-<h1>Login</h1>
+<div id="wrapper">
+    <div id="textbereich">
+        <h2>Login</h2>
+        <form id="loginform"
+            action="login.php" method="post">
+            <fieldset>
+            <div>
+                <label for="username">Benutzername:</label> <input type="text"
+                    id="username" name="username" required>
+            </div>
+            <div>
+                <label for="password">Passwort:</label> <input type="text"
+                    id="password" name="password" required>
+            </div>
+            </fieldset>
+            <div>
+                <input type="submit" value="Anmelden">
+            </div>
+        </form>
+    </div>
+    <!-- Ende textbereich -->
+</div>
+<!-- Ende wrapper -->
 
 </body>
 </html>

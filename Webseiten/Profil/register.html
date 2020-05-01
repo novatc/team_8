@@ -10,6 +10,51 @@
     <a class="register" href="register.html">Registrieren</a>
     <a class="player" href="playerpage.html">Spieler</a>
 </div>
-<h1>Registrieren</h1>
+<div id="wrapper">
+
+    <div id="textbereich">
+        <h2>Registrierung</h2>
+
+        <form id="registrationform"
+            action="register.php" method="post">
+            
+            <div><fieldset><legend>Nutzerdaten</legend>
+                <label for="username">Benutzername:</label> <input type="text"
+                    id="username" name="username" required>
+            </div>
+            <div>
+                <label for="email">E-Mail:</label> <input type="email"
+                    id="email" name="email" required>
+            </div>
+            <div>
+                <label for="password">Passwort:</label> <input type="text"
+                    id="password" name="password" required>
+            </div>
+            <div>
+                <label for="password">Passwort wiederholen:</label> <input type="text"
+                    id="password" name="password" required>
+            </div>
+            </fieldset>
+            <fieldset><legend>Nutzerdaten</legend>
+                <div>
+                    <label for="password">Spiele:</label> <input type="text"
+                        id="password" name="password">
+                </div>
+                <div>
+					<label for="nachricht">Beschreibung:</label>
+					<textarea id="nachricht" name="nachricht" cols="20" rows="5"></textarea>
+				</div>   
+            </fieldset>
+            <div>
+                <input type="submit" value="Abschicken">
+            </div>
+        </form>
+
+
+    </div>
+    <!-- Ende textbereich -->
+
+</div>
+<!-- Ende wrapper -->
 </body>
 </html>
