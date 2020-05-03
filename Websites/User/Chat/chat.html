@@ -1,0 +1,30 @@
+<head>
+    <meta charset="UTF-8">
+    <title>Team8</title>
+</head>
+<body>
+<div class="mainnav">
+    <a class="login" href="login.html">Login</a>
+    <a class="register" href="registration.html">Registrieren</a>
+    <a class="player" href="playerprofil.html">Spieler</a>
+</div>
+<div id="wrapper">
+    <div id="textarea">
+        <h2>Chat</h2>
+        <!-- Chatbox mit hilfe der CSS stylen -->
+        <div id="chatbox"></div>
+
+        <!-- Formular zum senden von Nachrichten -->
+        <form id="messageform"
+            action="sendmessage.php" method="post">
+            <div>
+                <input type="text"
+                    id="password" name="password" required> <input type="submit" value="Senden">
+            </div>
+        </form>
+    </div>
+    <!-- Ende textbereich -->
+</div>
+<!-- Ende wrapper -->
+</body>
+</html>
