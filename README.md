@@ -1,8 +1,8 @@
 **Team8**
 
 Team8 ist eine Webseite, die die Suche nach „Teammates“ für ein beliebiges Onlinespiel erleichtern soll. Dabei kann eine Person, die die Webseite nutzen möchte, um Personen zu spielen zu finden, hat zwei Möglichkeiten:
-*  Sie registriert sich und erstellt eine Anzeige in der sie verschiedene Kriterien (Spiel, Rolle, Anzahl der gesuchten Spieler, Beschreibung etc.) angibt, nach dem was sie sucht. Hierbei fungiert die Person als Anbieter.
-*  Sie durchsucht, bereits bestehende Anzeigen. Dabei stehen ihr verschiedene Suchkriterien zur Verfügung mit denen sie zum Beispiel nach einem bestimmten Spiel filtern kann. Hierbei handelt die Person als Leser.
+*  Sie registriert sich und erstellt eine Anzeige in der sie sich selbst bewirbt (Spiel, Rolle, Anzahl der gesuchten Spieler, Beschreibung etc.) und angibt nach was sie sucht. Hierbei fungiert die Person als Anbieter.
+*  Sie sucht direkt nach Spielern und durchsucht dabei, bereits bestehende Anzeigen. Dabei stehen ihr verschiedene Suchkriterien zur Verfügung mit denen sie zum Beispiel nach einem bestimmten Spiel filtern kann. Hierbei handelt die Person als Leser.
 
 
 **Ziel:** Unser Ziel ist es Personen eine Plattform zugeben, mit denen sie neue Leute kennenlernen können und das alles im Rahmen des Online-Gamings.
