@@ -22,3 +22,4 @@ sehen kann.
 Ist ein passender Spieler gefunden, kann man sich sein Profil genauer anschauen, hier findet man dann mehr 
 Informationen über den Spielstil des Spielers.
 Interaktionen zwischen den Nutzeren finden über Freundschaftsanfragen und Nachtichten statt.
+Eine einheitliche Navigationsleiste stellt dabei die Hauptnavigation dar.
