@@ -7,9 +7,10 @@
 <body>
 <div class="mainnav">
     <a class="login" href="">Login</a>
-    <a class="register" href="Websites/User/registration">Registrieren</a>
-    <a class="player" href="User/playerprofil.html">Spieler</a>
-    <a class="games" href="Teammates/gameoverview.html">Spiele</a>
+    <a class="register" href="../User/registration.html">Registrieren</a>
+    <a class="player" href="../User/playerprofil.html">Spieler</a>
+    <a class="games" href="gameoverview.html">Spiele</a>
+    <a class="chat" href="../User/Chat/chatoverview.html">Deine Chats</a>
 </div>
 <h1>Spiele</h1>
 <input type="search" id="site-search" style="float: right" >
@@ -39,25 +40,29 @@
         </form>
 
     </aside>
-    <section style="float: inside; width: available">
+    <!-- not using images as backgrounds for now, validator says it's not allowed in <td> -->
+    <section>
         <table style="width: 80%;" border="3" cellpadding="5">
             <tbody>
             <tr>
-                <td width="300" height="300" background="../../Resourcen/500px-League_of_Legends_2019_vector.svg.png">
-                    <a href="Games/valorant.html" style="float: center">Valorant</a>
-                    <p style="float: center">Anzahl:</p>
-                    
-                </td>
-                <td width="300" height="300" background="../../Resourcen/2000px-Valorant_logo.svg.png">
-                    <a href="Games/lol.html" style="float: top">League of Legends</a>
+                <td width="300" height="300">
+                    <img src="../../Resourcen/500px-League_of_Legends_2019_vector.svg.png" alt="LoL" height="100" width="300">
+                    <p>&nbsp;</p>
                     <p style="float: top">Anzahl:</p>
                 </td>
-                <td width="300" height="300" background="../../Resourcen/counter_strike.png">
-                    <p style="float: top">CSGO (Coming soon)</p>
+                <td width="300" height="300">
+                    <img src="../../Resourcen/2000px-Valorant_logo.svg.png" alt="Valorant" height="100" width="300">
+                    <p>&nbsp;</p>
                     <p style="float: top">Anzahl:</p>
                 </td>
-                <td width="300" height="300" background=../../Resourcen/call_of_duty.png">
-                    <p style="float: top">Call of Duty (Comming soon)</p>
+                <td width="300" height="300">
+                    <img src="../../Resourcen/counter_strike.png" alt="CSGO" height="100" width="300">
+                    <p>&nbsp;</p>
+                    <p style="float: top">Anzahl:</p>
+                </td>
+                <td width="300" height="300">
+                    <img src="../../Resourcen/call_of_duty.png" alt="CoD" height="100" width="300">
+                    <p>&nbsp;</p>
                     <p style="float: top">Anzahl:</p>
                 </td>
             </tr>
