@@ -5,15 +5,11 @@
     <title>Team8</title>
 </head>
 <body>
-  <header>
-    <div class="mainnav">
-        <a class="login" href="../User/login.html">Login</a>
-        <a class="register" href="../User/registration.html">Registrieren</a>
-        <a class="player" href="../User/playerprofil.html">Profil</a>
-        <a class="games" href="../Teammates/gameoverview.html">Spiele</a>
-        <a class="chat" href="../User/Chat/chatoverview.html">Deine Chats</a>
-    </div>
-</header>
+    <header>
+        <div class="mainnav">
+            <?php include "../header.php";?>
+        </div>
+    </header>
 <h1>Max Mustermann</h1>
 <fieldset><legend>Persönliche Angaben</legend>
     <div>

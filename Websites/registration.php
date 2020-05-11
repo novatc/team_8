@@ -7,17 +7,13 @@
 <body>
     <header>
         <div class="mainnav">
-            <a class="login" href="../User/login.html">Login</a>
-            <a class="register" href="../User/registration.html">Registrieren</a>
-            <a class="player" href="../User/playerprofil.html">Profil</a>
-            <a class="games" href="../Teammates/gameoverview.html">Spiele</a>
-            <a class="chat" href="../User/Chat/chatoverview.html">Deine Chats</a>
+            <?php include "../header.php";?>
         </div>
     </header>
 <div id="wrapper">
 
     <div id="textarea">
-        <h2>Daten ändern</h2>
+        <h2>Registrierung</h2>
 
         <form id="registrationform"
             action="register.php" method="post">
@@ -70,7 +66,7 @@
 				</div>   
             </fieldset>
             <div>
-                <input type="submit" value="Änderungen speichern">
+                <input type="submit" value="Abschicken">
             </div>
         </form>
 
