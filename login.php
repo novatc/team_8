@@ -7,7 +7,7 @@
 <body>
     <header>
         <div class="mainnav">
-            <?php include "../header.php";?>
+            <?php include "php/header.php";?>
         </div>
     </header>
     <div id="wrapper">
@@ -35,7 +35,7 @@
     <!-- Ende wrapper -->
     <footer>
             <div class="footer">
-                <?php include "../footer.php";?>
+                <?php include "php/footer.php";?>
             </div>
     </footer>
 </body>

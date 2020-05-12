@@ -7,7 +7,7 @@
 <body>
     <header>
         <div class="mainnav">
-            <?php include "../header.php";?>
+            <?php include "php/header.php";?>
         </div>
     </header>
     <h1>League of Legends</h1>
@@ -115,7 +115,7 @@
     </div>
     <footer>
             <div class="footer">
-                <?php include "../footer.php";?>
+                <?php include "php/footer.php";?>
             </div>
     </footer>
 

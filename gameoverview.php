@@ -7,7 +7,7 @@
 <body>
     <header>
         <div class="mainnav">
-            <?php include "../header.php";?>
+            <?php include "php/header.php";?>
         </div>
     </header>
     <h1>Spiele</h1>
@@ -44,14 +44,14 @@
                 <tbody>
                 <tr>
                     <td width="300" height="300">
-                        <a href="/team8/Websites/lol.php">
+                        <a href="/team8/lol.php">
                             <img src="/team8/Resourcen/500px-League_of_Legends_2019_vector.svg.png" alt="LoL" height="100" width="300">
                         </a>
                         <p>&nbsp;</p>
                         <p style="float: top">Anzahl:</p>
                     </td>
                     <td width="300" height="300">
-                        <a href="/team8/Websites/valorant.php">
+                        <a href="/team8/valorant.php">
                             <img src="/team8/Resourcen/2000px-Valorant_logo.svg.png" alt="Valorant" height="100" width="300">
                         </a>
                         <p>&nbsp;</p>
@@ -76,7 +76,7 @@
     </div>
     <footer>
             <div class="footer">
-                <?php include "../footer.php";?>
+                <?php include "php/footer.php";?>
             </div>
     </footer>
 

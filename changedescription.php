@@ -7,13 +7,13 @@
 <body>
     <header>
         <div class="mainnav">
-            <?php include "../header.php";?>
+            <?php include "php/header.php";?>
         </div>
     </header>
     <div id="wrapper">
 
         <div id="textarea">
-            <h2>Registrierung</h2>
+            <h2>Daten ändern</h2>
 
             <form id="registrationform"
                 action="register.php" method="post">
@@ -66,7 +66,7 @@
                     </div>   
                 </fieldset>
                 <div>
-                    <input type="submit" value="Abschicken">
+                    <input type="submit" value="Änderungen speichern">
                 </div>
             </form>
 
@@ -76,9 +76,10 @@
 
     </div>
     <!-- Ende wrapper -->
+
     <footer>
             <div class="footer">
-                <?php include "../footer.php";?>
+                <?php include "php/footer.php";?>
             </div>
     </footer>
 </body>
