@@ -1,0 +1,38 @@
+@charset "utf-8";
+
+
+nav ul { 
+    list-style: none; 
+    padding: 0px; 
+    margin: 0px; 
+    font-weight: bold; 
+    text-align: center; 
+
+}
+
+nav ul li { 
+    display: inline-block; 
+    text-align: left; 
+}
+
+nav ul li img{ 
+    display: inline-block; 
+    
+}
+nav ul li a { 
+    display: block; 
+    padding: 10px 12px; 
+    text-decoration: none; 
+    color: #e6ebeb; 
+}
+nav ul li .search { 
+    display: inline-block; 
+    padding: 10px 12px;
+    text-decoration: none; 
+    color: #e6ebeb; 
+}
+
+nav ul li a:hover { 
+    background-color: 
+    #404040; 
+}

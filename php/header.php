@@ -1,13 +1,35 @@
-
 <header>
     <nav>
-        <p><a href="/team8/index.php">Home</a> | 
-            <a href="/team8/gameoverview.php">Spiele</a> | 
-            <input type="search" id="site-search" style="float: center" ><button style="float: center">Suche</button>
-            <a href="/team8/login.php">Login</a> |  
-            <a href="/team8/registration.php">Registrieren</a> | 
-            <a href="/team8/chatoverview.php">Nachrichten</a> |
-            <a href="/team8/playerprofil.php">Profil</a></p>
-
+        <ul>
+            <li>
+                <a href="index.php">
+                    <img src="Resourcen/Navigation/home-white.svg" alt="home">
+                </a>
+            </li>
+            <li>
+                <a href="gameoverview.php">Spiele</a>
+            </li>
+            <li>
+                <div class="search">
+                    <input type="text" placeholder="Suche.." >
+                    <button type="submit" class="searchButton"><img src="Resourcen/Navigation/search-white.svg" alt="search"></button>    
+                </div>
+            </li>
+            <li>
+                <a href="login.php">Login</a>
+            </li>
+            <li>
+                <a href="registration.php">Registrieren</a>
+            </li>
+            <li>
+                <a href="chatoverview.php">Nachrichten</a>
+            </li>
+            <li>
+                <a href="playerprofil.php">
+                    <img src="Resourcen/Navigation/person-white.svg" alt="profil">
+                </a>
+            </li>
+        </ul>
     </nav>
 </header>
+

@@ -16,34 +16,34 @@
             <h2>Chat</h2>
             <!-- Chatbox mit hilfe der CSS stylen -->
             <h3>Dein aktiver Chat mit Johannes 
-                <a href="/team8/playerprofil.php">
-                    <img src="/team8/Resourcen/Icons/Teemo.jpg" alt="TEEMO" height="35" width="35">
+                <a href="playerprofil.php">
+                    <img src="Resourcen/Icons/Teemo.jpg" alt="TEEMO" height="35" width="35">
             </a>:
-                &nbsp;<img src="/team8/Resourcen/call_of_duty.png" alt="CoD" height="70" width="300"></h3>
+                &nbsp;<img src="Resourcen/call_of_duty.png" alt="CoD" height="70" width="300"></h3>
             <div id="chatbox">
                 <ul style="list-style-type:none">
-                    <li><p><img src="/team8/Resourcen/Icons/Teemo.jpg" alt="TEEMO" height="35" width="35">
+                    <li><p><img src="Resourcen/Icons/Teemo.jpg" alt="TEEMO" height="35" width="35">
                         <!--style="text-align:center" for center -->[Johannes]: Lorem ipsum</p></li>
-                    <li><p><img src="/team8/Resourcen/Icons/Bard.jpg" alt="Bard" height="35" width="35">[Du]:
+                    <li><p><img src="Resourcen/Icons/Bard.jpg" alt="Bard" height="35" width="35">[Du]:
                         dolor sit amet, consetetur sadipscing elitr</p></li>
-                    <li><p><img src="/team8/Resourcen/Icons/Bard.jpg" alt="Bard" height="35" width="35">[Du]:
+                    <li><p><img src="Resourcen/Icons/Bard.jpg" alt="Bard" height="35" width="35">[Du]:
                         sed diam nonumy eirmod tempor invidunt ut labore et dolore</p></li>
-                    <li><p><img src="/team8/Resourcen/Icons/Teemo.jpg" alt="TEEMO" height="35" width="35">[Johannes]:
+                    <li><p><img src="Resourcen/Icons/Teemo.jpg" alt="TEEMO" height="35" width="35">[Johannes]:
                         magna aliquyam erat, sed diam voluptua</p></li>
-                    <li><p><img src="/team8/Resourcen/Icons/Bard.jpg" alt="Bard" height="35" width="35">[Du]:
+                    <li><p><img src="Resourcen/Icons/Bard.jpg" alt="Bard" height="35" width="35">[Du]:
                         At vero eos et accusam et justo duo dolores et ea rebum</p></li>
-                    <li><p><img src="/team8/Resourcen/Icons/Teemo.jpg" alt="TEEMO" height="35" width="35">[Johannes]:
+                    <li><p><img src="Resourcen/Icons/Teemo.jpg" alt="TEEMO" height="35" width="35">[Johannes]:
                         Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p></li>
-                    <li><p><img src="/team8/Resourcen/Icons/Bard.jpg" alt="Bard" height="35" width="35">[Du]:
+                    <li><p><img src="Resourcen/Icons/Bard.jpg" alt="Bard" height="35" width="35">[Du]:
                         At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
                         no sea takimata <br> sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
                         sadipscing elitr, sed diam nonumy <br> eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
                         sed diam voluptua.</p></li>
-                    <li><p><img src="/team8/Resourcen/Icons/Teemo.jpg" alt="TEEMO" height="35" width="35">[Johannes]:
+                    <li><p><img src="Resourcen/Icons/Teemo.jpg" alt="TEEMO" height="35" width="35">[Johannes]:
                         At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd</p></li>
-                    <li><p><img src="/team8/Resourcen/Icons/Bard.jpg" alt="Bard" height="35" width="35">[Du]:
+                    <li><p><img src="Resourcen/Icons/Bard.jpg" alt="Bard" height="35" width="35">[Du]:
                         Duis autem vel eum iriure dolor</p></li>
-                    <li><p><img src="/team8/Resourcen/Icons/Teemo.jpg" alt="TEEMO" height="35" width="35">[Johannes]:
+                    <li><p><img src="Resourcen/Icons/Teemo.jpg" alt="TEEMO" height="35" width="35">[Johannes]:
                         vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto</p></li>
                 </ul>
             </div>

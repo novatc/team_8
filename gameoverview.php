@@ -45,26 +45,26 @@
                 <tbody>
                 <tr>
                     <td width="300" height="300">
-                        <a href="/team8/lol.php">
-                            <img src="/team8/Resourcen/500px-League_of_Legends_2019_vector.svg.png" alt="LoL" height="100" width="300">
+                        <a href="lol.php">
+                            <img src="Resourcen/500px-League_of_Legends_2019_vector.svg.png" alt="LoL" height="100" width="300">
                         </a>
                         <p>&nbsp;</p>
                         <p style="float: top">Anzahl:</p>
                     </td>
                     <td width="300" height="300">
-                        <a href="/team8/valorant.php">
-                            <img src="/team8/Resourcen/2000px-Valorant_logo.svg.png" alt="Valorant" height="100" width="300">
+                        <a href="valorant.php">
+                            <img src="Resourcen/2000px-Valorant_logo.svg.png" alt="Valorant" height="100" width="300">
                         </a>
                         <p>&nbsp;</p>
                         <p style="float: top">Anzahl:</p>
                     </td>
                     <td width="300" height="300">
-                        <img src="/team8/Resourcen/counter_strike.png" alt="CSGO" height="100" width="300">
+                        <img src="Resourcen/counter_strike.png" alt="CSGO" height="100" width="300">
                         <p>&nbsp;</p>
                         <p style="float: top">Anzahl:</p>
                     </td>
                     <td width="300" height="300">
-                        <img src="/team8/Resourcen/call_of_duty.png" alt="CoD" height="100" width="300">
+                        <img src="Resourcen/call_of_duty.png" alt="CoD" height="100" width="300">
                         <p>&nbsp;</p>
                         <p style="float: top">Anzahl:</p>
                     </td>
