@@ -1,0 +1,24 @@
+@charset "utf-8";
+
+body {
+    color: #e6ebeb;
+    background-color: #1a1a1a;
+}
+header {
+    color: #e6ebeb;
+    background-color: #111111;
+}
+footer {
+    color: #e6ebeb;
+    background-color: #111111;
+}
+button {
+    color: #e6ebeb;
+    background-color: #404040;
+    border-color: #1a1a1a;
+}
+input {
+    color: #e6ebeb;
+    background-color: #404040;
+    border-color: #1a1a1a;
+}

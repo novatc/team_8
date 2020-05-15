@@ -2,7 +2,8 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Team8</title>
+    <title>Team8 - Chat</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
     <header>
