@@ -16,7 +16,7 @@
             <h2>Chat</h2>
             <!-- Chatbox mit hilfe der CSS stylen -->
             <h3>Dein aktiver Chat mit Johannes 
-                <a href="/team8/Websites/playerprofil.php">
+                <a href="/team8/playerprofil.php">
                     <img src="/team8/Resourcen/Icons/Teemo.jpg" alt="TEEMO" height="35" width="35">
             </a>:
                 &nbsp;<img src="/team8/Resourcen/call_of_duty.png" alt="CoD" height="70" width="300"></h3>
