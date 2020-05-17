@@ -3,24 +3,82 @@
 
 header nav{
     overflow: hidden;
+    display:block;
 }
 header nav a{
-    display: inline;
+    line-height: 40px;
+    font-weight: bold;
     text-decoration: none;
     color: #e6ebeb;
-    padding: 5% 5%; 
- 
+    padding-left: 10px;
+    padding-right: 10px;
+}
+header nav .home-link{
+    color: transparent; 
+    background: url(../Resourcen/Navigation/home-white-24dp.svg);
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: center;
+    display:inline-block;
 }
 
+header nav .game-link{
+    font-size: 20px;
+    display:inline-block;
+}
+header nav .login-link{
+    font-size: 17;
+    display: none;
+}
+header nav .register-link{
+    font-size: 17;
+    display: none;
+}
+header nav .message-link{
+    color: transparent; 
+    background: url(../Resourcen/Navigation/notifications-white-24dp.svg);
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: center;
+    display:inline-block;
+}
+header nav .profil-link{
+    color: transparent; 
+    background: url(../Resourcen/Navigation/person-white-24dp.svg);
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: center;
+    display:inline-block;
+}
 header nav a:hover{
     background-color: #404040
 }
-header nav img{ 
-    width: auto;
-    height: auto;
+header nav .search-wrapper{
+    vertical-align: middle;
+    grid-area: center;
+    text-align: center;
+    position: relative;
+    display: flex;
+}
+header nav .search-icon {
+    position: absolute;
+}
+header nav .search {   
+    border-radius: 5px;
+    height: 50%;
+    width: 100%;
+    padding: 2px 23px 2px 30px;
+    outline: 0;
+    background-color: #e6ebeb;
+    color: #111111
+}
+header .search:hover, .search:focus {
+    border: 2.5px solid #8996a8;
+    background-color: white;
 }
 
 header nav .grid-container {
+    height: 40px;
     display: grid;
     grid-template-areas:
       'left center right';
@@ -30,11 +88,28 @@ header nav .main-nav{
     grid-area: left;
     text-align: left;
 }
-header nav .search{
-    grid-area: center;
-    text-align: center;
-}
+
 header nav .profil-nav{
     grid-area: right;
     text-align: right;
 }
+
+  
+
+@media screen and (max-width: 600px) {
+    header nav .game-link{
+        color: transparent; 
+        background: url(../Resourcen/Navigation/esports-white-24dp.svg);
+        background-repeat: no-repeat;
+        background-size: auto;
+        background-position: center;
+        display:inline-block;
+    }
+    header nav a{
+        padding-left: 3px;
+        padding-right: 3px;
+    }
+
+}
+
+ 

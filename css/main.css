@@ -1,34 +1,34 @@
 @charset "utf-8";
 @import url(nav.css);
 
-body{
+html{
     color: #e6ebeb;
+}
+body{
     background-color: #1a1a1a;
     margin:0; 
     padding:0;
 }
 
 header {
-    padding:0.5%;
-    color: #e6ebeb;
     background-color: #111111;  
+    position: relative;
+    top: 0;
+    width: 100%;
 }
 
 main {
-    padding: 0.5%;
+    margin: 1%;
 }
 footer {
-    padding:0.5%;
-    color: #e6ebeb;
+    padding: 1%;
     background-color: #111111;
 }
 button {
-    color: #e6ebeb;
     background-color: #404040;
     border-color: #1a1a1a;
 }
 input {
-    color: #e6ebeb;
     background-color: #404040;
     border-color: #1a1a1a;
 }

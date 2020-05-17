@@ -14,7 +14,6 @@
     <main>
         Wilkommen bei Team8
     </main>
-    
     <footer>
         <div class="footer">
             <?php include "php/footer.php";?>

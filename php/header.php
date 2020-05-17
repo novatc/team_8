@@ -2,22 +2,18 @@
 <nav>
     <div class="grid-container">
         <div class="main-nav">
-        <a href="index.php">
-            <img src="Resourcen/Navigation/home-white-24dp.svg" alt="home">
-        </a>
-        <a href="gameoverview.php">Spiele</a>
+            <a class = "home-link" href="index.php">Home</a>
+            <a class = "game-link"href="gameoverview.php">Spiele</a>
         </div>
-        <div class="search">
-            <input type="text" placeholder="Suche.." >
-            <button type="submit" class="searchButton"><img src="Resourcen/Navigation/search-white-24dp.svg" alt="search"></button>    
+        <div class="search-wrapper">
+            <img class= search-icon src="Resourcen/Navigation/search-black-24dp.svg">
+            <input class="search" type="text" placeholder="Suche.." name="search">
         </div> 
         <div class="profil-nav">
-            <a href="login.php">Login</a>
-            <a href="registration.php">Registrieren</a>
-            <a href="chatoverview.php">Nachrichten</a>
-            <a href="chatoverview.php">
-                <img src="Resourcen/Navigation/person-white-24dp.svg" alt="profil">
-            </a>
+            <a class = "login-link"href="login.php">Login</a>
+            <a class = "register-link"href="registration.php">Registrieren</a>
+            <a class = "message-link"href="chatoverview.php">Nachrichten</a>
+            <a class = "profil-link"href="playerprofil.php">Profil</a>
             
         </div>
     </div>
