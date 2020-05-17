@@ -1,38 +1,40 @@
 @charset "utf-8";
 
 
-nav ul { 
-    list-style: none; 
-    padding: 0px; 
-    margin: 0px; 
-    font-weight: bold; 
-    text-align: center; 
-
+header nav{
+    overflow: hidden;
+}
+header nav a{
+    display: inline;
+    text-decoration: none;
+    color: #e6ebeb;
+    padding: 5% 5%; 
+ 
 }
 
-nav ul li { 
-    display: inline-block; 
-    text-align: left; 
+header nav a:hover{
+    background-color: #404040
+}
+header nav img{ 
+    width: auto;
+    height: auto;
 }
 
-nav ul li img{ 
-    display: inline-block; 
-    
-}
-nav ul li a { 
-    display: block; 
-    padding: 10px 12px; 
-    text-decoration: none; 
-    color: #e6ebeb; 
-}
-nav ul li .search { 
-    display: inline-block; 
-    padding: 10px 12px;
-    text-decoration: none; 
-    color: #e6ebeb; 
+header nav .grid-container {
+    display: grid;
+    grid-template-areas:
+      'left center right';
 }
 
-nav ul li a:hover { 
-    background-color: 
-    #404040; 
+header nav .main-nav{
+    grid-area: left;
+    text-align: left;
+}
+header nav .search{
+    grid-area: center;
+    text-align: center;
+}
+header nav .profil-nav{
+    grid-area: right;
+    text-align: right;
 }

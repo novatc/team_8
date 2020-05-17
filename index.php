@@ -11,7 +11,10 @@
             <?php include "php/header.php";?>
         </div>
     </header>
-    Wilkommen bei Team8
+    <main>
+        Wilkommen bei Team8
+    </main>
+    
     <footer>
         <div class="footer">
             <?php include "php/footer.php";?>

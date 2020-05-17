@@ -11,7 +11,8 @@
             <?php include "php/header.php";?>
         </div>
     </header>
-    <div id="wrapper">
+    <main>
+        <div id="wrapper">
 
         <div id="textarea">
             <h2>Daten ändern</h2>
@@ -75,9 +76,10 @@
         </div>
         <!-- Ende textbereich -->
 
-    </div>
-    <!-- Ende wrapper -->
+        </div>
+        <!-- Ende wrapper -->
 
+    </main>
     <footer>
             <div class="footer">
                 <?php include "php/footer.php";?>
