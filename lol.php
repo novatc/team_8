@@ -50,7 +50,7 @@
         </div>
         <div class="main">
             <ul class="game-cards">
-                <li class="playercards">
+                <li class="playercard">
                     <label>Spieler 1 </label>
 
                     <div class="profilcard">
@@ -61,7 +61,7 @@
                         </ul>
                     </div>
                 </li>
-                <li class="playercards">
+                <li class="playercard">
                     <label>Spieler 2 </label>
 
                     <div class="profilcard">
@@ -72,7 +72,7 @@
                         </ul>
                     </div>
                 </li>
-                <li class="playercards">
+                <li class="playercard">
                     <label>Spieler 3</label>
 
                     <div class="profilcard">
@@ -83,7 +83,7 @@
                         </ul>
                     </div>
                 </li>
-                <li class="playercards">
+                <li class="playercard">
                     <label>Spieler 4 </label>
 
                     <div class="profilcard">
