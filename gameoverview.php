@@ -26,31 +26,20 @@
         </div>
 
         <div class="lol">
-            <div class="fadein">
-                <img src="Resourcen/500px-League_of_Legends_2019_vector.svg.png">
-            </div>
-
+            LOL
         </div>
 
         <div class="valorant">
-            <div class="fadein">
-                <img src="Resourcen/2000px-Valorant_logo.svg.png">
-            </div>
+            Valorant
         </div>
 
         <div class="csgo">
-            <div class="fadein">
-                <img src="Resourcen/counter_strike.png">
-            </div>
+            CSGO
         </div>
 
         <div class="rocketleague">
-            <div class="fadein"
-                 <img src="Resourcen/call_of_duty.png">
+            <label class="fadein">RocketLeague</label>
         </div>
-
-
-    </div>
 </main>
 
 
