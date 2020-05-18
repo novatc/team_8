@@ -25,18 +25,18 @@
             </form>
         </div>
         <div class="main">
-            <ul class="game-cards">
+            <ul class="game-cards" >
                 <li class="card">
-                    <div class="lol"></div>
+                    <div class="lol" onclick="location.href='lol.php'"></div>
                 </li>
                 <li class="card">
-                    <div class="valorant"></div>
+                    <div class="valorant" onclick="location.href='valorant.php'"></div>
                 </li>
                 <li class="card">
-                    <div class="csgo"></div>
+                    <div class="csgo" onclick="location.href='csgo.php'"></div>
                 </li>
                 <li class="card">
-                    <div class="rocketleague"></div>
+                    <div class="rocketleague" onclick="location.href='rocketleague.php'"></div>
                 </li>
             </ul>
         </div>
