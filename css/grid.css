@@ -18,7 +18,8 @@
 .filter {
     background: darkgray;
     grid-area: left;
-    text-align: center;
+    text-align: left;
+
 
 }
 .main{
@@ -46,6 +47,7 @@
     opacity: 0.3;
     transition: 0.5s;
     cursor: pointer;
+    border: 0.5px solid darkred;
 }
 .card div{
     min-width: 400px;
@@ -54,8 +56,26 @@
     max-width: 500px;
     width: inherit;
     height: inherit;
-
 }
+.playercards {
+    display: flex;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    box-shadow: 0 20px 40px -14px #111111;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 2.5px solid gold;
+}
+.profilcard{
+    min-width: 400px;
+    min-height: 200px;
+    max-width: 500px;
+    max-width: 500px;
+    width: inherit;
+    height: inherit;
+}
+
 
 .lol {
     background:  url(../Resourcen/500px-League_of_Legends_2019_vector.svg.png);
