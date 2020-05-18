@@ -5,6 +5,7 @@
     <title>Team8 - Spieleseite</title>
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/grid.css">
+    <link rel="stylesheet" type="text/css" href="css/gameoverview.css">
 </head>
 <body>
 
@@ -14,7 +15,7 @@
     </div>
 </header>
 <main>
-    <div id="content">
+    <div id="grid">
         <div class="filter">
             <h2>Filter</h2>
             <form>
@@ -24,7 +25,7 @@
                 <label for="FPS">FPS</label>
             </form>
         </div>
-        <div class="main">
+        <div class="content">
             <ul class="game-cards" >
                 <li class="card">
                     <div class="lol" onclick="location.href='lol.php'"></div>
