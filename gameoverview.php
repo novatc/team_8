@@ -26,7 +26,7 @@
             </form>
         </div>
         <div class="content">
-            <ul class="game-cards" >
+            <ul class="cards" >
                 <li class="card">
                     <div class="lol" onclick="location.href='lol.php'"></div>
                 </li>

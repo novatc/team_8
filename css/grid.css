@@ -25,7 +25,7 @@
     margin: 0 auto;
 }
 
-.game-cards {
+.cards {
     display: flex;
     flex-wrap: wrap;
     list-style: none;

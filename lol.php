@@ -14,7 +14,7 @@
 </header>
 <main>
     <h1>League of Legends</h1>
-    <div id="content">
+    <div id="grid">
         <div class="filter">
             <h2>Filter</h2>
             <form>
@@ -48,8 +48,8 @@
                 <input type="submit" value="Filtern">
             </form>
         </div>
-        <div class="main">
-            <ul class="game-cards">
+        <div class="content">
+            <ul class="cards">
                 <li class="playercard">
                     <label>Spieler 1 </label>
 
