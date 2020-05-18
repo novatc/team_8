@@ -1,4 +1,4 @@
-.lol {
+#lol {
     background:  url(../Resourcen/500px-League_of_Legends_2019_vector.svg.png);
     background-repeat: no-repeat;
     background-size: contain;
@@ -6,47 +6,27 @@
     background-color: gold;
 }
 
-.card .lol:hover{
-    transition: 0.5s;
-    cursor: pointer;
-    box-shadow:0px 0px 18px gold, 0px 0px 20px white;
-}
-
-.valorant {
+#valorant {
     background:  url(../Resourcen/2000px-Valorant_logo.svg.png);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
     background-color: whitesmoke;
 }
-.card .valorant:hover{
-    transition: 0.5s;
-    cursor: pointer;
-    box-shadow:0px 0px 18px whitesmoke, 0px 0px 20px white;
-}
 
-.csgo {
+#csgo {
     background:  url(../Resourcen/counter_strike.png);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
     background-color: white;
 }
-.card .csgo:hover{
-    transition: 0.5s;
-    cursor: pointer;
-    box-shadow: 0px 0px 18px white, 0px 0px 20px white;
-}
 
-.rocketleague {
+
+#rocketleague {
     background:  url(../Resourcen/1920px-Rocket-league-logo.svg.png);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
     background-color: darkblue;
-}
-.card .rocketleague:hover{
-    transition: 0.5s;
-    cursor: pointer;
-    box-shadow: 0px 0px 18px darkblue, 0px 0px 20px white;
 }

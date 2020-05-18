@@ -13,25 +13,28 @@
 .filter {
     background: #111111;
     border-style: double;
-    border-color:  #e6ebeb;
+    border-color:  #404040;
     padding: 10px;
     grid-area: left;
     text-align: left;
-
-
+}
+.filter form{
+    padding:  10px;
 }
 
-.content{
+.overview{
     margin: 0 auto;
 }
 
-.cards {
+.cardview {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
     list-style: none;
     margin: 0;
     padding: 0;
-  }
+    width: 100%;
+}
   
 .card {
     display: flex;
@@ -41,75 +44,29 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    
 }
-.card div:hover{
-    transition: 0.5s;
+
+.card .container{
+    min-width: 350px;
+    min-height: 350px;
+    max-width: 350px;
+    max-width: 350px;
+}
+.card .container:hover{
+    transition: 0.4s;
     cursor: pointer;
-    border: 2px solid black;
-}
-.card div{
-    min-width: 400px;
-    min-height: 200px;
-    max-width: 500px;
-    max-width: 500px;
-    width: inherit;
-    height: inherit;
-}
-.playercard {
-    display: flex;
-    padding: 1rem;
-    border-radius: 0.25rem;
-    box-shadow: 0 20px 40px -14px #111111;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    border: 2.5px solid gold;
-}
-.profilcard{
-    min-width: 400px;
-    min-height: 200px;
-    max-width: 500px;
-    max-width: 500px;
-    width: inherit;
-    height: inherit;
-}
-.playercard:hover{
-    transition: 0.5s;
-    cursor: pointer;
-    border: 2px solid black;
+    transform: scale(1.05);
 }
 
 
-
-.lol {
-    background:  url(../Resourcen/500px-League_of_Legends_2019_vector.svg.png);
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    background-color: gold;
-
+@media screen and (max-width: 600px) {
+    .card .container{
+        min-width: 150px;
+        min-height: 150px;
+        max-width: 150px;
+        max-width: 150px;
+    }
 }
 
-.valorant {
-    background:  url(../Resourcen/2000px-Valorant_logo.svg.png);
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    background-color: whitesmoke;
-}
 
-.csgo {
-    background:  url(../Resourcen/counter_strike.png);
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    background-color: white;
-}
-
-.rocketleague {
-    background:  url(../Resourcen/1920px-Rocket-league-logo.svg.png);
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    background-color: darkblue;
-}

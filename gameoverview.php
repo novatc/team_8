@@ -16,28 +16,28 @@
 </header>
 <main>
     <div id="grid">
-        <div class="filter">
-            <h2>Filter</h2>
+        <div class="filter"> 
             <form>
+                <h2>Filter</h2>
                 <input type="radio" id="strategie" name="typ" value="strategie">
-                <label for="strategie">Strategie</label>
+                <label for="strategie">Strategie</label><br>
                 <input type="radio" id="fps" name="typ" value="fps">
-                <label for="FPS">FPS</label>
+                <label for="FPS">FPS</label><br>
             </form>
         </div>
-        <div class="content">
-            <ul class="cards" >
+        <div class="overview">
+            <ul class="cardview" >
                 <li class="card">
-                    <div class="lol" onclick="location.href='lol.php'"></div>
+                    <div class="container" id="lol" onclick="location.href='lol.php'"></div>
                 </li>
                 <li class="card">
-                    <div class="valorant" onclick="location.href='valorant.php'"></div>
+                    <div class="container" id="valorant" onclick="location.href='valorant.php'"></div>
                 </li>
                 <li class="card">
-                    <div class="csgo" onclick="location.href='csgo.php'"></div>
+                    <div class="container" id="csgo" onclick="location.href='csgo.php'"></div>
                 </li>
                 <li class="card">
-                    <div class="rocketleague" onclick="location.href='rocketleague.php'"></div>
+                    <div class="container" id="rocketleague" onclick="location.href='rocketleague.php'"></div>
                 </li>
             </ul>
         </div>

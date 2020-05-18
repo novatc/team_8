@@ -5,6 +5,7 @@
     <title>Team8 - LOL</title>
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/grid.css">
+    <link rel="stylesheet" type="text/css" href="css/playeroverview.css">
 </head>
 <body>
 <header>
@@ -15,9 +16,10 @@
 <main>
     <h1>League of Legends</h1>
     <div id="grid">
-        <div class="filter">
-            <h2>Filter</h2>
+        <div class="filter">          
             <form>
+                <h2>Filter</h2>
+                <h3>Elo: </h3>
                 <input type="radio" id="master" name="elo" value="master">
                 <label for="master">Master</label><br>
                 <input type="radio" id="dia" name="elo" value="dia">
@@ -31,8 +33,7 @@
                 <input type="radio" id="bronze" name="elo" value="bronze">
                 <label for="bronze">Bronze</label><br>
 
-                <h2>Position: </h2>
-
+                <h3>Position: </h3>
                 <input type="radio" id="top" name="position" value="top">
                 <label for="master">Top</label><br>
                 <input type="radio" id="jng" name="position" value="jng">
@@ -48,50 +49,54 @@
                 <input type="submit" value="Filtern">
             </form>
         </div>
-        <div class="content">
-            <ul class="cards">
-                <li class="playercard">
-                    <label>Spieler 1 </label>
-
-                    <div class="profilcard">
-                        <ul>
-                            <li>Name:</li>
-                            <li>Alter:</li>
-                            <li>ELO:</li>
-                        </ul>
+        <div class="overview">
+            <ul class="cardview">
+                <li class="card">
+                    <div class="container" id="payer1">
+                        <div class="content">
+                            <label>Spieler 3</label>
+                            <ul>
+                                <li>Name:</li>
+                                <li>Alter:</li>
+                                <li>ELO:</li>
+                            </ul>
+                        </div>
                     </div>
                 </li>
-                <li class="playercard">
-                    <label>Spieler 2 </label>
-
-                    <div class="profilcard">
-                        <ul>
-                            <li>Name:</li>
-                            <li>Alter:</li>
-                            <li>ELO:</li>
-                        </ul>
+                <li class="card">
+                    <div class="container" id="payer2">
+                        <div class="content">
+                            <label>Spieler 2</label>
+                            <ul>
+                                <li>Name:</li>
+                                <li>Alter:</li>
+                                <li>ELO:</li>
+                            </ul>
+                        </div>
                     </div>
                 </li>
-                <li class="playercard">
-                    <label>Spieler 3</label>
-
-                    <div class="profilcard">
-                        <ul>
-                            <li>Name:</li>
-                            <li>Alter:</li>
-                            <li>ELO:</li>
-                        </ul>
+                <li class="card">
+                    <div class="container" id="payer3">
+                        <div class="content">
+                            <label>Spieler 3</label>
+                            <ul>
+                                <li>Name:</li>
+                                <li>Alter:</li>
+                                <li>ELO:</li>
+                            </ul>
+                        </div>  
                     </div>
                 </li>
-                <li class="playercard">
-                    <label>Spieler 4 </label>
-
-                    <div class="profilcard">
-                        <ul>
-                            <li>Name:</li>
-                            <li>Alter:</li>
-                            <li>ELO:</li>
-                        </ul>
+                <li class="card">
+                    <div class="container" id="payer4">
+                        <div class="content">
+                            <label>Spieler 4</label>
+                            <ul>
+                                <li>Name:</li>
+                                <li>Alter:</li>
+                                <li>ELO:</li>
+                            </ul>
+                        </div>
                     </div>
                 </li>
             </ul>
