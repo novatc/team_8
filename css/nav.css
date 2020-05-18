@@ -67,7 +67,7 @@ header nav .search {
     border-radius: 5px;
     height: 50%;
     width: 100%;
-    padding: 2px 23px 2px 30px;
+    padding-left: 23px;
     outline: 0;
     background-color: #e6ebeb;
     color: #111111
@@ -94,7 +94,6 @@ header nav .profil-nav{
     text-align: right;
 }
 
-  
 
 @media screen and (max-width: 600px) {
     header nav .game-link{
