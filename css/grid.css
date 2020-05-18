@@ -36,7 +36,7 @@
 
 
 .lol {
-    background:  url(../Resourcen/500px-League_of_Legends_2019_vector.svg.png);;
+    background:  url(../Resourcen/500px-League_of_Legends_2019_vector.svg.png);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -46,20 +46,32 @@
 }
 
 .valorant {
-    background: #e6ebeb;
+    background:  url(../Resourcen/2000px-Valorant_logo.svg.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-color: #e6ebeb;
     grid-row: 1/3;
     grid-column: 4/6;
 
 }
 
 .csgo {
-    background: dimgrey;
+    background:  url(../Resourcen/counter_strike.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-color: dimgrey;
     grid-row: 3/6;
     grid-column: 2/4;
 }
 
 .rocketleague {
-    background: red;
+    background:  url(../Resourcen/call_of_duty.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-color: red;
     grid-row: 3/6;
     grid-column: 4/6;
 }
