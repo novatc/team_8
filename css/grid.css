@@ -14,6 +14,7 @@
     padding: 30px;
 }
 
+
 .filter {
     background: darkgray;
     grid-area: left;
@@ -41,25 +42,20 @@
     flex-direction: column;
     overflow: hidden;
 }
+.card div:hover{
+    opacity: 0.3;
+    transition: 0.5s;
+    cursor: pointer;
+}
 .card div{
-    min-width: 200px;
+    min-width: 400px;
     min-height: 200px;
     max-width: 500px;
     max-width: 500px;
     width: inherit;
     height: inherit;
-}
 
-.fadein img {
-    opacity: 0.5;
-    transition: 1s ease;
 }
-
-.fadein img:hover {
-    opacity: 1;
-    transition: 1s ease;
-}
-
 
 .lol {
     background:  url(../Resourcen/500px-League_of_Legends_2019_vector.svg.png);
@@ -67,6 +63,7 @@
     background-size: contain;
     background-position: center;
     background-color: gold;
+
 }
 
 .valorant {
@@ -74,7 +71,7 @@
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    background-color: #e6ebeb;
+    background-color: whitesmoke;
 }
 
 .csgo {
@@ -82,13 +79,13 @@
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    background-color: dimgrey;
+    background-color: white;
 }
 
 .rocketleague {
-    background:  url(../Resourcen/call_of_duty.png);
+    background:  url(../Resourcen/1920px-Rocket-league-logo.svg.png);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    background-color: red;
+    background-color: darkblue;
 }
