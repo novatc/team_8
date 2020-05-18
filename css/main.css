@@ -11,17 +11,24 @@ body{
 }
 
 header {
+    line-height: 40px;
     background-color: #111111;  
-    position: relative;
+    position: fixed;
     top: 0;
     width: 100%;
 }
 
 main {
-    margin: 1%;
+    margin-top: 60px;
+    margin-bottom: 20px;
+    margin-left: 2%;
+    margin-right: 2%;
+    min-height: calc(100vh - 160px);
 }
 footer {
-    padding: 1%;
+    padding: 10px;
+
+    height: 50px;
     background-color: #111111;
 }
 button {
