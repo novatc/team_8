@@ -24,21 +24,21 @@
                 <label for="FPS">FPS</label>
             </form>
         </div>
-
-        <div class="lol">
-            LOL
-        </div>
-
-        <div class="valorant">
-            Valorant
-        </div>
-
-        <div class="csgo">
-            CSGO
-        </div>
-
-        <div class="rocketleague">
-            <label class="fadein">RocketLeague</label>
+        <div class="main">
+            <ul class="game-cards">
+                <li class="card">
+                    <div class="lol"></div>
+                </li>
+                <li class="card">
+                    <div class="valorant"></div>
+                </li>
+                <li class="card">
+                    <div class="csgo"></div>
+                </li>
+                <li class="card">
+                    <div class="rocketleague"></div>
+                </li>
+            </ul>
         </div>
 </main>
 
