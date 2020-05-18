@@ -73,4 +73,43 @@
     width: inherit;
     height: inherit;
 }
+.playercard:hover{
+    transition: 0.5s;
+    cursor: pointer;
+    border: 2px solid black;
+}
 
+
+
+.lol {
+    background:  url(../Resourcen/500px-League_of_Legends_2019_vector.svg.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-color: gold;
+
+}
+
+.valorant {
+    background:  url(../Resourcen/2000px-Valorant_logo.svg.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-color: whitesmoke;
+}
+
+.csgo {
+    background:  url(../Resourcen/counter_strike.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-color: white;
+}
+
+.rocketleague {
+    background:  url(../Resourcen/1920px-Rocket-league-logo.svg.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-color: darkblue;
+}
