@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Team8 - LOL</title>
     <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="stylesheet" type="text/css" href="css/grid.css">
+    <link rel="stylesheet" type="text/css" href="css/cardgrid.css">
     <link rel="stylesheet" type="text/css" href="css/playeroverview.css">
 </head>
 <body>
