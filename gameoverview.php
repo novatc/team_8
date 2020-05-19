@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <title>Team8 - Spieleseite</title>
     <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="stylesheet" type="text/css" href="css/grid.css">
-    <link rel="stylesheet" type="text/css" href="css/gameoverview.css">
+    <link rel="stylesheet" type="text/css" href="css/cardgrid.css">
+    <link rel="stylesheet" type="text/css" href="css/games.css">
 </head>
 <body>
 
