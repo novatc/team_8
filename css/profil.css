@@ -58,10 +58,16 @@
 }
 
 .grid .profil-info .description{
+    padding-top: 10px;
+    padding-bottom: 10px;
     background-color: #111111;
 }
 .grid .profil-info .game-wrapper{
     background-color: #111111;
+}
+.grid .profil-info .game-wrapper{
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .cardview {
