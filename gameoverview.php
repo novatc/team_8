@@ -29,6 +29,7 @@
             <ul class="cardview" >
                 <div class="wrapper">
                     <li class="card">
+                        <label > League of Legenden</label>
                         <div class="container" id="lol" onclick="location.href='lol.php'"></div>
                     </li>
                 </div>
