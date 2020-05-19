@@ -52,7 +52,7 @@
         <div class="overview">
             <ul class="cardview">
                 <li class="card">
-                    <div class="container" id="payer1">
+                    <div class="container" id="payer1" onclick="location.href='playerprofil.php'">
                         <div class="content">
                             <label>Spieler 3</label>
                             <ul>
@@ -64,7 +64,7 @@
                     </div>
                 </li>
                 <li class="card">
-                    <div class="container" id="payer2">
+                    <div class="container" id="payer2"  onclick="location.href='playerprofil.php'">
                         <div class="content">
                             <label>Spieler 2</label>
                             <ul>
@@ -76,7 +76,7 @@
                     </div>
                 </li>
                 <li class="card">
-                    <div class="container" id="payer3">
+                    <div class="container" id="payer3" onclick="location.href='playerprofil.php'">
                         <div class="content">
                             <label>Spieler 3</label>
                             <ul>
@@ -88,7 +88,7 @@
                     </div>
                 </li>
                 <li class="card">
-                    <div class="container" id="payer4">
+                    <div class="container" id="payer4" onclick="location.href='playerprofil.php'">
                         <div class="content">
                             <label>Spieler 4</label>
                             <ul>
