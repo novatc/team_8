@@ -1,0 +1,143 @@
+.grid {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 100px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.gridActiveChats {
+    display: grid;
+    grid-template-columns: 130px 300px 0px;
+    grid-column-gap: 1em;
+    grid-row-gap: 5em;
+}
+
+.gridFriends {
+    display: grid;
+    grid-template-columns: 130px 300px;
+    grid-column-gap: 1em;
+    grid-row-gap: 5em;
+}
+
+.icon {
+    border-style: groove;
+}
+
+.scroll {
+    height: 600px;
+    overflow: auto;
+}
+
+ul {
+    list-style-type: none;
+}
+
+li {
+    list-style-type: none;
+}
+
+legend {
+    font-size: 24px;
+    text-align: right;
+    color: deepskyblue;
+}
+
+input {
+    width: 200px;
+    height: 130px;
+    color: white;
+    font-size: 24px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#avatarTeemo {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    background-image: url("../Resourcen/Icons/Teemo.jpg");
+    background-size: cover;
+}
+
+#avatarFuryhorn {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    background-image: url("../Resourcen/Icons/Furyhorn.png");
+    background-size: cover;
+}
+
+#avatarPingu {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    background-image: url("../Resourcen/Icons/Featherknight.png");
+    background-size: cover;
+}
+
+#avatarRammus {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    background-image: url("../Resourcen/Icons/Rammus.jpg");
+    background-size: cover;
+}
+
+#avatarZac {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    background-image: url("../Resourcen/Icons/Zac.jpg");
+    background-size: cover;
+}
+
+#avatarSquid {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    background-image: url("../Resourcen/Icons/Squid.jpg");
+    background-size: cover;
+}
+
+#avatarSpook {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    background-image: url("../Resourcen/Icons/Spooky.jpg");
+    background-size: cover;
+}
+
+#CoD {
+    width: 120px;
+    height: 120px;
+    background-image: url("../Resourcen/call_of_duty.png");
+    background-size: cover;
+}
+
+#LoL {
+    width: 120px;
+    height: 120px;
+    background-image: url("../Resourcen/500px-League_of_Legends_2019_vector.svg.png");
+    background-size: cover;
+}
+
+#RocketLeague {
+    width: 120px;
+    height: 180px;
+    background-image: url("../Resourcen/1920px-Rocket-league-logo.svg.png");
+    background-size: cover;
+}
+
+#Valorant {
+    width: 120px;
+    height: 120px;
+    background-image: url("../Resourcen/2000px-Valorant_logo.svg.png");
+    background-size: cover;
+}
+
+#CSGO {
+    width: 120px;
+    height: 180px;
+    background-image: url("../Resourcen/counter_strike.png");
+    background-size: cover;
+}

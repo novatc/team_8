@@ -1,0 +1,15 @@
+#avatarT {
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    background-image: url("../Resourcen/Icons/Teemo.jpg");
+    background-size: cover;
+}
+
+#avatarB {
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    background-image: url("../Resourcen/Icons/Bard.jpg");
+    background-size: cover;
+}
