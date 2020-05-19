@@ -38,34 +38,41 @@
   
 .card {
     display: flex;
-    padding: 1rem;
-    border-radius: 0.25rem;
-    box-shadow: 0 20px 40px -14px #111111;
-    display: flex;
+    padding: 28px;
     flex-direction: column;
     overflow: hidden;
     
 }
 
 .card .container{
+    align-self: center;
+    border-radius: 1%;
     min-width: 350px;
     min-height: 350px;
     max-width: 350px;
     max-width: 350px;
+    transition: all 0.4s ease-out;
+    box-shadow: 0 20px 40px -14px #111111;
 }
+
 .card .container:hover{
-    transition: 0.4s;
+    transition: all 0.4s ease;
     cursor: pointer;
-    transform: scale(1.05);
+    transform: scale(1.15);
+    border-radius: 1%;
+
 }
 
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
     .card .container{
         min-width: 150px;
         min-height: 150px;
         max-width: 150px;
         max-width: 150px;
+    }
+    .card {
+        padding: 12px;
     }
 }
 

@@ -3,7 +3,7 @@
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    background-color: gold;
+    background-color: #e6d383;
 }
 
 #valorant {
@@ -11,7 +11,7 @@
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    background-color: whitesmoke;
+    background-color: #ff4655;
 }
 
 #csgo {
@@ -19,7 +19,7 @@
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    background-color: white;
+    background-color: #f3a721;
 }
 
 
@@ -28,5 +28,5 @@
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    background-color: darkblue;
+    background-color: #5a46be;
 }

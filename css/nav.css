@@ -94,7 +94,7 @@ header nav .profil-nav{
 }
 
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
     header nav .game-link{
         color: transparent; 
         background: url(../Resourcen/Navigation/esports-white-24dp.svg);

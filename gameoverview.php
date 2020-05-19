@@ -27,18 +27,26 @@
         </div>
         <div class="overview">
             <ul class="cardview" >
-                <li class="card">
-                    <div class="container" id="lol" onclick="location.href='lol.php'"></div>
-                </li>
-                <li class="card">
-                    <div class="container" id="valorant" onclick="location.href='valorant.php'"></div>
-                </li>
-                <li class="card">
-                    <div class="container" id="csgo" onclick="location.href='csgo.php'"></div>
-                </li>
-                <li class="card">
-                    <div class="container" id="rocketleague" onclick="location.href='rocketleague.php'"></div>
-                </li>
+                <div class="wrapper">
+                    <li class="card">
+                        <div class="container" id="lol" onclick="location.href='lol.php'"></div>
+                    </li>
+                </div>
+                <div class="wrapper">
+                    <li class="card">
+                        <div class="container" id="valorant" onclick="location.href='valorant.php'"></div>
+                    </li>
+                </div>
+                <div class="wrapper">
+                    <li class="card">
+                        <div class="container" id="rocketleague" onclick="location.href='rocketleague.php'"></div>
+                    </li>
+                </div>
+                <div class="wrapper">
+                    <li class="card">
+                        <div class="container" id="csgo" onclick="location.href='csgo.php'"></div>
+                    </li>
+                </div>
             </ul>
         </div>
 </main>
