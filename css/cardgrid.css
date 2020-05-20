@@ -61,6 +61,7 @@
     max-height: 350px;
     transition: all 0.4s ease-out;
     box-shadow: 0 0 20px black;
+    font-size: 70px;
 }
 
 .card .container:hover{
@@ -77,6 +78,7 @@
         min-height: 150px;
         max-width: 150px;
         max-height: 150px;
+        font-size: 30px;
     }
     .card {
         padding: 12px;
@@ -101,6 +103,7 @@
         min-height: 200px;
         max-width: 200px;
         max-height: 200px;
+        font-size: 40px;
     }
     .card {
         padding: 15px;

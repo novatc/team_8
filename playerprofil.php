@@ -41,27 +41,35 @@
           <h2>Meine Spiele:</h2>
           <div class="game-wrapper"> 
             <ul class="cardview" >
-              <div class="wrapper">
-                  <li class="card">
-                      <div class="container" id="lol"></div>
-                  </li>
-              </div>
-              <div class="wrapper">
-                  <li class="card">
-                      <div class="container" id="valorant"></div>
-                  </li>
-              </div>
-              <div class="wrapper">
-                  <li class="card">
-                      <div class="container" id="rocketleague"></div>
-                  </li>
-              </div>
-              <div class="wrapper">
-                  <li class="card">
-                      <div class="container" id="csgo"></div>
-                  </li>
-              </div>
-          </ul>
+                  <div class="wrapper">
+                      <li class="card">
+                          <div class="container" id="lol" onclick="location.href='lol.php'">
+                              <label class="gamelabel">League of Legends</label>
+                          </div>
+                      </li>
+                  </div>
+                  <div class="wrapper">
+                      <li class="card">
+                          <div class="container" id="valorant" onclick="location.href='valorant.php'">
+                              <label class="gamelabel">Valorant</label>
+                          </div>
+                      </li>
+                  </div>
+                  <div class="wrapper">
+                      <li class="card">
+                          <div class="container" id="rocketleague" onclick="location.href='rocketleague.php'">
+                              <label class="gamelabel">Rocket League</label>
+                          </div>
+                      </li>
+                  </div>
+                  <div class="wrapper">
+                      <li class="card">
+                          <div class="container" id="csgo" onclick="location.href='csgo.php'">
+                              <label class="gamelabel">CS:GO</label>
+                          </div>
+                      </li>
+                  </div>
+              </ul>
           <div class="game-stats">
             <div>
                 <label >ELO: </label><label>Gold</label>
