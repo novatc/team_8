@@ -2,18 +2,22 @@
     src: url(../Resourcen/Fonts/EvolventaBold-55Xv.ttf);
     font-family: Evolvent;
 }
-
+.gamelabel{
+    color: #111111;
+    text-shadow: 0 0 10px white;
+    font-family: Evolvent;
+    font-size: 100%;
+    font-size: 1em;
+}
 #lol {
-
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    background-color: gold;
+    background-color: #dcc156;
     text-align: center;
 }
 
 #valorant {
-
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -22,58 +26,21 @@
 }
 
 #csgo {
-
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    background-color: white;
+    background: #df6f19;
     text-align: center;
 }
 
 
 #rocketleague {
-
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    background-color: darkblue;
+    background-color: #5a46be;
     text-align: center;
 }
 
-.gamesfontlol {
-    font-size: 80px ;
-    line-height: 90px;
-    font-family: Evolvent;
-    color: #f3a721;
-    vertical-align: center;
-    font-weight: 500;
 
 
-}
-.gamesfontvalorant {
-    font-size: 80px ;
-    line-height: 90px;
-    font-family: Evolvent;
-    color: whitesmoke;
-    font-weight: 500;
-    vertical-align: middle;
-    display: block;
-}
-.gamesfontrocketleague {
-    font-size: 80px ;
-    line-height: 90px;
-    font-family: Evolvent;
-    color: black;
-    font-weight: 500;
-    vertical-align: middle;
-}
-.gamesfontcsgo {
-    font-size: 80px ;
-    line-height: 90px;
-    font-family: Evolvent;
-    color: black;
-    font-weight: 500;
-    vertical-align: middle;
-    display: block;
-
-}
