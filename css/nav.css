@@ -1,16 +1,39 @@
 @charset "utf-8";
 
 header {
+    z-index: 9999;
     background-color: #111111;  
     position: fixed;
-    top: 0;
     width: 100%;
+    top: 0;
 }
 
 header nav{
     overflow: hidden;
     display:block;
 }
+
+
+header nav .grid-container {
+    height: 50px;
+    line-height: 50px;
+    display: grid;
+    grid-template-areas:
+      'left center right';
+}
+
+header nav .main-nav{
+    grid-area: left;
+    text-align: left;
+    width: 100%;
+}
+
+header nav .profil-nav{
+    grid-area: right;
+    text-align: right;
+    width: 100%;
+}
+
 header nav a{
     font-weight: bold;
     text-decoration: none;
@@ -24,19 +47,16 @@ header nav .home-link{
     background-repeat: no-repeat;
     background-size: auto;
     background-position: center;
-    display:inline-block;
+    display: inline-block;
 }
 
 header nav .game-link{
-    font-size: 25px;
     display:inline-block;
 }
 header nav .login-link{
-    font-size: 17;
     display: none;
 }
 header nav .register-link{
-    font-size: 17;
     display: none;
 }
 header nav .message-link{
@@ -66,9 +86,11 @@ header nav .search-wrapper{
     display: flex;
 }
 header nav .search-icon {
+    align-self: center;
     position: absolute;
 }
 header nav .search {   
+    align-self: center;
     border-radius: 5px;
     height: 50%;
     width: 100%;
@@ -81,26 +103,6 @@ header .search:hover, .search:focus {
     border: 2.5px solid #8996a8;
     background-color: white;
 }
-
-header nav .grid-container {
-    height: 50px;
-    line-height: 50px;
-    display: grid;
-    grid-template-areas:
-      'left center right';
-}
-
-header nav .main-nav{
-    grid-area: left;
-    text-align: left;
-}
-
-header nav .profil-nav{
-    grid-area: right;
-    text-align: right;
-}
-
-
 @media screen and (max-width: 1100px) {
     header nav .grid-container {
         height: 60px;
