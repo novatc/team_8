@@ -1,14 +1,25 @@
 .grid {
     display: grid;
-    grid-template-columns: auto auto;
-    grid-gap: 100px;
+    grid-template-columns: 2% 40%  3% 25%;
+    grid-column-gap:100px;
+    grid-row-gap: 20px;
     width: 100%;
     margin: 0 auto;
 }
 
+h1 {
+    text-align: left;
+}
+
+.boxname {
+    text-align: center;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 24px;
+}
+
 .gridActiveChats {
     display: grid;
-    grid-template-columns: 130px 300px 0px;
+    grid-template-columns: 130px 170px 0;
     grid-column-gap: 1em;
     grid-row-gap: 5em;
 }
@@ -20,92 +31,42 @@
     grid-row-gap: 5em;
 }
 
-.icon {
-    border-style: groove;
-}
-
 .scroll {
-    height: 600px;
-    overflow: auto;
+    height: 75%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: #696969;
+    border-style: double;
+    border-color:  #404040;
+    padding-top:20px;
+    padding-bottom: 20px;
+    padding-left:10px;
 }
 
-ul {
-    list-style-type: none;
-}
+.gridActiveChats > #wrapper {
+    display: flex;
+    flex-wrap: wrap;
 
-li {
-    list-style-type: none;
-}
-
-legend {
-    font-size: 24px;
-    text-align: right;
-    color: deepskyblue;
 }
 
 input {
-    width: 200px;
-    height: 130px;
+    min-width:150px;
+    min-height:100px;
+    max-width: 150px;
+    max-height: 100px;
     color: white;
     font-size: 24px;
     font-family: Arial, Helvetica, sans-serif;
+    transition: all 0.4s ease-out;
 }
 
-#avatarTeemo {
-    border-radius: 50%;
-    width: 120px;
-    height: 120px;
-    background-image: url("../Resourcen/Icons/Teemo.jpg");
-    background-size: cover;
+input:hover {
+    transition: all 0.4s ease;
+    cursor: pointer;
+    transform: scale(1.15);
+    border-radius: 1%;
 }
 
-#avatarFuryhorn {
-    border-radius: 50%;
-    width: 120px;
-    height: 120px;
-    background-image: url("../Resourcen/Icons/Furyhorn.png");
-    background-size: cover;
-}
-
-#avatarPingu {
-    border-radius: 50%;
-    width: 120px;
-    height: 120px;
-    background-image: url("../Resourcen/Icons/Featherknight.png");
-    background-size: cover;
-}
-
-#avatarRammus {
-    border-radius: 50%;
-    width: 120px;
-    height: 120px;
-    background-image: url("../Resourcen/Icons/Rammus.jpg");
-    background-size: cover;
-}
-
-#avatarZac {
-    border-radius: 50%;
-    width: 120px;
-    height: 120px;
-    background-image: url("../Resourcen/Icons/Zac.jpg");
-    background-size: cover;
-}
-
-#avatarSquid {
-    border-radius: 50%;
-    width: 120px;
-    height: 120px;
-    background-image: url("../Resourcen/Icons/Squid.jpg");
-    background-size: cover;
-}
-
-#avatarSpook {
-    border-radius: 50%;
-    width: 120px;
-    height: 120px;
-    background-image: url("../Resourcen/Icons/Spooky.jpg");
-    background-size: cover;
-}
 
 #CoD {
     width: 120px;
@@ -129,8 +90,8 @@ input {
 }
 
 #Valorant {
-    width: 120px;
-    height: 120px;
+    max-width:100%;
+    height: auto;
     background-image: url("../Resourcen/2000px-Valorant_logo.svg.png");
     background-size: cover;
 }
