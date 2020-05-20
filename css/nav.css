@@ -1,6 +1,7 @@
 @charset "utf-8";
 
 header {
+    z-index: 9999;
     background-color: #111111;  
     position: fixed;
     top: 0;
