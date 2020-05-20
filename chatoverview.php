@@ -37,7 +37,7 @@
                         </form>
                         <img src="Resourcen/counter_strike.png" alt="CSGO" height="120" width="300">
 
-                        <div class="gridActiveChatsItem" id="avatarRammus"></div>
+                        <div class="icon" id="avatarRammus"></div>
                         <form action="chat.php">
                             <input type="submit" value="Nico">
                         </form>
