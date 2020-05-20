@@ -5,6 +5,7 @@
     <title>Team8 - Chat</title>
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/chat.css">
+    <link rel="stylesheet" type="text/css" href="css/icons.css">
 </head>
 <body>
     <header>
@@ -13,82 +14,92 @@
         </div>
     </header>
     <main>
-        <div id="wrapper">
-            <div id="textarea">
-                <h2>Chat</h2>
-                <!-- Chatbox mit hilfe der CSS stylen -->
-                <h3>Dein aktiver Chat mit Johannes 
-                    <a href="playerprofil.php">
-                        <img src="Resourcen/Icons/Teemo.jpg" alt="TEEMO" height="35" width="35">
-                    </a>:
-                    <img src="Resourcen/call_of_duty.png" alt="CoD" height="70" width="300"></h3>
-                <div id="chatbox">
-                    <ul style="list-style-type:none">
-                        <li>
-                            <p>
-                            <div id="avatarT"></div>[Johannes]: Lorem ipsum
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                            <div id="avatarB"></div>[Du]: dolor sit amet, consetetur sadipscing elitr
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                            <div id="avatarB"></div>[Du]: sed diam nonumy eirmod tempor invidunt ut labore et dolore
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                            <div id="avatarT"></div>[Johannes]: magna aliquyam erat, sed diam voluptua
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                            <div id="avatarB"></div>[Du]: At vero eos et accusam et justo duo dolores et ea rebum
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                            <div id="avatarT"></div>[Johannes]: Stet clita kasd gubergren, no sea takimata sanctus est
+        <h1></h1>
+        <div id="wholechat">
+            <!-- Header-->
+            <div class="chatbox" id="chatheader">
+                <div class="description">
+                    <div class="headgrid">
+                            <a href="playerprofil.php">
+                                <div class="icon" id="avatarTeemo"></div>
+                            </a>
+                            <label id="name">Johannes</label>
+                            <img src="Resourcen/call_of_duty.png" alt="CoD" height="90" width="350">
+                    </div>
+                </div>
+            </div>
+                <!-- der eigentliche Chat-->
+                <!-- nur mit css ein Fehler -> noch kein scrolling ohne inline -->
+                <div class="chatbox" id="chathistory" style="height:550px">
+                    <div class="chatgrid">
+
+                        <div class="iconSmall" id="avatarTeemo" onclick="location.href='playerprofil.php'"></div>
+                        <p class="speech-bubble">
+                            dolor sit amet, consetetur sadipscing elitr
+                        </p>
+
+                        <div class="iconSmall" id="avatarBard" onclick="location.href='playerprofil.php'"></div>
+                        <p class="speech-bubble-self">
+                            sed diam nonumy eirmod tempor invidunt ut labore et dolore
+                        </p>
+
+                        <div class="iconSmall" id="avatarBard" onclick="location.href='playerprofil.php'"></div>
+                        <p class="speech-bubble-self">
+                            magna aliquyam erat, sed diam voluptua
+                        </p>
+
+                        <div class="iconSmall" id="avatarTeemo" onclick="location.href='playerprofil.php'"></div>
+                        <p class="speech-bubble">
+                            At vero eos et accusam et justo duo dolores et ea rebum
+                        </p>
+
+                        <div class="iconSmall" id="avatarBard" onclick="location.href='playerprofil.php'"></div>
+                        <p class="speech-bubble-self">
+                            Stet clita kasd gubergren, no sea takimata sanctus est
                             Lorem ipsum dolor sit amet.
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                            <div id="avatarB"></div>[Du]: At vero eos et accusam et justo duo dolores et ea rebum. Stet
-                            clita kasd gubergren, no sea takimata <br> sanctus est Lorem ipsum dolor sit amet. Lorem
-                            ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy <br> eirmod tempor
-                            invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                            <div id="avatarT"></div>[Johannes]: At vero eos et accusam et justo duo dolores et ea rebum.
+                        </p>
+
+                        <div class="iconSmall" id="avatarTeemo" onclick="location.href='playerprofil.php'"></div>
+                        <p class="speech-bubble">
+                            At vero eos et accusam et justo duo dolores et ea rebum.
                             Stet clita kasd
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                            <div id="avatarB"></div>[Du]: Duis autem vel eum iriure dolor
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                            <div id="avatarT"></div>[Johannes]: vel illum dolore eu feugiat nulla facilisis at vero
+                        </p>
+
+                        <div class="iconSmall" id="avatarBard" onclick="location.href='playerprofil.php'"></div>
+                        <p class="speech-bubble-self">
+                            Duis autem vel eum iriure dolor
+                        </p>
+
+                        <div class="iconSmall" id="avatarTeemo" onclick="location.href='playerprofil.php'"></div>
+                        <p class="speech-bubble">
+                            vel illum dolore eu feugiat nulla facilisis at vero
                             eros et accumsan et iusto
-                            </p>
-                        </li>
-                    </ul>
+                        </p>
+
+                        <div class="iconSmall" id="avatarBard" onclick="location.href='playerprofil.php'"></div>
+                        <p class="speech-bubble-self">
+                            vel illum dolore eu feugiat nulla facilisis at vero
+                            eros et accumsan et iusto
+                        </p>
+
+                        <div class="iconSmall" id="avatarTeemo" onclick="location.href='playerprofil.php'"></div>
+                        <p class="speech-bubble">
+                            vel illum dolore eu feugiat nulla facilisis at vero
+                            eros et accumsan et iusto
+                        </p>
+
+
+                    </div>
                 </div>
 
-                <!-- Formular zum senden von Nachrichten -->
+                <!-- Senden-->
                 <form id="messageform"
                     action="sendmessage.php" method="post">
-                    <div>
-                        <input type="text"
-                            id="password" name="password" required> <input type="submit" value="Senden">
+                    <div class="chatbox">
+                        <div class="bottomgrid">
+                        <input type="text" id="password" name="password" required>
+                        <input type="submit" value="Senden">
+                        </div>
                     </div>
                 </form>
             </div>

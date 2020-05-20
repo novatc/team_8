@@ -32,6 +32,8 @@ h1 {
 }
 
 .scroll {
+    display:flex;
+    flex-wrap:wrap;
     height: 75%;
     overflow-x: hidden;
     overflow-y: auto;

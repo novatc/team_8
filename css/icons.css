@@ -8,6 +8,16 @@
     border-style: groove;
 }
 
+/*for chat*/
+.iconSmall {
+    border-radius: 50%;
+    min-width: 80px;
+    min-height: 80px;
+    max-width: 80px;
+    max-height: 80px;
+    background-size: cover;
+}
+
 .game {
     min-width: 300px;
     min-height: 120px;
@@ -24,6 +34,10 @@
 
 #avatarTeemo {
     background-image: url("../Resourcen/Icons/Teemo.jpg");
+}
+
+#avatarBard {
+    background-image: url("../Resourcen/Icons/Bard.jpg");
 }
 
 #avatarFuryhorn {
