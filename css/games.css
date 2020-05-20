@@ -1,32 +1,79 @@
+@font-face {
+    src: url(../Resourcen/Fonts/EvolventaBold-55Xv.ttf);
+    font-family: Evolvent;
+}
+
 #lol {
-    background:  url(../Resourcen/500px-League_of_Legends_2019_vector.svg.png);
+
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    background-color: #e6d383;
+    background-color: gold;
+    text-align: center;
 }
 
 #valorant {
-    background:  url(../Resourcen/2000px-Valorant_logo.svg.png);
+
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
     background-color: #ff4655;
+    text-align: center;
 }
 
 #csgo {
-    background:  url(../Resourcen/counter_strike.png);
+
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    background-color: #f3a721;
+    background-color: white;
+    text-align: center;
 }
 
 
 #rocketleague {
-    background:  url(../Resourcen/1920px-Rocket-league-logo.svg.png);
+
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    background-color: #5a46be;
+    background-color: darkblue;
+    text-align: center;
+}
+
+.gamesfontlol {
+    font-size: 80px ;
+    line-height: 90px;
+    font-family: Evolvent;
+    color: #f3a721;
+    vertical-align: center;
+    font-weight: 500;
+
+
+}
+.gamesfontvalorant {
+    font-size: 80px ;
+    line-height: 90px;
+    font-family: Evolvent;
+    color: whitesmoke;
+    font-weight: 500;
+    vertical-align: middle;
+    display: block;
+}
+.gamesfontrocketleague {
+    font-size: 80px ;
+    line-height: 90px;
+    font-family: Evolvent;
+    color: black;
+    font-weight: 500;
+    vertical-align: middle;
+}
+.gamesfontcsgo {
+    font-size: 80px ;
+    line-height: 90px;
+    font-family: Evolvent;
+    color: black;
+    font-weight: 500;
+    vertical-align: middle;
+    display: block;
+
 }
