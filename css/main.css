@@ -10,23 +10,16 @@ body{
     padding:0;
 }
 
-header {
-    line-height: 40px;
-    background-color: #111111;  
-    position: fixed;
-    top: 0;
-    width: 100%;
-}
-
 main {
-    margin-top: 60px;
+    margin-top: 80px;
     margin-bottom: 20px;
     margin-left: 2%;
     margin-right: 2%;
     min-height: calc(100vh - 160px);
 }
 footer {
-    padding: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
     height: 50px;
     background-color: #111111;
 }

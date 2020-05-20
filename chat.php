@@ -20,7 +20,7 @@
                 <h3>Dein aktiver Chat mit Johannes 
                     <a href="playerprofil.php">
                         <img src="Resourcen/Icons/Teemo.jpg" alt="TEEMO" height="35" width="35">
-                </a>:
+                    </a>:
                     <img src="Resourcen/call_of_duty.png" alt="CoD" height="70" width="300"></h3>
                 <div id="chatbox">
                     <ul style="list-style-type:none">
