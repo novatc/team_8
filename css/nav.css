@@ -67,9 +67,11 @@ header nav .search-wrapper{
     display: flex;
 }
 header nav .search-icon {
+    align-self: center;
     position: absolute;
 }
 header nav .search {   
+    align-self: center;
     border-radius: 5px;
     height: 50%;
     width: 100%;
