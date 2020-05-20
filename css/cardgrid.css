@@ -3,8 +3,8 @@
 
 #grid {
     display: grid;
-    grid-template-areas:
-          'left main main main';
+    grid-template-columns: repeat(5,1fr);
+    grid-template-rows: auto auto;
     grid-gap: 10px;
     width: 100%;
     margin: 0 auto;
@@ -14,15 +14,23 @@
     background: #111111;
     border-style: double;
     border-color:  #404040;
-    padding: 10px;
-    grid-area: left;
+    grid-column: 1;
+    grid-row: 1;
     text-align: left;
 }
-.filter form{
-    padding:  10px;
+.filter h2{
+    padding-left: 10px;
+}
+.filter h3{
+    padding-left: 10px;
+}
+.filter ul{
+    list-style: none;
 }
 
 .overview{
+    grid-column: 2/6;
+    grid-row: 1;
     margin: 0 auto;
 }
 
@@ -52,7 +60,7 @@
     max-width: 350px;
     max-height: 350px;
     transition: all 0.4s ease-out;
-    box-shadow: 0 0 20px #111111;
+    box-shadow: 0 0 20px black;
 }
 
 .card .container:hover{
@@ -63,8 +71,7 @@
 
 }
 
-
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 800px) {
     .card .container{
         min-width: 150px;
         min-height: 150px;
@@ -76,4 +83,27 @@
     }
 }
 
+@media screen and (max-width: 500px) {
+    .filter{
+        height: auto;
+        grid-column: 1/6;
+        grid-row: 1;
+    }
+    .filter li{
+        display:inline;
+    }
+    .overview{
+        grid-column: 1/6;
+        grid-row: 2;
+    }
+    .card .container{
+        min-width: 200px;
+        min-height: 200px;
+        max-width: 200px;
+        max-height: 200px;
+    }
+    .card {
+        padding: 15px;
+    }
+}
 

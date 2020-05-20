@@ -40,7 +40,7 @@
                     <input type="radio" id="UnitedKingdom" name="origin" value="uk">
                     <label for="UnitedKingdom">United Kingdom</label><br>
                     <input type="radio" id="southKorea" name="origin" value="south korea">
-                    <label for="southKorea">jng</label><br>
+                    <label for="southKorea">South Korea</label><br>
                     <input type="radio" id="usa" name="origin" value="usa">
                     <label for="usa">USA</label><br>
                     <input type="radio" id="russia" name="origin" value="russia">

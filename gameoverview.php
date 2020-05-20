@@ -19,10 +19,16 @@
         <div class="filter"> 
             <form>
                 <h2>Filter</h2>
-                <input type="radio" id="strategie" name="typ" value="strategie">
-                <label for="strategie">Strategie</label><br>
-                <input type="radio" id="fps" name="typ" value="fps">
-                <label for="FPS">FPS</label><br>
+                <ul>
+                    <li>
+                        <input type="radio" id="strategie" name="typ" value="strategie">
+                        <label for="strategie">Strategie</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="fps" name="typ" value="fps">
+                        <label for="FPS">FPS</label>
+                    </li>
+                </ul>
             </form>
         </div>
         <div class="overview">
