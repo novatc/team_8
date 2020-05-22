@@ -26,25 +26,25 @@
                     <!-- thought: need an extra wrapper div for flexbox before each "row" in the grid, did either wrap always or incorrectly though-->
                     <div class="icon" id="avatarTeemo" onclick="location.href='playerprofil.php'"></div>
                     <form action="chat.php">
-                        <input class="chatbutton" type="submit" value="Johannes">
+                        <input class="startChat" type="submit" value="Johannes">
                     </form>
                     <img src="Resourcen/call_of_duty.png" alt="CoD" height="120" width="300">
 
                     <div class="icon" id="avatarFuryhorn" onclick="location.href='playerprofil.php'"></div>
                     <form action="chat.php">
-                        <input class="chatbutton"type="submit" value="Lucas">
+                        <input class="startChat" type="submit" value="Lucas">
                     </form>
                     <img src="Resourcen/2000px-Valorant_logo.svg.png" alt="Valorant" height="120" width="300">
 
                     <div class="icon" id="avatarPingu" onclick="location.href='playerprofil.php'"></div>
                     <form action="chat.php">
-                        <input class="chatbutton"type="submit" value="Tim">
+                        <input class="startChat" type="submit" value="Tim">
                     </form>
                     <img src="Resourcen/counter_strike.png" alt="CSGO" height="120" width="300">
 
                     <div class="icon" id="avatarRammus" onclick="location.href='playerprofil.php'"></div>
                     <form action="chat.php">
-                        <input class="chatbutton" type="submit" value="Nico">
+                        <input class="startChat" type="submit" value="Nico">
                     </form>
                     <img src="Resourcen/500px-League_of_Legends_2019_vector.svg.png" alt="LoL" height="120" width="300">
 
@@ -55,22 +55,22 @@
                 <div class="gridFriends">
                     <div class="icon" id="avatarTeemo" onclick="location.href='playerprofil.php'"></div>
                     <form action="chat.php">
-                        <input class="chatbutton" type="submit" value="Johannes">
+                        <input class="startChat" type="submit" value="Johannes">
                     </form>
 
                     <div class="icon" id="avatarZac" onclick="location.href='playerprofil.php'"></div>
                     <form action="chat.php">
-                        <input class="chatbutton" type="submit" value="Phil">
+                        <input class="startChat" type="submit" value="Phil">
                     </form>
 
                     <div class="icon" id="avatarSquid" onclick="location.href='playerprofil.php'"></div>
                     <form action="chat.php">
-                        <input class="chatbutton" type="submit" value="Hendrick">
+                        <input class="startChat" type="submit" value="Hendrick">
                     </form>
 
                     <div class="icon" id="avatarSpook" onclick="location.href='playerprofil.php'"></div>
                     <form action="chat.php">
-                        <input class="chatbutton" type="submit" value="Florian">
+                        <input class="startChat" type="submit" value="Florian">
                     </form>
                 </div>
             </div>
