@@ -62,7 +62,7 @@ input.startChat {
     transition: all 0.4s ease-out;
 }
 
-input:hover {
+.chatbutton:hover {
     transition: all 0.4s ease;
     cursor: pointer;
     transform: scale(1.15);
