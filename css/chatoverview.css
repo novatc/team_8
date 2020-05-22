@@ -51,7 +51,7 @@ h1 {
 
 }
 
-input {
+.chatbutton {
     min-width:150px;
     min-height:100px;
     max-width: 150px;
@@ -62,7 +62,7 @@ input {
     transition: all 0.4s ease-out;
 }
 
-input:hover {
+.chatbutton:hover {
     transition: all 0.4s ease;
     cursor: pointer;
     transform: scale(1.15);

@@ -97,8 +97,8 @@
                     action="sendmessage.php" method="post">
                     <div class="chatbox">
                         <div class="bottomgrid">
-                        <input type="text" id="password" name="password" required>
-                        <input type="submit" value="Senden">
+                        <input class="message" type="text" id="password" name="password" required>
+                        <input class="message" type="submit" value="Senden">
                         </div>
                     </div>
                 </form>
