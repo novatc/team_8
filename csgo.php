@@ -14,7 +14,7 @@
     </div>
 </header>
 <main>
-    <h1>League of Legends</h1>
+    <h1>CS:GO</h1>
     <div id="grid">
         <div class="filter">
             <form>
