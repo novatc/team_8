@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/cardgrid.css">
     <link rel="stylesheet" type="text/css" href="css/playeroverview.css">
+    <link rel="stylesheet" type="text/css" href="css/games.css">
 </head>
 <body>
 <header>
@@ -14,7 +15,7 @@
     </div>
 </header>
 <main>
-    <h1>League of Legends</h1>
+    <h1 class="gamename">League of Legends</h1>
     <div id="grid">
         <div class="filter">          
             <form>
@@ -51,7 +52,7 @@
             </form>
         </div>
         <div class="overview">
-            <ul class="cardview">
+            <ul class="cardview" id="lol-players">
                 <li class="card">
                     <div class="container" id="payer1" onclick="location.href='playerprofil.php'">
                         <div class="content">

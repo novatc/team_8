@@ -9,12 +9,17 @@
     font-size: 100%;
     font-size: 1em;
 }
+
+
 #lol {
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
     background-color: #dcc156;
     text-align: center;
+}
+#lol-players .card .container{
+    border: 2.5px solid  #dcc156;
 }
 
 #valorant {
@@ -24,6 +29,9 @@
     background-color: #ff4655;
     text-align: center;
 }
+#valorant-players .card .container{
+    border: 2.5px solid  #ff4655;
+}
 
 #csgo {
     background-repeat: no-repeat;
@@ -31,6 +39,9 @@
     background-position: center;
     background: #df6f19;
     text-align: center;
+}
+#csgo-players .card .container{
+    border: 2.5px solid  #df6f19;
 }
 
 
@@ -40,6 +51,9 @@
     background-position: center;
     background-color: #5a46be;
     text-align: center;
+}
+#rocket-players .card .container{
+    border: 2.5px solid  #5a46be;
 }
 
 
