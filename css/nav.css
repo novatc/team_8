@@ -48,12 +48,17 @@ header nav .home-link{
     color: transparent; 
     background: url(../Resourcen/Navigation/home-white-24dp.svg);
     background-repeat: no-repeat;
-    background-size: auto;
+    background-size: 35%;
     background-position: center;
     display: inline-block;
 }
 
 header nav .game-link{
+    color: transparent; 
+    background: url(../Resourcen/Navigation/esports-white-24dp.svg);
+    background-repeat: no-repeat;
+    background-size: 35%;
+    background-position: center;
     display:inline-block;
 }
 header nav .login-link{
@@ -66,7 +71,7 @@ header nav .message-link{
     color: transparent; 
     background: url(../Resourcen/Navigation/notifications-white-24dp.svg);
     background-repeat: no-repeat;
-    background-size: auto;
+    background-size: 35%;
     background-position: center;
     display:inline-block;
 }
@@ -74,7 +79,7 @@ header nav .profil-link{
     color: transparent; 
     background: url(../Resourcen/Navigation/person-white-24dp.svg);
     background-repeat: no-repeat;
-    background-size: auto;
+    background-size: 35%;
     background-position: center;
     display:inline-block;
 }
@@ -116,14 +121,7 @@ header .search:hover, .search:focus {
 }
 
 @media screen and (max-width: 800px) {
-    header nav .game-link{
-        color: transparent; 
-        background: url(../Resourcen/Navigation/esports-white-24dp.svg);
-        background-repeat: no-repeat;
-        background-size: auto;
-        background-position: center;
-        display:inline-block;
-    }
+    
     header nav a {
         width: 20%;
     }
