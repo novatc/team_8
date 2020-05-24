@@ -38,3 +38,18 @@ input {
     background-color: #404040;
     border-color: #1a1a1a;
 }
+h1{
+    font-size: xx-large;
+}
+h2{
+    font-size: x-large;
+}
+h3{
+    font-size: large;
+}
+h4{
+    font-size: medium;
+}
+h5{
+    font-size: x-small;
+}
