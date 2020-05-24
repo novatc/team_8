@@ -15,9 +15,10 @@
 </header>
 
 <main>
-    <div class="wrapper">
+    <div>
         <div class="split left">
             <div class="centered">
+
                 <h2>Login</h2>
                 <p>Some text.</p>
             </div>
@@ -25,6 +26,7 @@
 
         <div class="split right">
             <div class="centered">
+
                 <h2>Registrieren</h2>
                 <p>Some text here too.</p>
             </div>
@@ -32,13 +34,12 @@
     </div>
 
 
-
 </main>
-
 <footer>
     <div class="footer">
         <?php include "php/footer.php"; ?>
     </div>
 </footer>
+
 </body>
 </html>

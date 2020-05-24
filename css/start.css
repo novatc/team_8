@@ -10,25 +10,19 @@
     padding-top: 20px;
 }
 
-.wrapper{
-    background: #df6f19;
-    width: ;
-    height:;
 
-
-
-}
 .left {
-    left: 0;
-    background-color: transparent;
-    border: #1a1a1a solid 10px;
+    height: 80%;
+    bottom: 70px;
+    background-color: red;
 }
 
 
 .right {
+    height: 80%;
     right: 0;
-    background-color: transparent;
-    border: #1a1a1a solid 10px;
+    background-color: blue;
+
 }
 
 
@@ -38,4 +32,8 @@
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
+}
+.left:hover, .right:hover{
+    transform: scale(0.95);
+    transition: 0.33s;
 }
