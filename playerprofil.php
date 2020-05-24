@@ -28,7 +28,7 @@
           </div>
         </div>
          
-        <div class="profil-info">
+        <div class="profil-body">
           <h2>Beschreibung:</h2>
           <div class="description">
             <div>
