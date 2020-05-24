@@ -32,10 +32,10 @@
           <h2>Beschreibung:</h2>
           <div class="description">
             <div>
-              <label >Alter: </label><label>20</label>
+              <label class="attribute">Alter: </label><label class="value">20</label>
             </div>
             <div>
-                <label>Sprachen: </label><label>Deutsch, Englisch</label>
+                <label class="attribute">Sprachen: </label><label class="value">Deutsch, Englisch</label>
             </div>
           </div>
           <h2>Meine Spiele:</h2>
@@ -72,10 +72,10 @@
               </ul>
           <div class="game-stats">
             <div>
-                <label >ELO: </label><label>Gold</label>
+                <label class="attribute">ELO: </label><label class="value">Gold</label>
             </div>
             <div>
-                <label >Position: </label><label>Jungle</label>
+                <label class="attribute">Position: </label><label class="value">Jungle</label>
             </div>
           </div>
         </div> 

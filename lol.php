@@ -55,7 +55,7 @@
                 <li class="card">
                     <div class="container" id="payer1" onclick="location.href='playerprofil.php'">
                         <div class="content">
-                            <label>Spieler 3</label>
+                            <h2>Spieler 1</h2>
                             <ul>
                                 <li>Name:</li>
                                 <li>Alter:</li>
@@ -67,7 +67,7 @@
                 <li class="card">
                     <div class="container" id="payer2"  onclick="location.href='playerprofil.php'">
                         <div class="content">
-                            <label>Spieler 2</label>
+                            <h2>Spieler 2</h2>
                             <ul>
                                 <li>Name:</li>
                                 <li>Alter:</li>
@@ -79,7 +79,7 @@
                 <li class="card">
                     <div class="container" id="payer3" onclick="location.href='playerprofil.php'">
                         <div class="content">
-                            <label>Spieler 3</label>
+                            <h2>Spieler 3</h2>
                             <ul>
                                 <li>Name:</li>
                                 <li>Alter:</li>
@@ -91,7 +91,7 @@
                 <li class="card">
                     <div class="container" id="payer4" onclick="location.href='playerprofil.php'">
                         <div class="content">
-                            <label>Spieler 4</label>
+                            <h2>Spieler 4</h2>
                             <ul>
                                 <li>Name:</li>
                                 <li>Alter:</li>

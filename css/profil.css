@@ -60,10 +60,6 @@
 .grid .profil-info .gamestats label{
     padding-left: 20px;
 }
-.grid .profil-info .description label{
-    padding-left: 20px;
-}
-
 .grid .profil-info .description{
     padding-top: 10px;
     padding-bottom: 10px;
@@ -115,6 +111,14 @@
     box-shadow: 0 0 10px white;
 }
 
+
+.value{
+    position: absolute;
+    left: 25%;
+}
+.attribute{
+    padding-left: 20px;
+}
 
 @media screen and (max-width: 1100px) {
 
