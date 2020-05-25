@@ -1,0 +1,65 @@
+@charset "utf-8";
+
+.split {
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+
+.left {
+    left: 0;
+    bottom: 70px;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0.4;
+    background: grey;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+.right {
+    right: 0;
+    background: grey ;
+    width: 50vw;
+    height: 100vh;
+    opacity: 0.4;
+    align-items: center;
+    justify-content: center;
+
+}
+.content{
+    background-color: #B10DC9;
+    width: 300px;
+    height: 300px;
+}
+
+#grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-size: auto 100%;
+    background: url(../Resourcen/logo.jpg);
+
+}
+
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background-size: cover;
+}
+
+.left:hover, .right:hover {
+    transform: scale(0.95);
+    transition: 0.33s;
+    opacity: 0.2;
+}
