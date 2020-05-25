@@ -1,7 +1,18 @@
+@font-face {
+    src: url(../Resourcen/Fonts/EvolventaBold-55Xv.ttf);
+    font-family: Evolvent;
+}
+.gamename{
+    text-align: center;
+    font-family: Evolvent;
+    font-size: xx-large;
+}
 .card .container{
-    border: 2.5px solid #e6d383;
     background-color: #111111;
 }
 .content{
     padding: 10px;
+}
+.content{
+    font-size: 40%;
 }
