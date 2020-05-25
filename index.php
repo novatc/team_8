@@ -15,23 +15,17 @@
 </header>
 
 <main>
-    <div>
-        <div class="split left">
-            <div class="centered">
+    <section id="grid">
+        <div class="right" onclick="location.href='login.php'">
+            Login
+        </div>
+        <div class="left" onclick="location.href='registration.php'">
+            Registrieren
 
-                <h2>Login</h2>
-                <p>Some text.</p>
-            </div>
         </div>
 
-        <div class="split right">
-            <div class="centered">
+    </section>
 
-                <h2>Registrieren</h2>
-                <p>Some text here too.</p>
-            </div>
-        </div>
-    </div>
 
 
 </main>
