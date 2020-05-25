@@ -19,6 +19,8 @@
             <input type="text" name="" placeholder="Benutzername">
             <input type="password" name="" placeholder="Passwort">
             <input type="submit" name="" value="Login">
+            <label onclick="location.href='registration.php'">Registrieren</label>
+
 
         </form>
 

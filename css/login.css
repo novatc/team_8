@@ -51,6 +51,9 @@
     transition: 0.25s;
     cursor: pointer;
 }
+.box label{
+    cursor: pointer;
+}
 
 .box input[type="submit"]:hover{
     background: green;
