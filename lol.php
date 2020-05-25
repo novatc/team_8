@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/cardgrid.css">
     <link rel="stylesheet" type="text/css" href="css/playeroverview.css">
+    <link rel="stylesheet" type="text/css" href="css/games.css">
 </head>
 <body>
 <header>
@@ -14,7 +15,7 @@
     </div>
 </header>
 <main>
-    <h1>League of Legends</h1>
+    <h1 class="gamename">League of Legends</h1>
     <div id="grid">
         <div class="filter">          
             <form>
@@ -51,11 +52,11 @@
             </form>
         </div>
         <div class="overview">
-            <ul class="cardview">
+            <ul class="cardview" id="lol-players">
                 <li class="card">
                     <div class="container" id="payer1" onclick="location.href='playerprofil.php'">
                         <div class="content">
-                            <label>Spieler 3</label>
+                            <h2>Spieler 1</h2>
                             <ul>
                                 <li>Name:</li>
                                 <li>Alter:</li>
@@ -67,7 +68,7 @@
                 <li class="card">
                     <div class="container" id="payer2"  onclick="location.href='playerprofil.php'">
                         <div class="content">
-                            <label>Spieler 2</label>
+                            <h2>Spieler 2</h2>
                             <ul>
                                 <li>Name:</li>
                                 <li>Alter:</li>
@@ -79,7 +80,7 @@
                 <li class="card">
                     <div class="container" id="payer3" onclick="location.href='playerprofil.php'">
                         <div class="content">
-                            <label>Spieler 3</label>
+                            <h2>Spieler 3</h2>
                             <ul>
                                 <li>Name:</li>
                                 <li>Alter:</li>
@@ -91,7 +92,7 @@
                 <li class="card">
                     <div class="container" id="payer4" onclick="location.href='playerprofil.php'">
                         <div class="content">
-                            <label>Spieler 4</label>
+                            <h2>Spieler 4</h2>
                             <ul>
                                 <li>Name:</li>
                                 <li>Alter:</li>

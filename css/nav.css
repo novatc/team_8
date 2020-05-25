@@ -9,6 +9,7 @@ header {
 }
 
 header nav{
+    font-size: 22px;
     overflow: hidden;
     display:block;
 }
@@ -47,12 +48,17 @@ header nav .home-link{
     color: transparent; 
     background: url(../Resourcen/Navigation/home-white-24dp.svg);
     background-repeat: no-repeat;
-    background-size: auto;
+    background-size: 35px;
     background-position: center;
     display: inline-block;
 }
 
 header nav .game-link{
+    color: transparent; 
+    background: url(../Resourcen/Navigation/esports-white-24dp.svg);
+    background-repeat: no-repeat;
+    background-size: 38px;
+    background-position: center;
     display:inline-block;
 }
 header nav .login-link{
@@ -65,7 +71,7 @@ header nav .message-link{
     color: transparent; 
     background: url(../Resourcen/Navigation/notifications-white-24dp.svg);
     background-repeat: no-repeat;
-    background-size: auto;
+    background-size: 32px;
     background-position: center;
     display:inline-block;
 }
@@ -73,7 +79,7 @@ header nav .profil-link{
     color: transparent; 
     background: url(../Resourcen/Navigation/person-white-24dp.svg);
     background-repeat: no-repeat;
-    background-size: auto;
+    background-size: 35px;
     background-position: center;
     display:inline-block;
 }
@@ -88,16 +94,19 @@ header nav .search-wrapper{
     max-width: 500px;
 }
 header nav .search-icon {
+    height: max-content;
+    width: auto;
     align-self: center;
     position: absolute;
 }
 header nav .search {   
+    font-size: 17px;
     align-self: center;
     justify-self: center;
-    height: 40%;
+    height: 50%;
     border-radius: 5px;
-    width: calc(100% - 28px);
-    padding-left: 23px;
+    width: calc(100% - 30px);
+    padding-left: 25px;
     outline: 0;
     background-color: #e6ebeb;
     color: #111111
@@ -115,14 +124,7 @@ header .search:hover, .search:focus {
 }
 
 @media screen and (max-width: 800px) {
-    header nav .game-link{
-        color: transparent; 
-        background: url(../Resourcen/Navigation/esports-white-24dp.svg);
-        background-repeat: no-repeat;
-        background-size: auto;
-        background-position: center;
-        display:inline-block;
-    }
+    
     header nav a {
         width: 20%;
     }

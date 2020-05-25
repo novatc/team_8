@@ -28,14 +28,14 @@
           </div>
         </div>
          
-        <div class="profil-info">
+        <div class="profil-body">
           <h2>Beschreibung:</h2>
           <div class="description">
             <div>
-              <label >Alter: </label><label>20</label>
+              <label class="attribute">Alter: </label><label class="value">20</label>
             </div>
             <div>
-                <label>Sprachen: </label><label>Deutsch, Englisch</label>
+                <label class="attribute">Sprachen: </label><label class="value">Deutsch, Englisch</label>
             </div>
           </div>
           <h2>Meine Spiele:</h2>
@@ -43,28 +43,28 @@
             <ul class="cardview" >
                   <div class="wrapper">
                       <li class="card">
-                          <div class="container" id="lol" onclick="location.href='lol.php'">
+                          <div class="container" id="lol">
                               <label class="gamelabel">League of Legends</label>
                           </div>
                       </li>
                   </div>
                   <div class="wrapper">
                       <li class="card">
-                          <div class="container" id="valorant" onclick="location.href='valorant.php'">
+                          <div class="container" id="valorant">
                               <label class="gamelabel">Valorant</label>
                           </div>
                       </li>
                   </div>
                   <div class="wrapper">
                       <li class="card">
-                          <div class="container" id="rocketleague" onclick="location.href='rocketleague.php'">
+                          <div class="container" id="rocketleague">
                               <label class="gamelabel">Rocket League</label>
                           </div>
                       </li>
                   </div>
                   <div class="wrapper">
                       <li class="card">
-                          <div class="container" id="csgo" onclick="location.href='csgo.php'">
+                          <div class="container" id="csgo">
                               <label class="gamelabel">CS:GO</label>
                           </div>
                       </li>
@@ -72,10 +72,10 @@
               </ul>
           <div class="game-stats">
             <div>
-                <label >ELO: </label><label>Gold</label>
+                <label class="attribute">ELO: </label><label class="value">Gold</label>
             </div>
             <div>
-                <label >Position: </label><label>Jungle</label>
+                <label class="attribute">Position: </label><label class="value">Jungle</label>
             </div>
           </div>
         </div> 
