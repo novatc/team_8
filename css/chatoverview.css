@@ -19,7 +19,7 @@ h1 {
 
 .gridActiveChats {
     display: grid;
-    grid-template-columns: 130px 170px 0;
+    grid-template-columns: 130px 170px auto;
     grid-column-gap: 1em;
     grid-row-gap: 5em;
 }
@@ -69,38 +69,57 @@ input.startChat {
     border-radius: 1%;
 }
 
-
-#CoD {
-    width: 120px;
-    height: 120px;
-    background-image: url("../Resourcen/call_of_duty.png");
-    background-size: cover;
+@media screen and (max-width: 1500px) {
+    .grid {
+        display: grid;
+        grid-template-columns: auto;
+        grid-column-gap:0px;
+        grid-row-gap: 20px;
+        width: 100%;
+        margin: 0 auto;
+    }
 }
 
-#LoL {
-    width: 120px;
-    height: 120px;
-    background-image: url("../Resourcen/500px-League_of_Legends_2019_vector.svg.png");
-    background-size: cover;
+
+@media screen and (max-width: 800px) {
+    .grid {
+        display: grid;
+        grid-template-columns: auto;
+        grid-column-gap:0px;
+        grid-row-gap: 20px;
+        width: 100%;
+        margin: 0 auto;
+    }
+    .gridActiveChats {
+        grid-template-columns: 150px 150px 0;
+    }
+
+    .gridFriends {
+        grid-template-columns: 150px 150px;
+    }
+
+    .scroll {
+        width:98%;
+    }
+    .grid #friends.boxname {
+        grid-row:6;
+    }
+    .grid #active.boxname {
+        grid-row:3;
+    }
+    input.startChat {
+        min-width:300px;
+        max-width: 300px;
+
+    }
 }
 
-#RocketLeague {
-    width: 120px;
-    height: 180px;
-    background-image: url("../Resourcen/1920px-Rocket-league-logo.svg.png");
-    background-size: cover;
+@media screen and (max-width: 600px) {
+    input.startChat {
+        min-width:130px;
+        max-width: 130px;
+    }
 }
 
-#Valorant {
-    max-width:100%;
-    height: auto;
-    background-image: url("../Resourcen/2000px-Valorant_logo.svg.png");
-    background-size: cover;
-}
 
-#CSGO {
-    width: 120px;
-    height: 180px;
-    background-image: url("../Resourcen/counter_strike.png");
-    background-size: cover;
-}
+

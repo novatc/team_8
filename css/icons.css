@@ -84,24 +84,11 @@
     background-image: url("../Resourcen/counter_strike.png");
 }
 
-@media screen and (max-width: 900px) {
-    .icon {
-        min-width: 60px;
-        min-height: 60px;
-        max-width: 60px;
-        max-height: 60px;
-    }
-    input {
-        min-width:100px;
-        min-height:65px;
-        max-width: 100px;
-        max-height: 65px;
-        font-size:16px;
-    }
-    .gridActiveChats {
-        grid-template-columns: 65px 150px 0px;
-    }
-    .gridFriends {
-        grid-template-columns: 65px 150px;
+@media screen and (max-width: 600px) {
+    .icons {
+        min-width:60px;
+        min-height:60px;
+        max-width:60px;
+        max-height:60px;
     }
 }
