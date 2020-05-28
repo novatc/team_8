@@ -7,6 +7,9 @@
     <link rel="stylesheet" type="text/css" href="css/chatoverview.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/icons.css">
+    <link rel="stylesheet" type="text/css" href="css/cardgrid.css">
+    <link rel="stylesheet" type="text/css" href="css/games.css">
+
 </head>
 <body>
     <header>
@@ -18,9 +21,9 @@
         <h1>Chatübersicht</h1>
         <div class="grid">
             <div></div>
-            <div class="boxname">Aktive Chats</div>
+            <div class="boxname" id="active">Aktive Chats</div>
             <div></div>
-            <div class="boxname">Freunde</div>
+            <div class="boxname" id="friends">Freunde</div>
             <div></div>
             <div class="scroll">
                 <div class="gridActiveChats">
@@ -29,25 +32,41 @@
                     <form action="chat.php">
                         <input class="startChat" type="submit" value="Johannes">
                     </form>
-                    <img src="Resourcen/call_of_duty.png" alt="CoD" height="120" width="300">
+                    <div class="chatcard">
+                        <div class="chatcontainer" id="rocketleague" onclick="location.href='lol.php'">
+                            <label class="gamelabel">Rocket League</label>
+                        </div>
+                    </div>
 
                     <div class="icon" id="avatarFuryhorn" onclick="location.href='playerprofil.php'"></div>
                     <form action="chat.php">
                         <input class="startChat" type="submit" value="Lucas">
                     </form>
-                    <img src="Resourcen/2000px-Valorant_logo.svg.png" alt="Valorant" height="120" width="300">
+                    <div class="chatcard">
+                        <div class="chatcontainer" id="valorant" onclick="location.href='lol.php'">
+                            <label class="gamelabel">Valorant</label>
+                        </div>
+                    </div>
 
                     <div class="icon" id="avatarPingu" onclick="location.href='playerprofil.php'"></div>
                     <form action="chat.php">
                         <input class="startChat" type="submit" value="Tim">
                     </form>
-                    <img src="Resourcen/counter_strike.png" alt="CSGO" height="120" width="300">
+                    <div class="chatcard">
+                        <div class="chatcontainer" id="csgo" onclick="location.href='lol.php'">
+                            <label class="gamelabel">CS:GO</label>
+                        </div>
+                    </div>
 
                     <div class="icon" id="avatarRammus" onclick="location.href='playerprofil.php'"></div>
                     <form action="chat.php">
                         <input class="startChat" type="submit" value="Nico">
                     </form>
-                    <img src="Resourcen/500px-League_of_Legends_2019_vector.svg.png" alt="LoL" height="120" width="300">
+                    <div class="chatcard">
+                        <div class="chatcontainer" id="lol" onclick="location.href='lol.php'">
+                            <label class="gamelabel">League of Legends</label>
+                        </div>
+                    </div>
 
                 </div>
             </div>
