@@ -92,10 +92,6 @@
     font-size: 35px;
 }
 
-
-
-@media screen and (max-width: 800px) {
-
 /* Tablet */
 @media screen and (max-width: 1080px) {
     .card .container{
