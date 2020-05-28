@@ -125,6 +125,7 @@
     padding-left: 20px;
 }
 
+/* Tablet */
 @media screen and (max-width: 1080px) {
 
     .card .container{
@@ -143,7 +144,7 @@
         grid-template-rows: auto auto;    
     }
 }
-
+/* Smartphone */
 @media screen and (max-width: 780px) {
     .card .container{
         min-width: 100px;
