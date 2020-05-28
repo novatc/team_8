@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Team8 - Profil</title>
     <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="stylesheet" type="text/css" href="css/profil.css">
+    <link rel="stylesheet" type="text/css" href="css/profile.css">
     <link rel="stylesheet" type="text/css" href="css/games.css">
+    <link rel="stylesheet" type="text/css" href="css/icons.css">
 </head>
 <body>
     <header>
@@ -18,14 +19,17 @@
       <div class="grid">
         <div class="profil-header">
           <div class="picture-wrapper">
-              <img src="Resourcen/Icons/Bard.jpg" alt="Profil Picture">
+              <div class="icon" id="avatarTeemo" onclick="location.href='playerprofile.php'"></div>
           </div>
           <div class="name-wrapper">
-            <h1>Max Mustermann</h1>  
-            <label>Wilkommen auf meinem Profil</label>
+              <h1>Max Mustermann</h1>  
+              <label>Wilkommen auf meinem Profil</label>
+          </div>
+          <div class="settings-wrapper">
+              <a class="settings-link" href="changeprofile.php"></a>
           </div>
           <div class="message-wrapper">
-            <button>Nachricht schreiben</button>  
+              <button>Nachricht schreiben</button>  
           </div>
         </div>
          

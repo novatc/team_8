@@ -11,15 +11,88 @@
 
 .filter {
     background: #111111;
-    border-style: double;
-    border-color:  #404040;
     grid-column: 1;
     grid-row: 1;
-    text-align: left;
+    text-align: center;
+    -webkit-box-shadow: 0px 0px 21px 8px rgba(143,138,131,0.1);
+    -moz-box-shadow: 0px 0px 21px 8px rgba(143,138,131,0.1);
+    box-shadow: 0px 0px 21px 8px rgba(143,138,131,0.1);
+    border-radius: 24px;
 }
+
 .filter h2{
     padding-left: 10px;
+    border: 2px solid green;
+    border-radius: 24px;
 }
+.filtercontainer {
+    display: block;
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 19px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.filtercontainer input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 5px;
+    padding-left: -10px;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.filtercontainer:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.filtercontainer input:checked ~ .checkmark {
+    background-color: green;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.filtercontainer input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.filtercontainer .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
 .filter h3{
     padding-left: 10px;
 }
@@ -48,6 +121,7 @@
     padding: 28px;
     flex-direction: column;
     overflow: hidden;
+
     
 }
 
@@ -64,10 +138,14 @@
 }
 
 .card .container:hover{
-    transition: all 0.4s ease;
+    transition: all 0.2s ease;
     cursor: pointer;
-    transform: scale(1.15);
+    transform: scale(1.1);
     border-radius: 1%;
+    border: 2px solid #df6f19;
+    -webkit-box-shadow: 0px 0px 21px 8px rgba(143,138,131,0.1);
+    -moz-box-shadow: 0px 0px 21px 8px rgba(143,138,131,0.1);
+    box-shadow: 0px 0px 21px 8px rgba(143,138,131,0.1);
 
 }
 

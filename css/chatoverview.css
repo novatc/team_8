@@ -157,8 +157,8 @@ input.startChat:hover {
 
     }
 }
-
-@media screen and (max-width: 600px) {
+/* Smartphone */
+@media screen and (max-width: 780px) {
     h1 {
         text-align:center;
     }

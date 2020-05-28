@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Team8 - Profil bearbeiten</title>
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/formular.css">
 </head>
 <body>
     <header>
@@ -13,72 +14,81 @@
         </div>
     </header>
     <main>
-        <div id="wrapper">
-
-        <div id="textarea">
-            <h2>Daten ändern</h2>
-
-            <form id="registrationform"
-                action="register.php" method="post">
-                <fieldset><legend>Nutzerdaten</legend>
-                <div>
-                    <label for="username">Benutzername:</label> <input type="text"
-                        id="username" name="username" required>
-                </div>
-                <div>
-                    <label for="email">E-Mail:</label> <input type="email"
-                        id="email" name="email" required>
-                </div>
-                <div>
-                    <label for="password">Passwort:</label> <input type="text"
-                        id="password" name="password" required>
-                </div>
-                <div>
-                    <label for="validationpw">Passwort wiederholen:</label> <input type="text"
-                        id="validationpw" name="validationpw" required>
-                </div>
-                </fieldset>
-                <fieldset><legend>Beschreibung</legend>
-                    <div>
-                        <label>Spiele:</label> <br>
-                        <label>
-                            <input type="checkbox" name="games" value="valorant">
-                            Valorant
-                        </label>
-                        <label>
-                            <input type="checkbox" name="games" value="lol">
-                            League of Legends
-                        </label>
-                        <label>
-                            <input type="checkbox" name="games" value="csgo">
-                            Counter Strike: Global Offensive
-                        </label>
-                        <label>
-                            <input type="checkbox" name="games" value="cod">
-                            Call of Duty
-                        </label>
-                        <label>
-                            <input type="checkbox" name="games" value="other">
-                            Sonstige
-                        </label>
-                        
-                    </div>
-                    <div>
-                        <label for="description">Beschreibung:</label>
-                        <textarea id="description" name="description" cols="20" rows="5"></textarea>
-                    </div>   
-                </fieldset>
-                <div>
-                    <input type="submit" value="Änderungen speichern">
-                </div>
-            </form>
-
-
-        </div>
-        <!-- Ende textbereich -->
-
-        </div>
-        <!-- Ende wrapper -->
+        <form class="box">
+            <h1>Profil anpassen</h1>
+            <textarea name="description" class="data-input" placeholder="Beschreibung" cols="30" rows="10"></textarea>
+            <ul class="game-list">
+                <li class="game-item">
+                    <h2>LOL</h1>
+                    <ul class="elo-list">
+                        <li><input type="radio" id="master" name="elo" value="master">
+                        <label for="master">Master</label></li>
+                        <li><input type="radio" id="dia" name="elo" value="dia" >
+                        <label for="dia">Dia</label></li>
+                        <li> <input type="radio" id="plat" name="elo" value="plat">
+                        <label for="plat">Plat</label></li>
+                        <li><input type="radio" id="gold" name="elo" value="gold">
+                        <label for="gold">Gold</label></li>
+                        <li><input type="radio" id="silber" name="elo" value="silber">
+                        <label for="silber">Silber</label></li>
+                        <li><input type="radio" id="bronze" name="elo" value="bronze">
+                        <label for="bronze">Bronze</label></li>
+                    </ul>
+                </li>
+                <li class="game-item">
+                    <h2>Valorant</h1>
+                    <ul class="elo-list">
+                        <li><input type="radio" id="master" name="elo" value="master">
+                        <label for="master">Master</label></li>
+                        <li><input type="radio" id="dia" name="elo" value="dia" >
+                        <label for="dia">Dia</label></li>
+                        <li> <input type="radio" id="plat" name="elo" value="plat">
+                        <label for="plat">Plat</label></li>
+                        <li><input type="radio" id="gold" name="elo" value="gold">
+                        <label for="gold">Gold</label></li>
+                        <li><input type="radio" id="silber" name="elo" value="silber">
+                        <label for="silber">Silber</label></li>
+                        <li><input type="radio" id="bronze" name="elo" value="bronze">
+                        <label for="bronze">Bronze</label></li>
+                    </ul>
+                </li>
+                <li class="game-item">
+                    <h2>CSGO</h1>
+                    <ul class="elo-list">
+                        <li><input type="radio" id="master" name="elo" value="master">
+                        <label for="master">Master</label></li>
+                        <li><input type="radio" id="dia" name="elo" value="dia" >
+                        <label for="dia">Dia</label></li>
+                        <li> <input type="radio" id="plat" name="elo" value="plat">
+                        <label for="plat">Plat</label></li>
+                        <li><input type="radio" id="gold" name="elo" value="gold">
+                        <label for="gold">Gold</label></li>
+                        <li><input type="radio" id="silber" name="elo" value="silber">
+                        <label for="silber">Silber</label></li>
+                        <li><input type="radio" id="bronze" name="elo" value="bronze">
+                        <label for="bronze">Bronze</label></li>
+                    </ul>
+                </li>
+                <li class="game-item">
+                    <h2>Rocket League</h1>
+                    <ul class="elo-list">
+                        <li><input type="radio" id="master" name="elo" value="master">
+                        <label for="master">Master</label></li>
+                        <li><input type="radio" id="dia" name="elo" value="dia" >
+                        <label for="dia">Dia</label></li>
+                        <li> <input type="radio" id="plat" name="elo" value="plat">
+                        <label for="plat">Plat</label></li>
+                        <li><input type="radio" id="gold" name="elo" value="gold">
+                        <label for="gold">Gold</label></li>
+                        <li><input type="radio" id="silber" name="elo" value="silber">
+                        <label for="silber">Silber</label></li>
+                        <li><input type="radio" id="bronze" name="elo" value="bronze">
+                        <label for="bronze">Bronze</label></li>
+                    </ul>
+                </li>
+            </ul>
+            <input class="submit" type="submit" name="" value="Speichern">
+        </form>
 
     </main>
     <footer>
