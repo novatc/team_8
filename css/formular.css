@@ -4,13 +4,13 @@
     padding: 40px;
     margin: auto;
     background: #191919;
-    text-align: center;
+
     -webkit-box-shadow: 0px 0px 21px 8px rgba(143,138,131,0.1);
     -moz-box-shadow: 0px 0px 21px 8px rgba(143,138,131,0.1);
     box-shadow: 0px 0px 21px 8px rgba(143,138,131,0.1);
 }
 
-.box input[type= "text"],.box input[type="email"], .box input[type="password"] {
+.box .data-input{
     background: none;
     display: block;
     margin: 20px auto;
@@ -23,37 +23,57 @@
     border-radius: 24px;
     transition: 0.25s
 }
+.box textarea.data-input{
+    text-align: left;
+    resize: none;
+}
 .box h1{
-    color: white;
+    text-align: center;
     text-transform: uppercase;
     font-weight: 500;
 }
+.box h3{
+    text-align: center;
+    cursor: pointer;
+    font-weight: 500;
+}
 
-.box input[type= "text"]:focus,.box input[type="email"]:focus, .box input[type="password"]:focus{
+.box .data-input:focus{
     width: 25vw;
     border-color: green;
 }
-
-.box input[type="submit"]{
+.box .submit{
     background: none;
     display: block;
     margin: 20px auto;
     text-align: center;
     border: 2px solid green;
     padding: 14px 40px;
-
     outline: none;
-    color: white;
+    color: #e6ebeb;
     border-radius: 24px;
     transition: 0.25s;
     cursor: pointer;
 }
-.box label{
-    cursor: pointer;
-}
 
-.box input[type="submit"]:hover{
+.box .submit:hover{
     background: green;
+}
+.box .game-list{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;;
+}
+.box .game-item{
+    margin: 5%;
+    padding: 5%;
+    border-radius: 5%;
+    background-color: #404040;
+}
+.box .elo-list{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
 /* Smartphone */
@@ -61,10 +81,10 @@
     .box{
         width: 60vw;
     }
-    .box input[type= "text"],.box input[type="email"], .box input[type="password"] {
+    .box .data-input{
         width: 40vw;
     }
-    .box input[type= "text"]:focus,.box input[type="email"]:focus, .box input[type="password"]:focus{
+    .box .data-input:focus{
         width: 50vw;
     }
 

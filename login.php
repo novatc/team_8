@@ -17,11 +17,11 @@
 
     <main>
         <form class="box">
-            <h1>Login</h1>
-            <input type="text" name="" placeholder="Benutzername">
-            <input type="password" name="" placeholder="Passwort">
-            <input type="submit" name="" value="Login">
-            <label onclick="location.href='registration.php'">Registrieren</label>
+            <h1>Anmelden</h1>
+            <input class="data-input" type="text" name="" placeholder="Benutzername">
+            <input class="data-input" type="password" name="" placeholder="Passwort">
+            <input class="submit" type="submit" name="" value="Anmelden">
+            <h3 onclick="location.href='registration.php'">Noch kein Account?</h3>
         </form>
     </main>
    

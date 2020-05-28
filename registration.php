@@ -16,12 +16,12 @@
 </header>
 <main>
     <form class="box">
-        <h1>Anmelden</h1>
-        <input type="text" name="" placeholder="Benutzername">
-        <input type="email" name="" placeholder="Mail">
-        <input type="password" name="" placeholder="Passwort">
-        <input type="password" name="" placeholder="Passwort wiederholen">
-        <input type="submit" name="" value="Anmelden">
+        <h1>Registrieren</h1>
+        <input class="data-input" type="text" name="" placeholder="Benutzername">
+        <input class="data-input" type="email" name="" placeholder="Mail">
+        <input class="data-input" type="password" name="" placeholder="Passwort">
+        <input class="data-input" type="password" name="" placeholder="Passwort wiederholen">
+        <input class="submit" type="submit" name="" value="Registrieren">
 
     </form>
 
