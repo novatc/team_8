@@ -6,6 +6,7 @@
     max-height: 100px;
     background-size: cover;
     border-style: groove;
+    transition: all 0.4s ease-out;
 }
 
 /*for chat*/
@@ -28,7 +29,7 @@
 .icon:hover {
     transition: all 0.4s ease;
     cursor: pointer;
-    transform: scale(1.08);
+    transform: scale(1.15);
     border-radius: 50%;
 }
 
@@ -64,44 +65,11 @@
     background-image: url("../Resourcen/Icons/Spooky.jpg");
 }
 
-#CoD {
-    background-image: url("../Resourcen/call_of_duty.png");
-}
-
-#LoL {
-    background-image: url("../Resourcen/500px-League_of_Legends_2019_vector.svg.png");
-}
-
-#RocketLeague {
-    background-image: url("../Resourcen/1920px-Rocket-league-logo.svg.png");
-}
-
-#Valorant {
-    background-image: url("../Resourcen/2000px-Valorant_logo.svg.png");
-}
-
-#CSGO {
-    background-image: url("../Resourcen/counter_strike.png");
-}
-
-@media screen and (max-width: 900px) {
-    .icon {
-        min-width: 60px;
-        min-height: 60px;
-        max-width: 60px;
-        max-height: 60px;
-    }
-    input {
-        min-width:100px;
-        min-height:65px;
-        max-width: 100px;
-        max-height: 65px;
-        font-size:16px;
-    }
-    .gridActiveChats {
-        grid-template-columns: 65px 150px 0px;
-    }
-    .gridFriends {
-        grid-template-columns: 65px 150px;
+@media screen and (max-width: 600px) {
+    .icons {
+        min-width:60px;
+        min-height:60px;
+        max-width:60px;
+        max-height:60px;
     }
 }
