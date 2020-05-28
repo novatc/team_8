@@ -28,7 +28,7 @@
             <div class="scroll">
                 <div class="gridActiveChats">
                     <!-- thought: need an extra wrapper div for flexbox before each "row" in the grid, did either wrap always or incorrectly though-->
-                    <div class="icon" id="avatarTeemo" onclick="location.href='playerprofil.php'"></div>
+                    <div class="icon" id="avatarTeemo" onclick="location.href='playerprofile.php'"></div>
                     <form action="chat.php">
                         <input class="startChat" type="submit" value="Johannes">
                     </form>
@@ -38,7 +38,7 @@
                         </div>
                     </div>
 
-                    <div class="icon" id="avatarFuryhorn" onclick="location.href='playerprofil.php'"></div>
+                    <div class="icon" id="avatarFuryhorn" onclick="location.href='playerprofile.php'"></div>
                     <form action="chat.php">
                         <input class="startChat" type="submit" value="Lucas">
                     </form>
@@ -48,7 +48,7 @@
                         </div>
                     </div>
 
-                    <div class="icon" id="avatarPingu" onclick="location.href='playerprofil.php'"></div>
+                    <div class="icon" id="avatarPingu" onclick="location.href='playerprofile.php'"></div>
                     <form action="chat.php">
                         <input class="startChat" type="submit" value="Tim">
                     </form>
@@ -58,7 +58,7 @@
                         </div>
                     </div>
 
-                    <div class="icon" id="avatarRammus" onclick="location.href='playerprofil.php'"></div>
+                    <div class="icon" id="avatarRammus" onclick="location.href='playerprofile.php'"></div>
                     <form action="chat.php">
                         <input class="startChat" type="submit" value="Nico">
                     </form>
@@ -73,22 +73,22 @@
             <div></div>
             <div class="scroll">
                 <div class="gridFriends">
-                    <div class="icon" id="avatarTeemo" onclick="location.href='playerprofil.php'"></div>
+                    <div class="icon" id="avatarTeemo" onclick="location.href='playerprofile.php'"></div>
                     <form action="chat.php">
                         <input class="startChat" type="submit" value="Johannes">
                     </form>
 
-                    <div class="icon" id="avatarZac" onclick="location.href='playerprofil.php'"></div>
+                    <div class="icon" id="avatarZac" onclick="location.href='playerprofile.php'"></div>
                     <form action="chat.php">
                         <input class="startChat" type="submit" value="Phil">
                     </form>
 
-                    <div class="icon" id="avatarSquid" onclick="location.href='playerprofil.php'"></div>
+                    <div class="icon" id="avatarSquid" onclick="location.href='playerprofile.php'"></div>
                     <form action="chat.php">
                         <input class="startChat" type="submit" value="Hendrick">
                     </form>
 
-                    <div class="icon" id="avatarSpook" onclick="location.href='playerprofil.php'"></div>
+                    <div class="icon" id="avatarSpook" onclick="location.href='playerprofile.php'"></div>
                     <form action="chat.php">
                         <input class="startChat" type="submit" value="Florian">
                     </form>

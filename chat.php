@@ -21,7 +21,7 @@
             <div class="chatbox" id="chatheader">
                 <div class="description">
                     <div class="headgrid">
-                            <a href="playerprofil.php">
+                            <a href="playerprofile.php">
                                 <div class="icon" id="avatarTeemo"></div>
                             </a>
                             <label id="name">Johannes</label>
@@ -34,56 +34,56 @@
                 <div class="chatbox" id="chathistory" style="height:550px">
                     <div class="chatgrid">
 
-                        <div class="iconSmall" id="avatarTeemo" onclick="location.href='playerprofil.php'"></div>
+                        <div class="iconSmall" id="avatarTeemo" onclick="location.href='playerprofile.php'"></div>
                         <p class="speech-bubble">
                             dolor sit amet, consetetur sadipscing elitr
                         </p>
 
-                        <div class="iconSmall" id="avatarBard" onclick="location.href='playerprofil.php'"></div>
+                        <div class="iconSmall" id="avatarBard" onclick="location.href='playerprofile.php'"></div>
                         <p class="speech-bubble-self">
                             sed diam nonumy eirmod tempor invidunt ut labore et dolore
                         </p>
 
-                        <div class="iconSmall" id="avatarBard" onclick="location.href='playerprofil.php'"></div>
+                        <div class="iconSmall" id="avatarBard" onclick="location.href='playerprofile.php'"></div>
                         <p class="speech-bubble-self">
                             magna aliquyam erat, sed diam voluptua
                         </p>
 
-                        <div class="iconSmall" id="avatarTeemo" onclick="location.href='playerprofil.php'"></div>
+                        <div class="iconSmall" id="avatarTeemo" onclick="location.href='playerprofile.php'"></div>
                         <p class="speech-bubble">
                             At vero eos et accusam et justo duo dolores et ea rebum
                         </p>
 
-                        <div class="iconSmall" id="avatarBard" onclick="location.href='playerprofil.php'"></div>
+                        <div class="iconSmall" id="avatarBard" onclick="location.href='playerprofile.php'"></div>
                         <p class="speech-bubble-self">
                             Stet clita kasd gubergren, no sea takimata sanctus est
                             Lorem ipsum dolor sit amet.
                         </p>
 
-                        <div class="iconSmall" id="avatarTeemo" onclick="location.href='playerprofil.php'"></div>
+                        <div class="iconSmall" id="avatarTeemo" onclick="location.href='playerprofile.php'"></div>
                         <p class="speech-bubble">
                             At vero eos et accusam et justo duo dolores et ea rebum.
                             Stet clita kasd
                         </p>
 
-                        <div class="iconSmall" id="avatarBard" onclick="location.href='playerprofil.php'"></div>
+                        <div class="iconSmall" id="avatarBard" onclick="location.href='playerprofile.php'"></div>
                         <p class="speech-bubble-self">
                             Duis autem vel eum iriure dolor
                         </p>
 
-                        <div class="iconSmall" id="avatarTeemo" onclick="location.href='playerprofil.php'"></div>
+                        <div class="iconSmall" id="avatarTeemo" onclick="location.href='playerprofile.php'"></div>
                         <p class="speech-bubble">
                             vel illum dolore eu feugiat nulla facilisis at vero
                             eros et accumsan et iusto
                         </p>
 
-                        <div class="iconSmall" id="avatarBard" onclick="location.href='playerprofil.php'"></div>
+                        <div class="iconSmall" id="avatarBard" onclick="location.href='playerprofile.php'"></div>
                         <p class="speech-bubble-self">
                             vel illum dolore eu feugiat nulla facilisis at vero
                             eros et accumsan et iusto
                         </p>
 
-                        <div class="iconSmall" id="avatarTeemo" onclick="location.href='playerprofil.php'"></div>
+                        <div class="iconSmall" id="avatarTeemo" onclick="location.href='playerprofile.php'"></div>
                         <p class="speech-bubble">
                             vel illum dolore eu feugiat nulla facilisis at vero
                             eros et accumsan et iusto

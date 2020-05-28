@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/profile.css">
     <link rel="stylesheet" type="text/css" href="css/games.css">
+    <link rel="stylesheet" type="text/css" href="css/icons.css">
 </head>
 <body>
     <header>
@@ -18,7 +19,7 @@
       <div class="grid">
         <div class="profil-header">
           <div class="picture-wrapper">
-              <img src="Resourcen/Icons/Bard.jpg" alt="Profil Picture">
+              <div class="icon" id="avatarTeemo" onclick="location.href='playerprofile.php'"></div>
           </div>
           <div class="name-wrapper">
               <h1>Max Mustermann</h1>  
