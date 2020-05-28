@@ -205,7 +205,15 @@ label#name {
         grid-template-columns:auto;
     }
     input.sendMessage {
-        min-width:200px;
-        max-width: 200px;
+        min-width:220px;
+        max-width: 220px;
+    }
+    .chatgrid .speech-bubble {
+        width: 220px;
+        font-size:18px;
+    }
+    .chatgrid .speech-bubble-self {
+        width: 220px;
+        font-size:18px;
     }
 }

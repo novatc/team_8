@@ -163,8 +163,8 @@ input.startChat:hover {
         text-align:center;
     }
     input.startChat {
-        min-width:130px;
-        max-width: 130px;
+        min-width:300px;
+        max-width: 300px;
     }
 }
 
