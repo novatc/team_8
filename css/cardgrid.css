@@ -104,9 +104,6 @@
     .card {
         padding: 12px;
     }
-    .chatcard {
-        padding:0;
-    }
 }
 /* Smartphone */
 @media screen and (max-width: 780px) {
