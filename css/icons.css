@@ -64,8 +64,8 @@
 #avatarSpook {
     background-image: url("../Resourcen/Icons/Spooky.jpg");
 }
-
-@media screen and (max-width: 600px) {
+/* Smartphone */
+@media screen and (max-width: 780px) {
     .icons {
         min-width:60px;
         min-height:60px;
