@@ -7,6 +7,8 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/cardgrid.css">
     <link rel="stylesheet" type="text/css" href="css/games.css">
+
+
 </head>
 <body>
 
@@ -17,19 +19,27 @@
 </header>
 <main>
     <div id="grid">
-        <div class="filter"> 
+
+        <div class="filter">
+            <h1>Filter</h1>
             <form>
-                <h2>Filter</h2>
-                <ul>
-                    <li>
-                        <input type="radio" id="strategie" name="typ" value="strategie">
-                        <label for="strategie">Strategie</label>
-                    </li>
-                    <li>
-                        <input type="radio" id="fps" name="typ" value="fps">
-                        <label for="FPS">FPS</label>
-                    </li>
-                </ul>
+                <label class="filtercontainer">Shooter
+                    <input type="checkbox" checked="checked">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="filtercontainer">Teamplay
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="filtercontainer">Strategie
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="filtercontainer">Arenakampf
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                </label>
+
             </form>
         </div>
         <div class="overview">
