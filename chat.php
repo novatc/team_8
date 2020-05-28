@@ -7,6 +7,9 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/chat.css">
     <link rel="stylesheet" type="text/css" href="css/icons.css">
+    <link rel="stylesheet" type="text/css" href="css/cardgrid.css">
+    <link rel="stylesheet" type="text/css" href="css/games.css">
+
 </head>
 <body>
     <header>
