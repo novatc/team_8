@@ -1,5 +1,5 @@
 <footer>
     <nav>
-        <p><label>Impressum</label> | <label>AGB</label> | <label>Über uns</label></p>
+        <p><label onclick="location.href='impressum.php'">Impressum</label> | <label onclick="location.href='impressum.php'">AGB</label> | <label onclick="location.href='about.php'">Über uns</label></p>
     </nav>
 </footer>
