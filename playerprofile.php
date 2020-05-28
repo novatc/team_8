@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Team8 - Profil</title>
     <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="stylesheet" type="text/css" href="css/profil.css">
+    <link rel="stylesheet" type="text/css" href="css/profile.css">
     <link rel="stylesheet" type="text/css" href="css/games.css">
 </head>
 <body>
@@ -21,11 +21,14 @@
               <img src="Resourcen/Icons/Bard.jpg" alt="Profil Picture">
           </div>
           <div class="name-wrapper">
-            <h1>Max Mustermann</h1>  
-            <label>Wilkommen auf meinem Profil</label>
+              <h1>Max Mustermann</h1>  
+              <label>Wilkommen auf meinem Profil</label>
+          </div>
+          <div class="settings-wrapper">
+              <a class="settings-link" href="changeprofile.php"></a>
           </div>
           <div class="message-wrapper">
-            <button>Nachricht schreiben</button>  
+              <button>Nachricht schreiben</button>  
           </div>
         </div>
          
