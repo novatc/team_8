@@ -13,7 +13,7 @@
             <a class = "login-link" href="login.php">Login</a>
             <a class = "register-link" href="registration.php">Registrieren</a>
             <a class = "message-link" href="chatoverview.php">Nachrichten</a>
-            <a class = "profil-link" href="playerprofil.php">Profil</a>  
+            <a class = "profil-link" href="playerprofile.php">Profil</a>  
         </div>
     </div>
 </nav>

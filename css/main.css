@@ -9,6 +9,7 @@
 html{
     color: #e6ebeb;
     font-family: SemiBold;
+    font-size: large;
 }
 body{
     background-color: #1a1a1a;
@@ -21,7 +22,7 @@ main {
     margin-bottom: 20px;
     margin-left: 2%;
     margin-right: 2%;
-    min-height: calc(100vh - 160px);
+    min-height: calc(100vh - 80px - 20px - 50px);
 }
 footer {
     padding-left: 10px;
@@ -52,4 +53,14 @@ h4{
 }
 h5{
     font-size: x-small;
+}
+
+
+/* Tablet */
+@media screen and (max-width: 1080px) {
+
+}
+/* Smartphone */
+@media screen and (max-width: 780px) {
+    
 }

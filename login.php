@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Team8 - Login</title>
     <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="stylesheet" type="text/css" href="css/login.css">
+    <link rel="stylesheet" type="text/css" href="css/formular.css">
 
 </head>
 <body>
@@ -13,6 +13,7 @@
             <?php include "php/header.php";?>
         </div>
     </header>
+
     <main>
         <form class="box">
             <h1>Login</h1>
@@ -20,10 +21,7 @@
             <input type="password" name="" placeholder="Passwort">
             <input type="submit" name="" value="Login">
             <label onclick="location.href='registration.php'">Registrieren</label>
-
-
         </form>
-
     </main>
    
     <footer>

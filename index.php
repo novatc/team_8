@@ -17,17 +17,13 @@
 <main>
     <section id="grid">
         <div class="right" onclick="location.href='login.php'">
-            Login
+            <h1>Login</h1>
         </div>
         <div class="left" onclick="location.href='registration.php'">
-            Registrieren
-
+            <h1>Registrieren</h1>
         </div>
 
     </section>
-
-
-
 </main>
 <footer>
     <div class="footer">
