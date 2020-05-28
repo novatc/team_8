@@ -95,11 +95,11 @@
 /* Tablet */
 @media screen and (max-width: 1080px) {
     .card .container{
-        min-width: 150px;
-        min-height: 150px;
-        max-width: 150px;
-        max-height: 150px;
-        font-size: 30px;
+        min-width: 250px;
+        min-height: 250px;
+        max-width: 250px;
+        max-height: 250px;
+        font-size: 50px;
     }
     .card {
         padding: 12px;

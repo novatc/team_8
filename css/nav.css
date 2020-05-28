@@ -90,30 +90,29 @@ header nav .search-wrapper{
     grid-column: 2;
     display: flex;
     width: 100%;
-    height:fit-content;
+    height: 30px;
     max-width: 500px;
+    margin: auto;
+    position: relative;
 }
 header nav .search-icon {
     height: max-content;
     width: auto;
     align-self: center;
     position: absolute;
+    left: 2px;
 }
 header nav .search {   
     font-size: 17px;
-    align-self: center;
-    justify-self: center;
-    height: 50%;
     border-radius: 5px;
     width: calc(100% - 5px - 5%);
     padding-left: 5%;
     outline: 0;
-    background-color: #e6ebeb;
+    background-color: white;
     color: #111111
 }
 header .search:hover, .search:focus {
-    border: 2.5px solid #8996a8;
-    background-color: white;
+    border: 2px solid orange;
 }
 
 /* Tablet */
@@ -128,8 +127,7 @@ header .search:hover, .search:focus {
     header nav a {
         width: 20%;
     }
-    header nav .search {
-
+    header nav .search {   
         border-radius: 5px;
         width: calc(100% - 5px - 10%);
         padding-left: 10%;
