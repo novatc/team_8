@@ -128,7 +128,7 @@ header .search:hover, .search:focus {
     header nav a {
         width: 20%;
     }
-    header nav .search {   
+    header nav .search {
 
         border-radius: 5px;
         width: calc(100% - 5px - 10%);
