@@ -1,7 +1,7 @@
 .chatgrid {
     display: grid;
     grid-template-columns: 10% 30%;
-    grid-column-gap:10px;
+    grid-column-gap:30px;
     grid-row-gap: 30px;
     width: 100%;
     margin: 0 auto;
@@ -11,9 +11,15 @@
 
 .headgrid {
     display: grid;
-    grid-template-columns: 22% 60% 20%;
+    grid-template-columns: auto 30% 50%;
+    grid-column-gap: 20%;
     padding-left:10px;
 }
+
+#chatheader.chatbox {
+    background-color:gray;
+}
+
 
 .bottomgrid {
     display: grid;
@@ -41,16 +47,20 @@
     padding-left:10px;
 }
 
+#chathistory.chatbox {
+    height:550px;
+}
+
 #wholechat {
-    padding-left:10%;
-    padding-right:10%;
+    padding-left:20%;
+    padding-right:20%;
 }
 
 input.sendMessage {
     min-width:1000px;
-    min-height:50px;
+    min-height:30px;
     max-width: 1000px;
-    max-height: 50px;
+    max-height: 30px;
     background-color:white;
 
 }
@@ -61,13 +71,13 @@ h1 {
 }
 
 label#name {
-    font-size:24px;
+    font-size:50px;
     padding-top:12%;
 }
 
 .speech-bubble {
     position: relative;
-    width: 600px;
+    width: 650px;
     height: 95px;
     padding: 2px;
     background: darkslategrey;
@@ -75,14 +85,14 @@ label#name {
     -moz-border-radius: 31px;
     border-radius: 31px;
     text-align:center;
-    font-size:30px;
+    font-size:24px;
     white-space:normal;
     word-wrap: break-word;
 }
 
 .speech-bubble-self {
     position: relative;
-    width: 600px;
+    width: 650px;
     height: 95px;
     padding: 2px;
     background: dodgerblue;
@@ -90,7 +100,7 @@ label#name {
     -moz-border-radius: 31px;
     border-radius: 31px;
     text-align:center;
-    font-size:30px;
+    font-size:24px;
     white-space:normal;
     word-wrap: break-word;
 }
@@ -119,4 +129,83 @@ label#name {
     z-index: 1;
     left: -25px;
     top: 31px;
+}
+
+@media screen and (max-width: 2000px) {
+    input.sendMessage {
+        min-width:700px;
+        min-height:30px;
+        max-width: 700px;
+        max-height: 30px;
+        background-color:white;
+    }
+}
+
+@media screen and (max-width: 1500px) {
+    .headgrid {
+        display:grid;
+        grid-template-columns: 150px 150px 0;
+        grid-column-gap:10%;
+    }
+    .chatcard {
+        padding:0px;
+
+    }
+    .chatgrid {
+        display:grid;
+        grid-template-columns:20% auto;
+    }
+    .chatgrid .speech-bubble {
+        width: 290px;
+        font-size:20px;
+    }
+    .chatgrid .speech-bubble-self {
+        width: 290px;
+        font-size:20px;
+    }
+    input.sendMessage {
+        min-width:470px;
+        max-width: 470px;
+    }
+
+}
+@media screen and (max-width: 1100px) {
+    input.sendMessage {
+        min-width:320px;
+        max-width: 320px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .headgrid {
+        display:grid;
+        grid-template-columns: auto auto 0;
+        grid-column-gap: 20px;
+    }
+    label#name {
+        font-size:28px;
+        padding-top:30px;
+    }
+    .chatgrid {
+        display:grid;
+        grid-template-columns: auto auto;
+    }
+    #wholechat {
+        padding-left:5%;
+        padding-right:5%;
+    }
+    input.sendMessage {
+        min-width:330px;
+        max-width: 330px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .chatgrid {
+        grid-template-columns:auto;
+    }
+    input.sendMessage {
+        min-width:200px;
+        max-width: 200px;
+    }
 }

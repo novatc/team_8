@@ -65,11 +65,21 @@
     background-image: url("../Resourcen/Icons/Spooky.jpg");
 }
 
-@media screen and (max-width: 600px) {
-    .icons {
-        min-width:60px;
-        min-height:60px;
-        max-width:60px;
-        max-height:60px;
+@media screen and (max-width: 800px) {
+    .icon {
+        border-radius: 50%;
+        min-width: 80px;
+        min-height: 80px;
+        max-width: 80px;
+        max-height: 80px;
+        background-size: cover;
+        border-style: groove;
+        transition: all 0.4s ease-out;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .iconSmall {
+        display:none;
     }
 }

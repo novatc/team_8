@@ -92,6 +92,26 @@
     font-size: 35px;
 }
 
+.chatcardnopadding {
+    height:auto;
+    width:auto;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.chatcardnopadding .chatcontainer{
+    border-radius: 1%;
+    min-width: 270px;
+    min-height: 100px;
+    max-width: 270px;
+    max-height: 100px;
+    transition: all 0.4s ease-out;
+    box-shadow: 0 0 20px black;
+    font-size: 35px;
+}
+
+
 /* Tablet */
 @media screen and (max-width: 1080px) {
     .card .container{

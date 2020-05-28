@@ -7,6 +7,8 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/chat.css">
     <link rel="stylesheet" type="text/css" href="css/icons.css">
+    <link rel="stylesheet" type="text/css" href="css/cardgrid.css">
+    <link rel="stylesheet" type="text/css" href="css/games.css">
 </head>
 <body>
     <header>
@@ -21,17 +23,21 @@
             <div class="chatbox" id="chatheader">
                 <div class="description">
                     <div class="headgrid">
-                            <a href="playerprofil.php">
-                                <div class="icon" id="avatarTeemo"></div>
-                            </a>
-                            <label id="name">Johannes</label>
-                            <img src="Resourcen/call_of_duty.png" alt="CoD" height="90" width="350">
+                        <a href="playerprofile.php">
+                            <div class="icon" id="avatarTeemo"></div>
+                        </a>
+                        <label id="name">Johannes:</label>
+                        <div class="chatcardnopadding">
+                            <div class="chatcontainer" id="rocketleague" onclick="location.href='lol.php'">
+                                <label class="gamelabel">Rocket League</label>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
                 <!-- der eigentliche Chat-->
                 <!-- nur mit css ein Fehler -> noch kein scrolling ohne inline -->
-                <div class="chatbox" id="chathistory" style="height:550px">
+                <div class="chatbox" id="chathistory">
                     <div class="chatgrid">
 
                         <div class="iconSmall" id="avatarTeemo" onclick="location.href='playerprofil.php'"></div>
