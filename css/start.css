@@ -8,17 +8,12 @@
     opacity: 0.4;
     background: grey;
     text-align: center;
-    vertical-align: middle;
 }
 
 .left:hover, .right:hover {
     transform: scale(0.95);
     transition: 0.33s;
     opacity: 0.2;
-}
-
-.left h1, .right h1{
-    opacity: 1;
 }
 
 #grid {
@@ -40,7 +35,6 @@
         height: 40vh;
 
     }
-
 }
 /* Smartphone */
 @media screen and (max-width: 780px) {
