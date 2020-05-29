@@ -25,7 +25,7 @@
             <div></div>
             <div class="boxname" id="friends">Freunde</div>
             <div></div>
-            <div class="scroll">
+            <div class="scroll" id="activeChats">
                 <div class="gridActiveChats">
                     <!-- thought: need an extra wrapper div for flexbox before each "row" in the grid, did either wrap always or incorrectly though-->
                     <div class="icon" id="avatarTeemo" onclick="location.href='playerprofile.php'"></div>
@@ -71,7 +71,7 @@
                 </div>
             </div>
             <div></div>
-            <div class="scroll">
+            <div class="scroll" id="friendsList">
                 <div class="gridFriends">
                     <div class="icon" id="avatarTeemo" onclick="location.href='playerprofile.php'"></div>
                     <form action="chat.php">
