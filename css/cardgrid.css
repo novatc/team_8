@@ -13,17 +13,26 @@
     background: #111111;
     grid-column: 1;
     grid-row: 1;
-    text-align: center;
+    text-align: left;
     -webkit-box-shadow: 0px 0px 21px 8px rgba(143,138,131,0.1);
     -moz-box-shadow: 0px 0px 21px 8px rgba(143,138,131,0.1);
     box-shadow: 0px 0px 21px 8px rgba(143,138,131,0.1);
     border-radius: 24px;
 }
 
-.filter h2{
+.filter h1{
     padding-left: 10px;
     border: 2px solid green;
     border-radius: 24px;
+}
+.filter h1{
+    padding-left: 10%;
+}
+.filter label{
+    padding-left: 35px;
+}
+.filter form{
+    padding-left: 10%;
 }
 .filtercontainer {
     display: block;
@@ -51,7 +60,7 @@
 .checkmark {
     position: absolute;
     top: 0;
-    left: 5px;
+    left: 0;
     padding-left: -10px;
     height: 25px;
     width: 25px;
@@ -63,7 +72,7 @@
     background-color: #ccc;
 }
 
-/* When the checkbox is checked, add a blue background */
+/* When the checkbox is checked, add a green background */
 .filtercontainer input:checked ~ .checkmark {
     background-color: green;
 }
@@ -209,9 +218,6 @@
         height: auto;
         grid-column: 1/6;
         grid-row: 1;
-    }
-    .filter li{
-        display:inline;
     }
     .overview{
         grid-column: 1/6;
