@@ -121,8 +121,8 @@ input.startChat:hover {
 
 }
 
-
-@media screen and (max-width: 800px) {
+/* Smartphone */
+@media screen and (max-width: 780px) {
     h1 {
         text-align:center;
     }
@@ -157,14 +157,14 @@ input.startChat:hover {
 
     }
 }
-/* Smartphone */
-@media screen and (max-width: 780px) {
+
+@media screen and (max-width: 550px) {
     h1 {
         text-align:center;
     }
     input.startChat {
-        min-width:300px;
-        max-width: 300px;
+        min-width:150px;
+        max-width: 150px;
     }
 }
 
