@@ -128,9 +128,8 @@ header .search:hover, .search:focus {
         width: 20%;
     }
     header nav .search {   
-        border-radius: 5px;
-        width: calc(100% - 5px - 10%);
-        padding-left: 10%;
+        width: calc(100% - 5px - 25px1);
+        padding-left: 25px;
 
     }
 }
