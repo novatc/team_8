@@ -1,3 +1,14 @@
+<?php
+session_start();
+$validLogin = isset($_SESSION['user']);
+
+if ($validLogin){
+    $username = $_SESSION['user'];
+} else{
+    $username = '';
+}
+?>
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -22,11 +33,17 @@
               <div class="icon" id="avatarTeemo" onclick="location.href='playerprofile.php'"></div>
           </div>
           <div class="name-wrapper">
-              <h1>Max Mustermann</h1>  
-              <label>Wilkommen auf meinem Profil</label>
+              <?php if ($validLogin): ?>
+                <p> Angemeldet als: <?= htmlspecialchars($username)?></p>
+                <h1><?= htmlspecialchars($username)?></h1>
+                <label>Wilkommen auf meinem Profil</label>
+              <?php endif; ?>
           </div>
           <div class="settings-wrapper">
               <a class="settings-link" href="changeprofile.php"></a>
+              <?php if ($validLogin): ?>
+                <a href="logout.php">Logout</a>
+              <?php endif; ?>
           </div>
           <div class="message-wrapper">
               <button>Nachricht schreiben</button>  
