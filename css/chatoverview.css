@@ -16,6 +16,14 @@ h1 {
     font-family: Verdana, Geneva, sans-serif;
     font-size: 24px;
 }
+/*
+#active.boxname {
+    grid-column:2;
+}
+
+#friends.boxname {
+    grid-column:4;
+}*/
 
 .gridActiveChats {
     display: grid;
@@ -32,18 +40,38 @@ h1 {
 }
 
 .scroll {
+    background: #111111;
     display:flex;
     flex-wrap:wrap;
     height: 75%;
     overflow-x: hidden;
-    overflow-y: auto;
-    background: #696969;
+    overflow-y: scroll;
     border-style: double;
     border-color:  #404040;
     padding-top:20px;
     padding-bottom: 20px;
     padding-left:10px;
+    -webkit-box-shadow: 0px 0px 21px 8px rgba(143,138,131,0.1);
+    -moz-box-shadow: 0px 0px 21px 8px rgba(143,138,131,0.1);
+    box-shadow: 0px 0px 21px 8px rgba(143,138,131,0.1);
+    border-radius: 24px;
 }
+/*
+#activeChats.scroll {
+    grid-row:2;
+    grid-column:2;
+}
+
+#friendsList.scroll {
+    grid-row:2;
+    grid-column:4;
+}*/
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
 
 .gridActiveChats > #wrapper {
     display: flex;
@@ -52,10 +80,14 @@ h1 {
 }
 
 input.startChat {
+    background: #111111;
     min-width:150px;
     min-height:100px;
     max-width: 150px;
     max-height: 100px;
+    box-shadow: 0 0 80px black;
+    border: 2px solid white;
+    border-radius:24px;
     color: white;
     font-size: 24px;
     font-family: Arial, Helvetica, sans-serif;
@@ -66,7 +98,7 @@ input.startChat:hover {
     transition: all 0.4s ease;
     cursor: pointer;
     transform: scale(1.15);
-    border-radius: 1%;
+    border-radius: 24px;
 }
 
 .chatbutton:hover {
@@ -121,8 +153,8 @@ input.startChat:hover {
 
 }
 
-
-@media screen and (max-width: 800px) {
+/* Smartphone */
+@media screen and (max-width: 780px) {
     h1 {
         text-align:center;
     }
@@ -157,14 +189,14 @@ input.startChat:hover {
 
     }
 }
-/* Smartphone */
-@media screen and (max-width: 780px) {
+
+@media screen and (max-width: 550px) {
     h1 {
         text-align:center;
     }
     input.startChat {
-        min-width:300px;
-        max-width: 300px;
+        min-width:150px;
+        max-width: 150px;
     }
 }
 
