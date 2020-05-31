@@ -20,74 +20,114 @@
             <ul class="game-list">
                 <li class="game-item">
                     <h2>LOL</h1>
-                    <ul class="elo-list">
-                        <li><input type="radio" id="master" name="elo" value="master">
-                        <label for="master">Master</label></li>
-                        <li><input type="radio" id="dia" name="elo" value="dia" >
-                        <label for="dia">Dia</label></li>
-                        <li> <input type="radio" id="plat" name="elo" value="plat">
-                        <label for="plat">Plat</label></li>
-                        <li><input type="radio" id="gold" name="elo" value="gold">
-                        <label for="gold">Gold</label></li>
-                        <li><input type="radio" id="silber" name="elo" value="silber">
-                        <label for="silber">Silber</label></li>
-                        <li><input type="radio" id="bronze" name="elo" value="bronze">
-                        <label for="bronze">Bronze</label></li>
-                    </ul>
+                    <label class="radiobutton-container">Master
+                        <input type="radio" name="lol">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="radiobutton-container">Diamant
+                        <input type="radio" name="lol">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="radiobutton-container">Platin
+                        <input type="radio" name="lol">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="radiobutton-container">Gold
+                        <input type="radio" name="lol">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="radiobutton-container">Silber
+                        <input type="radio" name="lol">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="radiobutton-container">Bronze
+                        <input type="radio" name="lol">
+                        <span class="checkmark"></span>
+                    </label>
                 </li>
                 <li class="game-item">
                     <h2>Valorant</h1>
-                    <ul class="elo-list">
-                        <li><input type="radio" id="master" name="elo" value="master">
-                        <label for="master">Master</label></li>
-                        <li><input type="radio" id="dia" name="elo" value="dia" >
-                        <label for="dia">Dia</label></li>
-                        <li> <input type="radio" id="plat" name="elo" value="plat">
-                        <label for="plat">Plat</label></li>
-                        <li><input type="radio" id="gold" name="elo" value="gold">
-                        <label for="gold">Gold</label></li>
-                        <li><input type="radio" id="silber" name="elo" value="silber">
-                        <label for="silber">Silber</label></li>
-                        <li><input type="radio" id="bronze" name="elo" value="bronze">
-                        <label for="bronze">Bronze</label></li>
-                    </ul>
+                    <label class="radiobutton-container">Master
+                        <input type="radio" name="valorant">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="radiobutton-container">Diamant
+                        <input type="radio" name="valorant">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="radiobutton-container">Platin
+                        <input type="radio" name="valorant">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="radiobutton-container">Gold
+                        <input type="radio" name="valorant">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="radiobutton-container">Silber
+                        <input type="radio" name="valorant">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="radiobutton-container">Bronze
+                        <input type="radio" name="valorant">
+                        <span class="checkmark"></span>
+                    </label>
                 </li>
                 <li class="game-item">
                     <h2>CSGO</h1>
-                    <ul class="elo-list">
-                        <li><input type="radio" id="master" name="elo" value="master">
-                        <label for="master">Master</label></li>
-                        <li><input type="radio" id="dia" name="elo" value="dia" >
-                        <label for="dia">Dia</label></li>
-                        <li> <input type="radio" id="plat" name="elo" value="plat">
-                        <label for="plat">Plat</label></li>
-                        <li><input type="radio" id="gold" name="elo" value="gold">
-                        <label for="gold">Gold</label></li>
-                        <li><input type="radio" id="silber" name="elo" value="silber">
-                        <label for="silber">Silber</label></li>
-                        <li><input type="radio" id="bronze" name="elo" value="bronze">
-                        <label for="bronze">Bronze</label></li>
-                    </ul>
+                    <label class="radiobutton-container">Master
+                        <input type="radio" name="csgo">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="radiobutton-container">Diamant
+                        <input type="radio" name="csgo">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="radiobutton-container">Platin
+                        <input type="radio" name="csgo">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="radiobutton-container">Gold
+                        <input type="radio" name="csgo">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="radiobutton-container">Silber
+                        <input type="radio" name="csgo">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="radiobutton-container">Bronze
+                        <input type="radio" name="csgo">
+                        <span class="checkmark"></span>
+                    </label>
                 </li>
                 <li class="game-item">
                     <h2>Rocket League</h1>
-                    <ul class="elo-list">
-                        <li><input type="radio" id="master" name="elo" value="master">
-                        <label for="master">Master</label></li>
-                        <li><input type="radio" id="dia" name="elo" value="dia" >
-                        <label for="dia">Dia</label></li>
-                        <li> <input type="radio" id="plat" name="elo" value="plat">
-                        <label for="plat">Plat</label></li>
-                        <li><input type="radio" id="gold" name="elo" value="gold">
-                        <label for="gold">Gold</label></li>
-                        <li><input type="radio" id="silber" name="elo" value="silber">
-                        <label for="silber">Silber</label></li>
-                        <li><input type="radio" id="bronze" name="elo" value="bronze">
-                        <label for="bronze">Bronze</label></li>
-                    </ul>
+                    <label class="radiobutton-container">Master
+                        <input type="radio" name="rocket">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="radiobutton-container">Diamant
+                        <input type="radio" name="rocket">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="radiobutton-container">Platin
+                        <input type="radio" name="rocket">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="radiobutton-container">Gold
+                        <input type="radio" name="rocket">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="radiobutton-container">Silber
+                        <input type="radio" name="rocket">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="radiobutton-container">Bronze
+                        <input type="radio" name="rocket">
+                        <span class="checkmark"></span>
+                    </label>
                 </li>
             </ul>
-            <input class="submit" type="submit" name="" value="Speichern">
+            <input class="submit-btn" id="submit-form" type="submit" name="" value="Speichern">
         </form>
 
     </main>

@@ -40,7 +40,7 @@ foreach ($required as $field){
         <h1>Anmelden</h1>
         <input class="data-input" type="text" name="username" placeholder="Benutzername">
         <input class="data-input" type="password" name="password" placeholder="Passwort">
-        <input class="submit" type="submit" name="loginsubmit" value="Anmelden">
+        <input class="submit-btn" id="submit-form" type="submit" name="loginsubmit" value="Anmelden">
         <h3 onclick="location.href='registration.php'">Noch kein Account?</h3>
     </form>
 </main>

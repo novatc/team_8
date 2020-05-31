@@ -18,24 +18,24 @@
     </div>
 </header>
 <main>
+    <h1 class="title">Spieleübersicht</h1> 
     <div id="grid">
-
         <div class="filter">
-            <h1>Filter</h1>
+            <h2>Filter</h2>
             <form>
-                <label class="filtercontainer">Shooter
+                <label class="checkbox-container">Shooter
                     <input type="checkbox" checked="checked">
                     <span class="checkmark"></span>
                 </label>
-                <label class="filtercontainer">Teamplay
+                <label class="checkbox-container">Teamplay
                     <input type="checkbox">
                     <span class="checkmark"></span>
                 </label>
-                <label class="filtercontainer">Strategie
+                <label class="checkbox-container">Strategie
                     <input type="checkbox">
                     <span class="checkmark"></span>
                 </label>
-                <label class="filtercontainer">Arenakampf
+                <label class="checkbox-container">Arenakampf
                     <input type="checkbox">
                     <span class="checkmark"></span>
                 </label>

@@ -20,7 +20,7 @@
     outline: none;
     color: var(--default-white);
     border-radius: 24px;
-    transition: 0.25s
+    transition: 0.25s;
 }
 .box textarea.data-input{
     text-align: left;
@@ -41,40 +41,15 @@
     width: 25vw;
     border-color: var(--light-purple);
 }
-.box .submit{
-    background: none;
+#submit-form{
     display: block;
-    margin: 20px auto;
-    text-align: center;
-    border: 2px solid var(--orange);
     padding: 14px 40px;
-    outline: none;
-    color: var(--default-white);
-    border-radius: 24px;
-    transition: 0.25s;
-    cursor: pointer;
+    margin: 20px auto;
 }
 
 
-.box .submit:hover{
-    background: var(--orange);
-}
-.box .game-list{
-    list-style-type: none;
-    margin: 0;
-    padding: 0;;
-}
-.box .game-item{
-    margin: 5%;
-    padding: 5%;
-    border-radius: 5%;
-    background-color: var(--light-bg-color);
-}
-.box .elo-list{
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
+
+
 
 /* Smartphone */
 @media screen and (max-width: 780px) {
