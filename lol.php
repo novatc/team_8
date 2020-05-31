@@ -22,48 +22,48 @@
             <h1>Filter</h1>
             <form>
                 <h2>Elo:</h2>
-                <label class="filtercontainer">Master
+                <label class="checkbox-container">Master
                     <input type="checkbox">
                     <span class="checkmark"></span>
                 </label>
-                <label class="filtercontainer">Diamant
+                <label class="checkbox-container">Diamant
                     <input type="checkbox">
                     <span class="checkmark"></span>
                 </label>
-                <label class="filtercontainer">Platin
+                <label class="checkbox-container">Platin
                     <input type="checkbox">
                     <span class="checkmark"></span>
                 </label>
-                <label class="filtercontainer">Gold
+                <label class="checkbox-container">Gold
                     <input type="checkbox">
                     <span class="checkmark"></span>
                 </label>
-                <label class="filtercontainer">Silber
+                <label class="checkbox-container">Silber
                     <input type="checkbox">
                     <span class="checkmark"></span>
                 </label>
-                <label class="filtercontainer">Bronze
+                <label class="checkbox-container">Bronze
                     <input type="checkbox">
                     <span class="checkmark"></span>
                 </label>
                 <h2>Position:</h2>
-                <label class="filtercontainer">Top Lane
+                <label class="checkbox-container">Top Lane
                     <input type="checkbox">
                     <span class="checkmark"></span>
                 </label>
-                <label class="filtercontainer">Jungle
+                <label class="checkbox-container">Jungle
                     <input type="checkbox">
                     <span class="checkmark"></span>
                 </label>
-                <label class="filtercontainer">Mid
+                <label class="checkbox-container">Mid
                     <input type="checkbox">
                     <span class="checkmark"></span>
                 </label>
-                <label class="filtercontainer">Bottom
+                <label class="checkbox-container">Bottom
                     <input type="checkbox">
                     <span class="checkmark"></span>
                 </label>
-                <label class="filtercontainer">Support
+                <label class="checkbox-container">Support
                     <input type="checkbox">
                     <span class="checkmark"></span>
                 </label>

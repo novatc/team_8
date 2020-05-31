@@ -41,7 +41,7 @@ foreach ($required as $field) {
         <input class="data-input" type="email" name="usermail" placeholder="Mail">
         <input class="data-input" type="password" name="password" placeholder="Passwort">
         <input class="data-input" type="password" name="repeatpassword" placeholder="Passwort wiederholen">
-        <input class="submit" type="submit" name="registersubmit" value="Registrieren">
+        <input class="submit-btn" id="submit-form" type="submit" name="registersubmit" value="Registrieren">
 
     </form>
 
