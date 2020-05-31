@@ -16,12 +16,12 @@
     </div>
 </header>
 <main>
-    <h1 class="gamename">CS:GO</h1>
+    <h1 class="title">CS:GO</h1>
     <div id="grid">
         <div class="filter">
-            <h1>Filter</h1>
+            <h2>Filter</h2>
             <form>
-                <h2>Elo:</h2>
+                <h3>Elo:</h3>
                 <label class="checkbox-container">Master
                     <input type="checkbox">
                     <span class="checkmark"></span>
@@ -46,7 +46,7 @@
                     <input type="checkbox">
                     <span class="checkmark"></span>
                 </label>
-                <h2>Position:</h2>
+                <h3>Position:</h3>
                 <label class="checkbox-container">Top Lane
                     <input type="checkbox">
                     <span class="checkmark"></span>

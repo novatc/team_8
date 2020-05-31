@@ -18,10 +18,10 @@
     </div>
 </header>
 <main>
+    <h1 class="title">Spieleübersicht</h1> 
     <div id="grid">
-
         <div class="filter">
-            <h1>Filter</h1>
+            <h2>Filter</h2>
             <form>
                 <label class="checkbox-container">Shooter
                     <input type="checkbox" checked="checked">
