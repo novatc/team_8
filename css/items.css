@@ -40,7 +40,7 @@ h5{
 
 /* Checkbox/Radiobuttons */
 
-.checkbox-container {
+.checkbox-container, .radiobutton-container {
     display: block;
     position: relative;
     margin-bottom: 5px;
@@ -50,17 +50,17 @@ h5{
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    padding-left: 30px;
 }
-/* Hide the browser's default checkbox */
-.checkbox-container input {
+/* Hide the browser's default checkbox/radio button */
+.checkbox-container input, .radiobutton-container input{
     position: absolute;
     opacity: 0;
     cursor: pointer;
-    height: 0;
-    width: 0;
 }
+
 /* Create a custom checkbox */
-.checkmark {
+.checkbox-container .checkmark, .radiobutton-container .checkmark{
     position: absolute;
     top: 0;
     left: 0;
@@ -69,16 +69,20 @@ h5{
     width: 20px;
     background-color: var(--default-white);
 }
+/* Rounded box for radio buttons */
+.radiobutton-container .checkmark{
+    border-radius: 50%;
+}
 /* On mouse-over, add a grey background color */
-.checkbox-container:hover input ~ .checkmark {
+.checkbox-container:hover input ~ .checkmark ,.radiobutton-container:hover input ~ .checkmark {
     background-color: var(--dark-white);
 }
-/* When the checkbox is checked, add a green background */
-.checkbox-container input:checked ~ .checkmark {
+/* When the checkbox/radio button is checked, add a orange background */
+.checkbox-container input:checked ~ .checkmark, .radiobutton-container input:checked ~ .checkmark {
     background-color: var(--orange);
 }
 /* Show the checkmark when checked */
-.checkbox-container input:checked ~ .checkmark:after {
+.checkbox-container input:checked ~ .checkmark:after, .radiobutton-container input:checked ~ .checkmark:after  {
     display: block;
 }
 /* Create and style the checkmark/indicator (hidden when not checked) */
@@ -96,3 +100,15 @@ h5{
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
 }
+/* Style the indicator (dot/circle) */
+.radiobutton-container .checkmark:after {
+    display: none;
+    content: "";
+    position: absolute;
+    top: 7px;
+    left: 7px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--default-white);
+  }

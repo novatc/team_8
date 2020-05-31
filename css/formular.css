@@ -49,22 +49,7 @@
 
 
 
-.box .game-list{
-    list-style-type: none;
-    margin: 0;
-    padding: 0;;
-}
-.box .game-item{
-    margin: 5%;
-    padding: 5%;
-    border-radius: 5%;
-    background-color: var(--light-bg-color);
-}
-.box .elo-list{
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
+
 
 /* Smartphone */
 @media screen and (max-width: 780px) {
