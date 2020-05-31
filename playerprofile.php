@@ -40,9 +40,9 @@ if ($validLogin){
               <?php endif; ?>
           </div>
           <div class="settings-wrapper">
-              <a class="settings-link" href="changeprofile.php"></a>
-              <?php if ($validLogin): ?>
-                <a href="logout.php">Logout</a>
+            <?php if ($validLogin): ?>    
+              <a id="settings-link" href="changeprofile.php"></a>
+              <a id="logout-link" href="logout.php"></a>
               <?php endif; ?>
           </div>
           <div class="message-wrapper">

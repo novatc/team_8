@@ -57,10 +57,19 @@
     grid-row: 1;
     grid-column: 3;
 }
-.grid .profil-header .settings-link{
+.grid .profil-header #settings-link{
     width: 25px;
     height: 25px;
     background: url(../Resourcen/Navigation/settings-white-24dp.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    display:inline-block;
+}
+.grid .profil-header #logout-link{
+    width: 25px;
+    height: 25px;
+    background: url(../Resourcen/Navigation/exit_to_app-white-24dp.svg);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;

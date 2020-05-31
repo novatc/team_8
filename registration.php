@@ -1,5 +1,4 @@
 <?php
-session_start();
 $isInputFasle = false;
 $required = array('username', 'usermail', 'password', 'repeatpassword');
 $error = false;

@@ -26,6 +26,7 @@ header nav .grid-container {
 header nav .main-nav{
     grid-column: 1;
     width: 100%;
+    
 }
 
 header nav .profil-nav{
@@ -38,9 +39,7 @@ header nav a{
     color: #e6ebeb;
     font-weight: bold;
     text-decoration: none;
-    padding-left: 10px;
-    padding-right: 10px;
-    width: 30%;
+    min-width: 35px;
     max-width: 100px;
     text-align: center;
 }
@@ -62,11 +61,12 @@ header nav .game-link{
     display:inline-block;
 }
 header nav .login-link{
-    display: none;
+    font-size: 17px;
+    text-align: center;
+    display:inline-block;
+    width: 100%;
 }
-header nav .register-link{
-    display: none;
-}
+
 header nav .message-link{
     color: transparent; 
     background: url(../Resourcen/Navigation/notifications-white-24dp.svg);

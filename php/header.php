@@ -1,3 +1,9 @@
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+$validLogin = isset($_SESSION['user']);
+?>
 
 <nav>
     <div class="grid-container">
@@ -10,10 +16,12 @@
             <input class="search" type="text" placeholder="Suche.." name="search">
         </div> 
         <div class="profil-nav">
-            <a class = "login-link" href="login.php">Login</a>
-            <a class = "register-link" href="registration.php">Registrieren</a>
-            <a class = "message-link" href="chatoverview.php">Nachrichten</a>
-            <a class = "profil-link" href="playerprofile.php">Profil</a>  
+            <?php if ($validLogin): ?>
+                <a class = "message-link" href="chatoverview.php">Nachrichten</a>
+                <a class = "profil-link" href="playerprofile.php">Profil</a>  
+            <?php else: ?>
+                <a class = "login-link" href="login.php">Anmelden</a>
+            <?php endif; ?>
         </div>
     </div>
 </nav>
