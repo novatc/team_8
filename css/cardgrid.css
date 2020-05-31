@@ -14,17 +14,15 @@
     grid-column: 1;
     grid-row: 1;
     text-align: left;
-    -webkit-box-shadow: 0px 0px 21px 8px rgba(143,138,131,0.1);
-    -moz-box-shadow: 0px 0px 21px 8px rgba(143,138,131,0.1);
-    box-shadow: 0px 0px 21px 8px rgba(143,138,131,0.1);
+    -webkit-box-shadow: 0px 0px 21px 8px var(--light-shadow);
+    -moz-box-shadow: 0px 0px 21px 8px var(--light-shadow);
+    box-shadow: 0px 0px 21px 8px var(--light-shadow);
     border-radius: 24px;
-
-
 }
 
 .filter h1{
     padding-left: 10px;
-    border: 2px solid green;
+    border: 2px solid var(--purple);
     border-radius: 24px;
 }
 .filter h1{
@@ -66,17 +64,17 @@
     padding-left: -10px;
     height: 25px;
     width: 25px;
-    background-color: #eee;
+    background-color: var(--default-white);
 }
 
 /* On mouse-over, add a grey background color */
 .filtercontainer:hover input ~ .checkmark {
-    background-color: #ccc;
+    background-color: var(--dark-white);
 }
 
 /* When the checkbox is checked, add a green background */
 .filtercontainer input:checked ~ .checkmark {
-    background-color: green;
+    background-color: var(--orange);
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
@@ -97,7 +95,7 @@
     top: 5px;
     width: 5px;
     height: 10px;
-    border: solid white;
+    border: solid var(--default-white);
     border-width: 0 3px 3px 0;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
@@ -144,7 +142,7 @@
     max-width: 350px;
     max-height: 350px;
     transition: all 0.4s ease-out;
-    box-shadow: 0 0 20px black;
+    box-shadow: 0 0 20px var(--dark-shadow);
     font-size: 70px;
 }
 
@@ -152,9 +150,9 @@
     transition: all 0.2s ease;
     cursor: pointer;
     transform: scale(1.1);
-    -webkit-box-shadow: 0px 0px 21px 8px rgba(143,138,131,0.1);
-    -moz-box-shadow: 0px 0px 21px 8px rgba(143,138,131,0.1);
-    box-shadow: 0px 0px 21px 8px rgba(143,138,131,0.1);
+    -webkit-box-shadow: 0px 0px 21px 8px var(--light-shadow);
+    -moz-box-shadow: 0px 0px 21px 8px var(--light-shadow);
+    box-shadow: 0px 0px 21px 8px var(--light-shadow);
 
 }
 
@@ -175,7 +173,7 @@
     max-width: 270px;
     max-height: 100px;
     transition: all 0.4s ease-out;
-    box-shadow: 0 0 20px black;
+    box-shadow: 0 0 20px var(--dark-shadow);
     font-size: 35px;
 }
 
@@ -194,7 +192,7 @@
     max-width: 270px;
     max-height: 100px;
     transition: all 0.4s ease-out;
-    box-shadow: 0 0 20px black;
+    box-shadow: 0 0 20px var(--dark-shadow);
     font-size: 35px;
 }
 

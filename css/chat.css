@@ -17,7 +17,7 @@
 }
 
 #chatheader.chatbox {
-    background-color:gray;
+    background-color: var(--dark-bg-color);
 }
 
 
@@ -39,9 +39,9 @@
     height: 75%;
     overflow-x: hidden;
     overflow-y: auto;
-    background: #696969;
+    background: var(--light-bg-color);
     border-style: double;
-    border-color:  #404040;
+    border-color:  var(--dark-bg-color);
     padding-top:20px;
     padding-bottom: 20px;
     padding-left:10px;
@@ -61,7 +61,7 @@ input.sendMessage {
     min-height:30px;
     max-width: 1000px;
     max-height: 30px;
-    background-color:white;
+    background-color: var(--default-white);
 
 }
 
@@ -80,7 +80,7 @@ label#name {
     width: 650px;
     height: 95px;
     padding: 2px;
-    background: darkslategrey;
+    background: var(--bubble-color2);
     -webkit-border-radius: 31px;
     -moz-border-radius: 31px;
     border-radius: 31px;
@@ -95,7 +95,7 @@ label#name {
     width: 650px;
     height: 95px;
     padding: 2px;
-    background: dodgerblue;
+    background: var(--bubble-color1);
     -webkit-border-radius: 31px;
     -moz-border-radius: 31px;
     border-radius: 31px;
@@ -110,7 +110,7 @@ label#name {
     position: absolute;
     border-style: solid;
     border-width: 17px 25px 17px 0;
-    border-color: transparent darkslategrey;
+    border-color: transparent var(--bubble-color2);
     display: block;
     width: 0;
     z-index: 1;
@@ -123,7 +123,7 @@ label#name {
     position: absolute;
     border-style: solid;
     border-width: 17px 25px 17px 0;
-    border-color: transparent dodgerblue;
+    border-color: transparent var(--bubble-color1);
     display: block;
     width: 0;
     z-index: 1;
@@ -137,7 +137,7 @@ label#name {
         min-height:30px;
         max-width: 700px;
         max-height: 30px;
-        background-color:white;
+        background-color:var(--default-white);
     }
 }
 

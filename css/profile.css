@@ -14,14 +14,17 @@
     grid-template-columns: auto auto auto;
     grid-template-rows: auto auto;
     justify-items: center;
-    background-color: #111111;
+    background-color: var(dark-bg-color);
     grid-row: 1;
     grid-column: 2;
-    box-shadow: 0 0 80px black;
-    border: 2px solid #df6f19;
+    border: 2px solid var(--purple);
     padding: 14px 10px;
     outline: none;
     border-radius: 24px;
+
+    -webkit-box-shadow: 0px 0px 21px 8px var(--light-shadow);
+    -moz-box-shadow: 0px 0px 21px 8px var(--light-shadow);
+    box-shadow: 0px 0px 21px 8px var(--light-shadow);
 }
 
 .grid .profil-header .picture-wrapper{
@@ -35,7 +38,7 @@
     width: 120px;
     height: 120px;
     object-fit: cover;
-    border: 3px solid #404040;
+    border: 3px solid var(--light-bg-color);
 }
 
 .grid .profil-header .name-wrapper{
@@ -89,10 +92,10 @@
 .grid .profil-body .description{
     padding-top: 10px;
     padding-bottom: 10px;
-    background-color: #111111;
+    background-color: var(--dark-bg-color);
 }
 .grid .profil-body .game-wrapper{
-    background-color: #111111;
+    background-color: var(--dark-bg-color);
 }
 .grid .profil-body .game-wrapper{
     padding-top: 10px;
@@ -123,18 +126,12 @@
     max-height: 200px;
     font-size: 40px;
     transition: all 0.4s ease-out;
-    box-shadow: 0 0 10px black;
 }
 
 .card .container:hover{
     transition: all 0.4s ease;
     cursor: pointer;
     transform: scale(1.15);
-}
-.card .container:active{
-    transition: all 0.4s ease;
-    cursor: pointer;
-    box-shadow: 0 0 10px white;
 }
 
 .description{

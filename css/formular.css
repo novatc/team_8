@@ -1,13 +1,12 @@
-
 .box {
     width: 30vw;
     padding: 40px;
     margin: auto;
-    background: #191919;
+    background: var(--dark-bg-color);
 
-    -webkit-box-shadow: 0px 0px 21px 8px rgba(143,138,131,0.1);
-    -moz-box-shadow: 0px 0px 21px 8px rgba(143,138,131,0.1);
-    box-shadow: 0px 0px 21px 8px rgba(143,138,131,0.1);
+    -webkit-box-shadow: 0px 0px 21px 8px var(--light-shadow);
+    -moz-box-shadow: 0px 0px 21px 8px var(--light-shadow);
+    box-shadow: 0px 0px 21px 8px var(--light-shadow);
 }
 
 .box .data-input{
@@ -15,11 +14,11 @@
     display: block;
     margin: 20px auto;
     text-align: center;
-    border: 2px solid #df6f19;
+    border: 2px solid var(--purple);;
     padding: 14px 10px;
     width: 20vw;
     outline: none;
-    color: white;
+    color: var(--default-white);
     border-radius: 24px;
     transition: 0.25s
 }
@@ -40,17 +39,17 @@
 
 .box .data-input:focus{
     width: 25vw;
-    border-color: green;
+    border-color: var(--light-purple);
 }
 .box .submit{
     background: none;
     display: block;
     margin: 20px auto;
     text-align: center;
-    border: 2px solid green;
+    border: 2px solid var(--orange);
     padding: 14px 40px;
     outline: none;
-    color: #e6ebeb;
+    color: var(--default-white);
     border-radius: 24px;
     transition: 0.25s;
     cursor: pointer;
@@ -58,7 +57,7 @@
 
 
 .box .submit:hover{
-    background: green;
+    background: var(--orange);
 }
 .box .game-list{
     list-style-type: none;
@@ -69,7 +68,7 @@
     margin: 5%;
     padding: 5%;
     border-radius: 5%;
-    background-color: #404040;
+    background-color: var(--light-bg-color);
 }
 .box .elo-list{
     list-style-type: none;

@@ -1,0 +1,33 @@
+:root {
+    /* Background Colors*/
+    --main-bg-color: #1a1a1a;
+    --dark-bg-color: #111111;
+    --light-bg-color: #333333;
+    --white-bg-color: #f1f4f4;
+
+    /* Text Colors*/
+    --default-white: #e6ebeb;
+    --dark-white: #c5d3d3;
+    --default-black: #111111;
+
+    /* Shadow Colors */
+    --light-shadow: rgba(143,138,131,0.1);
+    --dark-shadow: black;
+
+    /* Highlight Colors*/
+    --orange: #eb6d47;
+    --purple: #7b5393;
+    --light-purple: #a17cb6;
+
+    /* Speach Bubble Color */
+    --bubble-color1: #789692;
+    --bubble-color2: #425757;
+
+    /* Game Colors */
+    --lol-color: #dcc156;
+    --valorant-color: #ff4655;
+    --rocket-color: #5a46be;
+    --csgo-color: #df6f19;
+
+
+}

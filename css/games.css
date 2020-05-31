@@ -3,7 +3,7 @@
     font-family: Evolvent;
 }
 .gamelabel{
-    color: #111111;
+    color: var(--dark-bg-color);
     text-shadow: 0 0 10px white;
     font-family: Evolvent;
     font-size: 1em;
@@ -14,33 +14,33 @@
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    background-color: #dcc156;
+    background-color: var(--lol-color);
     text-align: center;
 }
 #lol-players .card .container{
-    border: 2.5px solid  #dcc156;
+    border: 2.5px solid var(--lol-color);
 }
 
 #valorant {
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    background-color: #ff4655;
+    background-color:  var(--valorant-color);
     text-align: center;
 }
 #valorant-players .card .container{
-    border: 2.5px solid  #ff4655;
+    border: 2.5px solid var(--valorant-color);
 }
 
 #csgo {
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    background: #df6f19;
+    background:  var(--csgo-color);
     text-align: center;
 }
 #csgo-players .card .container{
-    border: 2.5px solid  #df6f19;
+    border: 2.5px solid var(--csgo-color);
 }
 
 
@@ -48,11 +48,11 @@
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    background-color: #5a46be;
+    background-color: var(--rocket-color);
     text-align: center;
 }
 #rocket-players .card .container{
-    border: 2.5px solid  #5a46be;
+    border: 2.5px solid var(--rocket-color);
 }
 
 

@@ -13,7 +13,6 @@ h1 {
 
 .boxname {
     text-align: center;
-    font-family: Verdana, Geneva, sans-serif;
     font-size: 24px;
 }
 /*
@@ -47,13 +46,13 @@ h1 {
     overflow-x: hidden;
     overflow-y: scroll;
     border-style: double;
-    border-color:  #404040;
+    border-color:  var(--light-bg-color);
     padding-top:20px;
     padding-bottom: 20px;
     padding-left:10px;
-    -webkit-box-shadow: 0px 0px 21px 8px rgba(143,138,131,0.1);
-    -moz-box-shadow: 0px 0px 21px 8px rgba(143,138,131,0.1);
-    box-shadow: 0px 0px 21px 8px rgba(143,138,131,0.1);
+    -webkit-box-shadow: 0px 0px 21px 8px var(--light-shadow);
+    -moz-box-shadow: 0px 0px 21px 8px var(--light-shadow);
+    box-shadow: 0px 0px 21px 8px var(--light-shadow);
     border-radius: 24px;
 }
 /*
@@ -85,10 +84,10 @@ input.startChat {
     min-height:100px;
     max-width: 150px;
     max-height: 100px;
-    box-shadow: 0 0 80px black;
-    border: 2px solid white;
+    box-shadow: 0 0 80px var(--dark-shadow);
+    border: 2px solid var(--default-white);
     border-radius:24px;
-    color: white;
+    color: var(--default-white);
     font-size: 24px;
     font-family: Arial, Helvetica, sans-serif;
     transition: all 0.4s ease-out;
