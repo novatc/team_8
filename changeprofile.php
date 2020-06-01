@@ -1,3 +1,33 @@
+<?php
+session_start();
+
+$validLogin = isset($_SESSION['user']);
+$posted = false;
+if ($validLogin){
+    $username = $_SESSION['user'];
+    $age = $_SESSION['age'];
+    $description = $_SESSION['description'];
+    $language = $_SESSION['language'];
+} else{
+    $username = '';
+    $description = '';
+    $language = '';
+}
+
+$fields = array('age','language', 'description');
+foreach ($fields as $field){
+    if (!empty($_POST[$field])){
+        $_SESSION[$field] = $_POST[$field];
+        $posted = true;
+    }
+}
+
+if($posted) {
+    header('Location: changeprofile.php');
+    exit();
+}
+
+?>
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -14,120 +44,22 @@
         </div>
     </header>
     <main>
-        <form class="box">
+        <form class="box" method="post">
             <h1>Profil anpassen</h1>
-            <textarea name="description" class="data-input" placeholder="Beschreibung" cols="30" rows="10"></textarea>
-            <ul class="game-list">
-                <li class="game-item">
-                    <h2>LOL</h1>
-                    <label class="radiobutton-container">Master
-                        <input type="radio" name="lol">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="radiobutton-container">Diamant
-                        <input type="radio" name="lol">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="radiobutton-container">Platin
-                        <input type="radio" name="lol">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="radiobutton-container">Gold
-                        <input type="radio" name="lol">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="radiobutton-container">Silber
-                        <input type="radio" name="lol">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="radiobutton-container">Bronze
-                        <input type="radio" name="lol">
-                        <span class="checkmark"></span>
-                    </label>
-                </li>
-                <li class="game-item">
-                    <h2>Valorant</h1>
-                    <label class="radiobutton-container">Master
-                        <input type="radio" name="valorant">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="radiobutton-container">Diamant
-                        <input type="radio" name="valorant">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="radiobutton-container">Platin
-                        <input type="radio" name="valorant">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="radiobutton-container">Gold
-                        <input type="radio" name="valorant">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="radiobutton-container">Silber
-                        <input type="radio" name="valorant">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="radiobutton-container">Bronze
-                        <input type="radio" name="valorant">
-                        <span class="checkmark"></span>
-                    </label>
-                </li>
-                <li class="game-item">
-                    <h2>CSGO</h1>
-                    <label class="radiobutton-container">Master
-                        <input type="radio" name="csgo">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="radiobutton-container">Diamant
-                        <input type="radio" name="csgo">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="radiobutton-container">Platin
-                        <input type="radio" name="csgo">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="radiobutton-container">Gold
-                        <input type="radio" name="csgo">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="radiobutton-container">Silber
-                        <input type="radio" name="csgo">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="radiobutton-container">Bronze
-                        <input type="radio" name="csgo">
-                        <span class="checkmark"></span>
-                    </label>
-                </li>
-                <li class="game-item">
-                    <h2>Rocket League</h1>
-                    <label class="radiobutton-container">Master
-                        <input type="radio" name="rocket">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="radiobutton-container">Diamant
-                        <input type="radio" name="rocket">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="radiobutton-container">Platin
-                        <input type="radio" name="rocket">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="radiobutton-container">Gold
-                        <input type="radio" name="rocket">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="radiobutton-container">Silber
-                        <input type="radio" name="rocket">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="radiobutton-container">Bronze
-                        <input type="radio" name="rocket">
-                        <span class="checkmark"></span>
-                    </label>
-                </li>
-            </ul>
-            <input class="submit-btn" id="submit-form" type="submit" name="" value="Speichern">
+            <div class="input-wrapper">
+                <textarea name="description" class="textarea-input" cols="30" rows="10"><?= htmlspecialchars($description)?></textarea>
+                <label class="top-label">Beschreibung</label>
+            </div> 
+            <div class="input-wrapper">
+                <input class="data-input" type="number" name="age" value= "<?= htmlspecialchars($age)?>">
+                <label class="left-label">Alter</label>
+            </div>
+            <div class="input-wrapper">
+                <input class="data-input" type="text" name="language" value= "<?= htmlspecialchars($language)?>">
+                <label class="left-label">Sprachen</label>
+            </div>
+            
+            <input class="submit-btn" id="submit-form" type="submit" name="changesubmit" value="Speichern">
         </form>
 
     </main>

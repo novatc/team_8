@@ -1,5 +1,5 @@
 .box {
-    width: 30vw;
+    width: 40vw;
     padding: 40px;
     margin: auto;
     background: var(--dark-bg-color);
@@ -9,23 +9,8 @@
     box-shadow: 0px 0px 21px 8px var(--light-shadow);
 }
 
-.box .data-input{
-    background: none;
-    display: block;
-    margin: 20px auto;
-    text-align: center;
-    border: 2px solid var(--purple);;
-    padding: 14px 10px;
-    width: 20vw;
-    outline: none;
-    color: var(--default-white);
-    border-radius: 24px;
-    transition: 0.25s;
-}
-.box textarea.data-input{
-    text-align: left;
-    resize: none;
-}
+
+
 .box h1{
     text-align: center;
     text-transform: uppercase;
@@ -37,10 +22,7 @@
     font-weight: 500;
 }
 
-.box .data-input:focus{
-    width: 25vw;
-    border-color: var(--light-purple);
-}
+
 #submit-form{
     display: block;
     padding: 14px 40px;
@@ -54,13 +36,14 @@
 /* Smartphone */
 @media screen and (max-width: 780px) {
     .box{
+        width: 80vw;
+        padding: 20px;
+    }
+   
+    .login-input{
         width: 60vw;
     }
-    .box .data-input{
-        width: 40vw;
+    .login-input:focus{
+        width: 70vw;
     }
-    .box .data-input:focus{
-        width: 50vw;
-    }
-
 }

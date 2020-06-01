@@ -1,18 +1,20 @@
 <?php
 session_start();
 
-$isInputFasle = false;
+$isInputFalse = false;
 $required = array('username', 'password');
+$error = false;
 
 foreach ($required as $field){
     if (empty($_POST[$field])){
         $error = true;
-        $isInputFasle = true;
-    }else{
-        $_SESSION['user'] = $_POST['username'];
-        header('Location: playerprofile.php');
-        exit();
+        $isInputFalse = true;
     }
+}
+if ($error==false) {
+    $_SESSION['user'] = $_POST['username'];
+    header('Location: playerprofile.php');
+    exit();
 }
 
 ?>
@@ -38,8 +40,8 @@ foreach ($required as $field){
 
     <form class="box" method="post">
         <h1>Anmelden</h1>
-        <input class="data-input" type="text" name="username" placeholder="Benutzername">
-        <input class="data-input" type="password" name="password" placeholder="Passwort">
+        <input class="login-input" type="text" name="username" placeholder="Benutzername" required>
+        <input class="login-input" type="password" name="password" placeholder="Passwort" required>
         <input class="submit-btn" id="submit-form" type="submit" name="loginsubmit" value="Anmelden">
         <h3 onclick="location.href='registration.php'">Noch kein Account?</h3>
     </form>

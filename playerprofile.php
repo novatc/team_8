@@ -4,8 +4,13 @@ $validLogin = isset($_SESSION['user']);
 
 if ($validLogin){
     $username = $_SESSION['user'];
+    $age = $_SESSION['age'];
+    $description = $_SESSION['description'];
+    $language = $_SESSION['language'];
 } else{
     $username = '';
+    $description = '';
+    $language = '';
 }
 ?>
 
@@ -36,7 +41,7 @@ if ($validLogin){
               <?php if ($validLogin): ?>
                 <p> Angemeldet als: <?= htmlspecialchars($username)?></p>
                 <h1><?= htmlspecialchars($username)?></h1>
-                <label>Wilkommen auf meinem Profil</label>
+                <label><?= htmlspecialchars($description)?></label>
               <?php endif; ?>
           </div>
           <div class="settings-wrapper">
@@ -54,10 +59,10 @@ if ($validLogin){
           <h2>Beschreibung:</h2>
           <div class="description">
             <div>
-              <label class="attribute">Alter: </label><label class="value">20</label>
+                <label class="attribute">Alter: </label><label class="value"><?= htmlspecialchars($age)?></label>
             </div>
             <div>
-                <label class="attribute">Sprachen: </label><label class="value">Deutsch, Englisch</label>
+                <label class="attribute">Sprachen: </label><label class="value"><?= htmlspecialchars($language)?></label>
             </div>
           </div>
           <h2>Meine Spiele:</h2>
