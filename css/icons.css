@@ -19,14 +19,7 @@
     background-size: cover;
 }
 
-.message {
-    color: transparent;
-    background: url(../Resourcen/Navigation/chat-white-24dp.svg);
-    background-repeat: no-repeat;
-    background-position: center;
-    border-color: transparent;
 
-}
 
 .game {
     min-width: 300px;

@@ -54,6 +54,14 @@
     grid-row: 1;
     grid-column: 3;
 }
+.grid .profil-header .message {
+    color: transparent;
+    background: url(../Resourcen/Navigation/chat-white-24dp.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    border-color: transparent;
+
+}
 .grid .profil-header .settings-wrapper{
     justify-self: end;
     align-self: flex-start;
