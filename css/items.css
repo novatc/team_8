@@ -9,6 +9,8 @@
     border-radius: 24px;
     transition: 0.25s;
     cursor: pointer;
+    font-size: medium;
+    text-decoration: none;
 }
 .submit-btn:hover{
     background:  var(--orange);;
@@ -43,7 +45,7 @@ h5{
 .checkbox-container, .radiobutton-container {
     display: block;
     position: relative;
-    margin-bottom: 5px;
+    margin: 10px;
     cursor: pointer;
     font-size: large;
     -webkit-user-select: none;
@@ -119,7 +121,17 @@ h5{
     position: relative;
     display: flex;
     margin: auto;
+
+}
+.choice-wrapper,.submit-wrapper{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     margin: auto;
+}
+.choice-wrapper{
+    border-bottom: 2px solid var(--purple);
 }
 
 .input-wrapper label{
@@ -202,7 +214,25 @@ h5{
     border-color: var(--light-purple);
     width: 25vw;
 }
-
+.selectbox{
+    display: block;
+    background: none;
+    text-align: left;
+    outline: none;
+    resize: none;
+    width: 100%;
+    color: var(--default-white);
+    margin: 20px auto;
+    padding: 14px 10px;
+    padding-left: 95px;
+    border: 2px solid var(--purple);
+    border-radius: 24px;
+    transition: 0.25s;
+    font-size: 14px;
+}
+option{
+    background: var(--dark-bg-color);
+}
 /* Hide arrows on number input*/
 input[type=number]{
     -moz-appearance: textfield;

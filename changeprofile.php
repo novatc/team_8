@@ -1,33 +1,42 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 $validLogin = isset($_SESSION['user']);
-$posted = false;
+
 if ($validLogin){
     $username = $_SESSION['user'];
-    $age = $_SESSION['age'];
-    $description = $_SESSION['description'];
-    $language = $_SESSION['language'];
+    if(isset($_SESSION['age'])){
+        $age = $_SESSION['age'];
+    }else{
+        $age = '';
+    }
+    if(isset($_SESSION['language'])){
+        $language = $_SESSION['language'];
+    }else{
+        $language = '';
+    }
+    if(isset($_SESSION['description'])){
+        $description = $_SESSION['description'];
+    }else{
+        $description = '';
+    }
+    if(isset($_SESSION['games'])){
+        $games = $_SESSION['games'];
+    }else{
+        $games = [];
+    }     
+    
 } else{
     $username = '';
     $description = '';
     $language = '';
+    $age = '';
+    $games = [];
 }
-
-$fields = array('age','language', 'description');
-foreach ($fields as $field){
-    if (!empty($_POST[$field])){
-        $_SESSION[$field] = $_POST[$field];
-        $posted = true;
-    }
-}
-
-if($posted) {
-    header('Location: changeprofile.php');
-    exit();
-}
-
 ?>
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -44,7 +53,7 @@ if($posted) {
         </div>
     </header>
     <main>
-        <form class="box" method="post">
+        <form class="box" action="php/changeprofileaction.php" method="post">
             <h1>Profil anpassen</h1>
             <div class="input-wrapper">
                 <textarea name="description" class="textarea-input" cols="30" rows="10"><?= htmlspecialchars($description)?></textarea>
@@ -58,8 +67,82 @@ if($posted) {
                 <input class="data-input" type="text" name="language" value= "<?= htmlspecialchars($language)?>">
                 <label class="left-label">Sprachen</label>
             </div>
-            
+        
             <input class="submit-btn" id="submit-form" type="submit" name="changesubmit" value="Speichern">
+        </form>
+
+        <form class="box" action="php/managegamesaction.php" method="post">
+            <h1>Spiele verwalten</h1>  
+            <div class="input-wrapper">
+                <select class="selectbox" name="game" required>
+                    <option>CSGO</option>
+                    <option>League of Legends</option>
+                    <option>Rocket League</option>
+                    <option>Valorant</option>
+                </select>
+                <label class="left-label">Spiel</label>
+            </div>
+            <div class="gamebox">
+                <h2>Rang</h2>
+                <div class=choice-wrapper>  
+                    <label class="radiobutton-container">Master
+                        <input type="radio" name="rank" value="Master" required>
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="radiobutton-container">Diamant
+                        <input type="radio" name="rank" value="Diamant" required>
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="radiobutton-container">Platin
+                        <input type="radio" name="rank" value="Platin" required>
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="radiobutton-container">Gold
+                        <input type="radio" name="rank" value="Gold" required>
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="radiobutton-container">Silber
+                        <input type="radio" name="rank" value="Silber" required>
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="radiobutton-container">Bronze
+                        <input type="radio" name="rank" value="Bronze" required>
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                <h2>Position</h2>
+                <div class=choice-wrapper>  
+                    <label class="checkbox-container">Top Lane
+                        <input type="checkbox" name="position[]" value="Top Lane">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container">Jungle
+                        <input type="checkbox" name="position[]" value="Jungle">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container">Mid
+                        <input type="checkbox" name="position[]" value="Mid">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container">Bottom
+                        <input type="checkbox" name="position[]" value="Bottom">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container">Support
+                        <input type="checkbox" name="position[]" value="Support">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                <label class="checkbox-container">Ich möchte, dass andere Spieler mich über dieses Spiel finden.
+                        <input type="checkbox" name="visible" checked>
+                        <span class="checkmark"></span>
+                </label>
+            </div>
+            <div class="submit-wrapper">
+                <a href="php/deletegameaction.php" class="submit-btn" id="submit-form" type="submit" name="deletegame">Entfernen</a>
+                <input class="submit-btn" id="submit-form" type="submit" name="savegame" value="Speichern">
+            </div>
+           
         </form>
 
     </main>

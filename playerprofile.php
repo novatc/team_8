@@ -4,13 +4,33 @@ $validLogin = isset($_SESSION['user']);
 
 if ($validLogin){
     $username = $_SESSION['user'];
-    $age = $_SESSION['age'];
-    $description = $_SESSION['description'];
-    $language = $_SESSION['language'];
+    if(isset($_SESSION['age'])){
+        $age = $_SESSION['age'];
+    }else{
+        $age = '';
+    }
+    if(isset($_SESSION['language'])){
+        $language = $_SESSION['language'];
+    }else{
+        $language = '';
+    }
+    if(isset($_SESSION['description'])){
+        $description = $_SESSION['description'];
+    }else{
+        $description = '';
+    }
+    if(isset($_SESSION['games'])){
+        $games = $_SESSION['games'];
+    }else{
+        $games = [];
+    }     
+    
 } else{
     $username = '';
     $description = '';
     $language = '';
+    $age = '';
+    $games = [];
 }
 ?>
 
@@ -32,85 +52,95 @@ if ($validLogin){
         </div>
     </header>
     <main>
-      <div class="grid">
-        <div class="profil-header">
-          <div class="picture-wrapper">
-              <div class="icon" id="avatarTeemo" onclick="location.href='playerprofile.php'"></div>
-          </div>
-          <div class="name-wrapper">
-              <?php if ($validLogin): ?>
-                <p> Angemeldet als: <?= htmlspecialchars($username)?></p>
-                <h1><?= htmlspecialchars($username)?></h1>
-                <label><?= htmlspecialchars($description)?></label>
-              <?php endif; ?>
-          </div>
-          <div class="settings-wrapper">
-            <?php if ($validLogin): ?>    
-              <a id="settings-link" href="changeprofile.php"></a>
-              <a id="logout-link" href="logout.php"></a>
-              <?php endif; ?>
-          </div>
-          <div class="message-wrapper">
-              <button>Nachricht schreiben</button>  
-          </div>
-        </div>
+        <div class="grid">
+            <div class="profil-header">
+                <div class="picture-wrapper">
+                    <div class="icon" id="avatarTeemo" onclick="location.href='playerprofile.php'"></div>
+                </div>
+                <div class="name-wrapper">
+                    <?php if ($validLogin): ?>
+                        <p> Angemeldet als: <?= htmlspecialchars($username)?></p>
+                        <h1><?= htmlspecialchars($username)?></h1>
+                        <label><?= htmlspecialchars($description)?></label>
+                    <?php endif; ?>
+                </div>
+                <div class="settings-wrapper">
+                    <?php if ($validLogin): ?>    
+                    <a id="settings-link" href="changeprofile.php"></a>
+                    <a id="logout-link" href="php/logout.php"></a>
+                    <?php endif; ?>
+                </div>
+                <div class="message-wrapper">
+                    <button>Nachricht schreiben</button>  
+                </div>
+            </div>
          
-        <div class="profil-body">
-          <h2>Beschreibung:</h2>
-          <div class="description">
-            <div>
-                <label class="attribute">Alter: </label><label class="value"><?= htmlspecialchars($age)?></label>
+            <div class="profil-body">
+            <h2>Beschreibung:</h2>
+            <div class="description">
+                <div>
+                    <label class="attribute">Alter: </label><label class="value"><?= htmlspecialchars($age)?></label>
+                </div>
+                <div>
+                    <label class="attribute">Sprachen: </label><label class="value"><?= htmlspecialchars($language)?></label>
+                </div>
             </div>
-            <div>
-                <label class="attribute">Sprachen: </label><label class="value"><?= htmlspecialchars($language)?></label>
-            </div>
-          </div>
-          <h2>Meine Spiele:</h2>
-          <div class="game-wrapper"> 
-            <ul class="cardview" >
-                  <div class="wrapper">
-                      <li class="card">
-                          <div class="container" id="lol">
-                              <label class="gamelabel">League of Legends</label>
-                          </div>
-                      </li>
-                  </div>
-                  <div class="wrapper">
-                      <li class="card">
-                          <div class="container" id="valorant">
-                              <label class="gamelabel">Valorant</label>
-                          </div>
-                      </li>
-                  </div>
-                  <div class="wrapper">
-                      <li class="card">
-                          <div class="container" id="rocketleague">
-                              <label class="gamelabel">Rocket League</label>
-                          </div>
-                      </li>
-                  </div>
-                  <div class="wrapper">
-                      <li class="card">
-                          <div class="container" id="csgo">
-                              <label class="gamelabel">CS:GO</label>
-                          </div>
-                      </li>
-                  </div>
-              </ul>
-          <div class="game-stats">
-            <div>
-                <label class="attribute">ELO: </label><label class="value">Gold</label>
-            </div>
-            <div>
-                <label class="attribute">Position: </label><label class="value">Jungle</label>
-            </div>
-          </div>
-        </div> 
-      </div>          
-    </div>    
-  </main>
+            <h2>Meine Spiele:</h2>
+            <div class="game-wrapper"> 
+                <ul class="cardview" >
+                    <?php foreach(array_keys($games) as $game):?>
+                        <?php if($game=='League of Legends'):?>
+                            <div class="wrapper">
+                                <li class="card">
+                                    <div class="container" id="lol">
+                                        <label class="gamelabel">League of Legends</label>
+                                    </div>
+                                </li>
+                            </div>
+                        <?php endif;?>
+                        <?php if($game=='CSGO'):?>
+                            <div class="wrapper">
+                                <li class="card">
+                                    <div class="container" id="csgo">
+                                        <label class="gamelabel">CS:GO</label>
+                                    </div>
+                                </li>
+                            </div>
+                        <?php endif;?>
+                        <?php if($game=='Rocket League'):?>
+                            <div class="wrapper">
+                                <li class="card">
+                                    <div class="container" id="rocketleague">
+                                        <label class="gamelabel">Rocket League</label>
+                                    </div>
+                                </li>
+                            </div>
+                        <?php endif;?>
+                        <?php if($game=='Valorant'):?>
+                            <div class="wrapper">
+                                <li class="card">
+                                    <div class="container" id="valorant">
+                                        <label class="gamelabel">Valorant</label>
+                                    </div>    
+                                </li>
+                            </div>
+                        <?php endif;?>
+                    <?php endforeach;?>
+                </ul>
+            
+                <div class="game-stats">
+                    <div>
+                        <label class="attribute">ELO(CSGO): </label><label class="value"><?php if(isset($games['CSGO'])) echo htmlspecialchars($games['CSGO']['rank'])?></label>
+                    </div>
+                    <div>
+                        <label class="attribute">Position(CSGO): </label><label class="value"><?php if(isset($games['CSGO'])) echo htmlspecialchars($games['CSGO']['positions'])?></label>
+                    </div>
+                </div>
+            </div>            
+        </div>
+    </main>
   
-  <footer>
+    <footer>
             <div class="footer">
                 <?php include "php/footer.php";?>
             </div>

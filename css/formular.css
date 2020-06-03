@@ -1,14 +1,26 @@
 .box {
+    
     width: 40vw;
     padding: 40px;
-    margin: auto;
+
+    margin: 40px auto;
     background: var(--dark-bg-color);
 
     -webkit-box-shadow: 0px 0px 21px 8px var(--light-shadow);
     -moz-box-shadow: 0px 0px 21px 8px var(--light-shadow);
     box-shadow: 0px 0px 21px 8px var(--light-shadow);
 }
-
+.gamebox {   
+    outline: none;
+    resize: none;
+    width: calc(100% - 30px);
+    color: var(--default-white);
+    margin: 0px auto;
+    padding: 10px;
+    border: 2px solid var(--purple);
+    border-radius: 24px;
+    transition: 0.25s;
+}
 
 
 .box h1{
