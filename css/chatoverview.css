@@ -71,13 +71,6 @@ h1 {
     background: transparent;
 }
 
-
-.gridActiveChats > #wrapper {
-    display: flex;
-    flex-wrap: wrap;
-
-}
-
 input.startChat {
     background: #111111;
     min-width:150px;
@@ -128,7 +121,7 @@ input.startChat:hover {
     }
     .grid {
         display: grid;
-        grid-template-columns: auto;
+        grid-template-columns: 5% auto 5%;
         grid-column-gap:0px;
         grid-row-gap: 20px;
         width: 100%;
@@ -136,18 +129,22 @@ input.startChat:hover {
     }
     .scroll {
         width: 98%;
+        grid-column:2;
+    }
+    .boxname {
+        grid-column:2;
     }
     .gridActive {
         grid-template-columns: 1000px;
     }
     .gridFriends {
-        grid-template-columns: auto 300px auto auto;
+        grid-template-columns: auto 250px auto auto;
     }
     .grid #friends.boxname {
-        grid-row:6;
+        grid-row:3;
     }
     .grid #active.boxname {
-        grid-row:3;
+        grid-row:1;
     }
 
 }
@@ -159,7 +156,7 @@ input.startChat:hover {
     }
     .grid {
         display: grid;
-        grid-template-columns: auto;
+        grid-template-columns: 5% auto 5%;
         grid-column-gap:0px;
         grid-row-gap: 20px;
         width: 100%;
@@ -177,10 +174,10 @@ input.startChat:hover {
         width:98%;
     }
     .grid #friends.boxname {
-        grid-row:6;
+        grid-row:3;
     }
     .grid #active.boxname {
-        grid-row:3;
+        grid-row:1;
     }
     input.startChat {
         min-width:300px;
@@ -194,8 +191,17 @@ input.startChat:hover {
         text-align:center;
     }
     input.startChat {
-        min-width:150px;
+        min-width:120px;
         max-width: 150px;
+    }
+    .gridActiveChats {
+        grid-template-columns: 100px 400px auto;
+    }
+    .gridFriends {
+        grid-template-columns: 100px 200px;
+    }
+    input.startChat:hover {
+        transform: scale(1.0);
     }
 }
 
