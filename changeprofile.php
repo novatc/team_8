@@ -75,10 +75,36 @@ if ($validLogin){
             <h1>Spiele verwalten</h1>  
             <div class="input-wrapper">
                 <select class="selectbox" name="game" required>
-                    <option>CSGO</option>
-                    <option>League of Legends</option>
-                    <option>Rocket League</option>
-                    <option>Valorant</option>
+                    <optgroup label="Meine Spiele">
+                    <?php foreach(array_keys($games) as $game):?>
+                        <?php if($game=='CSGO'):?>
+                            <option>CSGO</option>
+                        <?php endif;?>
+                        <?php if($game=='League of Legends'):?>
+                            <option>League of Legends</option>
+                        <?php endif;?>
+                        <?php if($game=='Rocket League'):?>
+                            <option>Rocket League</option>
+                        <?php endif;?>
+                        <?php if($game=='Valorant'):?>
+                            <option>Valorant</option>
+                        <?php endif;?>
+                    <?php endforeach;?>
+                    </optgroup>
+                    <optgroup label="Weitere Spiele hinzufügen">
+                    <?php if(!in_array('CSGO', array_keys($games))):?>
+                            <option>CSGO</option>
+                        <?php endif;?>
+                        <?php if(!in_array('League of Legends', array_keys($games))):?>
+                            <option>League of Legends</option>
+                        <?php endif;?>
+                        <?php if(!in_array('Rocket League', array_keys($games))):?>
+                            <option>Rocket League</option>
+                        <?php endif;?>
+                        <?php if(!in_array('Valorant', array_keys($games))):?>
+                            <option>Valorant</option>
+                        <?php endif;?>
+                    </optgroup>
                 </select>
                 <label class="left-label">Spiel</label>
             </div>
@@ -139,7 +165,7 @@ if ($validLogin){
                 </label>
             </div>
             <div class="submit-wrapper">
-                <a href="php/deletegameaction.php" class="submit-btn" id="submit-form" type="submit" name="deletegame">Entfernen</a>
+                <input class="submit-btn" id="submit-form" type="submit" name="deletegame" value="Entfernen">
                 <input class="submit-btn" id="submit-form" type="submit" name="savegame" value="Speichern">
             </div>
            

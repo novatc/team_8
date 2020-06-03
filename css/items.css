@@ -230,7 +230,7 @@ h5{
     transition: 0.25s;
     font-size: 14px;
 }
-option{
+option,optgroup{
     background: var(--dark-bg-color);
 }
 /* Hide arrows on number input*/
