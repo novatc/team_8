@@ -4,15 +4,17 @@ $validLogin = isset($_SESSION['user']);
 
 if ($validLogin){
     $username = $_SESSION['user'];
-    $age = $_SESSION['age'];
-   // $description = $_SESSION['description'];
+    //$age = $_SESSION['age'];
+    // $description = $_SESSION['description'];
     // $language = $_SESSION['language'];
+    $age = 42;
     $description = 'TestBeschreibung';
     $language = 'deutschDUMMY';
 } else{
-    $username = '';
-    $description = '';
-    $language = '';
+    $username = 'DUMMY';
+    $description = 'DUMMY';
+    $language = 'DUMMY';
+    $age = 'DUMMY';
 }
 ?>
 
@@ -53,7 +55,7 @@ if ($validLogin){
               <?php endif; ?>
           </div>
           <div class="message-wrapper">
-              <button>Nachricht schreiben</button>  
+              <button class="message">Nachricht schreiben</button>
           </div>
         </div>
          
