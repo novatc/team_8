@@ -106,8 +106,8 @@
 }
 
 .chatcardnopadding {
-    height:auto;
-    width:auto;
+    height:10vh;
+    width:300px;
     display: flex;
     flex-direction: column;
     overflow: hidden;

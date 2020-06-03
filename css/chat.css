@@ -4,28 +4,33 @@
     grid-column-gap:30px;
     grid-row-gap: 30px;
     width: 100%;
+    height:50vh;
     margin: 0 auto;
     padding-left:20px;
     padding-top:15px;
+
 }
 
 .headgrid {
     display: grid;
-    grid-template-columns: auto 30% 50%;
+    grid-template-columns: 1% 30% 50%;
     grid-column-gap: 20%;
     padding-left:10px;
+    height:10vh;
 }
 
 #chatheader.chatbox {
     background-color: var(--dark-bg-color);
 }
 
+#chathistory.chatbox {
+    height:60%;
+    overflow-y:scroll;
+}
 
-.bottomgrid {
-    display: grid;
-    grid-template-columns: auto auto;
-    padding-left:50px;
-    grid-column-gap:0;
+#sendForm.chatbox {
+    background-color: var(--dark-bg-color);
+    padding-left:7vh;
 }
 
 .chattile {
@@ -47,19 +52,15 @@
     padding-left:10px;
 }
 
-#chathistory.chatbox {
-    height:550px;
-}
-
 #wholechat {
     padding-left:20%;
     padding-right:20%;
 }
 
 input.sendMessage {
-    min-width:1000px;
+    min-width:40vw;
     min-height:30px;
-    max-width: 1000px;
+    max-width: 40vw;
     max-height: 30px;
     background-color: var(--default-white);
 
@@ -71,8 +72,8 @@ h1 {
 }
 
 label#name {
-    font-size:50px;
-    padding-top:12%;
+    font-size:5vh;
+    padding-top:2vh;
 }
 
 .speech-bubble {
@@ -131,20 +132,15 @@ label#name {
     top: 31px;
 }
 
-@media screen and (max-width: 2000px) {
-    input.sendMessage {
-        min-width:700px;
-        min-height:30px;
-        max-width: 700px;
-        max-height: 30px;
-        background-color:var(--default-white);
-    }
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
 }
 
 @media screen and (max-width: 1500px) {
     .headgrid {
         display:grid;
-        grid-template-columns: 150px 150px 0;
+        grid-template-columns: 1% 1000px 0;
         grid-column-gap:10%;
     }
     .chatcard {
@@ -163,29 +159,11 @@ label#name {
         width: 290px;
         font-size:20px;
     }
-    input.sendMessage {
-        min-width:470px;
-        max-width: 470px;
-    }
 
 }
-@media screen and (max-width: 1100px) {
-    input.sendMessage {
-        min-width:320px;
-        max-width: 320px;
-    }
-}
+
 
 @media screen and (max-width: 800px) {
-    .headgrid {
-        display:grid;
-        grid-template-columns: auto auto 0;
-        grid-column-gap: 20px;
-    }
-    label#name {
-        font-size:28px;
-        padding-top:30px;
-    }
     .chatgrid {
         display:grid;
         grid-template-columns: auto auto;
@@ -195,18 +173,20 @@ label#name {
         padding-right:5%;
     }
     input.sendMessage {
-        min-width:330px;
-        max-width: 330px;
+        min-width:60vw;
+        max-width:60vw;
     }
+
 }
 
 @media screen and (max-width: 550px) {
     .chatgrid {
         grid-template-columns:auto;
     }
-    input.sendMessage {
-        min-width:220px;
-        max-width: 220px;
+
+    label#name {
+        font-size:24px;
+        padding-top:3vh;
     }
     .chatgrid .speech-bubble {
         width: 220px;
@@ -215,5 +195,9 @@ label#name {
     .chatgrid .speech-bubble-self {
         width: 220px;
         font-size:18px;
+    }
+    input.sendMessage {
+        min-width:40vw;
+        max-width:40vw;
     }
 }

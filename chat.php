@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 <html lang="de">
+
+<?php
+session_start();
+$isLoggedIn=$_SESSION['isLoggedIn'];
+$message= "";
+?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,7 +31,7 @@
                 <div class="description">
                     <div class="headgrid">
                         <a href="playerprofile.php">
-                            <div class="icon" id="avatarTeemo"></div>
+                            <div class="iconChatHead" id="avatarTeemo"></div>
                         </a>
                         <label id="name">Johannes:</label>
                         <div class="chatcardnopadding">
@@ -36,8 +42,6 @@
                     </div>
                 </div>
             </div>
-                <!-- der eigentliche Chat-->
-                <!-- nur mit css ein Fehler -> noch kein scrolling ohne inline -->
                 <div class="chatbox" id="chathistory">
                     <div class="chatgrid">
 
@@ -90,24 +94,22 @@
                             eros et accumsan et iusto
                         </p>
 
-                        <div class="iconSmall" id="avatarTeemo" onclick="location.href='playerprofile.php'"></div>
-                        <p class="speech-bubble">
-                            vel illum dolore eu feugiat nulla facilisis at vero
-                            eros et accumsan et iusto
-                        </p>
-
+                        <!-- provisorisch: eine Nachricht hinzufügen -->
+                        <?php if(isset($_POST["message"]) && is_string($_POST["message"])) : $message = htmlspecialchars($_POST["message"]); ?>
+                            <div class="iconSmall" id="avatarTeemo" onclick="location.href='playerprofile.php'"></div>
+                            <p class="speech-bubble">
+                                <?= $message ?>
+                            </p>
+                        <?php endif; ?>
 
                     </div>
                 </div>
 
                 <!-- Senden-->
-                <form id="messageform"
-                    action="sendmessage.php" method="post">
-                    <div class="chatbox">
-                        <div class="bottomgrid">
-                        <input class="sendMessage" type="text" id="password" name="password" required>
+                <form id="messageform" action="" method="post">
+                    <div class="chatbox" id="sendForm">
+                        <input class="sendMessage" type="text" name="message" required>
                         <input type="submit" value="Senden">
-                        </div>
                     </div>
                 </form>
             </div>
