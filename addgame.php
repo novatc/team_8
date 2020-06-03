@@ -19,7 +19,7 @@
             <textarea name="description" class="data-input" placeholder="Beschreibung" cols="30" rows="10"></textarea>
             <ul class="game-list">
                 <li class="game-item">
-                    <h2>LOL</h1>
+                    <h1>LOL</h1>
                     <label class="radiobutton-container">Master
                         <input type="radio" name="lol">
                         <span class="checkmark"></span>
@@ -46,7 +46,7 @@
                     </label>
                 </li>
                 <li class="game-item">
-                    <h2>Valorant</h1>
+                    <h1>Valorant</h1>
                     <label class="radiobutton-container">Master
                         <input type="radio" name="valorant">
                         <span class="checkmark"></span>
@@ -73,7 +73,7 @@
                     </label>
                 </li>
                 <li class="game-item">
-                    <h2>CSGO</h1>
+                    <h1>CSGO</h1>
                     <label class="radiobutton-container">Master
                         <input type="radio" name="csgo">
                         <span class="checkmark"></span>
@@ -100,7 +100,7 @@
                     </label>
                 </li>
                 <li class="game-item">
-                    <h2>Rocket League</h1>
+                    <h1>Rocket League</h1>
                     <label class="radiobutton-container">Master
                         <input type="radio" name="rocket">
                         <span class="checkmark"></span>

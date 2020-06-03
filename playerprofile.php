@@ -5,8 +5,10 @@ $validLogin = isset($_SESSION['user']);
 if ($validLogin){
     $username = $_SESSION['user'];
     $age = $_SESSION['age'];
-    $description = $_SESSION['description'];
-    $language = $_SESSION['language'];
+   // $description = $_SESSION['description'];
+    // $language = $_SESSION['language'];
+    $description = 'TestBeschreibung';
+    $language = 'deutschDUMMY';
 } else{
     $username = '';
     $description = '';

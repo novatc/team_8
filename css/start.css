@@ -8,12 +8,14 @@
     opacity: 0.4;
     background: grey;
     text-align: center;
+    vertical-align: middle;
+    float: left;
 }
 
 .left:hover, .right:hover {
     transform: scale(0.95);
     transition: 0.33s;
-    opacity: 0.2;
+    opacity: 0.5;
 }
 
 #grid {
@@ -22,6 +24,7 @@
     background: url(../Resourcen/logo.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+
 }
 
 
