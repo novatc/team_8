@@ -195,7 +195,7 @@ input.startChat:hover {
         max-width: 150px;
     }
     .gridActiveChats {
-        grid-template-columns: 100px 200px auto;
+        grid-template-columns: 100px 400px auto;
     }
     .gridFriends {
         grid-template-columns: 100px 200px;
