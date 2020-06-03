@@ -4,6 +4,7 @@ $validLogin = isset($_SESSION['user']);
 
 if ($validLogin){
     $username = $_SESSION['user'];
+<<<<<<< HEAD
     if(isset($_SESSION['age'])){
         $age = $_SESSION['age'];
     }else{
@@ -31,6 +32,19 @@ if ($validLogin){
     $language = '';
     $age = '';
     $games = [];
+=======
+    //$age = $_SESSION['age'];
+    // $description = $_SESSION['description'];
+    // $language = $_SESSION['language'];
+    $age = 42;
+    $description = 'TestBeschreibung';
+    $language = 'deutschDUMMY';
+} else{
+    $username = 'DUMMY';
+    $description = 'DUMMY';
+    $language = 'DUMMY';
+    $age = 'DUMMY';
+>>>>>>> 172c96ff7d9515f64a8aca639c2a3f00b3832989
 }
 ?>
 
@@ -52,6 +66,7 @@ if ($validLogin){
         </div>
     </header>
     <main>
+<<<<<<< HEAD
         <div class="grid">
             <div class="profil-header">
                 <div class="picture-wrapper">
@@ -73,6 +88,39 @@ if ($validLogin){
                 <div class="message-wrapper">
                     <button>Nachricht schreiben</button>  
                 </div>
+=======
+      <div class="grid">
+        <div class="profil-header">
+          <div class="picture-wrapper">
+              <div class="icon" id="avatarTeemo" onclick="location.href='playerprofile.php'"></div>
+          </div>
+          <div class="name-wrapper">
+              <?php if ($validLogin): ?>
+                <p> Angemeldet als: <?= htmlspecialchars($username)?></p>
+                <h1><?= htmlspecialchars($username)?></h1>
+                <label><?= htmlspecialchars($description)?></label>
+              <?php endif; ?>
+          </div>
+          <div class="settings-wrapper">
+            <?php if ($validLogin): ?>    
+              <a id="settings-link" href="changeprofile.php"></a>
+              <a id="logout-link" href="logout.php"></a>
+              <?php endif; ?>
+          </div>
+          <div class="message-wrapper">
+              <button class="message">Nachricht schreiben</button>
+          </div>
+        </div>
+         
+        <div class="profil-body">
+          <h2>Beschreibung:</h2>
+          <div class="description">
+            <div>
+                <label class="attribute">Alter: </label><label class="value"><?= htmlspecialchars($age)?></label>
+            </div>
+            <div>
+                <label class="attribute">Sprachen: </label><label class="value"><?= htmlspecialchars($language)?></label>
+>>>>>>> 172c96ff7d9515f64a8aca639c2a3f00b3832989
             </div>
          
             <div class="profil-body">

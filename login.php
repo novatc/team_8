@@ -4,6 +4,7 @@ session_start();
 $isInputFalse = false;
 $required = array('username', 'password');
 $error = false;
+$_SESSION['isLoggedIn'] = false;
 
 foreach ($required as $field){
     if (empty($_POST[$field])){
@@ -14,6 +15,7 @@ foreach ($required as $field){
 if ($error==false) {
     $_SESSION['user'] = $_POST['username'];
     header('Location: playerprofile.php');
+    $_SESSION['isLoggedIn'] = true;
     exit();
 }
 
