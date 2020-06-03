@@ -71,13 +71,6 @@ h1 {
     background: transparent;
 }
 
-
-.gridActiveChats > #wrapper {
-    display: flex;
-    flex-wrap: wrap;
-
-}
-
 input.startChat {
     background: #111111;
     min-width:150px;
@@ -198,8 +191,17 @@ input.startChat:hover {
         text-align:center;
     }
     input.startChat {
-        min-width:150px;
+        min-width:120px;
         max-width: 150px;
+    }
+    .gridActiveChats {
+        grid-template-columns: 100px 200px auto;
+    }
+    .gridFriends {
+        grid-template-columns: 100px 200px;
+    }
+    input.startChat:hover {
+        transform: scale(1.0);
     }
 }
 
