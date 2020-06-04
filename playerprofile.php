@@ -19,6 +19,12 @@ if ($validLogin){
     }else{
         $description = '';
     }
+    if(isset($_SESSION['icon'])){
+        $icon = $_SESSION['icon'];
+    }
+    else {
+        $icon="avatarTeemo";
+    }
     if(isset($_SESSION['games'])){
         $games = $_SESSION['games'];
     }else{
@@ -55,7 +61,7 @@ if ($validLogin){
         <div class="grid">
             <div class="profil-header">
                 <div class="picture-wrapper">
-                    <div class="icon" id="avatarTeemo" onclick="location.href='playerprofile.php'"></div>
+                    <div class="icon" id= <?=htmlspecialchars($icon)?> onclick="location.href='playerprofile.php'"></div>
                 </div>
                 <div class="name-wrapper">
                     <?php if ($validLogin): ?>

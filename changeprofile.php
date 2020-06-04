@@ -45,6 +45,7 @@ if ($validLogin){
     <title>Team8 - Profil bearbeiten</title>
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/formular.css">
+    <link rel="stylesheet" type="text/css" href="css/icons.css">
 </head>
 <body>
     <header>
@@ -169,7 +170,53 @@ if ($validLogin){
                 <input class="submit-btn" id="submit-form" type="submit" name="deletegame" value="Entfernen">
                 <input class="submit-btn" id="submit-form" type="submit" name="savegame" value="Speichern">
             </div>
-           
+        </form>
+
+        <form class="box" action="php/changeprofileaction.php" method="post">
+            <h1>Icon ändern</h1>
+            <div class="gridIcons">
+                <div class="icon" id="avatarTeemo"></div>
+                <div class="icon" id="avatarBard" onclick=""></div>
+                <div class="icon" id="avatarZac" onclick=""></div>
+                <div class="icon" id="avatarFuryhorn" onclick=""></div>
+                <label class="radiobutton-container">
+                    <input type="radio" name="icon" value="avatarTeemo" required>
+                    <span class="checkmark"></span>
+                </label>
+                <label class="radiobutton-container">
+                    <input type="radio" name="icon" value="avatarBard" required>
+                    <span class="checkmark"></span>
+                </label>
+                <label class="radiobutton-container">
+                    <input type="radio" name="icon" value="avatarZac" required>
+                    <span class="checkmark"></span>
+                </label>
+                <label class="radiobutton-container">
+                    <input type="radio" name="icon" value="avatarFuryhorn" required>
+                    <span class="checkmark"></span>
+                </label>
+                <div class="icon" id="avatarPingu" onclick=""></div>
+                <div class="icon" id="avatarSquid" onclick=""></div>
+                <div class="icon" id="avatarSpook" onclick=""></div>
+                <div class="icon" id="avatarRammus" onclick=""></div>
+                <label class="radiobutton-container">
+                    <input type="radio" name="icon" value="avatarPingu" required>
+                    <span class="checkmark"></span>
+                </label>
+                <label class="radiobutton-container">
+                    <input type="radio" name="icon" value="avatarSquid" required>
+                    <span class="checkmark"></span>
+                </label>
+                <label class="radiobutton-container">
+                    <input type="radio" name="icon" value="avatarSpook" required>
+                    <span class="checkmark"></span>
+                </label>
+                <label class="radiobutton-container">
+                    <input type="radio" name="icon" value="avatarRammus" required>
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+            <input class="submit-btn" id="submit-form" type="submit" name="changesubmit" value="Speichern">
         </form>
 
     </main>

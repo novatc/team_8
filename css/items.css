@@ -54,6 +54,30 @@ h5{
     user-select: none;
     padding-left: 25px;
 }
+
+.gridIcons {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-column-gap: 0;
+    grid-row-gap: 5em;
+    padding-bottom:50px;
+    padding-left:10px;
+}
+
+.gridIcons > .radiobutton-container {
+    display: block;
+    position: relative;
+    margin: 10px;
+    cursor: pointer;
+    font-size: large;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    left:20%;
+    bottom:50%;
+}
+
 /* Hide the browser's default checkbox/radio button */
 .checkbox-container input, .radiobutton-container input{
     position: absolute;

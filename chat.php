@@ -1,11 +1,17 @@
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+$validLogin = isset($_SESSION['user']);
+
+if ($validLogin){
+    $username = $_SESSION['user'];
+}
+?>
+
 <!DOCTYPE html>
 <html lang="de">
-
-<?php
-session_start();
-$isLoggedIn=$_SESSION['isLoggedIn'];
-$message= "";
-?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
