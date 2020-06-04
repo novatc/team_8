@@ -1,3 +1,20 @@
+/*chat doesn't take up whole screen*/
+#wholechat {
+    padding-left:20%;
+    padding-right:20%;
+}
+
+/*grid for the header of the chat*/
+.headgrid {
+    display: grid;
+    grid-template-columns: 1% 30% 50%;
+    grid-column-gap: 20%;
+    padding-left:10px;
+    height:10vh;
+    background-color: var(--dark-bg-color);
+}
+
+/*grid for the body of the chat itself*/
 .chatgrid {
     display: grid;
     grid-template-columns: 10% 30%;
@@ -11,33 +28,32 @@
 
 }
 
-.headgrid {
-    display: grid;
-    grid-template-columns: 1% 30% 50%;
-    grid-column-gap: 20%;
-    padding-left:10px;
-    height:10vh;
-}
-
+/*header box*/
 #chatheader.chatbox {
     background-color: var(--dark-bg-color);
+    border-top-left-radius:24px;
+    border-top-right-radius:24px;
+    border: 2px solid var(--purple);
 }
 
+/*chat box*/
 #chathistory.chatbox {
     height:60%;
     overflow-y:scroll;
+    background-image:url("../Resourcen/logo.jpg");
+    background-size:cover;
+
 }
 
+/*send messages box*/
 #sendForm.chatbox {
     background-color: var(--dark-bg-color);
-    padding-left:7vh;
+    padding:0;
+    padding-left:0;
+    border-bottom-left-radius:24px;
+    border-bottom-right-radius:24px;
 }
 
-.chattile {
-    display:flex;
-    flex-wrap:wrap;
-}
-/*can't scroll*/
 .chatbox {
     display:flex;
     flex-wrap:wrap;
@@ -45,37 +61,47 @@
     overflow-x: hidden;
     overflow-y: auto;
     background: var(--light-bg-color);
-    border-style: double;
+
     border-color:  var(--dark-bg-color);
     padding-top:20px;
     padding-bottom: 20px;
     padding-left:10px;
 }
 
-#wholechat {
-    padding-left:20%;
-    padding-right:20%;
-}
-
-input.sendMessage {
+/* box in which you type the message*/
+#sendMessage.data-input {
     min-width:40vw;
-    min-height:30px;
     max-width: 40vw;
-    max-height: 30px;
-    background-color: var(--default-white);
-
+    padding-left:20px;
 }
 
-h1 {
+#sendMessage.data-input:invalid {
+    border: 2px solid var(--purple);
+}
+
+/*send button in chat*/
+#sendButton {
+    background: none;
     text-align: center;
-    padding-top:50px;
+    border: 2px solid var(--orange);
+    outline: none;
+    color: var(--default-white);
+    border-radius: 24px;
+    transition: 0.25s;
+    cursor: pointer;
+    font-size: medium;
+    text-decoration: none;
 }
 
+#sendButton:hover {
+    background:  var(--orange);
+}
+/*used for the name of the user you're chatting with*/
 label#name {
     font-size:5vh;
     padding-top:2vh;
 }
-
+/*speech bubbles in chat*/
 .speech-bubble {
     position: relative;
     width: 650px;
@@ -137,6 +163,7 @@ label#name {
     background: transparent;
 }
 
+/*resizing for responsiveness*/
 @media screen and (max-width: 1500px) {
     .headgrid {
         display:grid;

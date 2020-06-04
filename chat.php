@@ -24,7 +24,6 @@ $message= "";
         </div>
     </header>
     <main>
-        <h1></h1>
         <div id="wholechat">
             <!-- Header-->
             <div class="chatbox" id="chatheader">
@@ -108,8 +107,8 @@ $message= "";
                 <!-- Senden-->
                 <form id="messageform" action="" method="post">
                     <div class="chatbox" id="sendForm">
-                        <input class="sendMessage" type="text" name="message" required>
-                        <input type="submit" value="Senden">
+                        <input class="data-input" id="sendMessage" type="text" name="message" required placeholder="Schreibe eine Nachricht...">
+                        <input type="submit" id="sendButton" value="Senden">
                     </div>
                 </form>
             </div>
