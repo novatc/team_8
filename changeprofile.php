@@ -73,7 +73,7 @@ if ($validLogin){
 
         <form class="box" action="php/managegamesaction.php" method="post">
             <h1>Spiele verwalten</h1>  
-            <div class="input-wrapper">
+            <div class="input-wrapper" >
                 <select class="selectbox" name="game" required>
                     <optgroup label="Meine Spiele">
                     <?php foreach(array_keys($games) as $game):?>
@@ -107,6 +107,7 @@ if ($validLogin){
                     </optgroup>
                 </select>
                 <label class="left-label">Spiel</label>
+                <div id="select-icon"></div>
             </div>
             <div class="gamebox">
                 <h2>Rang</h2>

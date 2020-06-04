@@ -52,7 +52,7 @@ h5{
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    padding-left: 30px;
+    padding-left: 25px;
 }
 /* Hide the browser's default checkbox/radio button */
 .checkbox-container input, .radiobutton-container input{
@@ -121,7 +121,6 @@ h5{
     position: relative;
     display: flex;
     margin: auto;
-
 }
 .choice-wrapper,.submit-wrapper{
     position: relative;
@@ -133,19 +132,33 @@ h5{
 .choice-wrapper{
     border-bottom: 2px solid var(--purple);
 }
-
-.input-wrapper label{
+#select-icon{
+    position: absolute;
+    width: 30px;
+    height: 30px;
     font-size: medium;
     opacity: 0.8;
-    position: absolute;
     transition: 0.25s;
-    margin: 20px auto;
+    right:10px;
+    align-self: center;
+    background-image: url(../Resourcen/Navigation/expand_more-white-24dp.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    
+}
+.input-wrapper label{
+    position: absolute;
+    font-size: medium;
+    opacity: 0.8;
+    transition: 0.25s;
     text-align: center;
+    z-index: 99;
 }
 .top-label{
     width: 100%;
     text-align: center;
-    padding: 7px 0px  ;
+    margin: 20px auto ;
+    padding: 7px 0px;
     border-bottom: 2px solid var(--purple);
 }
 .left-label{
@@ -167,11 +180,11 @@ h5{
     color: var(--default-white);
     margin: 20px auto;
     padding: 14px 10px;
-    padding-left: 95px;
+    padding-left: 100px;
     border: 2px solid var(--purple);
     border-radius: 24px;
     transition: 0.25s;
-    font-size: 14px;
+    font-size: large;
 }
 .textarea-input{
     display: block;
@@ -183,11 +196,11 @@ h5{
     color: var(--default-white);
     margin: 20px auto;
     padding: 14px 10px;
-    padding-top: 38px;
+    padding-top: 40px;
     border: 2px solid var(--purple);
     border-radius: 24px;
     transition: 0.25s;
-    font-size: 14px;
+    font-size: large;
 }
 .login-input{
     background: none;
@@ -201,7 +214,7 @@ h5{
     color: var(--default-white);
     border-radius: 24px;
     transition: 0.25s;
-    font-size: 14px;
+    font-size: large;
     
 }
 .data-input:focus,  .textarea-input:focus{
@@ -224,14 +237,24 @@ h5{
     color: var(--default-white);
     margin: 20px auto;
     padding: 14px 10px;
-    padding-left: 95px;
+    padding-left: 100px;
     border: 2px solid var(--purple);
     border-radius: 24px;
     transition: 0.25s;
-    font-size: 14px;
+    font-size: large;
+    z-index: 9;
 }
-option,optgroup{
+select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+option, optgroup{
     background: var(--dark-bg-color);
+    font-size: medium;
 }
 /* Hide arrows on number input*/
 input[type=number]{
