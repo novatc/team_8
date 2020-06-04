@@ -104,8 +104,8 @@ header nav .search-icon {
 header nav .search {   
     font-size: 17px;
     border-radius: 5px;
-    width: calc(100% - 5px - 5%);
-    padding-left: 6%;
+    width: calc(100% - 5px - max(25px, 6%));
+    padding-left: max(25px, 6%);
     outline: 0;
     background-color: var(--white-bg-color);
     color: var(--default-black);
@@ -126,11 +126,6 @@ header .search:hover, .search:focus {
 @media screen and (max-width: 780px) {
     header nav a {
         width: 18%;
-    }
-    header nav .search {   
-        width: calc(100% - 5px - 25px);
-        padding-left: 25px;
-
     }
 }
 
