@@ -50,6 +50,7 @@
     background-color: var(--dark-bg-color);
     padding:0;
     padding-left:0;
+    padding-top:5px;
     border-bottom-left-radius:24px;
     border-bottom-right-radius:24px;
 }
@@ -96,11 +97,13 @@
 #sendButton:hover {
     background:  var(--orange);
 }
+
 /*used for the name of the user you're chatting with*/
 label#name {
     font-size:5vh;
     padding-top:2vh;
 }
+
 /*speech bubbles in chat*/
 .speech-bubble {
     position: relative;
@@ -223,8 +226,7 @@ label#name {
         width: 220px;
         font-size:18px;
     }
-    input.sendMessage {
-        min-width:40vw;
-        max-width:40vw;
+    #sendMessage.data-input::placeholder {
+        color:var(--dark-bg-color);
     }
 }
