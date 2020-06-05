@@ -10,7 +10,7 @@
 }
 
 
-.lol {
+#lol {
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -21,7 +21,7 @@
     border: 2.5px solid var(--lol-color);
 }
 
-.valorant {
+#valorant {
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -32,7 +32,7 @@
     border: 2.5px solid var(--valorant-color);
 }
 
-.csgo {
+#csgo {
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -44,7 +44,7 @@
 }
 
 
-.rocketleague {
+#rocketleague {
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;

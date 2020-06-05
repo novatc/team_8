@@ -99,7 +99,7 @@ if ($validLogin){
                         <?php if($game=='League of Legends'):?>
                             <div class="wrapper">
                                 <li class="card">
-                                    <div class="container" class="lol">
+                                    <div class="container" id="lol">
                                         <label class="gamelabel">League of Legends</label>
                                     </div>
                                 </li>
@@ -108,7 +108,7 @@ if ($validLogin){
                         <?php if($game=='CSGO'):?>
                             <div class="wrapper">
                                 <li class="card">
-                                    <div class="container" class="csgo">
+                                    <div class="container" id="csgo">
                                         <label class="gamelabel">CS:GO</label>
                                     </div>
                                 </li>
@@ -117,7 +117,7 @@ if ($validLogin){
                         <?php if($game=='Rocket League'):?>
                             <div class="wrapper">
                                 <li class="card">
-                                    <div class="container" class="rocketleague">
+                                    <div class="container" id="rocketleague">
                                         <label class="gamelabel">Rocket League</label>
                                     </div>
                                 </li>
@@ -126,7 +126,7 @@ if ($validLogin){
                         <?php if($game=='Valorant'):?>
                             <div class="wrapper">
                                 <li class="card">
-                                    <div class="container" class="valorant">
+                                    <div class="container" id="valorant">
                                         <label class="gamelabel">Valorant</label>
                                     </div>    
                                 </li>
