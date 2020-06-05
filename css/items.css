@@ -210,9 +210,6 @@ h5{
     transition: 0.25s;
     font-size: large;
 }
-.data-input:invalid, .login-input:invalid, .textarea-input:invalid{
-    border: 2px solid var(--error-color);
-}
 .textarea-input{
     display: block;
     background: none;
