@@ -1,16 +1,24 @@
 <?php
-$isInputFasle = false;
+session_start();
+
 $required = array('username', 'usermail', 'password', 'repeatpassword');
 $error = false;
+$_SESSION['isLoggedIn'] = false;
 
-foreach ($required as $field) {
-    if (empty($_POST[$field])) {
-        $error = true;
-    } 
+foreach ($required as $field){
+    if (empty($_POST[$field])){
+        $error = true; 
+    }
+}
+if($error==false){
+    if($_POST["password"]!=$_POST["repeatpassword"]){
+        $error=true;
+    }
 }
 if ($error==false) {
     $_SESSION['user'] = $_POST['username'];
     header('Location: playerprofile.php');
+    $_SESSION['isLoggedIn'] = true;
     exit();
 }
 

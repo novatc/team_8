@@ -1,5 +1,6 @@
 @charset "utf-8";
 @import url(items.css);
+
 .grid {
     display: grid;
     grid-template-columns: repeat(5,1fr);
@@ -14,15 +15,16 @@
     grid-column: 1;
     grid-row: 1;
     text-align: left;
+    height: min-content;
     -webkit-box-shadow: 0px 0px 21px 8px var(--light-shadow);
     -moz-box-shadow: 0px 0px 21px 8px var(--light-shadow);
     box-shadow: 0px 0px 21px 8px var(--light-shadow);
     border-radius: 24px;
+    padding-bottom: 10px;
 }
 
 .filter h2{
-    margin-left: 5px;
-    margin-right: 5px;
+    margin: 5px;
     padding-left: 10%;
     border: 2px solid var(--purple);
     border-radius: 24px;
