@@ -6,24 +6,72 @@
     width: 100%;
     height: 85vh;
     opacity: 0.4;
-    background: grey;
+    background: transparent;
+    text-align: center;
+    vertical-align: middle;
+    float: left;
+}
+.leftloggedin, .rightloggedin {
+    bottom: 70px;
+    width: 100%;
+    height: 85vh;
+    opacity: 0.4;
+    background: transparent;
     text-align: center;
     vertical-align: middle;
     float: left;
 }
 
-.left:hover, .right:hover {
+.leftloggedin:hover{
     transform: scale(0.95);
     transition: 0.33s;
-    opacity: 0.5;
+    opacity: 1.0;
+    background: grey;
+    background: url(../Resourcen/Logo/logo_profil_orange.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
+.rightloggedin:hover {
+    transform: scale(0.95);
+    transition: 0.33s;
+    opacity: 1.0;
+    background: grey;
+    background: url(../Resourcen/Logo/logo_spiele_orange.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.left:hover{
+    transform: scale(0.95);
+    transition: 0.33s;
+    opacity: 1.0;
+    background: grey;
+    background: url(../Resourcen/Logo/logo_login_orange.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.right:hover {
+    transform: scale(0.95);
+    transition: 0.33s;
+    opacity: 1.0;
+    background: grey;
+    background: url(../Resourcen/Logo/method-draw-image.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: grey;
+}
+
 
 #grid {
     display: grid;
     grid-template-columns: 50% 50%;
-    background: url(../Resourcen/logo.jpg);
+    background: url(../Resourcen/Logo/logo_purple.png);
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
 
 }
 
