@@ -79,6 +79,7 @@ input.startChat:hover {
     cursor: pointer;
     transform: scale(1.15);
     border-radius: 1%;
+
 }
 
 @media screen and (max-width: 1700px) {
