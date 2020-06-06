@@ -17,7 +17,7 @@
 </header>
 <main>
     <h1 class="title">League of Legends</h1>
-    <div id="grid">
+    <div class="card-grid">
         <div class="filter">
             <h2>Filter</h2>
             <form>

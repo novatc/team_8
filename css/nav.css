@@ -115,6 +115,10 @@ header .search:hover, .search:focus {
     border: 2px solid var(--orange);
 }
 
+.footer a{
+    color: var(--default-white);
+}
+
 /* Tablet */
 @media screen and (max-width: 1080px) {
     header nav .grid-container {

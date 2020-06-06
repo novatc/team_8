@@ -37,6 +37,7 @@ if ($validLogin){
     $language = '';
     $age = '';
     $games = [];
+    $icon="";
 }
 ?>
 
@@ -58,10 +59,10 @@ if ($validLogin){
         </div>
     </header>
     <main>
-        <div class="grid">
+        <div class="profile-grid">
             <div class="profil-header">
                 <div class="picture-wrapper">
-                    <div class="icon" id= <?=htmlspecialchars($icon)?> onclick="location.href='playerprofile.php'"></div>
+                    <div class="icon" id= <?=htmlspecialchars($icon)?>></div>
                 </div>
                 <div class="name-wrapper">
                     <?php if ($validLogin): ?>
