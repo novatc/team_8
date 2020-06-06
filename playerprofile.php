@@ -53,6 +53,28 @@ if ($validLogin){
     <link rel="stylesheet" type="text/css" href="css/icons.css">
 </head>
 <body>
+    <script>
+        function showStats(btnID, statID){   
+            var stats = document.getElementsByClassName("statswrapper");
+            for (var i = 0; i < stats.length; i++) {
+                if(stats[i].id === statID){
+                    stats[i].style.display = "block";
+                }else{
+                    stats[i].style.display = "none";
+                }      
+            }       
+            var btn = document.getElementsByClassName("container");
+            for (var i = 0; i < btn.length; i++) {
+                if(btn[i].id === btnID){
+                    btn[i].style.transform = "scale(1.1)";
+                }else{
+                    btn[i].style.transform = "scale(0.9)";
+                }        
+            }          
+        }
+        
+        
+    </script>
     <header>
         <div class="mainnav">
             <?php include "php/header.php";?>
@@ -99,7 +121,7 @@ if ($validLogin){
                         <?php if($game=='League of Legends'):?>
                             <div class="wrapper">
                                 <li class="card">
-                                    <div class="container" id="lol">
+                                    <div class="container" id="lol" onclick="showStats('lol', 'lol-stats')">
                                         <label class="gamelabel">League of Legends</label>
                                     </div>
                                 </li>
@@ -108,7 +130,7 @@ if ($validLogin){
                         <?php if($game=='CSGO'):?>
                             <div class="wrapper">
                                 <li class="card">
-                                    <div class="container" id="csgo">
+                                    <div class="container" id="csgo" onclick="showStats('csgo', 'csgo-stats')">
                                         <label class="gamelabel">CS:GO</label>
                                     </div>
                                 </li>
@@ -117,7 +139,7 @@ if ($validLogin){
                         <?php if($game=='Rocket League'):?>
                             <div class="wrapper">
                                 <li class="card">
-                                    <div class="container" id="rocketleague">
+                                    <div class="container" id="rocketleague" onclick="showStats('rocket', 'rocket-stats')">
                                         <label class="gamelabel">Rocket League</label>
                                     </div>
                                 </li>
@@ -126,7 +148,7 @@ if ($validLogin){
                         <?php if($game=='Valorant'):?>
                             <div class="wrapper">
                                 <li class="card">
-                                    <div class="container" id="valorant">
+                                    <div class="container" id="valorant" onclick="showStats('valorant', 'valorant-stats')">
                                         <label class="gamelabel">Valorant</label>
                                     </div>    
                                 </li>
@@ -134,15 +156,56 @@ if ($validLogin){
                         <?php endif;?>
                     <?php endforeach;?>
                 </ul>
-            
+                        
                 <div class="game-stats">
-                    <div>
-                        <label class="attribute">ELO(CSGO): </label><label class="value"><?php if(isset($games['CSGO'])) echo htmlspecialchars($games['CSGO']['rank'])?></label>
-                    </div>
-                    <div>
-                        <label class="attribute">Position(CSGO): </label><label class="value"><?php if(isset($games['CSGO'])) echo htmlspecialchars($games['CSGO']['positions'])?></label>
-                    </div>
-                </div>
+                <?php foreach(array_keys($games) as $game):?>
+                        <?php if($game=='League of Legends'):?>
+                            <div class=statswrapper id="lol-stats"> 
+                                <h2 class="statslabel">League of Legends</h2>
+                                <div>
+                                    <label class="attribute">ELO: </label><label class="value"><?php if(isset($games['League of Legends'])) echo htmlspecialchars($games['League of Legends']['rank'])?></label>
+                                </div>
+                                <div>
+                                    <label class="attribute">Position: </label><label class="value"><?php if(isset($games['League of Legends'])) echo htmlspecialchars($games['League of Legends']['positions'])?></label>
+                                </div>
+                            </div> 
+                        <?php endif;?>
+                        <?php if($game=='CSGO'):?>
+                            <div class=statswrapper id="csgo-stats"> 
+                                <h2 class="statslabel">CS:GO</h2>
+                                <div>
+                                    <label class="attribute">ELO: </label><label class="value"><?php if(isset($games['CSGO'])) echo htmlspecialchars($games['CSGO']['rank'])?></label>
+                                </div>
+                                <div>
+                                    <label class="attribute">Position: </label><label class="value"><?php if(isset($games['CSGO'])) echo htmlspecialchars($games['CSGO']['positions'])?></label>
+                                </div>
+                            </div>
+                        <?php endif;?>
+                        <?php if($game=='Rocket League'):?>
+                            <div class=statswrapper id="rocket-stats"> 
+                                <h2 class="statslabel">Rocket League</h2>
+                                <div>
+                                    <label class="attribute">ELO: </label><label class="value"><?php if(isset($games['Rocket League'])) echo htmlspecialchars($games['Rocket League']['rank'])?></label>
+                                </div>
+                                <div>
+                                    <label class="attribute">Position: </label><label class="value"><?php if(isset($games['Rocket League'])) echo htmlspecialchars($games['Rocket League']['positions'])?></label>
+                                </div>
+                            </div>
+                        <?php endif;?>
+                        <?php if($game=='Valorant'):?>
+                            <div class=statswrapper id="valorant-stats"> 
+                                <h2 class="statslabel">Valorant</h2>
+                                <div>
+                                    <label class="attribute">ELO: </label><label class="value"><?php if(isset($games['Valorant'])) echo htmlspecialchars($games['Valorant']['rank'])?></label>
+                                </div>
+                                <div>
+                                    <label class="attribute">Position: </label><label class="value"><?php if(isset($games['Valorant'])) echo htmlspecialchars($games['Valorant']['positions'])?></label>
+                                </div>
+                            </div>
+                        <?php endif;?>
+                    <?php endforeach;?>
+                    <script>showStats('','')</script>
+                </div>   
             </div>            
         </div>
     </main>
