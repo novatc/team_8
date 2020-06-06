@@ -19,7 +19,7 @@
 </header>
 <main>
     <h1 class="title">Spieleübersicht</h1> 
-    <div class="grid">
+    <div class="card-grid">
         <div class="filter">
             <h2>Filter</h2>
             <form>

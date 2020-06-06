@@ -59,7 +59,7 @@ if ($validLogin){
         </div>
     </header>
     <main>
-        <div class="grid">
+        <div class="profile-grid">
             <div class="profil-header">
                 <div class="picture-wrapper">
                     <div class="icon" id= <?=htmlspecialchars($icon)?>></div>

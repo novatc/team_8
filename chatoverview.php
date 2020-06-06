@@ -19,7 +19,7 @@
     </header>
     <main>
         <h1>Chatübersicht</h1>
-        <div class="grid">
+        <div class="chat-grid">
             <div></div>
             <div class="boxname" id="active">Aktive Chats</div>
             <div></div>
