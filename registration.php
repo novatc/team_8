@@ -1,5 +1,7 @@
 <?php
 session_start();
+include "db/DUMMYdatabase.db";
+$database = new SQLite();
 
 $required = array('username', 'usermail', 'password', 'repeatpassword');
 $error = false;
@@ -16,10 +18,18 @@ if($error==false){
     }
 }
 if ($error==false) {
-    $_SESSION['user'] = $_POST['username'];
-    header('Location: playerprofile.php');
-    $_SESSION['isLoggedIn'] = true;
-    exit();
+    $name = $_POST['username'];
+    $email = $_POST['usermail'];
+    $pwd = $_POST['password'];
+    if (filter_var($email, FILTER_VALIDATE_EMAIL)){
+        if ($database->register($name,$email,$pwd)){
+            $_SESSION['user'] = $_POST['username'];
+            header('Location: playerprofile.php');
+            $_SESSION['isLoggedIn'] = true;
+            exit();
+        }
+    }
+
 }
 
 

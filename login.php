@@ -1,22 +1,33 @@
 <?php
 session_start();
+include 'db/DUMMYdatabase.db';
+$database = new SQLite();
 
 $isInputFalse = false;
 $required = array('username', 'password');
 $error = false;
 $_SESSION['isLoggedIn'] = false;
 
-foreach ($required as $field){
-    if (empty($_POST[$field])){
+foreach ($required as $field) {
+    if (empty($_POST[$field])) {
         $error = true;
         $isInputFalse = true;
     }
 }
-if ($error==false) {
-    $_SESSION['user'] = $_POST['username'];
-    header('Location: playerprofile.php');
-    $_SESSION['isLoggedIn'] = true;
-    exit();
+if ($error == false) {
+
+    $name = $_POST['username'];
+    $pwd = $_POST['password'];
+    $validLogginAttemd = $database->login($name, $pwd);
+
+    if ($validLogginAttemd) {
+        $_SESSION['user'] = $_POST['username'];
+        header('Location: playerprofile.php');
+        $_SESSION['isLoggedIn'] = true;
+        exit();
+    }
+
+
 }
 
 ?>
