@@ -12,7 +12,7 @@ foreach ($fields as $field){
 }
 
 if($posted) {
-    header('Location: ../changeprofile.php');
+    header('Location: ../../changeprofile.php');
     exit();
 }
 

@@ -26,7 +26,12 @@ if ($validLogin){
         $games = $_SESSION['games'];
     }else{
         $games = [];
-    }     
+    }
+    if(isset($_SESSION['gamechoice'])){
+        $gamechoice = $_SESSION['gamechoice'];
+    }else{
+        $gamechoice = '';
+    }        
     
 } else{
     $username = '';
@@ -34,6 +39,7 @@ if ($validLogin){
     $language = '';
     $age = '';
     $games = [];
+    $gamechoice = '';
 }
 ?>
 
@@ -54,7 +60,7 @@ if ($validLogin){
         </div>
     </header>
     <main>
-        <form class="box" action="php/changeprofileaction.php" method="post">
+        <form class="box" action="php/actions/changeprofileaction.php" method="post">
             <h1>Profil anpassen</h1>
             <div class="input-wrapper">
                 <textarea name="description" class="textarea-input" cols="30" rows="10"><?= htmlspecialchars($description)?></textarea>
@@ -71,108 +77,89 @@ if ($validLogin){
         
             <input class="submit-btn" id="submit-form" type="submit" name="changesubmit" value="Speichern">
         </form>
-
-        <form class="box" action="php/managegamesaction.php" method="post">
-            <h1>Spiele verwalten</h1>  
-            <div class="input-wrapper" >
-                <select class="selectbox" name="game" required>
-                    <optgroup label="Meine Spiele">
-                    <?php foreach(array_keys($games) as $game):?>
-                        <?php if($game=='CSGO'):?>
-                            <option>CSGO</option>
-                        <?php endif;?>
-                        <?php if($game=='League of Legends'):?>
-                            <option>League of Legends</option>
-                        <?php endif;?>
-                        <?php if($game=='Rocket League'):?>
-                            <option>Rocket League</option>
-                        <?php endif;?>
-                        <?php if($game=='Valorant'):?>
-                            <option>Valorant</option>
-                        <?php endif;?>
-                    <?php endforeach;?>
-                    </optgroup>
-                    <optgroup label="Weitere Spiele hinzufügen">
-                    <?php if(!in_array('CSGO', array_keys($games))):?>
-                            <option>CSGO</option>
-                        <?php endif;?>
-                        <?php if(!in_array('League of Legends', array_keys($games))):?>
-                            <option>League of Legends</option>
-                        <?php endif;?>
-                        <?php if(!in_array('Rocket League', array_keys($games))):?>
-                            <option>Rocket League</option>
-                        <?php endif;?>
-                        <?php if(!in_array('Valorant', array_keys($games))):?>
-                            <option>Valorant</option>
-                        <?php endif;?>
-                    </optgroup>
-                </select>
-                <label class="left-label">Spiel</label>
-                <div id="select-icon"></div>
-            </div>
-            <div class="gamebox">
-                <h2>Rang</h2>
-                <div class=choice-wrapper>  
-                    <label class="radiobutton-container">Master
-                        <input type="radio" name="rank" value="Master" required>
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="radiobutton-container">Diamant
-                        <input type="radio" name="rank" value="Diamant" required>
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="radiobutton-container">Platin
-                        <input type="radio" name="rank" value="Platin" required>
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="radiobutton-container">Gold
-                        <input type="radio" name="rank" value="Gold" required>
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="radiobutton-container">Silber
-                        <input type="radio" name="rank" value="Silber" required>
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="radiobutton-container">Bronze
-                        <input type="radio" name="rank" value="Bronze" required>
-                        <span class="checkmark"></span>
-                    </label>
+        <div class="box"> 
+            <form  action="php/actions/choosegameaction.php" method="post">
+                <h1>Spiele verwalten</h1>  
+                <div class="input-wrapper">
+                    <select class="selectbox" name="game" required>
+                        <optgroup label="Gewählt">
+                            <option value='<?php echo $gamechoice?>' selected='selected'><?php echo $gamechoice?></option>
+                        <optgroup label="Meine Spiele">
+                        <?php foreach(array_keys($games) as $game):?>
+                            <?php if($game=='CSGO'):?>
+                                <option value='CSGO'>CSGO</option>
+                            <?php endif;?>
+                            <?php if($game=='League of Legends'):?>
+                                <option value='League of Legends'>League of Legends</option>
+                            <?php endif;?>
+                            <?php if($game=='Rocket League'):?>
+                                <option value='Rocket League'>Rocket League</option>
+                            <?php endif;?>
+                            <?php if($game=='Valorant'):?>
+                                <option value='Valorant'>Valorant</option>
+                            <?php endif;?>
+                        <?php endforeach;?>
+                        </optgroup>
+                        <optgroup label="Weitere Spiele hinzufügen">
+                        <?php if(!in_array('CSGO', array_keys($games))):?>
+                                <option value='CSGO'>CSGO</option>
+                            <?php endif;?>
+                            <?php if(!in_array('League of Legends', array_keys($games))):?>
+                                <option value='League of Legends'>League of Legends</option>
+                            <?php endif;?>
+                            <?php if(!in_array('Rocket League', array_keys($games))):?>
+                                <option value='Rocket League'>Rocket League</option>
+                            <?php endif;?>
+                            <?php if(!in_array('Valorant', array_keys($games))):?>
+                                <option value='Valorant'>Valorant</option>
+                            <?php endif;?>
+                        </optgroup>
+                    </select>
+                    <label class="left-label">Spiel</label>
+                    <div id="select-icon"></div>
                 </div>
-                <h2>Position</h2>
-                <div class=choice-wrapper>  
-                    <label class="checkbox-container">Top Lane
-                        <input type="checkbox" name="position[]" value="Top Lane">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="checkbox-container">Jungle
-                        <input type="checkbox" name="position[]" value="Jungle">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="checkbox-container">Mid
-                        <input type="checkbox" name="position[]" value="Mid">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="checkbox-container">Bottom
-                        <input type="checkbox" name="position[]" value="Bottom">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="checkbox-container">Support
-                        <input type="checkbox" name="position[]" value="Support">
-                        <span class="checkmark"></span>
-                    </label>
-                </div>
-                <label class="checkbox-container">Ich möchte, dass andere Spieler mich über dieses Spiel finden.
-                        <input type="checkbox" name="visible" checked>
-                        <span class="checkmark"></span>
-                </label>
-            </div>
-            <div class="submit-wrapper">
-                <input class="submit-btn" id="submit-form" type="submit" name="deletegame" value="Entfernen">
-                <input class="submit-btn" id="submit-form" type="submit" name="savegame" value="Speichern">
-            </div>
-        </form>
+                <input class="submit-btn" id="submit-form" type="submit" name="gamechoicesubmit" value="Wählen">
+            </form>
+            <?php if($gamechoice != ''): ?>
+            <form action="php/actions/managegamesaction.php" method="post">
+                <?php if($gamechoice == 'CSGO'): ?>
+                    <div class="gamebox">
+                        <?php include "php/statistics/csgostatistics.php";?>
+                    </div>
+                    <div class="submit-wrapper">
+                        <input class="submit-btn" id="submit-form" type="submit" name="deletegame" value="Entfernen">
+                        <input class="submit-btn" id="submit-form" type="submit" name="savegame" value="Speichern">
+                    </div>
+                <?php endif; ?>
+                <?php if($gamechoice == 'League of Legends'): ?>
+                    <div class="gamebox">
+                        <?php include "php/statistics/lolstatistics.php";?>
+                    <div class="submit-wrapper">
+                        <input class="submit-btn" id="submit-form" type="submit" name="deletegame" value="Entfernen">
+                        <input class="submit-btn" id="submit-form" type="submit" name="savegame" value="Speichern">
+                    </div>
+                <?php endif; ?>
+                <?php if($gamechoice == 'Rocket League'): ?>
+                    <div class="gamebox">
+                        <?php include "php/statistics/rocketleaguestatistics.php";?>
+                    <div class="submit-wrapper">
+                        <input class="submit-btn" id="submit-form" type="submit" name="deletegame" value="Entfernen">
+                        <input class="submit-btn" id="submit-form" type="submit" name="savegame" value="Speichern">
+                    </div>
+                <?php endif; ?>
+                <?php if($gamechoice == 'Valorant'): ?>
+                    <div class="gamebox">
+                        <?php include "php/statistics/valorantstatistics.php";?>
+                    <div class="submit-wrapper">
+                        <input class="submit-btn" id="submit-form" type="submit" name="deletegame" value="Entfernen">
+                        <input class="submit-btn" id="submit-form" type="submit" name="savegame" value="Speichern">
+                    </div>
+                <?php endif; ?>
+            </form>
+            <?php endif; ?>
+        </div>
 
-        <form class="box" action="php/changeprofileaction.php" method="post">
+        <form class="box" action="php/actions/changeprofileaction.php" method="post">
             <h1>Icon ändern</h1>
             <div class="gridIcons">
                 <div class="icon" id="avatarTeemo"></div>

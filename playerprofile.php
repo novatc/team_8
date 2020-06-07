@@ -29,7 +29,7 @@ if ($validLogin){
         $games = $_SESSION['games'];
     }else{
         $games = [];
-    }     
+    } 
     
 } else{
     $username = '';
@@ -96,7 +96,7 @@ if ($validLogin){
                 <div class="settings-wrapper">
                     <?php if ($validLogin): ?>    
                     <a id="settings-link" href="changeprofile.php"></a>
-                    <a id="logout-link" href="php/logout.php"></a>
+                    <a id="logout-link" href="php/actions/logoutaction.php"></a>
                     <?php endif; ?>
                 </div>
                 <div class="message-wrapper">
@@ -158,51 +158,60 @@ if ($validLogin){
                 </ul>
                         
                 <div class="game-stats">
+                
                 <?php foreach(array_keys($games) as $game):?>
                     <?php if($game=='League of Legends'):?>
                         <div class=statswrapper id="lol-stats"> 
                             <h2 class="statslabel">League of Legends</h2>
                             <div>
-                                <label class="attribute">ELO: </label><label class="value"><?php if(isset($games['League of Legends'])) echo htmlspecialchars($games['League of Legends']['rank'])?></label>
+                                <label class="attribute">ELO: </label><label class="value"><?php echo htmlspecialchars($games['League of Legends']['rank'])?></label>
                             </div>
-                            <div>
-                                <label class="attribute">Position: </label><label class="value"><?php if(isset($games['League of Legends'])) echo htmlspecialchars($games['League of Legends']['positions'])?></label>
-                            </div>
+                            <?php if(isset($games['League of Legends']['roles'])): if(count($games['League of Legends']['roles'])>0):?>
+                                <div>
+                                    <label class="attribute">Positionen: </label><label class="value"><?php echo htmlspecialchars(implode(", ", $games['League of Legends']['roles']))?></label>
+                                </div>
+                            <?php  endif; endif; ?>
                         </div> 
                     <?php endif;?>
                     <?php if($game=='CSGO'):?>
                         <div class=statswrapper id="csgo-stats"> 
                             <h2 class="statslabel">CS:GO</h2>
                             <div>
-                                <label class="attribute">ELO: </label><label class="value"><?php if(isset($games['CSGO'])) echo htmlspecialchars($games['CSGO']['rank'])?></label>
+                                <label class="attribute">ELO: </label><label class="value"><?php echo htmlspecialchars($games['CSGO']['rank'])?></label>
                             </div>
-                            <div>
-                                <label class="attribute">Position: </label><label class="value"><?php if(isset($games['CSGO'])) echo htmlspecialchars($games['CSGO']['positions'])?></label>
-                            </div>
+                            <?php if(isset($games['CSGO']['roles'])): if(count($games['CSGO']['roles'])>0):?>
+                                <div>
+                                    <label class="attribute">Rollen: </label><label class="value"><?php echo htmlspecialchars(implode(", ", $games['CSGO']['roles']))?></label>
+                                </div>
+                            <?php  endif; endif; ?>
                         </div>
                     <?php endif;?>
                     <?php if($game=='Rocket League'):?>
                         <div class=statswrapper id="rocket-stats"> 
                             <h2 class="statslabel">Rocket League</h2>
                             <div>
-                                <label class="attribute">ELO: </label><label class="value"><?php if(isset($games['Rocket League'])) echo htmlspecialchars($games['Rocket League']['rank'])?></label>
+                                <label class="attribute">ELO: </label><label class="value"><?php echo htmlspecialchars($games['Rocket League']['rank'])?></label>
                             </div>
-                            <div>
-                                <label class="attribute">Position: </label><label class="value"><?php if(isset($games['Rocket League'])) echo htmlspecialchars($games['Rocket League']['positions'])?></label>
-                            </div>
+                            <?php if(isset($games['Rocket League']['roles'])): if(count($games['Rocket League']['roles'])>0):?>
+                                <div>
+                                    <label class="attribute">Position: </label><label class="value"><?php echo htmlspecialchars(implode(", ", $games['Rocket League']['roles']))?></label>
+                                </div>
+                            <?php endif; endif; ?>
                         </div>
                     <?php endif;?>
                     <?php if($game=='Valorant'):?>
                         <div class=statswrapper id="valorant-stats"> 
                             <h2 class="statslabel">Valorant</h2>
                             <div>
-                                <label class="attribute">ELO: </label><label class="value"><?php if(isset($games['Valorant'])) echo htmlspecialchars($games['Valorant']['rank'])?></label>
+                                <label class="attribute">ELO: </label><label class="value"><?php echo htmlspecialchars($games['Valorant']['rank'])?></label>
                             </div>
-                            <div>
-                                <label class="attribute">Position: </label><label class="value"><?php if(isset($games['Valorant'])) echo htmlspecialchars($games['Valorant']['positions'])?></label>
-                            </div>
+                            <?php if(isset($games['Valorant']['roles'])): if(count($games['Valorant']['roles'])>0):?>
+                                <div>
+                                    <label class="attribute">Position: </label><label class="value"><?php echo htmlspecialchars(implode(", ", $games['Valorant']['roles']))?></label>
+                                </div>
+                            <?php endif; endif; ?>
                         </div>
-                    <?php endif;?>
+                        <?php endif;?>
                 <?php endforeach;?>  
                 </div> 
                 <?php if(count($games)>0): ?>
