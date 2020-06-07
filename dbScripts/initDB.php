@@ -1,12 +1,8 @@
 <?php
 try {
 
-    $dbUser = new SQLite3('DUMMYuser.db');
-    $dbGames = new SQLite3('DUMMYgames.db');
-    $dbLol = new SQLite3('lol.db');
-    $dbcsgo = new SQLite3('csgo.db');
-    $dbvalorant = new SQLite3('valorant.db');
-    $dbrocketleague = new SQLite3('rocketleague.db');
+    $dbUser = new SQLite3('../db/DUMMYdatabase.db');
+
 
     $sql = "CREATE TABLE user (
       id INTEGER PRIMARY KEY,  
@@ -17,7 +13,7 @@ try {
       age INTEGER,
       language TEXT,
       description TEXT,
-      chat TEXT,
+      chat TEXT
     )";
     if ( $dbUser->exec( $sql ) ) {
         echo 'Nutzertabelle angelegt.';
