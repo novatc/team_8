@@ -204,20 +204,22 @@ if ($validLogin){
                         </div>
                     <?php endif;?>
                 <?php endforeach;?>  
-                </div>  
-                <?php $game = array_keys($games);?>
-                <?php if($game[0]=='League of Legends'):?>
-                <script>showStats('lol', 'lol-stats')</script>
+                </div> 
+                <?php if(count($games)>0): ?>
+                    <?php $game = array_keys($games);?>
+                    <?php if($game[0]=='League of Legends'):?>
+                    <script>showStats('lol', 'lol-stats')</script>
+                    <?php endif;?>
+                    <?php if($game[0]=='CSGO'):?>
+                    <script>showStats('csgo', 'csgo-stats')</script>
+                    <?php endif;?>
+                    <?php if($game[0]=='Rocket League'):?>
+                    <script>showStats('rocket', 'rocket-stats')</script>
+                    <?php endif;?>
+                    <?php if($game[0]=='Valorant'):?>
+                    <script>showStats('valorant', 'valorant-stats')</script>
+                    <?php endif;?> 
                 <?php endif;?>
-                <?php if($game[0]=='CSGO'):?>
-                <script>showStats('csgo', 'csgo-stats')</script>
-                <?php endif;?>
-                <?php if($game[0]=='Rocket League'):?>
-                <script>showStats('rocket', 'rocket-stats')</script>
-                <?php endif;?>
-                <?php if($game[0]=='Valorant'):?>
-                <script>showStats('valorant', 'valorant-stats')</script>
-                <?php endif;?> 
             </div>            
         </div>
     </main>
