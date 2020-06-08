@@ -93,10 +93,11 @@ class DatabaseClass extends DatabaseDAO
             
             $db->exec( $sql );
             $db->commit();
+            return true;
 
         } catch (Exception $ex) {
-            $cmd->rollBack();
-            
+            $db->rollBack();
+            return false;
         }
         // TODO: Implement register() method.
     }

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "dbScripts/DUMMYdatabase.db";
+include "db/DUMMYdatabase.db";
 include "dbScripts/database.php";
 $database = new DatabaseClass();
 
@@ -28,6 +28,8 @@ if ($error==false) {
             header('Location: playerprofile.php');
             $_SESSION['isLoggedIn'] = true;
             exit();
+        } else{
+            echo "ERROR";
         }
     }
 
