@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "db/DUMMYdatabase.db";
+include "dbScripts/DUMMYdatabase.db";
 include "dbScripts/database.php";
 $database = new DatabaseClass();
 

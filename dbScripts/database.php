@@ -22,8 +22,7 @@ class DatabaseClass extends DatabaseDAO
         try {
             $user = "root";
             $pw = null;
-            $dsn = "mysql:dbname=DUMMY;host=localhost";
-            $dsn = "sqlite:DUMMY.db";
+            $dsn = "sqlite:DUMMYdatabase.db";
             $db = new PDO($dsn,$user,$pw);
 
         } catch (PDOException $ex) {
@@ -83,23 +82,21 @@ class DatabaseClass extends DatabaseDAO
 
     function register($user, $email, $password)
     {
+        $user = 'root';
+        $pw = null;
+        $dsn = 'sqlite:DUMMYdatabase.db';
+        $db = new PDO( $dsn, $user, $pw );
         try {
-            $db = $this->connenctToDb($this->databaseFile);
-            $cmd = $db;
-            $cmd->exec();
-            $cmd->beginTransaction();
-            $valid = false;
+            
+            $db->beginTransaction();
+            $sql = "INSERT INTO user (name,mail, password) VALUES ($user, $email, $password)";
+            
+            $db->exec( $sql );
+            $db->commit();
 
-            $isUserInDatabse = $this->isUserInDataBase($user);
-            if (!$isUserInDatabse) {
-                $this->addUserRow($user, $email, $password);
-                $valid = true;
-            }
-            $cmd->commit();
-            return $valid;
         } catch (Exception $ex) {
             $cmd->rollBack();
-            return false;
+            
         }
         // TODO: Implement register() method.
     }
