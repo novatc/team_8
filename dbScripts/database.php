@@ -23,7 +23,7 @@ class SQLite extends DatabaseDAO
             if (!is_writable($database)) {
                 chmod($database, 0777);
             }
-            $this->db = new PDO("sqlite3:" . $database);
+            $this->db = new PDO("sqlite:" . $database);
             return $this->db;
         } catch (PDOException $ex) {
             throw new Exception("something went wrong trying to connect to database: " . $ex->getMessage());

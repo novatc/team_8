@@ -1,10 +1,14 @@
 <?php
 try {
 
-    $dbUser = new SQLite3('../db/DUMMYdatabase.db');
+    $user = "root";
+    $pw = null;
+    $dsn = "sqlite:DUMMYdatabase.db";
+    $id_feld = "id INTEGER PRIMARY KEY AUTOINCREMENT,"; // SQLite-Syntax
+    $dbUser = new PDO($dsn, $user, $pw);
 
 
-    $sql = "CREATE TABLE user (
+    $sql = "CREATE TABLE user ( 
       id INTEGER PRIMARY KEY,  
       name TEXT,
       mail TEXT,
@@ -15,56 +19,46 @@ try {
       description TEXT,
       chat TEXT
     )";
-    if ( $dbUser->exec( $sql ) ) {
-        echo 'Nutzertabelle angelegt.';
-    } else {
-        echo 'Fehler beim Anlegen der Tabelle!';
-    }
+    $dbUser->exec( $sql );
+    echo 'Nutzertabelle angelegt.';
+    
 
     $sql = "CREATE TABLE leagueoflegends (
       userid INTEGER PRIMARY KEY,
       rank TEXT,
       position TEXT
 )";
-    if ( $dbUser->exec( $sql ) ) {
-        echo 'LolTabelle angelegt.';
-    } else {
-        echo 'Fehler beim Anlegen der Tabelle!';
-    }
+    $dbUser->exec( $sql );
+    echo 'LolTabelle angelegt.';
+   
 
     $sql = "CREATE TABLE csgo (
       userid INTEGER PRIMARY KEY,
       rank TEXT,
       position TEXT
 )";
-    if ( $dbUser->exec( $sql ) ) {
-        echo 'csgo Tabelle angelegt.';
-    } else {
-        echo 'Fehler beim Anlegen der Tabelle!';
-    }
+    $dbUser->exec( $sql );
+    echo 'csgo Tabelle angelegt.';
+    
 
     $sql = "CREATE TABLE valorant (
       userid INTEGER PRIMARY KEY,
       rank TEXT,
       position TEXT
 )";
-    if ( $dbUser->exec( $sql ) ) {
-        echo 'valorant Tabelle angelegt.';
-    } else {
-        echo 'Fehler beim Anlegen der Tabelle!';
-    }
+    $dbUser->exec( $sql );
+    echo 'valorant Tabelle angelegt.';
+    
     $sql = "CREATE TABLE rocketleague (
       userid INTEGER PRIMARY KEY,
       rank TEXT,
       position TEXT
 )";
-    if ( $dbUser->exec( $sql ) ) {
-        echo 'Rocketleague Tabelle angelegt.';
-    } else {
-        echo 'Fehler beim Anlegen der Tabelle!';
-    }
+    $dbUser->exec( $sql );
+    echo 'Rocketleague Tabelle angelegt.';
+    
 
-} catch (Exception $e){
+} catch (PDOException $e){
     echo 'Fehler: '. $e->getMessage();
 }
 ?>
