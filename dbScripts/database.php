@@ -22,6 +22,7 @@ class DatabaseClass extends DatabaseDAO
         try {
             $user = "root";
             $pw = null;
+            $dsn = "sqlite:DUMMYdatabase.db";
             $db = new PDO($dsn,$user,$pw);
             return $db;
         } catch (PDOException $ex) {
@@ -89,7 +90,7 @@ class DatabaseClass extends DatabaseDAO
         try {
             
             $db->beginTransaction();
-            $sql = "INSERT INTO user (name,mail, password) VALUES ($user, $email, $password)";
+            $sql = "INSERT INTO user (name,mail, password) VALUES ($user, $email, $password);";
             
             $db->exec( $sql );
             $db->commit();
