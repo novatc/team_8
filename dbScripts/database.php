@@ -15,18 +15,18 @@ class DatabaseClass extends DatabaseDAO
 {
 
     public $db = null;
-    public $databaseFile = "..db/DUMMYdatabase.db";
+    public $dsn = "sqlite:DUMMYdatabase.db";
 
-    public function connenctToDb($database)
+    public function connenctToDb($dsn)
     {
         try {
             $user = "root";
             $pw = null;
-            $dsn = "sqlite:DUMMYdatabase.db";
             $db = new PDO($dsn,$user,$pw);
-
+            return $db;
         } catch (PDOException $ex) {
             throw new Exception("something went wrong trying to connect to database: " . $ex->getMessage());
+            return false;
         }
     }
 
@@ -38,7 +38,7 @@ class DatabaseClass extends DatabaseDAO
     public function login($user, $password)
     {
         try {
-            $db = $this->connenctToDb($this->databaseFile);
+            $db = $this->connenctToDb($this->dsn);
             $cmd = $db;
             $cmd->exec();
             $cmd->beginTransaction();
@@ -85,7 +85,7 @@ class DatabaseClass extends DatabaseDAO
         $user = 'root';
         $pw = null;
         $dsn = 'sqlite:DUMMYdatabase.db';
-        $db = new PDO( $dsn, $user, $pw );
+        $db = $this->connenctToDb($this->dsn);
         try {
             
             $db->beginTransaction();
