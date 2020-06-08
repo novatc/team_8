@@ -1,7 +1,8 @@
 <?php
 session_start();
 include "db/DUMMYdatabase.db";
-$database = new SQLite();
+include "dbScripts/database.php";
+$database = new DatabaseClass();
 
 $required = array('username', 'usermail', 'password', 'repeatpassword');
 $error = false;

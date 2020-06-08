@@ -11,7 +11,7 @@ abstract class DatabaseDAO
     abstract function addUserRow($user, $email, $password);
 }
 
-class SQLite extends DatabaseDAO
+class DatabaseClass extends DatabaseDAO
 {
 
     public $db = null;
@@ -20,11 +20,12 @@ class SQLite extends DatabaseDAO
     public function connenctToDb($database)
     {
         try {
-            if (!is_writable($database)) {
-                chmod($database, 0777);
-            }
-            $this->db = new PDO("sqlite:" . $database);
-            return $this->db;
+            $user = "root";
+            $pw = null;
+            $dsn = "mysql:dbname=DUMMY;host=localhost";
+            $dsn = "sqlite:DUMMY.db";
+            $db = new PDO($dsn,$user,$pw);
+
         } catch (PDOException $ex) {
             throw new Exception("something went wrong trying to connect to database: " . $ex->getMessage());
         }
