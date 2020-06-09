@@ -47,7 +47,6 @@ class DatabaseClass extends DatabaseDAO
                 return false;
             }    
         } catch (Exception $ex) {
-            $cmd->rollBack();
             return false;
         }
     }
@@ -103,10 +102,7 @@ class DatabaseClass extends DatabaseDAO
 
     private function validatePassword($password, $hash)
     {
-        if (password_verify($password, $hash)) {
-            return true;
-        }
-        return false;
+        return password_verify($password, $hash);
     }
 
     private function encodePassword($password)

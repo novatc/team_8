@@ -14,33 +14,43 @@ $pwdrepeat = $_POST['password'];
 /* Check if input field empty */
 foreach ($required as $field){
     if (empty($_POST[$field])){
-        exit("Nicht alle Felder ausgefüllt!");
+        $error = true;
+        echo ("Nicht alle Felder ausgefüllt!");
     }
 }
 
 /* Check if username in DB */
 $id = $database->getUser($username)->id;
 if($id != false){
-    exit("Nutzer berits in Datenbank mit ID: $id");
+    $error = true;
+    echo ("Nutzer berits in Datenbank mit ID: $id");
 }
 
 /* Check if password and passwordrepeat are identical*/
 if($pwd != $pwdrepeat){
-    
+    $error = true;
+    echo ("Die Passwörter stimmen nicht überein");
 }
 /* Check if email is correct*/
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
-    exit("Bitte eine gültige Email-Adresse angeben!");
+    $error = true;
+    echo ("Bitte eine gültige Email-Adresse angeben!");
 }
 
-if ($database->register($username,$email,$pwd)){
-    $_SESSION['user'] = $username;
-    $_SESSION['isLoggedIn'] = true;
-    header('Location: playerprofile.php');
+if(!$error){
+    if ($database->register($username,$email,$pwd)){
+        $_SESSION['user'] = $username;
+        $_SESSION['isLoggedIn'] = true;
+        header('Location: playerprofile.php');
+        exit();
+    } else{
+        echo "Huch etwas ist schief gelaufen. Bitte versuchen Sie es erneut!";
+    }
+}else{
+    header('Location: registration.php');
     exit();
-} else{
-    exit("Huch etwas ist schief gelaufen. Bitte versuchen Sie es erneut!");
 }
+
     
 ?>
 
