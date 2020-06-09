@@ -14,11 +14,12 @@
     --light-shadow: rgba(143,138,131,0.1);
     --dark-shadow: black;
 
-    /* Highlight Colors*/
-    --orange: #eb6d47;
-    --purple: #7b5393;
-    --light-purple: #a17cb6;
-    --error-color: #cc0000;
+    /* Highlight Colors extracted from Logo*/
+    --orange: #d92f14;
+    --light-orange: #eb6d47;
+    --purple: #3b1b55;
+    --light-purple: #7b5393;
+    
 
     /* Speach Bubble Color */
     --bubble-color1: #789692;

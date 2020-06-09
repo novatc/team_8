@@ -44,9 +44,9 @@ header nav a{
 }
 header nav #home-link{
     color: transparent; 
-    background: url(../Resourcen/Navigation/home-white-24dp.svg);
+    background: url(../Resourcen/Logo/logo_orange.png);
     background-repeat: no-repeat;
-    background-size: 35px;
+    background-size: contain;
     background-position: center;
     display: inline-block;
 }
