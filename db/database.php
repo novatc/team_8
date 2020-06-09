@@ -37,17 +37,49 @@ class DatabaseClass extends DatabaseDAO
         $this->connenctToDb();
         $db = $this->db;
         try {
-            $user = $this->getUser($user);
-            $userpassword = $user->password;
-            if($this->validatePassword($password, $userpassword)){
-                if($userpassword == $password){
-                    return true;
+            $db->beginTransaction();
+            $user = htmlspecialchars($user);
+            $password = htmlspecialchars($password);
+
+            $sql = "SELECT * FROM user WHERE name = :user";
+            $cmd = $db->prepare($sql);
+            $cmd->bindParam(":user", $user);
+            $cmd->execute();
+
+            $userObject = $cmd->fetchObject();
+            if ($userObject != null){
+                $userpassword = $userObject->password;
+                if ($this->validatePassword($password, $userpassword)){
+                    if($userpassword == $password){
+                        return true;
+                    }else return false;
                 }
-            }else{
-                return false;
-            }    
+            }return false;
+
         } catch (Exception $ex) {
             return false;
+        }
+    }
+    function getUser($user)
+    {
+        $this->connenctToDb();
+        $db = $this->db;
+        try {
+            $user = htmlspecialchars($user);
+            $sql = "SELECT * FROM user WHERE name = :user";
+            $cmd = $db->prepare($sql);
+            $cmd->bindParam(":user", $user);
+            $cmd->execute();
+
+            $user = $cmd->fetchObject();
+            if ( $user != null) {
+                return $user;
+            } else {
+                return false;
+            }
+            $this->disconnect();
+        } catch (Exception $ex) {
+            echo ("Failure:") . $ex->getMessage();
         }
     }
 
@@ -77,28 +109,7 @@ class DatabaseClass extends DatabaseDAO
         $this->disconnect();
     }
     /* Gets UserID, returns false if User not in DB */
-    function getUser($user)
-    {
-        $this->connenctToDb();
-        $db = $this->db;
-        try {
-            $user = htmlspecialchars($user);
-            $sql = "SELECT * FROM user WHERE name = :user";
-            $cmd = $db->prepare($sql);
-            $cmd->bindParam(":user", $user);
-            $cmd->execute();
-            
-            $user = $cmd->fetchObject();
-            if ( $user != null) {
-                return $user;
-            } else {
-                return false;
-            }
-            $this->disconnect();
-        } catch (Exception $ex) {
-            echo ("Failure:") . $ex->getMessage();
-        }
-    }
+
 
     private function validatePassword($password, $hash)
     {
