@@ -1,19 +1,16 @@
 <?php
 session_start();
-include 'dbScripts/DUMMYdatabase.db';
-include 'dbScripts/database.php';
+
+include 'db/database.php';
 
 $database = new DatabaseClass();
 
-$isInputFalse = false;
 $required = array('username', 'password');
 $error = false;
-$_SESSION['isLoggedIn'] = false;
 
 foreach ($required as $field) {
     if (empty($_POST[$field])) {
         $error = true;
-        $isInputFalse = true;
     }
 }
 if ($error == false) {
