@@ -4,11 +4,53 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 
 $validLogin = isset($_SESSION['user']);
+$messages = array(); //just an empty array to stop errors when $_SESSION['messages'] is not yet initialized.
+$result = array(); //foreach can't call $_SESSION['messages'] properly, so the contents are copied to this array for output.
 
-if ($validLogin){
-    $username = $_SESSION['user'];
+if (true){ //valid login later
+
+    //reason for if:isset($_POST['message']: no empty speech bubbles on empty chat. isset($_SESSION['messagesexist']: save chat for whole session (will be replaced with database)
+    if(isset($_POST['message']) OR isset($_SESSION['messagesexist'])){
+        if(!isset($_SESSION['messages'])) {
+            $_SESSION['messages'] = $messages;
+        }
+
+        //unoptimized workaround: if you reload the page, your last message will be repeated and put into a new speech
+        //bubble without this. Now, this is prevented, but you can't send the same message twice in a row.
+        if(end($_SESSION['messages']) != $_POST['message'] && isset($_POST['message'])) {
+            array_push($_SESSION['messages'], $_POST['message']);
+        }
+        $result = $_SESSION['messages'];
+
+        /*unset($_POST['message']); tried to unset POST variable in case you reload the chat without sending anything,
+                                    but the if statement (if(isset($_POST['message'])) still goes through, hence
+                                    the workaround with if(end()). */
+        $_SESSION['messagesexist'] = true;
+
+    }else{
+        $message = '';
+    }
+
+} else{
+    $username = '';
+    $message='';
 }
 ?>
+
+<!--if (true){
+    if(isset($_POST['message'])){
+        $message = $_POST['message'];
+        unset($_POST['message']);
+        $urmomgay = true;
+    }else{
+        $message = '';
+    }
+
+} else{
+    $username = '';
+    $message='';
+}
+?> -->
 
 <!DOCTYPE html>
 <html lang="de">
@@ -99,12 +141,14 @@ if ($validLogin){
                             eros et accumsan et iusto
                         </p>
 
-                        <!-- provisorisch: eine Nachricht hinzufügen -->
-                        <?php if(isset($_POST["message"]) && is_string($_POST["message"])) : $message = htmlspecialchars($_POST["message"]); ?>
-                            <div class="iconSmall" id="avatarTeemo" onclick="location.href='playerprofile.php'"></div>
-                            <p class="speech-bubble">
-                                <?= $message ?>
-                            </p>
+                        <?php if(isset($_SESSION['messagesexist'])) : ?>
+                            <?php if($_SESSION['messagesexist'] == true) : ?>
+                                <?php foreach($result as $newmessage => $val) : ?>
+                                    <div class="iconSmall" id="avatarTeemo" onclick="location.href='playerprofile.php'"></div>
+                                    <p class="speech-bubble">
+                                        <?= $val ?>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
                         <?php endif; ?>
 
                     </div>
