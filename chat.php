@@ -37,21 +37,6 @@ if (true){ //valid login later
 }
 ?>
 
-<!--if (true){
-    if(isset($_POST['message'])){
-        $message = $_POST['message'];
-        unset($_POST['message']);
-        $urmomgay = true;
-    }else{
-        $message = '';
-    }
-
-} else{
-    $username = '';
-    $message='';
-}
-?> -->
-
 <!DOCTYPE html>
 <html lang="de">
 <head>
