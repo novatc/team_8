@@ -3,9 +3,9 @@ try {
 
     $user = "root";
     $pw = null;
-    $dsn = "sqlite:DUMMYdatabase.db";
+    $dsn = "sqlite:Database.db";
     $id_feld = "id INTEGER PRIMARY KEY AUTOINCREMENT,"; // SQLite-Syntax
-    $dbUser = new PDO($dsn, $user, $pw);
+    $db = new PDO($dsn, $user, $pw);
 
 
     $sql = "CREATE TABLE User ( 
@@ -19,28 +19,50 @@ try {
       description TEXT,
       chat TEXT
     )";
-    $dbUser->exec( $sql );
+    $db->exec( $sql );
     echo 'Nutzertabelle angelegt. ';
     
 
     $sql = "CREATE TABLE Games (
       gameid TEXT PRIMARY KEY,
       gamename TEXT,
-      tags TEXT,   
+      tags TEXT   
     )";
-    $dbUser->exec( $sql );
+    $db->exec( $sql );
     echo 'Spieletabelle angelegt. ';
+
+    $tags =['Strategie', 'Teamplay', 'Arenakampf'];
+    $sql = "INSERT INTO Games (gameid, gamename, tags) VALUES ('lol', 'League of Legends', 'serialize($tags)');";
+    $db->exec( $sql );
+    echo 'Spiel eingefügt. ';
+
+    $tags =['Strategie', 'Teamplay', 'Shooter'];
+    $sql = "INSERT INTO Games (gameid, gamename, tags) VALUES ('csgo', 'CS:GO', 'serialize($tags)');";
+    $db->exec( $sql );
+    echo 'Spiel eingefügt. ';
+
+    $tags =['Teamplay', 'Arenakampf'];
+    $sql = "INSERT INTO Games (gameid, gamename, tags) VALUES ('rl', 'Rocket League', 'serialize($tags)');";
+    $db->exec( $sql );
+    echo 'Spiel eingefügt. ';
+
+    $tags =['Strategie', 'Teamplay', 'Shooter'];
+    $sql = "INSERT INTO Games (gameid, gamename, tags) VALUES ('val', 'Valorant', 'serialize($tags)');";
+    $db->exec( $sql );
+    echo 'Spiel eingefügt. ';
    
 
     $sql = "CREATE TABLE Playerlist (
-      gameid TEXT FOREIGN KEY REFERENCES Games(gameid),
-      userid INTEGER FOREIGN KEY REFERENCES User(userid),
+      gameid TEXT,
+      userid INTEGER ,
       rank TEXT,
       role TEXT,
-      status TEXT,     
+      status TEXT,
+      FOREIGN KEY (gameid) REFERENCES Games(gameid),
+      FOREIGN KEY (userid) REFERENCES User(userid) 
 )";
-    $dbUser->exec( $sql );
-    echo 'Plyerliste Tabelle angelegt. ';
+    $db->exec( $sql );
+    echo 'Playerliste Tabelle angelegt. ';
 
 
 } catch (PDOException $e){
