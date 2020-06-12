@@ -13,7 +13,7 @@ $valorantroles = ['Breach', 'Brimstone', 'Cypher', 'Jett', 'Omen', 'Phoenix', 'R
         </label>
     <?php endforeach; ?>
 </div>
-<?php if(count($rocketroles)>0): ?>
+<?php if(count($valorantroles)>0): ?>
     <h2>Position</h2>
     <div class=choice-wrapper> 
         <?php foreach($valorantroles as $role): ?>

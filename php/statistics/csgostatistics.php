@@ -14,7 +14,7 @@ $csgoroles = ['Sniper', 'Stratege', 'Support', 'Awper', 'Entry Fragger'];
         </label>
     <?php endforeach; ?>
 </div>
-<?php if(count($rocketroles)>0): ?>
+<?php if(count($csgoroles)>0): ?>
     <h2>Rolle</h2>
     <div class=choice-wrapper> 
         <?php foreach($csgoroles as $role): ?>

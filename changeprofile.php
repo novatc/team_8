@@ -54,6 +54,7 @@ if ($validLogin){
     <link rel="stylesheet" type="text/css" href="css/icons.css">
 </head>
 <body>
+    
     <header>
         <div class="mainnav">
             <?php include "php/header.php";?>
@@ -75,13 +76,13 @@ if ($validLogin){
                 <label class="left-label">Sprachen</label>
             </div>
         
-            <input class="submit-btn" id="submit-form" type="submit" name="changesubmit" value="Speichern">
+            <input class="submit-btn"  type="submit" name="changesubmit" value="Speichern">
         </form>
         <div class="box"> 
             <form  action="php/actions/choosegameaction.php" method="post">
                 <h1>Spiele verwalten</h1>  
                 <div class="input-wrapper">
-                    <select class="selectbox" name="game" required>
+                    <select class="selectbox" name="game" onchange="this.form.submit()" required>
                         <optgroup label="Gewählt">
                             <option value='<?php echo $gamechoice?>' selected='selected'><?php echo $gamechoice?></option>
                         <optgroup label="Meine Spiele">
@@ -118,7 +119,7 @@ if ($validLogin){
                     <label class="left-label">Spiel</label>
                     <div id="select-icon"></div>
                 </div>
-                <input class="submit-btn" id="submit-form" type="submit" name="gamechoicesubmit" value="Wählen">
+                <input class="submit-btn" id="choose-btn" type="submit" name="gamechoicesubmit" value="Wählen">
             </form>
             <?php if($gamechoice != ''): ?>
             <form action="php/actions/managegamesaction.php" method="post">
@@ -127,32 +128,35 @@ if ($validLogin){
                         <?php include "php/statistics/csgostatistics.php";?>
                     </div>
                     <div class="submit-wrapper">
-                        <input class="submit-btn" id="submit-form" type="submit" name="deletegame" value="Entfernen">
-                        <input class="submit-btn" id="submit-form" type="submit" name="savegame" value="Speichern">
+                        <input class="submit-btn"  type="submit" name="deletegame" value="Entfernen">
+                        <input class="submit-btn"  type="submit" name="savegame" value="Speichern">
                     </div>
                 <?php endif; ?>
                 <?php if($gamechoice == 'League of Legends'): ?>
                     <div class="gamebox">
                         <?php include "php/statistics/lolstatistics.php";?>
+                    </div>
                     <div class="submit-wrapper">
-                        <input class="submit-btn" id="submit-form" type="submit" name="deletegame" value="Entfernen">
-                        <input class="submit-btn" id="submit-form" type="submit" name="savegame" value="Speichern">
+                        <input class="submit-btn"  type="submit" name="deletegame" value="Entfernen">
+                        <input class="submit-btn"  type="submit" name="savegame" value="Speichern">
                     </div>
                 <?php endif; ?>
                 <?php if($gamechoice == 'Rocket League'): ?>
                     <div class="gamebox">
                         <?php include "php/statistics/rocketleaguestatistics.php";?>
+                    </div>
                     <div class="submit-wrapper">
-                        <input class="submit-btn" id="submit-form" type="submit" name="deletegame" value="Entfernen">
-                        <input class="submit-btn" id="submit-form" type="submit" name="savegame" value="Speichern">
+                        <input class="submit-btn"  type="submit" name="deletegame" value="Entfernen">
+                        <input class="submit-btn"  type="submit" name="savegame" value="Speichern">
                     </div>
                 <?php endif; ?>
                 <?php if($gamechoice == 'Valorant'): ?>
                     <div class="gamebox">
                         <?php include "php/statistics/valorantstatistics.php";?>
+                    </div>
                     <div class="submit-wrapper">
-                        <input class="submit-btn" id="submit-form" type="submit" name="deletegame" value="Entfernen">
-                        <input class="submit-btn" id="submit-form" type="submit" name="savegame" value="Speichern">
+                        <input class="submit-btn"  type="submit" name="deletegame" value="Entfernen">
+                        <input class="submit-btn"  type="submit" name="savegame" value="Speichern">
                     </div>
                 <?php endif; ?>
             </form>
@@ -203,10 +207,14 @@ if ($validLogin){
                     <span class="checkmark"></span>
                 </label>
             </div>
-            <input class="submit-btn" id="submit-form" type="submit" name="changesubmit" value="Speichern">
+            <input class="submit-btn"  type="submit" name="changesubmit" value="Speichern">
         </form>
 
     </main>
+    <script>
+        var btn = document.getElementById("choose-btn");
+        btn.style.display = "none";              
+    </script>
     <footer>
             <div class="footer">
                 <?php include "php/footer.php";?>

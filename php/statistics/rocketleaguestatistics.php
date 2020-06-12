@@ -1,5 +1,5 @@
 <?php
-$game = 'League of Legends';
+$game = 'Rocket League';
 $rocketranks = ['Unranked', 'Bronze', 'Silber', 'Gold', 'Platin', 'Diamant', 'Master', 'Grand Champion' ];
 $rocketroles = [];
 ?>

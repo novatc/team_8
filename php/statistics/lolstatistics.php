@@ -14,7 +14,7 @@ $lolroles = ['Top Lane', 'Jungle', 'Mid', 'Bottom', 'Support'];
         </label>
     <?php endforeach; ?>
 </div>
-<?php if(count($rocketroles)>0): ?>
+<?php if(count($lolroles)>0): ?>
     <h2>Position</h2>
     <div class=choice-wrapper> 
         <?php foreach($lolroles as $role): ?>

@@ -35,7 +35,7 @@
 }
 
 
-#submit-form{
+.submit-btn{
     display: block;
     padding: 14px 40px;
     margin: 20px auto;
