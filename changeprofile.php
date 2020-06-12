@@ -89,7 +89,7 @@ if ($validLogin){
                 <h1>Spiele verwalten</h1>  
                 <div class="input-wrapper">
                     <select class="selectbox" name="game" onchange="this.form.submit()" required>
-                        <optgroup label="Gewählt">
+                        <optgroup id="option-choosed" label="Gewählt">
                             <option value='<?php echo $gamechoice?>' selected='selected'><?php echo $gamechoice?></option>
                         <optgroup label="Meine Spiele">
                         <?php foreach(array_keys($games) as $game):?>
@@ -178,7 +178,9 @@ if ($validLogin){
     </main>
     <script>
         var btn = document.getElementById("choose-btn");
-        btn.style.display = "none";              
+        btn.style.display = "none";   
+        var option = document.getElementById("option-choosed");
+        option.style.display = "none";             
     </script>
     <footer>
             <div class="footer">
