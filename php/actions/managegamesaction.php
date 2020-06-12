@@ -20,8 +20,14 @@ if(isset($_POST['deletegame'])){
     $roles =[];
     if(isset($_POST['role']))
         $roles = $_POST['role'];
-   
-    $games[$game] = array("rank" => $rank, "roles" => $roles);
+
+    if(isset($_POST['visible'])) {
+        $status = 'active';
+    } else{
+        $status = 'inactive';
+    }
+        
+    $games[$game] = array("rank" => $rank, "roles" => $roles, "status" => $status);
 
     $_SESSION['games'] = $games;
 }

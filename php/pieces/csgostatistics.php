@@ -26,6 +26,6 @@ $csgoroles = ['Sniper', 'Stratege', 'Support', 'Awper', 'Entry Fragger'];
     </div>
 <?php endif; ?>    
 <label class="checkbox-container">Ich möchte, dass andere Spieler mich über dieses Spiel finden.
-        <input type="checkbox" name="visible" checked>
+        <input type="checkbox" name="visible" <?php echo (isset($games[$game]))? ($games[$game]['status'] == 'active')? 'checked' : '' : 'checked'?>>
         <span class="checkmark"></span>
 </label>
