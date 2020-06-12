@@ -59,9 +59,7 @@
     display: flex;
     padding: 28px;
     flex-direction: column;
-    overflow: hidden;
-
-    
+    overflow: hidden; 
 }
 
 .card .container{

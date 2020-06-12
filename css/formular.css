@@ -10,7 +10,7 @@
     -moz-box-shadow: 0px 0px 21px 8px var(--light-shadow);
     box-shadow: 0px 0px 21px 8px var(--light-shadow);
 }
-.gamebox {   
+.gamebox, .icon-radio {   
     outline: none;
     resize: none;
     width: calc(100% - 30px);

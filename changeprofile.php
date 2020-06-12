@@ -153,7 +153,7 @@ if ($validLogin){
                 <?php if($gamechoice == 'Valorant'): ?>
                     <div class="gamebox">
                         <?php include "php/statistics/valorantstatistics.php";?>
-                    </div>
+                        </div>
                     <div class="submit-wrapper">
                         <input class="submit-btn"  type="submit" name="deletegame" value="Entfernen">
                         <input class="submit-btn"  type="submit" name="savegame" value="Speichern">
@@ -165,46 +165,46 @@ if ($validLogin){
 
         <form class="box" action="php/actions/changeprofileaction.php" method="post">
             <h1>Icon ändern</h1>
-            <div class="gridIcons">
-                <div class="icon" id="avatarTeemo"></div>
-                <div class="icon" id="avatarBard" onclick=""></div>
-                <div class="icon" id="avatarZac" onclick=""></div>
-                <div class="icon" id="avatarFuryhorn" onclick=""></div>
+            <div class="icon-radio">
                 <label class="radiobutton-container">
                     <input type="radio" name="icon" value="avatarTeemo" required>
                     <span class="checkmark"></span>
+                    <div class="icon" id="avatarTeemo"></div>
                 </label>
                 <label class="radiobutton-container">
                     <input type="radio" name="icon" value="avatarBard" required>
                     <span class="checkmark"></span>
+                    <div class="icon" id="avatarBard" onclick=""></div>
                 </label>
                 <label class="radiobutton-container">
                     <input type="radio" name="icon" value="avatarZac" required>
                     <span class="checkmark"></span>
+                    <div class="icon" id="avatarZac" onclick=""></div>
                 </label>
                 <label class="radiobutton-container">
                     <input type="radio" name="icon" value="avatarFuryhorn" required>
                     <span class="checkmark"></span>
-                </label>
-                <div class="icon" id="avatarPingu" onclick=""></div>
-                <div class="icon" id="avatarSquid" onclick=""></div>
-                <div class="icon" id="avatarSpook" onclick=""></div>
-                <div class="icon" id="avatarRammus" onclick=""></div>
+                    <div class="icon" id="avatarFuryhorn" onclick=""></div>
+                </label> 
                 <label class="radiobutton-container">
                     <input type="radio" name="icon" value="avatarPingu" required>
                     <span class="checkmark"></span>
+                    <div class="icon" id="avatarPingu" onclick=""></div>
                 </label>
                 <label class="radiobutton-container">
                     <input type="radio" name="icon" value="avatarSquid" required>
                     <span class="checkmark"></span>
+                    <div class="icon" id="avatarSquid" onclick=""></div>
                 </label>
                 <label class="radiobutton-container">
                     <input type="radio" name="icon" value="avatarSpook" required>
                     <span class="checkmark"></span>
+                    <div class="icon" id="avatarSpook" onclick=""></div>
                 </label>
                 <label class="radiobutton-container">
                     <input type="radio" name="icon" value="avatarRammus" required>
                     <span class="checkmark"></span>
+                    <div class="icon" id="avatarRammus" onclick=""></div>
                 </label>
             </div>
             <input class="submit-btn"  type="submit" name="changesubmit" value="Speichern">
