@@ -31,7 +31,13 @@ if ($validLogin){
         $gamechoice = $_SESSION['gamechoice'];
     }else{
         $gamechoice = '';
-    }        
+    }
+    if(isset($_SESSION['icon'])){
+        $profileicon  = $_SESSION['icon'];
+    }else{
+        $profileicon  = [];
+    }
+           
     
 } else{
     $username = '';
@@ -125,7 +131,7 @@ if ($validLogin){
             <form action="php/actions/managegamesaction.php" method="post">
                 <?php if($gamechoice == 'CSGO'): ?>
                     <div class="gamebox">
-                        <?php include "php/statistics/csgostatistics.php";?>
+                        <?php include "php/pieces/csgostatistics.php";?>
                     </div>
                     <div class="submit-wrapper">
                         <input class="submit-btn"  type="submit" name="deletegame" value="Entfernen">
@@ -134,7 +140,7 @@ if ($validLogin){
                 <?php endif; ?>
                 <?php if($gamechoice == 'League of Legends'): ?>
                     <div class="gamebox">
-                        <?php include "php/statistics/lolstatistics.php";?>
+                        <?php include "php/pieces/lolstatistics.php";?>
                     </div>
                     <div class="submit-wrapper">
                         <input class="submit-btn"  type="submit" name="deletegame" value="Entfernen">
@@ -143,7 +149,7 @@ if ($validLogin){
                 <?php endif; ?>
                 <?php if($gamechoice == 'Rocket League'): ?>
                     <div class="gamebox">
-                        <?php include "php/statistics/rocketleaguestatistics.php";?>
+                        <?php include "php/pieces/rocketleaguestatistics.php";?>
                     </div>
                     <div class="submit-wrapper">
                         <input class="submit-btn"  type="submit" name="deletegame" value="Entfernen">
@@ -152,7 +158,7 @@ if ($validLogin){
                 <?php endif; ?>
                 <?php if($gamechoice == 'Valorant'): ?>
                     <div class="gamebox">
-                        <?php include "php/statistics/valorantstatistics.php";?>
+                        <?php include "php/pieces/valorantstatistics.php";?>
                         </div>
                     <div class="submit-wrapper">
                         <input class="submit-btn"  type="submit" name="deletegame" value="Entfernen">
@@ -165,48 +171,7 @@ if ($validLogin){
 
         <form class="box" action="php/actions/changeprofileaction.php" method="post">
             <h1>Icon ändern</h1>
-            <div class="icon-radio">
-                <label class="radiobutton-container">
-                    <input type="radio" name="icon" value="avatarTeemo" required>
-                    <span class="checkmark"></span>
-                    <div class="icon" id="avatarTeemo"></div>
-                </label>
-                <label class="radiobutton-container">
-                    <input type="radio" name="icon" value="avatarBard" required>
-                    <span class="checkmark"></span>
-                    <div class="icon" id="avatarBard" onclick=""></div>
-                </label>
-                <label class="radiobutton-container">
-                    <input type="radio" name="icon" value="avatarZac" required>
-                    <span class="checkmark"></span>
-                    <div class="icon" id="avatarZac" onclick=""></div>
-                </label>
-                <label class="radiobutton-container">
-                    <input type="radio" name="icon" value="avatarFuryhorn" required>
-                    <span class="checkmark"></span>
-                    <div class="icon" id="avatarFuryhorn" onclick=""></div>
-                </label> 
-                <label class="radiobutton-container">
-                    <input type="radio" name="icon" value="avatarPingu" required>
-                    <span class="checkmark"></span>
-                    <div class="icon" id="avatarPingu" onclick=""></div>
-                </label>
-                <label class="radiobutton-container">
-                    <input type="radio" name="icon" value="avatarSquid" required>
-                    <span class="checkmark"></span>
-                    <div class="icon" id="avatarSquid" onclick=""></div>
-                </label>
-                <label class="radiobutton-container">
-                    <input type="radio" name="icon" value="avatarSpook" required>
-                    <span class="checkmark"></span>
-                    <div class="icon" id="avatarSpook" onclick=""></div>
-                </label>
-                <label class="radiobutton-container">
-                    <input type="radio" name="icon" value="avatarRammus" required>
-                    <span class="checkmark"></span>
-                    <div class="icon" id="avatarRammus" onclick=""></div>
-                </label>
-            </div>
+            <?php include "php/pieces/icons.php";?>
             <input class="submit-btn"  type="submit" name="changesubmit" value="Speichern">
         </form>
 

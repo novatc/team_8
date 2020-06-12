@@ -25,7 +25,6 @@ if($id != false){
     $error = true;
     echo ("Nutzer berits in Datenbank mit ID: $id");
 }
-
 /* Check if password and passwordrepeat are identical*/
 if($pwd != $pwdrepeat){
     $error = true;
