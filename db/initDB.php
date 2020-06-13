@@ -10,7 +10,7 @@ try {
 
     $sql = "CREATE TABLE User ( 
       userid INTEGER PRIMARY KEY,  
-      name TEXT,
+      username TEXT,
       mail TEXT,
       password TEXT,
       nickename TEXT,

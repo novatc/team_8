@@ -1,6 +1,6 @@
 /* Buttons */
 
-.submit-btn{
+.submit-btn, .btn{
     background: none;
     text-align: center;
     border: 2px solid var(--orange);
@@ -12,7 +12,7 @@
     font-size: medium;
     text-decoration: none;
 }
-.submit-btn:hover{
+.submit-btn:hover, .btn:hover{
     background:  var(--orange);;
 }
 

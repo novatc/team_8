@@ -4,9 +4,9 @@ abstract class UserDAOImpl
 {
     abstract function login($username, $password);
 
-    abstract function register($username, $email, $password);
+    abstract function register($username, $email, $pwd, $pwdrepeat);
 
-    abstract function getUser($username);   
+    abstract function getUserByName($username);   
 
 }
 
@@ -14,7 +14,7 @@ class UserDAO extends UserDAOImpl
 {
 
     public $db = null;
-    public $dsn = "sqlite:db/DUMMYdatabase.db";
+    public $dsn = "sqlite:../../db/Database.db";
 
     public function connenctToDb()
     {
@@ -41,7 +41,7 @@ class UserDAO extends UserDAOImpl
             $username = htmlspecialchars($username);
             $password = htmlspecialchars($password);
 
-            $sql = "SELECT * FROM user WHERE name = :user";
+            $sql = "SELECT * FROM User WHERE username = :user";
             $cmd = $db->prepare($sql);
             $cmd->bindParam(":user", $username);
             $cmd->execute();
@@ -60,15 +60,15 @@ class UserDAO extends UserDAOImpl
             return false;
         }
     }
-    function getUser($username)
+    function getUserByName($username)
     {
         $this->connenctToDb();
         $db = $this->db;
         try {
             $username = htmlspecialchars($username);
-            $sql = "SELECT * FROM user WHERE name = :user";
+            $sql = "SELECT * FROM User WHERE username = :user";
             $cmd = $db->prepare($sql);
-            $cmd->bindParam(":user", $username);
+            $cmd->bindParam(':user', $username);
             $cmd->execute();
 
             $username = $cmd->fetchObject();
@@ -83,24 +83,42 @@ class UserDAO extends UserDAOImpl
         }
     }
 
-    function register($username, $email, $password)
+    function register($username, $email, $pwd, $pwdrepeat)
     {
+
         $this->connenctToDb();
         $db = $this->db;
+
+        /* Check if username in DB */
+        $id = $this->getUserByName($username);
+        if($id != false){
+            return 1;
+        }
+        // ToDo Passwort vergleich
+        /* Check if password and passwordrepeat are identical
+        if(strcmp($PWD, $pwdrepeat)!==0){ 
+           return 2;
+        }
+        */
+        /* Check if email is correct*/
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
+            return 3;
+        }
+
         try {
             $db->beginTransaction();
             $username = htmlspecialchars($username);
             $email = htmlspecialchars($email);
-            $password = $this->encodePassword($password);
-            $sql = "INSERT INTO user (name,mail, password) VALUES (:user, :email, :password);";
+            $password = $this->encodePassword($pwd);
+            $sql = "INSERT INTO User (username, mail, password) VALUES (:user, :email, :password);";
             $cmd = $db->prepare( $sql );
             $cmd->bindParam( ':user', $username );
             $cmd->bindParam( ':email', $email );
-            $cmd->bindParam( ':password', $password );
+            $cmd->bindParam( ':password', $pwd );
             $cmd->execute();
 
             $db->commit();
-            return true;
+            return 0;
 
         } catch (Exception $ex) {
             $db->rollBack();

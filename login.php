@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-include 'db/database.php';
+include 'db/UserDAO.php';
 
-$database = new DatabaseClass();
+$userDAO = new UserDAO();
 
 $required = array('username', 'password');
 $error = false;
@@ -17,7 +17,7 @@ if ($error == false) {
 
     $name = $_POST['username'];
     $pwd = $_POST['password'];
-    $validLogginAttemd = $database->login($name, $pwd);
+    $validLogginAttemd = $userDAO->login($name, $pwd);
 
     if ($validLogginAttemd) {
         $_SESSION['user'] = $_POST['username'];
