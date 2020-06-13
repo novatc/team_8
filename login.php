@@ -1,35 +1,4 @@
-<?php
-session_start();
 
-include 'db/UserDAO.php';
-
-$userDAO = new UserDAO();
-
-$required = array('username', 'password');
-$error = false;
-
-foreach ($required as $field) {
-    if (empty($_POST[$field])) {
-        $error = true;
-    }
-}
-if ($error == false) {
-
-    $name = $_POST['username'];
-    $pwd = $_POST['password'];
-    $validLogginAttemd = $userDAO->login($name, $pwd);
-
-    if ($validLogginAttemd) {
-        $_SESSION['user'] = $_POST['username'];
-        header('Location: playerprofile.php');
-        $_SESSION['isLoggedIn'] = true;
-        exit();
-    }
-
-
-}
-
-?>
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -50,7 +19,7 @@ if ($error == false) {
 <main>
 
 
-    <form class="box" method="post">
+    <form class="box" method="post" action="php/actions/loginaction.php">
         <h1>Anmelden</h1>
         <input class="login-input" type="text" name="username" placeholder="Benutzername" required>
         <input class="login-input" type="password" name="password" placeholder="Passwort" required>

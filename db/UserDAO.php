@@ -6,7 +6,7 @@ abstract class UserDAOImpl
 
     abstract function register($username, $email, $pwd, $pwdrepeat);
 
-    abstract function getUserByName($username);   
+    abstract function getUserByName($username);
 
 }
 
@@ -33,7 +33,7 @@ class UserDAO extends UserDAOImpl
     }
 
     function login($username, $password)
-    {   
+    {
         $this->connenctToDb();
         $db = $this->db;
         try {
@@ -49,11 +49,11 @@ class UserDAO extends UserDAOImpl
             $usernameObject = $cmd->fetchObject();
             if ($usernameObject != null){
                 $usernamepassword = $usernameObject->password;
-                if ($this->validatePassword($password, $usernamepassword)){
-                    if($usernamepassword == $password){
-                        return true;
-                    }else return false;
-                }
+                $un = $usernameObject->username;
+
+                if ($usernamepassword == $password) return true;
+
+
             }return false;
 
         } catch (Exception $ex) {
