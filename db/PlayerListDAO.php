@@ -44,7 +44,7 @@ class PlayerListDAO extends PlayerListDAOImpl
             $sql = "INSERT INTO Playerlist (gameid, userid, rank, role, status) VALUES (:gameID, :userID, :rank, :role, :status);";
             $cmd = $db->prepare( $sql );
             $cmd->bindParam( ':gameID', $gameID );
-            $cmd->bindParam( ':userID', $UserId );
+            $cmd->bindParam( ':userID', $userID );
             $cmd->bindParam( ':rank', $rank );
             $cmd->bindParam( ':role', $role );
             $cmd->bindParam( ':status', $status );
@@ -62,6 +62,27 @@ class PlayerListDAO extends PlayerListDAOImpl
     }
     function getPlayers($gameID, $ranks=NULL, $role = NULL){
         
+    }
+
+    function getAllPlayers (){
+        $this->connenctToDb();
+        $db = $this->db;
+        try {
+            $sql = "SELECT * FROM User";
+            $ergebnis = $db->query($sql);
+
+            while ($zeile = $ergebnis->fetchArray()) {
+                echo "<li>" . htmlspecialchars($zeile["username"]) .
+                    ": " . htmlspecialchars($zeile["mail"]) . "</li>";
+            }
+            echo "</ul>";
+
+            $db->close();
+
+
+        }catch (Exception $ex){
+            echo $ex->getMessage();
+        }
     }
 
 }
