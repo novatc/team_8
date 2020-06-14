@@ -13,10 +13,10 @@ try {
       username TEXT,
       mail TEXT,
       password TEXT,
-      nickename TEXT,
       age INTEGER,
       language TEXT,
       description TEXT,
+      icon TEXT,
       chat TEXT
     )";
     $db->exec( $sql );

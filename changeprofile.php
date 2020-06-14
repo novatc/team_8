@@ -65,7 +65,7 @@ if ($isLoggedIn){
         </div>
     </header>
     <main>
-        <form class="box" action="php/actions/changeprofileaction.php" method="post">
+        <form class="box" action="php/actions/changeProfileAction.php" method="post">
             <h1>Profil anpassen</h1>
             <div class="input-wrapper">
                 <textarea name="description" class="textarea-input" cols="30" rows="10"><?= htmlspecialchars($description)?></textarea>
@@ -167,7 +167,7 @@ if ($isLoggedIn){
             <?php endif; ?>
         </div>
 
-        <form class="box" action="php/actions/changeprofileaction.php" method="post">
+        <form class="box" action="php/actions/changeProfileAction.php" method="post">
             <h1>Icon ändern</h1>
             <?php include "php/pieces/icons.php";?>
             <input class="submit-btn"  type="submit" name="changesubmit" value="Speichern">
