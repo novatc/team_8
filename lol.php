@@ -6,9 +6,6 @@ include "db/PlayerListDAO.php";
 
 $playerlist = new PlayerListDAO();
 
-
-$list = $playerlist->getAllPlayers();
-echo count($list);
 ?>
 
 <!DOCTYPE html>

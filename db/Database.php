@@ -5,7 +5,7 @@ class Database
     private static $db = null;
     private static $dsn = "sqlite:../../db/Database.db";
 
-    public static function connect()
+    public static function connect($dsn = "sqlite:../../db/Database.db")
     {
         try {
             $user = "root";

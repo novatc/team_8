@@ -165,7 +165,7 @@ class PlayerListDAO extends PlayerListDAOImpl
     {
         $result = array();
         try {
-            $db = Database::connect();
+            $db = Database::connect("sqlite:db/Database.db");
         } catch (Exception $e) {
         }
         try {
