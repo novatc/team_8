@@ -11,12 +11,6 @@ echo "<ul>";
 foreach ($list as $result){
     echo "<li>" . htmlspecialchars($result->username) . ": " .htmlspecialchars($result-> mail);
 }
-
-
-
-
-
-
 ?>
 
 
