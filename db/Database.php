@@ -10,7 +10,7 @@ class Database
         try {
             $user = "root";
             $pw = null;
-            self::$db = new PDO(self::$dsn, $user, $pw);
+            self::$db = new PDO($dsn, $user, $pw);
             return self::$db;
         } catch (PDOException $ex) {
             return null;
