@@ -1,8 +1,9 @@
 <?php
-session_start();
-$validLogin = isset($_SESSION['user']);
+include "php/actions/session.php";
+startSession();
+$isLoggedIn = $_SESSION['isLoggedIn'];
 
-if ($validLogin){
+if ($isLoggedIn){
     $username = $_SESSION['user'];
     if(isset($_SESSION['age'])){
         $age = $_SESSION['age'];
@@ -87,14 +88,14 @@ if ($validLogin){
                     <div class="icon" id= <?=htmlspecialchars($icon)?>></div>
                 </div>
                 <div class="name-wrapper">
-                    <?php if ($validLogin): ?>
+                    <?php if ($isLoggedIn): ?>
                         <p> Angemeldet als: <?= htmlspecialchars($username)?></p>
                         <h1><?= htmlspecialchars($username)?></h1>
                         <label><?= htmlspecialchars($description)?></label>
                     <?php endif; ?>
                 </div>
                 <div class="settings-wrapper">
-                    <?php if ($validLogin): ?>    
+                    <?php if ($isLoggedIn): ?>    
                     <a id="settings-link" href="changeprofile.php"></a>
                     <a id="logout-link" href="php/actions/logoutaction.php"></a>
                     <?php endif; ?>

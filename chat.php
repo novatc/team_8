@@ -1,7 +1,6 @@
 <?php
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
+include "php/actions/session.php";
+startSession();
 
 $validLogin = isset($_SESSION['user']);
 $messages = array(); //just an empty array to stop errors when $_SESSION['messages'] is not yet initialized.

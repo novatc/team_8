@@ -1,11 +1,9 @@
 <?php
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
+include "php/actions/session.php";
+startSession();
+$isLoggedIn = $_SESSION['isLoggedIn'];
 
-$validLogin = isset($_SESSION['user']);
-
-if ($validLogin){
+if ($isLoggedIn){
     $username = $_SESSION['user'];
     if(isset($_SESSION['age'])){
         $age = $_SESSION['age'];
@@ -93,8 +91,8 @@ if ($validLogin){
                             <option value='<?php echo $gamechoice?>' selected='selected'><?php echo $gamechoice?></option>
                         <optgroup label="Meine Spiele">
                         <?php foreach(array_keys($games) as $game):?>
-                            <?php if($game=='CSGO'):?>
-                                <option value='CSGO'>CSGO</option>
+                            <?php if($game=='CS:GO'):?>
+                                <option value='CS:GO'>CS:GO</option>
                             <?php endif;?>
                             <?php if($game=='League of Legends'):?>
                                 <option value='League of Legends'>League of Legends</option>
@@ -108,8 +106,8 @@ if ($validLogin){
                         <?php endforeach;?>
                         </optgroup>
                         <optgroup label="Weitere Spiele hinzufügen">
-                        <?php if(!in_array('CSGO', array_keys($games))):?>
-                                <option value='CSGO'>CSGO</option>
+                        <?php if(!in_array('CS:GO', array_keys($games))):?>
+                                <option value='CS:GO'>CS:GO</option>
                             <?php endif;?>
                             <?php if(!in_array('League of Legends', array_keys($games))):?>
                                 <option value='League of Legends'>League of Legends</option>
@@ -128,8 +126,8 @@ if ($validLogin){
                 <input class="submit-btn" id="choose-btn" type="submit" name="gamechoicesubmit" value="Wählen">
             </form>
             <?php if($gamechoice != ''): ?>
-            <form action="php/actions/managegamesaction.php" method="post">
-                <?php if($gamechoice == 'CSGO'): ?>
+            <form action="php/actions/editGamesAction.php" method="post">
+                <?php if($gamechoice == 'CS:GO'): ?>
                     <div class="gamebox">
                         <?php include "php/pieces/csgostatistics.php";?>
                     </div>

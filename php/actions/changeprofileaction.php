@@ -1,7 +1,7 @@
 <?php
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
+include "session.php";
+startSession();
+
 $posted = false;
 $fields = array('age','language', 'description', 'icon');
 foreach ($fields as $field){

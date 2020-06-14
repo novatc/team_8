@@ -1,7 +1,14 @@
 <?php
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
+include "session.php";
+startSession();
+
+
+include "../../db/PlayerListDAO.php";
+$listDAO = new PlayerListDAO();
+
+include "../../db/GameDAO.php";
+$gameDAO = new GameDAO();
+
 
 if(isset($_SESSION['games'])){
     $games = $_SESSION['games'];
@@ -10,12 +17,15 @@ if(isset($_SESSION['games'])){
 }
 $game = $_SESSION['gamechoice'];
 
+
+if($_SESSION['isLoggedIn'])
 if(isset($_POST['deletegame'])){
     if(in_array($game, array_keys($_SESSION['games'])))
         unset($_SESSION['games'][$game]);
 
-}elseif(isset($_POST['savegame'])){
-    
+}elseif(isset($_POST['savegame'])){   
+
+
     $rank = $_POST['rank'];
     $roles =[];
     if(isset($_POST['role']))
@@ -30,6 +40,11 @@ if(isset($_POST['deletegame'])){
     $games[$game] = array("rank" => $rank, "roles" => $roles, "status" => $status);
 
     $_SESSION['games'] = $games;
+
+    $game = $gameDAO->getGameByName($game);
+    $userid = $_SESSION['userid'];
+    if($game!=NULL)
+        $listDAO->addPlayerToGame($game->gameid, $userid, $rank, $roles, $status);
 }
 
 

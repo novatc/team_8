@@ -1,5 +1,7 @@
 <?php
-session_start();
+include "php/actions/session.php";
+startSession();
+
 $isLoggedIn = $_SESSION['isLoggedIn']
 ?>
 

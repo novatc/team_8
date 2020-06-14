@@ -1,7 +1,8 @@
 <?php
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
+include "session.php";
+startSession();
+
+
 if (isset($_POST['game'])){
     $_SESSION['gamechoice'] = $_POST['game']; 
 }

@@ -2,15 +2,67 @@
 
 abstract class PlayerListDAOImpl
 {
+    abstract function connenctToDb();
     abstract function getPlayers($gameID, $ranks=NULL, $role = NULL);
-    abstract function addPlayer($gameID, $userID, $rank, $role, $status);
+    abstract function addPlayerToGame($gameID, $userID, $rank, $role, $status);
     
 
 
 }
 
-class PlayerListDAO extends UserDAOImpl
+class PlayerListDAO extends PlayerListDAOImpl
 {
+
+    public $db = null;
+    public $dsn = "sqlite:../../db/Database.db";
+
+    public function connenctToDb()
+    {
+        try {
+            $user = "root";
+            $pw = null;
+            $this->db = new PDO($this->dsn, $user, $pw);
+        } catch (PDOException $ex) {
+            throw new Exception("something went wrong trying to connect to database: " . $ex->getMessage());
+        }
+    }
+
+    function addPlayerToGame($gameID, $userID, $rank, $role, $status){
+        $this->connenctToDb();
+        $db = $this->db;
+
+        $gameID = htmlspecialchars($gameID);
+        $userID = htmlspecialchars($userID);
+        $rank = htmlspecialchars($rank);
+        $role = htmlspecialchars($role);
+        $status = htmlspecialchars($status);
+        $role = serialize($role);
+
+        try {
+            $db->beginTransaction();
+            
+            $sql = "INSERT INTO Playerlist (gameid, userid, rank, role, status) VALUES (:gameID, :userID, :rank, :role, :status);";
+            $cmd = $db->prepare( $sql );
+            $cmd->bindParam( ':gameID', $gameID );
+            $cmd->bindParam( ':userID', $UserId );
+            $cmd->bindParam( ':rank', $rank );
+            $cmd->bindParam( ':role', $role );
+            $cmd->bindParam( ':status', $status );
+            $cmd->execute();
+
+            $db->commit();
+            return true;
+
+        } catch (Exception $ex) {
+            $db->rollBack();
+            return false;
+        }
+        $this->disconnect();
+
+    }
+    function getPlayers($gameID, $ranks=NULL, $role = NULL){
+        
+    }
 
 }
 

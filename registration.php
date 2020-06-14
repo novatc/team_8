@@ -1,7 +1,7 @@
 <?php
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
+include "php/actions/session.php";
+startSession();
+
 if(isset($_SESSION['registrationerror'])){
     $errorcode = $_SESSION['registrationerror'];
 }else{
@@ -70,12 +70,6 @@ if(isset($_SESSION['registrationerror'])){
             <script>
                 var label = document.getElementById("error-message");
                 label.innerHTML = "Huch etwas ist schief gelaufen. Bitte versuchen Sie es erneut!";   
-            </script>
-            <?php break;
-        case 4: ?>
-            <script>
-                var label = document.getElementById("error-message");
-                label.innerHTML = "Nicht gesetzt!";   
             </script>
             <?php break;
         }
