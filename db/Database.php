@@ -28,7 +28,7 @@ class Database
     public static function encodeData($data){
         if(is_array($data)){
             for($i = 0; $i< count($data); $i++){
-                $data[i] = htmlspecialchars($role[i]);
+                $data[$i] = htmlspecialchars($data[$i]);
             }
             return serialize($data);
         }else{

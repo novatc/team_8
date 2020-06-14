@@ -13,21 +13,21 @@ class PlayerListDAO extends PlayerListDAOImpl
 {
 
     function addPlayer($gameID, $userID, $rank, $role, $status){
-        $db = Database::connect();
 
         $gameID = Database::encodeData($gameID);
         $userID = Database::encodeData($userID);
         $rank = Database::encodeData($rank);
         $role = Database::encodeData($role);
         $status = Database::encodeData($status);
-        
+
+        $db = Database::connect();
         try {
             $db->beginTransaction();
             
-            $sql = "INSERT INTO Playerlist (gameid, userid, rank, role, status) VALUES (:gameID, :userID, :rank, :role, :status);";
+            $sql = "INSERT INTO Playerlist (gameid, userid, rank, role, status) VALUES (:gameid, :userid, :rank, :role, :status);";
             $cmd = $db->prepare( $sql );
-            $cmd->bindParam( ':gameID', $gameID );
-            $cmd->bindParam( ':userID', $userID );
+            $cmd->bindParam( ':gameid', $gameID );
+            $cmd->bindParam( ':userid', $userID );
             $cmd->bindParam( ':rank', $rank );
             $cmd->bindParam( ':role', $role );
             $cmd->bindParam( ':status', $status );
@@ -45,21 +45,21 @@ class PlayerListDAO extends PlayerListDAOImpl
     }
 
     function updatePlayer($gameID, $userID, $rank, $role, $status){
-        $db = Database::connect();
 
         $gameID = Database::encodeData($gameID);
         $userID = Database::encodeData($userID);
         $rank = Database::encodeData($rank);
         $role = Database::encodeData($role);
         $status = Database::encodeData($status);   
-        
+
+        $db = Database::connect();
         try {
             $db->beginTransaction();
             
-            $sql = "UPDATE Playerlist Set (rank = :rank, role = :role, status = :status) WHERE gameid = :gameID AND userid =:userID;";
+            $sql = "UPDATE Playerlist Set rank = :rank, role = :role, status = :status WHERE gameid = :gameid AND userid =:userid;";
             $cmd = $db->prepare( $sql );
-            $cmd->bindParam( ':gameID', $gameID );
-            $cmd->bindParam( ':userID', $userID );
+            $cmd->bindParam( ':gameid', $gameID );
+            $cmd->bindParam( ':userid', $userID );
             $cmd->bindParam( ':rank', $rank );
             $cmd->bindParam( ':role', $role );
             $cmd->bindParam( ':status', $status );
@@ -77,18 +77,18 @@ class PlayerListDAO extends PlayerListDAOImpl
     }
 
     function deletePlayer($gameID, $userID){
-        $db = Database::connect();
 
         $gameID = Database::encodeData($gameID);
         $userID = Database::encodeData($userID);
-        
+        $db = Database::connect();
+
         try {
             $db->beginTransaction();
-            
-            $sql = "DELETE FROM Playerlist WHERE gameid = :gameID AND userid =:userID;";
+    
+            $sql = "DELETE FROM Playerlist WHERE gameid = :gameid AND userid =:userid;";
             $cmd = $db->prepare( $sql );
-            $cmd->bindParam( ':gameID', $gameID );
-            $cmd->bindParam( ':userID', $userID );
+            $cmd->bindParam( ':gameid', $gameID );
+            $cmd->bindParam( ':userid', $userID );
             $cmd->execute();
 
             $db->commit();
@@ -101,7 +101,37 @@ class PlayerListDAO extends PlayerListDAOImpl
         Database::disconnect();
 
     }
+    function alreadyIncluded($gameID, $userID){
+        $db = Database::connect();
+         
+        try {
+            $db->beginTransaction();
+            $username = Database::encodeData($gameID);
+            $password = Database::encodeData($userID);
 
+            $sql = "SELECT * FROM Playerlist WHERE gameid = :gameID AND userid =:userID;";
+            $cmd = $db->prepare( $sql );
+            $cmd->bindParam( ':gameID', $gameID );
+            $cmd->bindParam( ':userID', $userID );
+            $cmd->execute();
+
+            $entry = $cmd->fetchObject();
+            Database::disconnect();
+
+            if ($entry == null){
+                return false;
+            }else{
+                return true;
+            }
+            
+            
+
+
+        } catch (Exception $ex) {
+            Database::disconnect();
+            return null;
+        }
+    }
 
     function getPlayers($gameID, $ranks=NULL, $role = NULL){
         

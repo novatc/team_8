@@ -2,53 +2,44 @@
 include "session.php";
 startSession();
 
-
 include "../../db/PlayerListDAO.php";
 $listDAO = new PlayerListDAO();
 
 include "../../db/GameDAO.php";
 $gameDAO = new GameDAO();
 
-
-if(isset($_SESSION['games'])){
-    $games = $_SESSION['games'];
-}else{
-    $games = [];
-}
-$game = $_SESSION['gamechoice'];
-
+$gameid = $gameDAO->getGameByName($_SESSION['gamechoice'])->gameid;
+$userid = $_SESSION['userid'];
 
 if($_SESSION['isLoggedIn'])
 if(isset($_POST['deletegame'])){
-    if(in_array($game, array_keys($_SESSION['games'])))
-        unset($_SESSION['games'][$game]);
-        $errorcode = $listDAO->deletePlayer($game->gameid, $userid);
+    $errorcode = $listDAO->deletePlayer($gameid, $userid);
 
 }elseif(isset($_POST['savegame'])){   
-
 
     $rank = $_POST['rank'];
     $roles =[];
     if(isset($_POST['role']))
         $roles = $_POST['role'];
-
     if(isset($_POST['visible'])) {
         $status = 'active';
     } else{
         $status = 'inactive';
     }
-        
-    $games[$game] = array("rank" => $rank, "roles" => $roles, "status" => $status);
 
-    $_SESSION['games'] = $games;
-
-    $game = $gameDAO->getGameByName($game);
-    $userid = $_SESSION['userid'];
-    if($game!=NULL)
-        $errorcode = $listDAO->addPlayer($game->gameid, $userid, $rank, $roles, $status);
+    /* Check if player is already in playerlist for specific game*/
+    switch($listDAO->alreadyIncluded($game->gameid, $userid)){
+        case false:
+            $listDAO->addPlayer($gameid, $userid, $rank, $roles, $status);
+            break;
+        case true:
+            $listDAO->updatePlayer($gameid, $userid, $rank, $roles, $status);
+            break;
+        default:
+            // TODO Errormessage
+            break;
+    }
 }
-
-
 header('Location: ../../changeprofile.php');
 exit();
 
