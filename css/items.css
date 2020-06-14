@@ -140,7 +140,7 @@ h5{
     display: flex;
     margin: auto;
 }
-.choice-wrapper,.submit-wrapper{
+.choice-wrapper, .icon-wrapper, .submit-wrapper{
     position: relative;
     display: flex;
     flex-direction: row;

@@ -44,7 +44,7 @@ if(isset($_POST['deletegame'])){
     $game = $gameDAO->getGameByName($game);
     $userid = $_SESSION['userid'];
     if($game!=NULL)
-        $listDAO->addPlayerToGame($game->gameid, $userid, $rank, $roles, $status);
+        $errorcode = $listDAO->addPlayerToGame($game->gameid, $userid, $rank, $roles, $status);
 }
 
 

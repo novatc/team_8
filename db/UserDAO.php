@@ -9,6 +9,9 @@ abstract class UserDAOImpl
 
     abstract function getUserByName($username);
 
+    abstract function updateUser($userID, $age, $language, $description, $icon);
+
+
 }
 
 class UserDAO extends UserDAOImpl
@@ -62,6 +65,8 @@ class UserDAO extends UserDAOImpl
         }
         $this->disconnect();
     }
+
+    /* Gets User, returns false if User not in DB */
     function getUserByName($username)
     {
         $this->connenctToDb();
@@ -129,7 +134,7 @@ class UserDAO extends UserDAOImpl
         }
         $this->disconnect();
     }
-    /* Gets UserID, returns false if User not in DB */
+    
 
 
     private function validatePassword($password, $hash)
@@ -141,5 +146,56 @@ class UserDAO extends UserDAOImpl
     {
         $encoded = password_hash($password, PASSWORD_DEFAULT);
         return $encoded;
+    }
+
+    function updateUser($userID, $age, $language, $description, $icon){
+        $this->connenctToDb();
+        $db = $this->db;
+
+        try {
+            $db->beginTransaction();
+
+            if($age!=NULL){
+                $language = htmlspecialchars($language);
+                $sql = "UPDATE User SET age = :age WHERE userid = :userid;";
+                $cmd = $db->prepare( $sql );
+                $cmd->bindParam( ':userid', $userID );
+                $cmd->bindParam( ':age', $age );
+                $cmd->execute();
+                
+            }
+            if($language!=NULL){
+                $language = htmlspecialchars($language);
+                $sql = "UPDATE User SET language = :language WHERE userid = :userid;";
+                $cmd = $db->prepare( $sql );
+                $cmd->bindParam( ':userid', $userID );
+                $cmd->bindParam( ':language', $language );
+                $cmd->execute();
+            }
+            if($description!=NULL){
+                $description = htmlspecialchars($description);
+                $sql = "UPDATE User SET description = :description WHERE userid = :userid;";
+                $cmd = $db->prepare( $sql );
+                $cmd->bindParam( ':userid', $userID );
+                $cmd->bindParam( ':description', $description );
+                $cmd->execute();
+            }
+            if($icon!=NULL){
+                $icon = htmlspecialchars($icon);
+                $sql = "UPDATE User SET icon = :icon WHERE userid = :userid;";
+                $cmd = $db->prepare( $sql );
+                $cmd->bindParam( ':userid', $userID );
+                $cmd->bindParam( ':icon', $icon );
+                $cmd->execute();
+            }
+            $db->commit();
+            return 0;
+
+        } catch (Exception $ex) {
+            $db->rollBack();
+            return 1;
+        }
+        $this->disconnect();
+        
     }
 }

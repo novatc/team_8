@@ -51,11 +51,11 @@ class PlayerListDAO extends PlayerListDAOImpl
             $cmd->execute();
 
             $db->commit();
-            return true;
+            return 0;
 
         } catch (Exception $ex) {
             $db->rollBack();
-            return false;
+            return 1;
         }
         $this->disconnect();
 

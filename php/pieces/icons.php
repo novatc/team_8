@@ -2,7 +2,7 @@
 $iconname = ['avatarTeemo', 'avatarBard', 'avatarZac', 'avatarFuryhorn', 'avatarPingu', 'avatarSquid','avatarSpook', 'avatarRammus'];
 ?>
 
-<div class=choice-wrapper>  
+<div class=icon-wrapper>  
     <div class="icon-radio">
         <?php foreach($iconname as $icon): ?>
             <label class="radiobutton-container">
