@@ -6,7 +6,11 @@ include "../../db/PlayerListDAO.php";
 
 $playerlist = new PlayerListDAO();
 
-$playerlist->getAllPlayers();
+$list = $playerlist->getAllPlayers();
+echo "<ul>";
+foreach ($list as $result){
+    echo "<li>" . htmlspecialchars($result->username) . ": " .htmlspecialchars($result-> mail);
+}
 
 
 

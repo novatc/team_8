@@ -48,6 +48,32 @@ class PlayerListDAO extends PlayerListDAOImpl
         
     }
 
+    function getAllPlayers (){
+        $this->connenctToDb();
+        $db = $this->db;
+        try {
+            $sql = "SELECT * FROM User";
+            $cmd = $db->prepare($sql);
+            $cmd->execute();
+
+            $result = array();
+
+            if ($cmd->execute()){
+                while ($row = $cmd->fetchObject()){
+                    array_push($result, $row);
+                }
+            }
+            return $result;
+
+
+
+
+
+        }catch (Exception $ex){
+            echo $ex->getMessage();
+        }
+    }
+
 }
 
 ?>
