@@ -69,15 +69,20 @@ class PlayerListDAO extends PlayerListDAOImpl
         $db = $this->db;
         try {
             $sql = "SELECT * FROM User";
-            $ergebnis = $db->query($sql);
+            $cmd = $db->prepare($sql);
+            $cmd->execute();
 
-            while ($zeile = $ergebnis->fetchArray()) {
-                echo "<li>" . htmlspecialchars($zeile["username"]) .
-                    ": " . htmlspecialchars($zeile["mail"]) . "</li>";
+            $result = array();
+
+            if ($cmd->execute()){
+                while ($row = $cmd->fetchObject()){
+                    array_push($result, $row);
+                }
             }
-            echo "</ul>";
+            return $result;
 
-            $db->close();
+
+
 
 
         }catch (Exception $ex){
