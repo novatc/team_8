@@ -1,7 +1,6 @@
 <?php
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
+include "session.php";
+startSession();
 
 include "../../db/UserDAO.php";
 $userDAO = new UserDAO();
@@ -18,12 +17,14 @@ if ($error == false) {
     $name = $_POST['username'];
     $pwd = $_POST['password'];
 
-    $validLogginAttemd = $userDAO->login($name, $pwd);
-
-    if ($validLogginAttemd) {
+    
+    $userid = $userDAO->login($name, $pwd);
+    if ($userid!=false) {
         $_SESSION['user'] = $_POST['username'];
-        header('Location: ../../playerprofile.php');
+        $_SESSION['userid'] = $userid;
         $_SESSION['isLoggedIn'] = true;
+        header('Location: ../../playerprofile.php');
+        
         exit();
     }
     else{

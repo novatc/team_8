@@ -2,17 +2,19 @@
 
 abstract class PlayerListDAOImpl
 {
-    abstract function getAllPlayers();
-
-    abstract function addPlayer($gameID, $userID, $rank, $role, $status);
+    abstract function connenctToDb();
+    abstract function getPlayers($gameID, $ranks=NULL, $role = NULL);
+    abstract function addPlayerToGame($gameID, $userID, $rank, $role, $status);
+    
 
 
 }
 
 class PlayerListDAO extends PlayerListDAOImpl
 {
+
     public $db = null;
-    public $dsn = "sqlite:/db/Database.db";
+    public $dsn = "sqlite:../../db/Database.db";
 
     public function connenctToDb()
     {
@@ -25,34 +27,43 @@ class PlayerListDAO extends PlayerListDAOImpl
         }
     }
 
-    public function disconnect()
-    {
-        $this->db = null;
-    }
+    function addPlayerToGame($gameID, $userID, $rank, $role, $status){
+        $this->connenctToDb();
+        $db = $this->db;
 
-    public function getAllPlayers()
-    {
-        $i =0;
+        $gameID = htmlspecialchars($gameID);
+        $userID = htmlspecialchars($userID);
+        $rank = htmlspecialchars($rank);
+        $role = htmlspecialchars($role);
+        $status = htmlspecialchars($status);
+        $role = serialize($role);
+
         try {
-            $this->connenctToDb();
-            $db = $this->db;
-            $sql = "SELECT username FROM User";
-            $result = sqlite_fetch_all($sql, SQLITE_ASSOC);
-            foreach ($result as $entry){
-                echo 'Name: ' . $entry['username'] . '  E-mail: ' . $entry['mail'];
-            }
+            $db->beginTransaction();
+            
+            $sql = "INSERT INTO Playerlist (gameid, userid, rank, role, status) VALUES (:gameID, :userID, :rank, :role, :status);";
+            $cmd = $db->prepare( $sql );
+            $cmd->bindParam( ':gameID', $gameID );
+            $cmd->bindParam( ':userID', $UserId );
+            $cmd->bindParam( ':rank', $rank );
+            $cmd->bindParam( ':role', $role );
+            $cmd->bindParam( ':status', $status );
+            $cmd->execute();
 
+            $db->commit();
+            return true;
 
         } catch (Exception $ex) {
-
-            echo $ex->getMessage();
+            $db->rollBack();
+            return false;
         }
+        $this->disconnect();
+
+    }
+    function getPlayers($gameID, $ranks=NULL, $role = NULL){
+        
     }
 
-    function addPlayer($gameID, $userID, $rank, $role, $status)
-    {
-        // TODO: Implement addPlayer() method.
-    }
 }
 
 ?>

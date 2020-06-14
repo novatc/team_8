@@ -1,5 +1,7 @@
 <?php
-session_start();
+include "session.php";
+startSession();
+
 session_unset();
 session_destroy();
 

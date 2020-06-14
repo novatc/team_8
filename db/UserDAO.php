@@ -2,6 +2,7 @@
 
 abstract class UserDAOImpl
 {
+    abstract function connenctToDb();
     abstract function login($username, $password);
 
     abstract function register($username, $email, $pwd, $pwdrepeat);
@@ -51,7 +52,7 @@ class UserDAO extends UserDAOImpl
                 $usernamepassword = $usernameObject->password;
                 $un = $usernameObject->username;
 
-                if ($usernamepassword == $password) return true;
+                if ($usernamepassword == $password) return $usernameObject->userid;
 
 
             }
@@ -62,6 +63,7 @@ class UserDAO extends UserDAOImpl
         } catch (Exception $ex) {
             return false;
         }
+        $this->disconnect();
     }
     function getUserByName($username)
     {
@@ -74,9 +76,9 @@ class UserDAO extends UserDAOImpl
             $cmd->bindParam(':user', $username);
             $cmd->execute();
 
-            $username = $cmd->fetchObject();
+            $user = $cmd->fetchObject();
             if ( $username != null) {
-                return $username;
+                return $user;
             } else {
                 $this->disconnect();
                 return false;
@@ -85,6 +87,7 @@ class UserDAO extends UserDAOImpl
         } catch (Exception $ex) {
             echo ("Failure:") . $ex->getMessage();
         }
+        $this->disconnect();
     }
 
     function register($username, $email, $pwd, $pwdrepeat)
@@ -126,8 +129,7 @@ class UserDAO extends UserDAOImpl
 
         } catch (Exception $ex) {
             $db->rollBack();
-            $this->disconnect();
-            return false;
+            return 4;
         }
         $this->disconnect();
     }
