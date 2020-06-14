@@ -54,7 +54,10 @@ class UserDAO extends UserDAOImpl
                 if ($usernamepassword == $password) return true;
 
 
-            }return false;
+            }
+            $this->disconnect();
+            return false;
+
 
         } catch (Exception $ex) {
             return false;
@@ -75,6 +78,7 @@ class UserDAO extends UserDAOImpl
             if ( $username != null) {
                 return $username;
             } else {
+                $this->disconnect();
                 return false;
             }
             $this->disconnect();
@@ -122,6 +126,7 @@ class UserDAO extends UserDAOImpl
 
         } catch (Exception $ex) {
             $db->rollBack();
+            $this->disconnect();
             return false;
         }
         $this->disconnect();
