@@ -49,8 +49,4 @@ if(isset($_POST['deletegame'])){
 
 
 
-header('Location: ../../changeprofile.php');
-exit();
-
-
 ?>

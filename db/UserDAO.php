@@ -1,8 +1,9 @@
 <?php
+include ("Database.php");
 
 abstract class UserDAOImpl
 {
-    abstract function connenctToDb();
+
     abstract function login($username, $password);
 
     abstract function register($username, $email, $pwd, $pwdrepeat);
@@ -17,29 +18,10 @@ abstract class UserDAOImpl
 class UserDAO extends UserDAOImpl
 {
 
-    public $db = null;
-    public $dsn = "sqlite:../../db/Database.db";
-
-    public function connenctToDb()
-    {
-        try {
-            $user = "root";
-            $pw = null;
-            $this->db = new PDO($this->dsn, $user, $pw);
-        } catch (PDOException $ex) {
-            throw new Exception("something went wrong trying to connect to database: " . $ex->getMessage());
-        }
-    }
-
-    public function disconnect()
-    {
-        $this->db = null;
-    }
-
     function login($username, $password)
     {
-        $this->connenctToDb();
-        $db = $this->db;
+        $db = Database::connect();
+         
         try {
             $db->beginTransaction();
             $username = htmlspecialchars($username);
@@ -59,21 +41,21 @@ class UserDAO extends UserDAOImpl
 
 
             }
-            $this->disconnect();
+            Database::disconnect();
             return false;
 
 
         } catch (Exception $ex) {
+            Database::disconnect();
             return false;
         }
-        $this->disconnect();
     }
 
     /* Gets User, returns false if User not in DB */
     function getUserByName($username)
     {
-        $this->connenctToDb();
-        $db = $this->db;
+        $db = Database::connect();
+         
         try {
             $username = htmlspecialchars($username);
             $sql = "SELECT * FROM User WHERE username = :user";
@@ -85,21 +67,21 @@ class UserDAO extends UserDAOImpl
             if ( $username != null) {
                 return $user;
             } else {
-                $this->disconnect();
+                Database::disconnect();
                 return false;
             }
-            $this->disconnect();
+            Database::disconnect();
         } catch (Exception $ex) {
             echo ("Failure:") . $ex->getMessage();
         }
-        $this->disconnect();
+        Database::disconnect();
     }
 
     function register($username, $email, $pwd, $pwdrepeat)
     {
 
-        $this->connenctToDb();
-        $db = $this->db;
+        $db = Database::connect();
+         
 
         /* Check if username in DB */
         $id = $this->getUserByName($username);
@@ -136,7 +118,7 @@ class UserDAO extends UserDAOImpl
             $db->rollBack();
             return 4;
         }
-        $this->disconnect();
+        Database::disconnect();
     }
     
 
@@ -153,8 +135,8 @@ class UserDAO extends UserDAOImpl
     }
 
     function updateUser($userID, $age, $language, $description, $icon){
-        $this->connenctToDb();
-        $db = $this->db;
+        $db = Database::connect();
+         
 
         try {
             $db->beginTransaction();
@@ -199,7 +181,7 @@ class UserDAO extends UserDAOImpl
             $db->rollBack();
             return 1;
         }
-        $this->disconnect();
+        Database::disconnect();
         
     }
 }

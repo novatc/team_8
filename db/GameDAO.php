@@ -1,8 +1,8 @@
 <?php
+include ("Database.php");
 
 abstract class GameDAOImpl
 {
-    abstract function connenctToDb();
     abstract function getGames();
     abstract function getGamesByTag($tag);
     abstract function getGameByID($gameID);
@@ -12,19 +12,6 @@ abstract class GameDAOImpl
 
 class GameDAO extends GameDAOImpl
 {   
-    public $db = null;
-    public $dsn = "sqlite:../../db/Database.db";
-
-    public function connenctToDb()
-    {
-        try {
-            $user = "root";
-            $pw = null;
-            $this->db = new PDO($this->dsn, $user, $pw);
-        } catch (PDOException $ex) {
-            throw new Exception("something went wrong trying to connect to database: " . $ex->getMessage());
-        }
-    }
     function getGames(){
 
     }
@@ -35,8 +22,8 @@ class GameDAO extends GameDAOImpl
 
     }
     function getGameByName($gameName){
-        $this->connenctToDb();
-        $db = $this->db;
+        $db = Database::connect();
+         
         try {
             $db->beginTransaction();
             $gameName = htmlspecialchars($gameName);
@@ -52,7 +39,7 @@ class GameDAO extends GameDAOImpl
         } catch (Exception $ex) {
             return NULL;
         }
-        $this->disconnect();
+        Database::disconnect();
     }
 }
 
