@@ -26,7 +26,7 @@ class GameDAO extends GameDAOImpl
          
         try {
             $db->beginTransaction();
-            $gameName = htmlspecialchars($gameName);
+            $gameName = Database::encodeData($gameName);
             $sql = "SELECT * FROM Games WHERE gamename = :name";
             $cmd = $db->prepare($sql);
             $cmd->bindParam(":name", $gameName);

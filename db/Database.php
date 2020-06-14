@@ -25,6 +25,19 @@ class Database
             throw new Exception("something went wrong trying to connect to database: " . $ex->getMessage());
         }
     }
+    public static function encodeData($data){
+        if(is_array($data)){
+            for($i = 0; $i< count($data); $i++){
+                $data[i] = htmlspecialchars($role[i]);
+            }
+            return serialize($data);
+        }else{
+            return serialize(htmlspecialchars($data));
+        } 
+    }
+    public static function decodeData($data){
+        return unserialize($data);
+    }
 }
 
 ?>

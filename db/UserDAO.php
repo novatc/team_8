@@ -24,8 +24,8 @@ class UserDAO extends UserDAOImpl
          
         try {
             $db->beginTransaction();
-            $username = htmlspecialchars($username);
-            $password = htmlspecialchars($password);
+            $username = Database::encodeData($username);
+            $password = Database::encodeData($password);
 
             $sql = "SELECT * FROM User WHERE username = :user";
             $cmd = $db->prepare($sql);
@@ -57,7 +57,7 @@ class UserDAO extends UserDAOImpl
         $db = Database::connect();
          
         try {
-            $username = htmlspecialchars($username);
+            $username = Database::encodeData($username);
             $sql = "SELECT * FROM User WHERE username = :user";
             $cmd = $db->prepare($sql);
             $cmd->bindParam(':user', $username);
@@ -101,8 +101,8 @@ class UserDAO extends UserDAOImpl
 
         try {
             $db->beginTransaction();
-            $username = htmlspecialchars($username);
-            $email = htmlspecialchars($email);
+            $username = Database::encodeData($username);
+            $email = Database::encodeData($email);
             $password = $this->encodePassword($pwd);
             $sql = "INSERT INTO User (username, mail, password) VALUES (:user, :email, :password);";
             $cmd = $db->prepare( $sql );
@@ -142,7 +142,7 @@ class UserDAO extends UserDAOImpl
             $db->beginTransaction();
 
             if($age!=NULL){
-                $language = htmlspecialchars($language);
+                $language = Database::encodeData($language);
                 $sql = "UPDATE User SET age = :age WHERE userid = :userid;";
                 $cmd = $db->prepare( $sql );
                 $cmd->bindParam( ':userid', $userID );
@@ -151,7 +151,7 @@ class UserDAO extends UserDAOImpl
                 
             }
             if($language!=NULL){
-                $language = htmlspecialchars($language);
+                $language = Database::encodeData($language);
                 $sql = "UPDATE User SET language = :language WHERE userid = :userid;";
                 $cmd = $db->prepare( $sql );
                 $cmd->bindParam( ':userid', $userID );
@@ -159,7 +159,7 @@ class UserDAO extends UserDAOImpl
                 $cmd->execute();
             }
             if($description!=NULL){
-                $description = htmlspecialchars($description);
+                $description = Database::encodeData($description);
                 $sql = "UPDATE User SET description = :description WHERE userid = :userid;";
                 $cmd = $db->prepare( $sql );
                 $cmd->bindParam( ':userid', $userID );
@@ -167,7 +167,7 @@ class UserDAO extends UserDAOImpl
                 $cmd->execute();
             }
             if($icon!=NULL){
-                $icon = htmlspecialchars($icon);
+                $icon = Database::encodeData($icon);
                 $sql = "UPDATE User SET icon = :icon WHERE userid = :userid;";
                 $cmd = $db->prepare( $sql );
                 $cmd->bindParam( ':userid', $userID );

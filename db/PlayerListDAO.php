@@ -15,11 +15,11 @@ class PlayerListDAO extends PlayerListDAOImpl
         $db = Database::connect();
          
 
-        $gameID = htmlspecialchars($gameID);
-        $userID = htmlspecialchars($userID);
-        $rank = htmlspecialchars($rank);
-        
-        $status = htmlspecialchars($status);
+        $gameID = Database::encodeData($gameID);
+        $userID = Database::encodeData($userID);
+        $rank = Database::encodeData($rank);
+        $role = Database::encodeData($role);
+        $status = Database::encodeData($status);
         $role = serialize($role);
         
         try {
