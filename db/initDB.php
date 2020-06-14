@@ -32,23 +32,35 @@ try {
     echo 'Spieletabelle angelegt. ';
 
     $tags =['Strategie', 'Teamplay', 'Arenakampf'];
-    $sql = "INSERT INTO Games (gameid, gamename, tags) VALUES ('lol', 'League of Legends', 'serialize($tags)');";
-    $db->exec( $sql );
+    $tags = serialize($tags);
+    $sql = "INSERT INTO Games (gameid, gamename, tags) VALUES ('lol', 'League of Legends', :tags);";
+    $cmd =$db->prepare( $sql );
+    $cmd->bindParam(":tags", $tags);
+    $cmd->execute();
     echo 'Spiel eingefügt. ';
 
     $tags =['Strategie', 'Teamplay', 'Shooter'];
-    $sql = "INSERT INTO Games (gameid, gamename, tags) VALUES ('csgo', 'CS:GO', 'serialize($tags)');";
-    $db->exec( $sql );
+    $tags = serialize($tags);
+    $sql = "INSERT INTO Games (gameid, gamename, tags) VALUES ('csgo', 'CS:GO', :tags);";
+    $cmd =$db->prepare( $sql );
+    $cmd->bindParam(":tags", $tags);
+    $cmd->execute();
     echo 'Spiel eingefügt. ';
 
     $tags =['Teamplay', 'Arenakampf'];
-    $sql = "INSERT INTO Games (gameid, gamename, tags) VALUES ('rl', 'Rocket League', 'serialize($tags)');";
-    $db->exec( $sql );
+    $tags = serialize($tags);
+    $sql = "INSERT INTO Games (gameid, gamename, tags) VALUES ('rl', 'Rocket League', :tag);";
+    $cmd =$db->prepare( $sql );
+    $cmd->bindParam(":tags", $tags);
+    $cmd->execute();
     echo 'Spiel eingefügt. ';
 
     $tags =['Strategie', 'Teamplay', 'Shooter'];
-    $sql = "INSERT INTO Games (gameid, gamename, tags) VALUES ('val', 'Valorant', 'serialize($tags)');";
-    $db->exec( $sql );
+    $tags = serialize($tags);
+    $sql = "INSERT INTO Games (gameid, gamename, tags) VALUES ('val', 'Valorant', :tags);";
+    $cmd =$db->prepare( $sql );
+    $cmd->bindParam(":tags", $tags);
+    $cmd->execute();
     echo 'Spiel eingefügt. ';
    
 

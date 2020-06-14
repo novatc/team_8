@@ -1,5 +1,5 @@
 <?php
-include ("Database.php");
+require_once ("Database.php");
 
 abstract class PlayerListDAOImpl
 {
@@ -18,7 +18,7 @@ class PlayerListDAO extends PlayerListDAOImpl
         $gameID = htmlspecialchars($gameID);
         $userID = htmlspecialchars($userID);
         $rank = htmlspecialchars($rank);
-        $role = htmlspecialchars($role);
+        
         $status = htmlspecialchars($status);
         $role = serialize($role);
         
@@ -49,8 +49,7 @@ class PlayerListDAO extends PlayerListDAOImpl
     }
 
     function getAllPlayers (){
-        $this->connenctToDb();
-        $db = $this->db;
+        $db = Database::connect();
         try {
             $sql = "SELECT * FROM User";
             $cmd = $db->prepare($sql);
