@@ -128,7 +128,7 @@ if ($isLoggedIn){
                                 </li>
                             </div>
                         <?php endif;?>
-                        <?php if($game=='CSGO'):?>
+                        <?php if($game=='CS:GO'):?>
                             <div class="wrapper">
                                 <li class="card">
                                     <div class="container" id="csgo" onclick="showStats('csgo', 'csgo-stats')">
@@ -174,15 +174,15 @@ if ($isLoggedIn){
                             <?php  endif; endif; ?>
                         </div> 
                     <?php endif;?>
-                    <?php if($game=='CSGO'):?>
+                    <?php if($game=='CS:GO'):?>
                         <div class=statswrapper id="csgo-stats"> 
                             <h2 class="statslabel">CS:GO</h2>
                             <div>
-                                <label class="attribute">ELO: </label><label class="value"><?php echo htmlspecialchars($games['CSGO']['rank'])?></label>
+                                <label class="attribute">ELO: </label><label class="value"><?php echo htmlspecialchars($games['CS:GO']['rank'])?></label>
                             </div>
-                            <?php if(isset($games['CSGO']['roles'])): if(count($games['CSGO']['roles'])>0):?>
+                            <?php if(isset($games['CS:GO']['roles'])): if(count($games['CS:GO']['roles'])>0):?>
                                 <div>
-                                    <label class="attribute">Rollen: </label><label class="value"><?php echo htmlspecialchars(implode(", ", $games['CSGO']['roles']))?></label>
+                                    <label class="attribute">Rollen: </label><label class="value"><?php echo htmlspecialchars(implode(", ", $games['CS:GO']['roles']))?></label>
                                 </div>
                             <?php  endif; endif; ?>
                         </div>
@@ -220,7 +220,7 @@ if ($isLoggedIn){
                     <?php if($game[0]=='League of Legends'):?>
                     <script>showStats('lol', 'lol-stats')</script>
                     <?php endif;?>
-                    <?php if($game[0]=='CSGO'):?>
+                    <?php if($game[0]=='CS:GO'):?>
                     <script>showStats('csgo', 'csgo-stats')</script>
                     <?php endif;?>
                     <?php if($game[0]=='Rocket League'):?>

@@ -1,5 +1,5 @@
 <?php
-$game = 'CSGO';
+$game = 'CS:GO';
 $csgoranks = ['Unranked', 'Silber', 'Gold', 'Master Guardian', 'Legendary Eagle', 'Supreme', 'Global'];
 $csgoroles = ['Sniper', 'Stratege', 'Support', 'Awper', 'Entry Fragger'];
 ?>

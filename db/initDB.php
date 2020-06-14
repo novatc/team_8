@@ -49,7 +49,7 @@ try {
 
     $tags =['Teamplay', 'Arenakampf'];
     $tags = serialize($tags);
-    $sql = "INSERT INTO Games (gameid, gamename, tags) VALUES ('rl', 'Rocket League', :tag);";
+    $sql = "INSERT INTO Games (gameid, gamename, tags) VALUES ('rl', 'Rocket League', :tags);";
     $cmd =$db->prepare( $sql );
     $cmd->bindParam(":tags", $tags);
     $cmd->execute();

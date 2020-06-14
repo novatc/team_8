@@ -37,7 +37,8 @@ class UserDAO extends UserDAOImpl
                 $usernamepassword = $usernameObject->password;
                 $un = $usernameObject->username;
 
-                if ($usernamepassword == $password) return $usernameObject->userid;
+                if ($usernamepassword == $password) 
+                    return $usernameObject->userid;
 
 
             }

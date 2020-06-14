@@ -22,6 +22,7 @@ if($_SESSION['isLoggedIn'])
 if(isset($_POST['deletegame'])){
     if(in_array($game, array_keys($_SESSION['games'])))
         unset($_SESSION['games'][$game]);
+        $errorcode = $listDAO->deletePlayer($game->gameid, $userid);
 
 }elseif(isset($_POST['savegame'])){   
 
@@ -44,7 +45,7 @@ if(isset($_POST['deletegame'])){
     $game = $gameDAO->getGameByName($game);
     $userid = $_SESSION['userid'];
     if($game!=NULL)
-        $errorcode = $listDAO->addPlayerToGame($game->gameid, $userid, $rank, $roles, $status);
+        $errorcode = $listDAO->addPlayer($game->gameid, $userid, $rank, $roles, $status);
 }
 
 

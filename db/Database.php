@@ -32,11 +32,14 @@ class Database
             }
             return serialize($data);
         }else{
-            return serialize(htmlspecialchars($data));
+            return htmlspecialchars($data);
         } 
     }
+    /* Only necessary for arrays */
     public static function decodeData($data){
-        return unserialize($data);
+        if(is_array($data)){
+            return unserialize($data);
+        }
     }
 }
 
