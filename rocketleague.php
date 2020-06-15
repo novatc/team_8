@@ -82,7 +82,7 @@ $playerlist = new PlayerListDAO("sqlite:db/Database.db");
         <div class="overview">
             <?php $list = $playerlist->getPlayersForGame("rl");?>
             <?php if (isset($list) && count($list) > 0) { ?>
-                <ul class="cardview" id="lol-players">
+                <ul class="cardview" id="rl-players">
                     <?php foreach ($list as $playeritem) { ?>
                         <li class="card">
                             <div class="container" id="payer1" onclick="location.href='playerprofile.php'">

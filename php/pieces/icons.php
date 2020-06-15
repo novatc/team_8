@@ -1,12 +1,12 @@
 <?php
-$iconname = ['avatarTeemo', 'avatarBard', 'avatarZac', 'avatarFuryhorn', 'avatarPingu', 'avatarSquid','avatarSpook', 'avatarRammus'];
+$icons = ['avatarTeemo', 'avatarBard', 'avatarZac', 'avatarFuryhorn', 'avatarPingu', 'avatarSquid','avatarSpook', 'avatarRammus'];
 ?>
 
 <div class=icon-wrapper>  
     <div class="icon-radio">
-        <?php foreach($iconname as $icon): ?>
+        <?php foreach($icons as $icon): ?>
             <label class="radiobutton-container">
-                <input type="radio" name="icon" value='<?php echo $icon?>' <?php echo (isset($profileicon))? ($profileicon == $icon)? 'checked' : '' : '' ?> required>
+                <input type="radio" name="icon" value='<?php echo $icon?>' <?php echo ($usericon == $icon)? 'checked' : '' ?> required>
                 <span class="checkmark"></span>
                 <div class="icon" id='<?php echo $icon?>'></div>
             </label>

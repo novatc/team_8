@@ -1,45 +1,29 @@
 <?php
 include "php/actions/session.php";
 startSession();
-$isLoggedIn = $_SESSION['userid'] > -1;
 
-if ($isLoggedIn){
-    $username = $_SESSION['user'];
-    if(isset($_SESSION['age'])){
-        $age = $_SESSION['age'];
-    }else{
-        $age = '';
-    }
-    if(isset($_SESSION['language'])){
-        $language = $_SESSION['language'];
-    }else{
-        $language = '';
-    }
-    if(isset($_SESSION['description'])){
-        $description = $_SESSION['description'];
-    }else{
-        $description = '';
-    }
-    if(isset($_SESSION['icon'])){
-        $icon = $_SESSION['icon'];
-    }
-    else {
-        $icon="avatarTeemo";
-    }
-    if(isset($_SESSION['games'])){
-        $games = $_SESSION['games'];
-    }else{
-        $games = [];
-    } 
-    
-} else{
-    $username = '';
-    $description = '';
-    $language = '';
-    $age = '';
-    $games = [];
-    $icon="";
-}
+$isLoggedIn = $_SESSION['userid']> -1;
+
+include "db/PlayerListDAO.php";
+$listDAO = new PlayerListDAO("sqlite:db/Database.db");
+
+include "db/GameDAO.php";
+$gameDAO = new GameDAO("sqlite:db/Database.db");
+
+include "db/UserDAO.php";
+$userDAO = new UserDAO("sqlite:db/Database.db");
+
+$userID = $_SESSION['userid'];
+$user = $userDAO->getUserByID($userID);
+$username = $user->username;
+$description = $user->description;
+$age = $user->age;
+$language = $user->language;
+$usericon = $user->icon;
+
+$games = $listDAO->getGamesFromPlayer($userID);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -85,13 +69,13 @@ if ($isLoggedIn){
         <div class="profile-grid">
             <div class="profil-header">
                 <div class="picture-wrapper">
-                    <div class="icon" id= <?=htmlspecialchars($icon)?>></div>
+                    <div class="icon" id= <?=$usericon?>></div>
                 </div>
                 <div class="name-wrapper">
                     <?php if ($isLoggedIn): ?>
-                        <p> Angemeldet als: <?= htmlspecialchars($username)?></p>
-                        <h1><?= htmlspecialchars($username)?></h1>
-                        <label><?= htmlspecialchars($description)?></label>
+                        <p> Angemeldet als: <?= $username?></p>
+                        <h1><?= $username?></h1>
+                        <label><?= $description?></label>
                     <?php endif; ?>
                 </div>
                 <div class="settings-wrapper">
@@ -109,17 +93,17 @@ if ($isLoggedIn){
             <h2>Beschreibung:</h2>
             <div class="description">
                 <div>
-                    <label class="attribute">Alter: </label><label class="value"><?= htmlspecialchars($age)?></label>
+                    <label class="attribute">Alter: </label><label class="value"><?= $age?></label>
                 </div>
                 <div>
-                    <label class="attribute">Sprachen: </label><label class="value"><?= htmlspecialchars($language)?></label>
+                    <label class="attribute">Sprachen: </label><label class="value"><?= $language?></label>
                 </div>
             </div>
             <h2>Meine Spiele:</h2>
             <div class="game-wrapper"> 
                 <ul class="cardview" >
-                    <?php foreach(array_keys($games) as $game):?>
-                        <?php if($game=='League of Legends'):?>
+                    <?php foreach($games as $game):?>
+                        <?php if($game=='lol'):?>
                             <div class="wrapper">
                                 <li class="card">
                                     <div class="container" id="lol" onclick="showStats('lol', 'lol-stats')">
@@ -128,7 +112,7 @@ if ($isLoggedIn){
                                 </li>
                             </div>
                         <?php endif;?>
-                        <?php if($game=='CS:GO'):?>
+                        <?php if($game=='csgo'):?>
                             <div class="wrapper">
                                 <li class="card">
                                     <div class="container" id="csgo" onclick="showStats('csgo', 'csgo-stats')">
@@ -137,19 +121,19 @@ if ($isLoggedIn){
                                 </li>
                             </div>
                         <?php endif;?>
-                        <?php if($game=='Rocket League'):?>
+                        <?php if($game=='rl'):?>
                             <div class="wrapper">
                                 <li class="card">
-                                    <div class="container" id="rocketleague" onclick="showStats('rocket', 'rocket-stats')">
+                                    <div class="container" id="rl" onclick="showStats('rl', 'rl-stats')">
                                         <label class="gamelabel">Rocket League</label>
                                     </div>
                                 </li>
                             </div>
                         <?php endif;?>
-                        <?php if($game=='Valorant'):?>
+                        <?php if($game=='val'):?>
                             <div class="wrapper">
                                 <li class="card">
-                                    <div class="container" id="valorant" onclick="showStats('valorant', 'valorant-stats')">
+                                    <div class="container" id="val" onclick="showStats('val', 'val-stats')">
                                         <label class="gamelabel">Valorant</label>
                                     </div>    
                                 </li>
@@ -160,74 +144,73 @@ if ($isLoggedIn){
                         
                 <div class="game-stats">
                 
-                <?php foreach(array_keys($games) as $game):?>
-                    <?php if($game=='League of Legends'):?>
+                <?php foreach($games as $game):?>
+                    <?php if($game=='lol'):?>
                         <div class=statswrapper id="lol-stats"> 
                             <h2 class="statslabel">League of Legends</h2>
                             <div>
-                                <label class="attribute">ELO: </label><label class="value"><?php echo htmlspecialchars($games['League of Legends']['rank'])?></label>
+                                <label class="attribute">ELO: </label><label class="value"><?php echo $listDAO->getRank($game, $userID)?></label>
                             </div>
-                            <?php if(isset($games['League of Legends']['roles'])): if(count($games['League of Legends']['roles'])>0):?>
+                            <?php if(count($listDAO->getRoles($game, $userID))>0):?>
                                 <div>
-                                    <label class="attribute">Positionen: </label><label class="value"><?php echo htmlspecialchars(implode(", ", $games['League of Legends']['roles']))?></label>
+                                    <label class="attribute">Positionen: </label><label class="value"><?php echo implode(", ", $listDAO->getRoles($game, $userID))?></label>
                                 </div>
-                            <?php  endif; endif; ?>
+                            <?php endif; ?>
                         </div> 
                     <?php endif;?>
-                    <?php if($game=='CS:GO'):?>
+                    <?php if($game=='csgo'):?>
                         <div class=statswrapper id="csgo-stats"> 
                             <h2 class="statslabel">CS:GO</h2>
                             <div>
-                                <label class="attribute">ELO: </label><label class="value"><?php echo htmlspecialchars($games['CS:GO']['rank'])?></label>
+                                <label class="attribute">ELO: </label><label class="value"><?php echo $listDAO->getRank($game, $userID)?></label>
                             </div>
-                            <?php if(isset($games['CS:GO']['roles'])): if(count($games['CS:GO']['roles'])>0):?>
+                            <?php if(count($listDAO->getRoles($game, $userID))>0):?>
                                 <div>
-                                    <label class="attribute">Rollen: </label><label class="value"><?php echo htmlspecialchars(implode(", ", $games['CS:GO']['roles']))?></label>
+                                    <label class="attribute">Rollen: </label><label class="value"><?php echo implode(", ", $listDAO->getRoles($game, $userID))?></label>
                                 </div>
-                            <?php  endif; endif; ?>
+                            <?php endif; ?>
                         </div>
                     <?php endif;?>
-                    <?php if($game=='Rocket League'):?>
-                        <div class=statswrapper id="rocket-stats"> 
+                    <?php if($game=='rl'):?>
+                        <div class=statswrapper id="rl-stats"> 
                             <h2 class="statslabel">Rocket League</h2>
                             <div>
-                                <label class="attribute">ELO: </label><label class="value"><?php echo htmlspecialchars($games['Rocket League']['rank'])?></label>
+                                <label class="attribute">ELO: </label><label class="value"><?php echo $listDAO->getRank($game, $userID)?></label>
                             </div>
-                            <?php if(isset($games['Rocket League']['roles'])): if(count($games['Rocket League']['roles'])>0):?>
+                            <?php if(count($listDAO->getRoles($game, $userID))>0):?>
                                 <div>
-                                    <label class="attribute">Position: </label><label class="value"><?php echo htmlspecialchars(implode(", ", $games['Rocket League']['roles']))?></label>
+                                    <label class="attribute">Position: </label><label class="value"><?php echo implode(", ", $listDAO->getRoles($game, $userID))?></label>
                                 </div>
-                            <?php endif; endif; ?>
+                            <?php endif; ?>
                         </div>
                     <?php endif;?>
-                    <?php if($game=='Valorant'):?>
-                        <div class=statswrapper id="valorant-stats"> 
+                    <?php if($game=='val'):?>
+                        <div class=statswrapper id="val-stats"> 
                             <h2 class="statslabel">Valorant</h2>
                             <div>
-                                <label class="attribute">ELO: </label><label class="value"><?php echo htmlspecialchars($games['Valorant']['rank'])?></label>
+                                <label class="attribute">ELO: </label><label class="value"><?php echo $listDAO->getRank($game, $userID)?></label>
                             </div>
-                            <?php if(isset($games['Valorant']['roles'])): if(count($games['Valorant']['roles'])>0):?>
+                            <?php if(count($listDAO->getRoles($game, $userID))>0):?>
                                 <div>
-                                    <label class="attribute">Position: </label><label class="value"><?php echo htmlspecialchars(implode(", ", $games['Valorant']['roles']))?></label>
+                                    <label class="attribute">Position: </label><label class="value"><?php echo implode(", ", $listDAO->getRoles($game, $userID))?></label>
                                 </div>
-                            <?php endif; endif; ?>
+                            <?php endif; ?>
                         </div>
-                        <?php endif;?>
+                    <?php endif; ?>
                 <?php endforeach;?>  
                 </div> 
                 <?php if(count($games)>0): ?>
-                    <?php $game = array_keys($games);?>
-                    <?php if($game[0]=='League of Legends'):?>
+                    <?php if($games[0]=='lol'):?>
                     <script>showStats('lol', 'lol-stats')</script>
                     <?php endif;?>
-                    <?php if($game[0]=='CS:GO'):?>
+                    <?php if($games[0]=='csgo'):?>
                     <script>showStats('csgo', 'csgo-stats')</script>
                     <?php endif;?>
-                    <?php if($game[0]=='Rocket League'):?>
-                    <script>showStats('rocket', 'rocket-stats')</script>
+                    <?php if($games[0]=='rl'):?>
+                    <script>showStats('rl', 'rl-stats')</script>
                     <?php endif;?>
-                    <?php if($game[0]=='Valorant'):?>
-                    <script>showStats('valorant', 'valorant-stats')</script>
+                    <?php if($games[0]=='val'):?>
+                    <script>showStats('val', 'val-stats')</script>
                     <?php endif;?> 
                 <?php endif;?>
             </div>            

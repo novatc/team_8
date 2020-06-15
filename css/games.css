@@ -21,14 +21,14 @@
     border: 2.5px solid var(--lol-color);
 }
 
-#valorant {
+#val {
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
     background-color:  var(--valorant-color);
     text-align: center;
 }
-#valorant-players .card .container{
+#val-players .card .container{
     border: 2.5px solid var(--valorant-color);
 }
 
@@ -44,14 +44,14 @@
 }
 
 
-#rocketleague {
+#rl {
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
     background-color: var(--rocket-color);
     text-align: center;
 }
-#rocket-players .card .container{
+#rl-players .card .container{
     border: 2.5px solid var(--rocket-color);
 }
 

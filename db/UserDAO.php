@@ -203,7 +203,7 @@ class UserDAO extends UserDAOImpl
         try {
             $db->beginTransaction();
 
-            if($age!=NULL){
+            if($age!=null){
                 $language = Database::encodeData($language);
                 $sql = "UPDATE User SET age = :age WHERE userid = :userid;";
                 $cmd = $db->prepare( $sql );
@@ -212,7 +212,7 @@ class UserDAO extends UserDAOImpl
                 $cmd->execute();
                 
             }
-            if($language!=NULL){
+            if($language!=null){
                 $language = Database::encodeData($language);
                 $sql = "UPDATE User SET language = :language WHERE userid = :userid;";
                 $cmd = $db->prepare( $sql );
@@ -220,7 +220,7 @@ class UserDAO extends UserDAOImpl
                 $cmd->bindParam( ':language', $language );
                 $cmd->execute();
             }
-            if($description!=NULL){
+            if($description!=null){
                 $description = Database::encodeData($description);
                 $sql = "UPDATE User SET description = :description WHERE userid = :userid;";
                 $cmd = $db->prepare( $sql );
@@ -228,7 +228,7 @@ class UserDAO extends UserDAOImpl
                 $cmd->bindParam( ':description', $description );
                 $cmd->execute();
             }
-            if($icon!=NULL){
+            if($icon!=null){
                 $icon = Database::encodeData($icon);
                 $sql = "UPDATE User SET icon = :icon WHERE userid = :userid;";
                 $cmd = $db->prepare( $sql );

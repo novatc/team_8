@@ -16,6 +16,7 @@ $user = $userDAO->getUserByID($userID);
 $description = $user->description;
 $age = $user->age;
 $language = $user->language;
+$usericon = $user->icon;
 
 $games = $listDAO->getGamesFromPlayer($userID);
 

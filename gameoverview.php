@@ -53,14 +53,14 @@
                 </div>
                 <div class="wrapper">
                     <li class="card">
-                        <div class="container" id="valorant" onclick="location.href='valorant.php'">
+                        <div class="container" id="val" onclick="location.href='valorant.php'">
                             <label class="gamelabel">Valorant</label>
                         </div>
                     </li>
                 </div>
                 <div class="wrapper">
                     <li class="card">
-                        <div class="container" id="rocketleague" onclick="location.href='rocketleague.php'">
+                        <div class="container" id="rl" onclick="location.href='rocketleague.php'">
                             <label class="gamelabel">Rocket League</label>
                         </div>
                     </li>
