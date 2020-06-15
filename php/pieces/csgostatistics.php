@@ -3,16 +3,11 @@ $game = 'CS:GO';
 $csgoranks = ['Unranked', 'Silber', 'Gold', 'Master Guardian', 'Legendary Eagle', 'Supreme', 'Global'];
 $csgoroles = ['Sniper', 'Stratege', 'Support', 'Awper', 'Entry Fragger'];
 
-include "db/PlayerListDAO.php";
-$listDAO = new PlayerListDAO();
-
-include "db/GameDAO.php";
-$gameDAO = new GameDAO();
-
-$gameID = $gameDAO->getGameByName($game)->gameid;
 $userID = $_SESSION['userid'];
-$userrank = $listDAO->getRank($gameID, $userID)
-
+$gameID = $gameDAO->getGameByName($game)->gameid;
+$userrank = $listDAO->getRank($gameID, $userID);
+$userroles = $listDAO->getRoles($gameID, $userID);
+$gamestatus = $listDAO->getStatus($gameID, $userID);
 ?>
 
 <h1>CS:GO</h1>
@@ -30,13 +25,13 @@ $userrank = $listDAO->getRank($gameID, $userID)
     <div class=choice-wrapper> 
         <?php foreach($csgoroles as $role): ?>
             <label class="checkbox-container"><?php echo $role?>
-                <input type="checkbox" name="role[]" value='<?php echo $role?>' <?php echo (isset($games[$game]))? (in_array($role, $games[$game]['roles']))? 'checked' : '' : ''?>>
+                <input type="checkbox" name="role[]" value='<?php echo $role?>' <?php echo (in_array($role, $userroles))? 'checked' : ''?>>
                 <span class="checkmark"></span>
             </label>
         <?php endforeach; ?> 
     </div>
 <?php endif; ?>    
 <label class="checkbox-container">Ich möchte, dass andere Spieler mich über dieses Spiel finden.
-        <input type="checkbox" name="visible" <?php echo (isset($games[$game]))? ($games[$game]['status'] == 'active')? 'checked' : '' : 'checked'?>>
+        <input type="checkbox" name="visible" <?php echo ($gamestatus == 'active')? 'checked' : ''?>>
         <span class="checkmark"></span>
 </label>

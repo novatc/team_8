@@ -32,7 +32,6 @@ if(!$error){
     $_SESSION['registrationerror'] = $errorcode;
     if ($errorcode == 0){
         $_SESSION['user'] = $username;
-        $_SESSION['isLoggedIn'] = true;
         $_SESSION['userid'] = $userDAO->getUserByName($username)->userid;
         header('Location: ../../playerprofile.php');
         exit();

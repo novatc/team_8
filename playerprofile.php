@@ -1,7 +1,7 @@
 <?php
 include "php/actions/session.php";
 startSession();
-$isLoggedIn = $_SESSION['isLoggedIn'];
+$isLoggedIn = $_SESSION['userid'] > -1;
 
 if ($isLoggedIn){
     $username = $_SESSION['user'];

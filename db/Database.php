@@ -34,10 +34,8 @@ class Database
         } 
     }
     /* Only necessary for arrays */
-    public static function decodeData($data){
-        if(is_array($data)){
+    public static function decodeArray($data){
             return unserialize($data);
-        }
     }
 }
 

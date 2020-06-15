@@ -11,7 +11,7 @@ $gameDAO = new GameDAO();
 $gameid = $gameDAO->getGameByName($_SESSION['gamechoice'])->gameid;
 $userid = $_SESSION['userid'];
 
-if($_SESSION['isLoggedIn'])
+
 if(isset($_POST['deletegame'])){
     $errorcode = $listDAO->deletePlayer($gameid, $userid);
 

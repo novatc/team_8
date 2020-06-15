@@ -19,7 +19,7 @@
 <main>
 
 
-    <form class="box" method="post" action="php/actions/loginaction.php">
+    <form class="box" method="post" action="php/actions/loginAction.php">
         <h1>Anmelden</h1>
         <input class="login-input" type="text" name="username" placeholder="Benutzername" required>
         <input class="login-input" type="password" name="password" placeholder="Passwort" required>

@@ -22,7 +22,6 @@ if ($error == false) {
     if ($userid!=false) {
         $_SESSION['user'] = $_POST['username'];
         $_SESSION['userid'] = $userid;
-        $_SESSION['isLoggedIn'] = true;
         header('Location: ../../playerprofile.php');
         
         exit();

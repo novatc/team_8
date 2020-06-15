@@ -1,48 +1,16 @@
 <?php
 include "php/actions/session.php";
 startSession();
-$isLoggedIn = $_SESSION['isLoggedIn'];
 
-if ($isLoggedIn){
-    $username = $_SESSION['user'];
-    if(isset($_SESSION['age'])){
-        $age = $_SESSION['age'];
-    }else{
-        $age = '';
-    }
-    if(isset($_SESSION['language'])){
-        $language = $_SESSION['language'];
-    }else{
-        $language = '';
-    }
-    if(isset($_SESSION['description'])){
-        $description = $_SESSION['description'];
-    }else{
-        $description = '';
-    }
-    if(isset($_SESSION['games'])){
-        $games = $_SESSION['games'];
-    }else{
-        $games = [];
-    }
-    if(isset($_SESSION['gamechoice'])){
-        $gamechoice = $_SESSION['gamechoice'];
-    }else{
-        $gamechoice = '';
-    }
-    if(isset($_SESSION['icon'])){
-        $profileicon  = $_SESSION['icon'];
-    }else{
-        $profileicon  = [];
-    }
-           
-    
-} else{
-    $username = '';
-    $description = '';
-    $language = '';
-    $age = '';
-    $games = [];
+include "db/PlayerListDAO.php";
+$listDAO = new PlayerListDAO("sqlite:db/Database.db");
+
+include "db/GameDAO.php";
+$gameDAO = new GameDAO("sqlite:db/Database.db");
+
+if(isset($_SESSION['gamechoice'])){
+    $gamechoice = $_SESSION['gamechoice'];
+}else{
     $gamechoice = '';
 }
 ?>

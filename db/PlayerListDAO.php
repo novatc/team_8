@@ -139,7 +139,7 @@ class PlayerListDAO extends PlayerListDAOImpl
     {
             $entry = $this->getEntry($gameID, $userID);
 
-            if( $entry == -1){
+            if( $entry === -1){
                 return -1; // ERROR
             } 
             if ($entry != null) {
@@ -241,20 +241,6 @@ class PlayerListDAO extends PlayerListDAOImpl
         }
     }
 
-    function getRank($gameID, $userID){
-        
-        $entry = $this->getEntry($gameID, $userID);
-        if( $entry == -1){
-            return -1; // ERROR
-        } 
-        if($entry != null){
-            return $entry->rank;
-        } else{
-            return null;
-        }
-            
-
-    }
 
     function getPlayerByID($userId)
     {
@@ -281,10 +267,46 @@ class PlayerListDAO extends PlayerListDAOImpl
         }
     }
 
-    function getPlayers($gameID, $ranks = NULL, $role = NULL)
-    {
-        // TODO: Implement getPlayers() method.
+    function getRank($gameID, $userID){
+        
+        $entry = $this->getEntry($gameID, $userID);
+        if( $entry === -1){
+            return -1; // ERROR
+        } 
+        if($entry != null){
+            return $entry->rank;
+        } else{
+            return null;
+        }
     }
+    function getRoles($gameID, $userID){
+        
+        $entry = $this->getEntry($gameID, $userID);
+        if( $entry === -1){
+            return -1; // ERROR
+        } 
+        if($entry != null){
+            return Database::decodeArray($entry->role);
+        } else{
+            return [];
+        }
+    }
+    function getStatus($gameID, $userID){
+        
+        $entry = $this->getEntry($gameID, $userID);
+        if( $entry === -1){
+            return -1; // ERROR
+        } 
+        if($entry != null){
+            return $entry->status;
+        } else{
+            return null;
+        }
+            
+
+    }
+
+
 }
 
 ?>
