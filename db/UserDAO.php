@@ -10,6 +10,8 @@ abstract class UserDAOImpl
 
     abstract function getUserByName($username);
 
+    abstract function getUserByID($username);
+
     abstract function updateUser($userID, $age, $language, $description, $icon);
 
 
@@ -82,6 +84,33 @@ class UserDAO extends UserDAOImpl
         }
         Database::disconnect($this->dsn);
     }
+
+    /* Gets User, returns false if User not in DB */
+    function getUserByID($userID)
+    {
+        $db = Database::connect($this->dsn);
+         
+        try {
+            $userID = Database::encodeData($userID);
+            $sql = "SELECT * FROM User WHERE userid = :userid";
+            $cmd = $db->prepare($sql);
+            $cmd->bindParam(':userid', $userID);
+            $cmd->execute();
+
+            $user = $cmd->fetchObject();
+            if ( $user != null) {
+                return $user;
+            } else {
+                Database::disconnect($this->dsn);
+                return false;
+            }
+            Database::disconnect($this->dsn);
+        } catch (Exception $ex) {
+            echo ("Failure:") . $ex->getMessage();
+        }
+        Database::disconnect($this->dsn);
+    }
+
 
     //list up all your friends in chat overview
     function getFriends($ownid) {

@@ -8,7 +8,15 @@ $listDAO = new PlayerListDAO("sqlite:db/Database.db");
 include "db/GameDAO.php";
 $gameDAO = new GameDAO("sqlite:db/Database.db");
 
+include "db/UserDAO.php";
+$userDAO = new UserDAO("sqlite:db/Database.db");
+
 $userID = $_SESSION['userid'];
+$user = $userDAO->getUserByID($userID);
+$description = $user->description;
+$age = $user->age;
+$language = $user->language;
+
 $games = $listDAO->getGamesFromPlayer($userID);
 
 if(isset($_SESSION['gamechoice'])){
@@ -39,15 +47,15 @@ if(isset($_SESSION['gamechoice'])){
         <form class="box" action="php/actions/changeProfileAction.php" method="post">
             <h1>Profil anpassen</h1>
             <div class="input-wrapper">
-                <textarea name="description" class="textarea-input" cols="30" rows="10"><?= htmlspecialchars($description)?></textarea>
+                <textarea name="description" class="textarea-input" cols="30" rows="10"><?= $description?></textarea>
                 <label class="top-label">Beschreibung</label>
             </div> 
             <div class="input-wrapper">
-                <input class="data-input" type="number" name="age" value= "<?= htmlspecialchars($age)?>">
+                <input class="data-input" type="number" name="age" value= "<?= $age?>">
                 <label class="left-label">Alter</label>
             </div>
             <div class="input-wrapper">
-                <input class="data-input" type="text" name="language" value= "<?= htmlspecialchars($language)?>">
+                <input class="data-input" type="text" name="language" value= "<?= $language?>">
                 <label class="left-label">Sprachen</label>
             </div>
         
