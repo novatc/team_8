@@ -161,6 +161,8 @@ class PlayerListDAO extends PlayerListDAOImpl
 
     }
 
+
+
     function getAllPlayers()
     {
         $result = array();
@@ -180,6 +182,47 @@ class PlayerListDAO extends PlayerListDAOImpl
                 }
             }
             return $result;
+
+
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+        }
+    }
+
+    function getPlayersForGame($gameID)
+    {
+        $result = array();
+        $helperArry = array();
+        try {
+            $db = Database::connect("sqlite:db/Database.db");
+        } catch (Exception $e) {
+        }
+        try {
+            $sql = "SELECT userid FROM Playerlist WHERE gameid = :gameID;";
+            $cmd = $db->prepare($sql);
+            $cmd->bindParam(':gameID', $gameID);
+            $cmd->execute();
+
+            if ($cmd->execute()) {
+                while ($row = $cmd->fetchObject()) {
+                    array_push($helperArry,$row);
+                }
+            }
+            foreach ($helperArry as $gamer){
+                $playerSql = "SELECT * FROM User WHERE userid = :obtainedUserId;";
+                $cmd = $db->prepare($playerSql);
+                $cmd->bindParam(':obtainedUserId', $gamer->userid);
+                $cmd->execute();
+
+                if ($cmd->execute()){
+                    while ($item = $cmd->fetchObject()){
+                        array_push($result, $item);
+                    }
+                }
+            }
+            return $result;
+
+
 
 
         } catch (Exception $ex) {

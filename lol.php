@@ -80,7 +80,7 @@ $playerlist = new PlayerListDAO();
             </form>
         </div>
         <div class="overview">
-            <?php $list = $playerlist->getAllPlayers();?>
+            <?php $list = $playerlist->getPlayersForGame("lol");?>
             <?php if (isset($list) && count($list) > 0) { ?>
                 <ul class="cardview" id="lol-players">
                     <?php foreach ($list as $playeritem) { ?>

@@ -1,3 +1,13 @@
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+include "db/PlayerListDAO.php";
+
+$playerlist = new PlayerListDAO();
+
+?>
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -16,7 +26,7 @@
     </div>
 </header>
 <main>
-    <h1 class="title">CS:GO</h1>
+    <h1 class="title">CD:GO</h1>
     <div class="card-grid">
         <div class="filter">
             <h2>Filter</h2>
@@ -70,56 +80,29 @@
             </form>
         </div>
         <div class="overview">
-            <ul class="cardview" id="csgo-players">
-                <li class="card">
-                    <div class="container" id="payer1" onclick="location.href='playerprofile.php'">
-                        <div class="content">
-                            <h2>Spieler 1</h2>
-                            <ul>
-                                <li>Name:</li>
-                                <li>Alter:</li>
-                                <li>ELO:</li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li class="card">
-                    <div class="container" id="payer2"  onclick="location.href='playerprofile.php'">
-                        <div class="content">
-                            <h2>Spieler 2</h2>
-                            <ul>
-                                <li>Name:</li>
-                                <li>Alter:</li>
-                                <li>ELO:</li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li class="card">
-                    <div class="container" id="payer3" onclick="location.href='playerprofile.php'">
-                        <div class="content">
-                            <h2>Spieler 3</h2>
-                            <ul>
-                                <li>Name:</li>
-                                <li>Alter:</li>
-                                <li>ELO:</li>
-                            </ul>
-                        </div>  
-                    </div>
-                </li>
-                <li class="card">
-                    <div class="container" id="payer4" onclick="location.href='playerprofile.php'">
-                        <div class="content">
-                            <h2>Spieler 4</h2>
-                            <ul>
-                                <li>Name:</li>
-                                <li>Alter:</li>
-                                <li>ELO:</li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-            </ul>
+            <?php $list = $playerlist->getPlayersForGame("csgo");?>
+            <?php if (isset($list) && count($list) > 0) { ?>
+                <ul class="cardview" id="lol-players">
+                    <?php foreach ($list as $playeritem) { ?>
+                        <li class="card">
+                            <div class="container" id="payer1" onclick="location.href='playerprofile.php'">
+                                <div class="content">
+                                    <h2>Spieler 1</h2>
+                                    <ul>
+                                        <li>Name: <?php echo htmlspecialchars($playeritem->username) ?></li>
+                                        <li>Alter:</li>
+                                        <li>ELO:</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    <?php } ?>
+                </ul>
+            <?php } else { ?>
+                <p>keine Spieler gefunden</p>
+            <?php } ?>
+
+
         </div>
     </div>
 
