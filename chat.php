@@ -2,6 +2,10 @@
 include "php/actions/session.php";
 startSession();
 
+$currentfriend = $_SESSION['frienduser'];
+$currentfriendicon = $currentfriend->icon;
+$currentfriendname = $currentfriend->username;
+
 $validLogin = isset($_SESSION['user']);
 $messages = array(); //just an empty array to stop errors when $_SESSION['messages'] is not yet initialized.
 $result = array(); //foreach can't call $_SESSION['messages'] properly, so the contents are copied to this array for output.
@@ -62,9 +66,9 @@ if (true){ //valid login later
                 <div class="description">
                     <div class="headgrid">
                         <a href="playerprofile.php">
-                            <div class="iconChatHead" id="avatarTeemo"></div>
+                            <div class="iconChatHead" id=<?=$currentfriendicon?>></div>
                         </a>
-                        <label id="name">Johannes:</label>
+                        <label id="name"><?=$currentfriendname?></label>
                         <div class="chatcardnopadding">
                             <div class="chatcontainer" id="rocketleague" onclick="location.href='lol.php'">
                                 <label class="gamelabel">Rocket League</label>

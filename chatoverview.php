@@ -3,8 +3,9 @@ include "db/UserDAO.php";
 include "php/actions/session.php";
 startSession();
 
-$userDAO = new UserDAO;
-$yourfriends = $userDAO ->getFriends($_SESSION['userid']);
+$friendlist = array();
+$userDAO = new UserDAO("sqlite:db/Database.db");
+$yourfriendids = $userDAO ->getFriends($_SESSION['userid']);
 
 ?>
 <!DOCTYPE html>
@@ -83,10 +84,14 @@ $yourfriends = $userDAO ->getFriends($_SESSION['userid']);
             <div class="scroll" id="friendsList">
                 <div class="gridFriends">
 
-                    <?php foreach($yourfriends as $friend) :?>
-                        <div class="icon" id="avatarTeemo" onclick="location.href='playerprofile.php'"></div>
-                        <form action="chat.php">
-                            <input class="startChat" type="submit" value="Johannes">
+                    <?php foreach($yourfriendids as $friend) :
+                        $frienduser = $userDAO ->getUserByID($friend);
+                        $friendicon = $frienduser->icon;
+                        $friendusername = $frienduser->username;
+                        array_push($friendlist, $friendicon);?>
+                        <div class="icon" id= <?=$friendicon?> onclick="location.href='playerprofile.php'"></div>
+                        <form action="php/actions/startchataction.php" method="post">
+                            <input class="startChat" type="submit" name="friend" value=<?=$friendusername?>>
                         </form>
                     <?php endforeach; ?>
 
