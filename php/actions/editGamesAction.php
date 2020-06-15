@@ -28,7 +28,7 @@ if(isset($_POST['deletegame'])){
     }
 
     /* Check if player is already in playerlist for specific game*/
-    switch($listDAO->alreadyIncluded($game->gameid, $userid)){
+    switch($listDAO->alreadyIncluded($gameid, $userid)){
         case false:
             $listDAO->addPlayer($gameid, $userid, $rank, $roles, $status);
             break;

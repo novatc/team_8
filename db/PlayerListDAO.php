@@ -147,7 +147,7 @@ class PlayerListDAO extends PlayerListDAOImpl
             } else {
                 return true;
             }
-
+            
 
         } catch (Exception $ex) {
             Database::disconnect();
