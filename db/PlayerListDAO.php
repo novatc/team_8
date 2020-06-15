@@ -302,7 +302,34 @@ class PlayerListDAO extends PlayerListDAOImpl
         } else{
             return null;
         }
-            
+    }
+
+    function getGamesFromPlayer($userID){
+        $games = array();
+        $db = Database::connect($this->dsn);
+
+        try {
+            $db->beginTransaction();
+            $username = Database::encodeData($gameID);
+            $password = Database::encodeData($userID);
+
+            $sql = "SELECT * FROM Playerlist WHERE userid =:userID;";
+            $cmd = $db->prepare($sql);
+            $cmd->bindParam(':userID', $userID);
+
+            Database::disconnect($this->dsn);
+            if ($cmd->execute()) {
+                while ($item = $cmd->fetchObject()) {
+                    array_push($games, $item->gameid);
+                }
+            }
+
+            return $games;
+
+        } catch (Exception $ex) {
+            Database::disconnect($this->dsn);
+            return -1;
+        } 
 
     }
 

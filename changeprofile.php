@@ -8,6 +8,9 @@ $listDAO = new PlayerListDAO("sqlite:db/Database.db");
 include "db/GameDAO.php";
 $gameDAO = new GameDAO("sqlite:db/Database.db");
 
+$userID = $_SESSION['userid'];
+$games = $listDAO->getGamesFromPlayer($userID);
+
 if(isset($_SESSION['gamechoice'])){
     $gamechoice = $_SESSION['gamechoice'];
 }else{
@@ -55,35 +58,33 @@ if(isset($_SESSION['gamechoice'])){
                 <h1>Spiele verwalten</h1>  
                 <div class="input-wrapper">
                     <select class="selectbox" name="game" onchange="this.form.submit()" required>
-                        <optgroup id="option-choosed" label="Gewählt">
-                            <option value='<?php echo $gamechoice?>' selected='selected'><?php echo $gamechoice?></option>
                         <optgroup label="Meine Spiele">
-                        <?php foreach(array_keys($games) as $game):?>
-                            <?php if($game=='CS:GO'):?>
+                        <?php foreach($games as $game):?>
+                            <?php if($game=='csgo'):?>
                                 <option value='CS:GO'>CS:GO</option>
                             <?php endif;?>
-                            <?php if($game=='League of Legends'):?>
+                            <?php if($game=='lol'):?>
                                 <option value='League of Legends'>League of Legends</option>
                             <?php endif;?>
-                            <?php if($game=='Rocket League'):?>
+                            <?php if($game=='rl'):?>
                                 <option value='Rocket League'>Rocket League</option>
                             <?php endif;?>
-                            <?php if($game=='Valorant'):?>
+                            <?php if($game=='val'):?>
                                 <option value='Valorant'>Valorant</option>
                             <?php endif;?>
                         <?php endforeach;?>
                         </optgroup>
                         <optgroup label="Weitere Spiele hinzufügen">
-                        <?php if(!in_array('CS:GO', array_keys($games))):?>
-                                <option value='CS:GO'>CS:GO</option>
+                            <?php if(!in_array('csgo', $games)):?>
+                                <option value='csgo'>CS:GO</option>
                             <?php endif;?>
-                            <?php if(!in_array('League of Legends', array_keys($games))):?>
+                            <?php if(!in_array('lol', $games)):?>
                                 <option value='League of Legends'>League of Legends</option>
                             <?php endif;?>
-                            <?php if(!in_array('Rocket League', array_keys($games))):?>
+                            <?php if(!in_array('rl', $games)):?>
                                 <option value='Rocket League'>Rocket League</option>
                             <?php endif;?>
-                            <?php if(!in_array('Valorant', array_keys($games))):?>
+                            <?php if(!in_array('val', $games)):?>
                                 <option value='Valorant'>Valorant</option>
                             <?php endif;?>
                         </optgroup>
