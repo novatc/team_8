@@ -18,9 +18,9 @@ if(isset($_POST['iconsubmit'])){
 if(isset($_POST['changesubmit'])){
     $age = ((!empty($_POST['age'])) ? $_POST['age'] : null);
 
-    $language = ((!empty($_POST['age'])) ? $_POST['language'] : '' );
+    $language = ((!empty($_POST['age'])) ? $_POST['language'] : null );
 
-    $description = ((!empty($_POST['age'])) ? $_POST['description'] : '' );
+    $description = ((!empty($_POST['age'])) ? $_POST['description'] : null );
 
     $errorcode = $userDAO->updateUser($userID, $age, $language, $description, null);
 }
