@@ -156,12 +156,6 @@ class PlayerListDAO extends PlayerListDAOImpl
         }
     }
 
-    function getPlayers($gameID, $ranks = NULL, $role = NULL)
-    {
-
-    }
-
-
 
     function getAllPlayers()
     {
@@ -205,17 +199,17 @@ class PlayerListDAO extends PlayerListDAOImpl
 
             if ($cmd->execute()) {
                 while ($row = $cmd->fetchObject()) {
-                    array_push($helperArry,$row);
+                    array_push($helperArry, $row);
                 }
             }
-            foreach ($helperArry as $gamer){
+            foreach ($helperArry as $gamer) {
                 $playerSql = "SELECT * FROM User WHERE userid = :obtainedUserId;";
                 $cmd = $db->prepare($playerSql);
                 $cmd->bindParam(':obtainedUserId', $gamer->userid);
                 $cmd->execute();
 
-                if ($cmd->execute()){
-                    while ($item = $cmd->fetchObject()){
+                if ($cmd->execute()) {
+                    while ($item = $cmd->fetchObject()) {
                         array_push($result, $item);
                     }
                 }
@@ -223,6 +217,32 @@ class PlayerListDAO extends PlayerListDAOImpl
             return $result;
 
 
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+        }
+    }
+
+    function getPlayerInfo($gameID)
+    {
+        $result = array();
+
+        try {
+            $db = Database::connect("sqlite:db/Database.db");
+        } catch (Exception $e) {
+        }
+        try {
+            $sql = "SELECT * FROM Playerlist WHERE gameid = :gameID;";
+            $cmd = $db->prepare($sql);
+            $cmd->bindParam(':gameID', $gameID);
+            $cmd->execute();
+
+            if ($cmd->execute()) {
+                while ($row = $cmd->fetchObject()) {
+                    array_push($result, $row);
+                }
+            }
+
+            return $result;
 
 
         } catch (Exception $ex) {
@@ -230,6 +250,37 @@ class PlayerListDAO extends PlayerListDAOImpl
         }
     }
 
+    function getPlayerByID($userId)
+    {
+        $result = array();
+
+        try {
+            $db = Database::connect("sqlite:db/Database.db");
+        } catch (Exception $e) {
+        }
+        try {
+            $sql = "SELECT * FROM Playerlist WHERE userid = :userId;";
+            $cmd = $db->prepare($sql);
+            $cmd->bindParam(':userid', $userId);
+            $cmd->execute();
+
+            $result = $cmd->fetchObject();
+            if ($result!=null){
+                Database::disconnect();
+                return $result;
+            }
+
+            else return false;
+
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+        }
+    }
+
+    function getPlayers($gameID, $ranks = NULL, $role = NULL)
+    {
+        // TODO: Implement getPlayers() method.
+    }
 }
 
 ?>
