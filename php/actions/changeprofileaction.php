@@ -7,20 +7,27 @@ $userDAO = new UserDAO();
 
 $posted = false;
 $userID = $_SESSION['userid'];
-$fields = array('age','language', 'description', 'icon');
 
-$age = (!empty($_POST['age'])) ? $_POST['age'] : null ;
+if(isset($_POST['iconsubmit'])){
 
-$language = (!empty($_POST['age'])) ? $_POST['language'] : null ;
+    $icon = ((!empty($_POST['age'])) ? $_POST['icon'] : '' );
 
-$description = (!empty($_POST['age'])) ? $_POST['description'] : null ;
+    $errorcode = $userDAO->updateUser($userID, null, null, null, $icon);
+}
 
-$icon = (!empty($_POST['age'])) ? $_POST['icon'] : null ;
+if(isset($_POST['changesubmit'])){
+    $age = ((!empty($_POST['age'])) ? $_POST['age'] : null);
 
-$errorcode = $userDAO->updateUser($userID, $age, $language, $description, $icon);
+    $language = ((!empty($_POST['age'])) ? $_POST['language'] : '' );
+
+    $description = ((!empty($_POST['age'])) ? $_POST['description'] : '' );
+
+    $errorcode = $userDAO->updateUser($userID, $age, $language, $description, null);
+}
+
+
 
 header('Location: ../../changeprofile.php');
 exit();
-
 
 ?>

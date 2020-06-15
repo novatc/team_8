@@ -1,7 +1,7 @@
 <?php
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
+require_once "php/actions/session.php";
+startSession();
+
 include "db/PlayerListDAO.php";
 
 $playerlist = new PlayerListDAO("sqlite:db/Database.db");

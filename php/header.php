@@ -1,8 +1,8 @@
 <?php
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
-$validLogin = isset($_SESSION['user']);
+require_once "actions/session.php";
+startSession();
+
+$isLoggedIn = $_SESSION['userid']> -1;
 ?>
 
 <nav>
@@ -16,7 +16,7 @@ $validLogin = isset($_SESSION['user']);
             <input class="search" type="text" placeholder="Suche.." name="search">
         </div> 
         <div class="profil-nav">
-            <?php if ($validLogin): ?>
+            <?php if ($isLoggedIn): ?>
                 <a id = "message-link" href="chatoverview.php">Nachrichten</a>
                 <a id = "profil-link" href="playerprofile.php">Profil</a>  
             <?php else: ?>
