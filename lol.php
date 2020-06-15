@@ -84,16 +84,19 @@ $playerlist = new PlayerListDAO("sqlite:db/Database.db");
             <?php $infolist = $playerlist->getPlayerInfo("lol");?>
             <?php if (isset($list) && count($list) > 0) { ?>
                 <ul class="cardview" id="lol-players">
-                    <?php foreach ($list as $playeritem) {?>
+                    <?php foreach ($list as $playeritem) {
+                        $playerID = $playeritem->userid;
+                        $player = $playerlist->getPlayerByID($playerID);
+                        ?>
 
                         <li class="card">
                             <div class="container" id="payer1" onclick="location.href='playerprofile.php'">
                                 <div class="content">
                                     <h2><?php echo htmlspecialchars($playeritem->username) ?></h2>
                                     <ul>
-                                        <li>Nickname: <?php echo htmlspecialchars($playeritem->username) ?></li>
-                                        <li>Role: <?php echo htmlspecialchars($playeritem->age) ?></li>
-                                        <li>ELO:  </li>
+                                        <li>Nickname:  <?php echo htmlspecialchars($playeritem->username) ?></li>
+                                        <li>Role:  <?php echo htmlspecialchars( $player->role) ?></li>
+                                        <li>ELO: <?php echo htmlspecialchars($player->rank) ?>  </li>
                                     </ul>
                                 </div>
                             </div>
