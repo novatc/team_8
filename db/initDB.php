@@ -76,6 +76,26 @@ try {
     $db->exec( $sql );
     echo 'Playerliste Tabelle angelegt. ';
 
+    //ownid = your own id,
+    //friendID = id of your friend,
+    //friends = 0,1 friends or not
+    //no way to add friends yet, have to add rows manually to database
+    $sql = "CREATE TABLE Friends (
+      ownid INTEGER,
+      friendID INTEGER,
+      friends BOOLEAN,
+      FOREIGN KEY (ownid) REFERENCES User(userid)
+)";
+    $db->exec( $sql );
+    echo 'Freunde Tabelle angelegt. ';
+
+    //multiple insertions didn't work yet
+    /*$sql = "INSERT INTO User (userid, username, mail, password) VALUES
+            (1, 'Nico', 'nico@mail.de', 'Passwort'),";
+    $db->exec($sql); */
+
+
+
 
 } catch (PDOException $e){
     echo 'Fehler: '. $e->getMessage();

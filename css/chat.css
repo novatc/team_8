@@ -40,7 +40,7 @@
 #chathistory.chatbox {
     height:60%;
     overflow-y:scroll;
-    background-image:url("../Resourcen/logo.jpg");
+    background-image:url("../Resourcen/Logo/logo_orange.png");
     background-size:cover;
 
 }
