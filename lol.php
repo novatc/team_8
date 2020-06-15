@@ -94,9 +94,9 @@ $playerlist = new PlayerListDAO("sqlite:db/Database.db");
                                 <div class="content">
                                     <h2><?php echo htmlspecialchars($playeritem->username) ?></h2>
                                     <ul>
-                                        <li>Nickname:  <?php echo htmlspecialchars($playeritem->username) ?></li>
-                                        <li>Role:  <?php echo htmlspecialchars( $player->role) ?></li>
-                                        <li>ELO: <?php echo htmlspecialchars($player->rank) ?>  </li>
+                                        <li>Sprache:  <?php echo htmlspecialchars($playeritem->language) ?></li>
+                                        <li>Role:  <?php echo implode(", ",$playerlist->getRoles("lol",$playeritem->userid)) ?></li>
+                                        <li>ELO: <?php echo htmlspecialchars($playerlist->getRank("lol",$playeritem->userid)) ?>  </li>
                                     </ul>
                                 </div>
                             </div>

@@ -90,11 +90,11 @@ $playerlist = new PlayerListDAO("sqlite:db/Database.db");
                         <li class="card">
                             <div class="container" id="payer1" onclick="location.href='playerprofile.php'">
                                 <div class="content">
-                                    <h2>Spieler 1</h2>
+                                    <h2><?php echo htmlspecialchars($playeritem->username) ?></h2>
                                     <ul>
-                                        <li>Nickname:  <?php echo htmlspecialchars($playeritem->username) ?></li>
-                                        <li>Role:  <?php echo htmlspecialchars( $player->role) ?></li>
-                                        <li>ELO: <?php echo htmlspecialchars($player->rank) ?>  </li>
+                                        <li>Sprache:  <?php echo htmlspecialchars($playeritem->language) ?></li>
+                                        <li>Role:  <?php echo implode(", ",$playerlist->getRoles("rl",$playeritem->userid)) ?></li>
+                                        <li>ELO: <?php echo htmlspecialchars($playerlist->getRank("rl",$playeritem->userid)) ?>  </li>>
                                     </ul>
                                 </div>
                             </div>
