@@ -1,6 +1,4 @@
 <?php
-require_once "php/actions/session.php";
-startSession();
 
 include "db/UserDAO.php";
 include "php/actions/session.php";
