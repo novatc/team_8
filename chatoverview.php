@@ -83,12 +83,12 @@ $yourfriends = $userDAO ->getFriends($_SESSION['userid']);
             <div class="scroll" id="friendsList">
                 <div class="gridFriends">
 
-                    <?php while ($zeile = $yourfriends->fetchArray()) : ?>
+                    <?php foreach($yourfriends as $friend) :?>
                         <div class="icon" id="avatarTeemo" onclick="location.href='playerprofile.php'"></div>
                         <form action="chat.php">
                             <input class="startChat" type="submit" value="Johannes">
                         </form>
-                    <?php endwhile; ?>
+                    <?php endforeach; ?>
 
 
 
