@@ -147,7 +147,7 @@ class PlayerListDAO extends PlayerListDAOImpl
             } else {
                 return true;
             }
-            
+
 
         } catch (Exception $ex) {
             Database::disconnect();
@@ -265,12 +265,10 @@ class PlayerListDAO extends PlayerListDAOImpl
             $cmd->execute();
 
             $result = $cmd->fetchObject();
-            if ($result!=null){
+            if ($result != null) {
                 Database::disconnect();
                 return $result;
-            }
-
-            else return false;
+            } else return false;
 
         } catch (Exception $ex) {
             echo $ex->getMessage();
