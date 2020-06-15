@@ -67,6 +67,9 @@ if(isset($_SESSION['gamechoice'])){
                 <h1>Spiele verwalten</h1>  
                 <div class="input-wrapper">
                     <select class="selectbox" name="game" onchange="this.form.submit()" required>
+                        <optgroup id="option-choosed" label="Gewählt">
+                            <option value='<?php echo $gamechoice?>' selected='selected'><?php echo $gamechoice?></option>
+
                         <optgroup label="Meine Spiele">
                         <?php foreach($games as $game):?>
                             <?php if($game=='csgo'):?>
