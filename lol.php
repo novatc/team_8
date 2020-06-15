@@ -4,7 +4,7 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 include "db/PlayerListDAO.php";
 
-$playerlist = new PlayerListDAO();
+$playerlist = new PlayerListDAO("sqlite:db/Database.db");
 
 ?>
 

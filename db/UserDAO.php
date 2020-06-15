@@ -17,10 +17,15 @@ abstract class UserDAOImpl
 
 class UserDAO extends UserDAOImpl
 {
+    private $dsn;
 
+    function __construct($dsn = "sqlite:../../db/Database.db") {
+        $this->dsn = $dsn;
+    }
+    
     function login($username, $password)
     {
-        $db = Database::connect();
+        $db = Database::connect($this->dsn);
          
         try {
             $db->beginTransaction();
@@ -42,12 +47,12 @@ class UserDAO extends UserDAOImpl
 
 
             }
-            Database::disconnect();
+            Database::disconnect($this->dsn);
             return false;
 
 
         } catch (Exception $ex) {
-            Database::disconnect();
+            Database::disconnect($this->dsn);
             return false;
         }
     }
@@ -55,7 +60,7 @@ class UserDAO extends UserDAOImpl
     /* Gets User, returns false if User not in DB */
     function getUserByName($username)
     {
-        $db = Database::connect();
+        $db = Database::connect($this->dsn);
          
         try {
             $username = Database::encodeData($username);
@@ -68,14 +73,14 @@ class UserDAO extends UserDAOImpl
             if ( $username != null) {
                 return $user;
             } else {
-                Database::disconnect();
+                Database::disconnect($this->dsn);
                 return false;
             }
-            Database::disconnect();
+            Database::disconnect($this->dsn);
         } catch (Exception $ex) {
             echo ("Failure:") . $ex->getMessage();
         }
-        Database::disconnect();
+        Database::disconnect($this->dsn);
     }
 
     //list up all your friends in chat overview
@@ -102,13 +107,13 @@ class UserDAO extends UserDAOImpl
         } catch(Exception $ex) {
             echo ("Failure:") . $ex->getMessage();
         }
-        Database::disconnect();
+        Database::disconnect($this->dsn);
     }
 
     function register($username, $email, $pwd, $pwdrepeat)
     {
 
-        $db = Database::connect();
+        $db = Database::connect($this->dsn);
          
 
         /* Check if username in DB */
@@ -146,7 +151,7 @@ class UserDAO extends UserDAOImpl
             $db->rollBack();
             return 4;
         }
-        Database::disconnect();
+        Database::disconnect($this->dsn);
     }
     
 
@@ -163,7 +168,7 @@ class UserDAO extends UserDAOImpl
     }
 
     function updateUser($userID, $age, $language, $description, $icon){
-        $db = Database::connect();
+        $db = Database::connect($this->dsn);
          
 
         try {
@@ -209,7 +214,7 @@ class UserDAO extends UserDAOImpl
             $db->rollBack();
             return 1;
         }
-        Database::disconnect();
+        Database::disconnect($this->dsn);
         
     }
 }

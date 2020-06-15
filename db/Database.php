@@ -3,9 +3,9 @@
 class Database
 {   
     private static $db = null;
-    private static $dsn = "sqlite:../../db/Database.db";
+    
 
-    public static function connect($dsn = "sqlite:../../db/Database.db")
+    public static function connect($dsn)
     {
         try {
             $user = "root";
@@ -14,7 +14,6 @@ class Database
             return self::$db;
         } catch (PDOException $ex) {
             return null;
-            throw new Exception("something went wrong trying to connect to database: " . $ex->getMessage());
         }
     }
     public static function disconnect()
@@ -22,7 +21,6 @@ class Database
         try {
             self::$db = null;
         } catch (PDOException $ex) {
-            throw new Exception("something went wrong trying to connect to database: " . $ex->getMessage());
         }
     }
     public static function encodeData($data){

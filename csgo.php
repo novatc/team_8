@@ -4,7 +4,7 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 include "db/PlayerListDAO.php";
 
-$playerlist = new PlayerListDAO();
+$playerlist = new PlayerListDAO("sqlite:db/Database.db");
 
 ?>
 
@@ -26,7 +26,7 @@ $playerlist = new PlayerListDAO();
     </div>
 </header>
 <main>
-    <h1 class="title">CD:GO</h1>
+    <h1 class="title">CS:GO</h1>
     <div class="card-grid">
         <div class="filter">
             <h2>Filter</h2>

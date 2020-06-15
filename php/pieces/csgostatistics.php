@@ -2,6 +2,17 @@
 $game = 'CS:GO';
 $csgoranks = ['Unranked', 'Silber', 'Gold', 'Master Guardian', 'Legendary Eagle', 'Supreme', 'Global'];
 $csgoroles = ['Sniper', 'Stratege', 'Support', 'Awper', 'Entry Fragger'];
+
+include "db/PlayerListDAO.php";
+$listDAO = new PlayerListDAO();
+
+include "db/GameDAO.php";
+$gameDAO = new GameDAO();
+
+$gameID = $gameDAO->getGameByName($game)->gameid;
+$userID = $_SESSION['userid'];
+$userrank = $listDAO->getRank($gameID, $userID)
+
 ?>
 
 <h1>CS:GO</h1>
@@ -9,7 +20,7 @@ $csgoroles = ['Sniper', 'Stratege', 'Support', 'Awper', 'Entry Fragger'];
 <div class=choice-wrapper>  
     <?php foreach($csgoranks as $rank): ?>
         <label class="radiobutton-container"><?php echo $rank?>
-            <input type="radio" name="rank" value='<?php echo $rank?>' <?php echo (isset($games[$game]))? ($games[$game]['rank'] == $rank)? 'checked' : '' : ''?> required>
+            <input type="radio" name="rank" value='<?php echo $rank?>' <?php echo ($userrank == $rank)? 'checked' : ''?> required>
             <span class="checkmark"></span>
         </label>
     <?php endforeach; ?>

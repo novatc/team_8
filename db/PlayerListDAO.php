@@ -3,7 +3,7 @@ require_once("Database.php");
 
 abstract class PlayerListDAOImpl
 {
-    abstract function getPlayers($gameID, $ranks = NULL, $role = NULL);
+    abstract function getAllPlayers();
 
     abstract function addPlayer($gameID, $userID, $rank, $role, $status);
 
@@ -14,20 +14,22 @@ abstract class PlayerListDAOImpl
 
 class PlayerListDAO extends PlayerListDAOImpl
 {
+    private $dsn;
+
+    function __construct($dsn = "sqlite:../../db/Database.db") {
+        $this->dsn = $dsn;
+    }
 
     function addPlayer($gameID, $userID, $rank, $role, $status)
     {
-
         $gameID = Database::encodeData($gameID);
         $userID = Database::encodeData($userID);
         $rank = Database::encodeData($rank);
         $role = Database::encodeData($role);
         $status = Database::encodeData($status);
+        
+        $db = Database::connect($this->dsn);
 
-        try {
-            $db = Database::connect();
-        } catch (Exception $e) {
-        }
         try {
             $db->beginTransaction();
 
@@ -45,26 +47,22 @@ class PlayerListDAO extends PlayerListDAOImpl
 
         } catch (Exception $ex) {
             $db->rollBack();
-            Database::disconnect();
+            Database::disconnect($this->dsn);
             return 1;
         }
-
-
     }
 
     function updatePlayer($gameID, $userID, $rank, $role, $status)
     {
-
         $gameID = Database::encodeData($gameID);
         $userID = Database::encodeData($userID);
         $rank = Database::encodeData($rank);
         $role = Database::encodeData($role);
         $status = Database::encodeData($status);
 
-        try {
-            $db = Database::connect();
-        } catch (Exception $e) {
-        }
+
+        $db = Database::connect($this->dsn);
+
         try {
             $db->beginTransaction();
 
@@ -82,22 +80,17 @@ class PlayerListDAO extends PlayerListDAOImpl
 
         } catch (Exception $ex) {
             $db->rollBack();
-            Database::disconnect();
+            Database::disconnect($this->dsn);
             return 1;
         }
-
-
     }
 
     function deletePlayer($gameID, $userID)
     {
-
         $gameID = Database::encodeData($gameID);
         $userID = Database::encodeData($userID);
-        try {
-            $db = Database::connect();
-        } catch (Exception $e) {
-        }
+       
+        $db = Database::connect($this->dsn);
 
         try {
             $db->beginTransaction();
@@ -113,20 +106,14 @@ class PlayerListDAO extends PlayerListDAOImpl
 
         } catch (Exception $ex) {
             $db->rollBack();
-            Database::disconnect();
+            Database::disconnect($this->dsn);
             return 1;
-        } catch (Exception $e) {
-        }
-
-
+        } 
     }
 
-    function alreadyIncluded($gameID, $userID)
+    function getEntry($gameID, $userID)
     {
-        try {
-            $db = Database::connect();
-        } catch (Exception $e) {
-        }
+        $db = Database::connect($this->dsn);
 
         try {
             $db->beginTransaction();
@@ -139,37 +126,35 @@ class PlayerListDAO extends PlayerListDAOImpl
             $cmd->bindParam(':userID', $userID);
             $cmd->execute();
 
-            $entry = $cmd->fetchObject();
-            Database::disconnect();
+            Database::disconnect($this->dsn);
 
-            if ($entry == null) {
-                return false;
-            } else {
-                return true;
-            }
-            
+            return $cmd->fetchObject();
 
         } catch (Exception $ex) {
-            Database::disconnect();
-            return null;
-        } catch (Exception $e) {
-        }
+            Database::disconnect($this->dsn);
+            return -1;
+        } 
     }
-
-    function getPlayers($gameID, $ranks = NULL, $role = NULL)
+    function alreadyIncluded($gameID, $userID)
     {
+            $entry = $this->getEntry($gameID, $userID);
 
+            if( $entry == -1){
+                return -1; // ERROR
+            } 
+            if ($entry != null) {
+                return true;
+            } else {
+                return false;
+            }
     }
-
-
 
     function getAllPlayers()
     {
         $result = array();
-        try {
-            $db = Database::connect("sqlite:db/Database.db");
-        } catch (Exception $e) {
-        }
+
+        $db = Database::connect($this->dsn);
+
         try {
             $sql = "SELECT * FROM User;";
             $cmd = $db->prepare($sql);
@@ -194,7 +179,7 @@ class PlayerListDAO extends PlayerListDAOImpl
         $result = array();
         $helperArry = array();
         try {
-            $db = Database::connect("sqlite:db/Database.db");
+            $db = Database::connect($this->dsn);
         } catch (Exception $e) {
         }
         try {
@@ -221,13 +206,24 @@ class PlayerListDAO extends PlayerListDAOImpl
                 }
             }
             return $result;
-
-
-
-
         } catch (Exception $ex) {
             echo $ex->getMessage();
         }
+    }
+
+    function getRank($gameID, $userID){
+        
+        $entry = $this->getEntry($gameID, $userID);
+        if( $entry == -1){
+            return -1; // ERROR
+        } 
+        if($entry != null){
+            return $entry->rank;
+        } else{
+            return null;
+        }
+            
+
     }
 
 }

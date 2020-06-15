@@ -11,7 +11,13 @@ abstract class GameDAOImpl
 }
 
 class GameDAO extends GameDAOImpl
-{   
+{  
+    private $dsn;
+
+    function __construct($dsn = "sqlite:../../db/Database.db") {
+        $this->dsn = $dsn;
+    }
+
     function getGames(){
 
     }
@@ -22,7 +28,7 @@ class GameDAO extends GameDAOImpl
 
     }
     function getGameByName($gameName){
-        $db = Database::connect();
+        $db = Database::connect($this->dsn);
          
         try {
             $db->beginTransaction();
@@ -39,7 +45,7 @@ class GameDAO extends GameDAOImpl
         } catch (Exception $ex) {
             return NULL;
         }
-        Database::disconnect();
+        Database::disconnect($this->dsn);
     }
 }
 
