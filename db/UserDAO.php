@@ -78,6 +78,26 @@ class UserDAO extends UserDAOImpl
         Database::disconnect();
     }
 
+    //list up all your friends in chat overview
+    function getFriends($ownid) {
+
+        //don't really get this to work yet
+        //$db = Database::connect();
+
+        try {
+            //new SQLite3 because I probably did something wrong with connect();
+            $db = new SQLite3( 'db/Database.db' );
+            $sql = 'SELECT friendID FROM Friends WHERE ownid = :wert';
+            $stmt = $db->prepare( $sql );
+            $stmt->bindValue( ':wert', $ownid );
+            $ergebnis = $stmt->execute();
+            return $ergebnis;
+        } catch(Exception $ex) {
+            echo ("Failure:") . $ex->getMessage();
+        }
+        //Database::disconnect();
+    }
+
     function register($username, $email, $pwd, $pwdrepeat)
     {
 

@@ -32,9 +32,7 @@ h1 {
 
 .scroll {
     background: #111111;
-    display:flex;
-    flex-wrap:wrap;
-    height: 75%;
+    height: 650px;
     overflow-x: hidden;
     overflow-y: scroll;
     border-style: double;
@@ -86,7 +84,7 @@ input.startChat:hover {
     h1 {
         text-align:center;
     }
-    .grid {
+    .chat-grid {
         display: grid;
         grid-template-columns: auto auto auto auto;
         grid-column-gap:0px;
@@ -101,7 +99,7 @@ input.startChat:hover {
     h1 {
         text-align:center;
     }
-    .grid {
+    .chat-grid {
         display: grid;
         grid-template-columns: 5% auto 5%;
         grid-column-gap:0px;
@@ -122,10 +120,10 @@ input.startChat:hover {
     .gridFriends {
         grid-template-columns: auto 250px auto auto;
     }
-    .grid #friends.boxname {
+    .chat-grid #friends.boxname {
         grid-row:3;
     }
-    .grid #active.boxname {
+    .chat-grid #active.boxname {
         grid-row:1;
     }
 
@@ -136,7 +134,7 @@ input.startChat:hover {
     h1 {
         text-align:center;
     }
-    .grid {
+    .chat-grid {
         display: grid;
         grid-template-columns: 5% auto 5%;
         grid-column-gap:0px;
@@ -155,10 +153,10 @@ input.startChat:hover {
     .scroll {
         width:98%;
     }
-    .grid #friends.boxname {
+    .chat-grid #friends.boxname {
         grid-row:3;
     }
-    .grid #active.boxname {
+    .chat-grid #active.boxname {
         grid-row:1;
     }
     input.startChat {

@@ -1,3 +1,12 @@
+<?php
+include "db/UserDAO.php";
+include "php/actions/session.php";
+startSession();
+
+$userDAO = new UserDAO;
+$yourfriends = $userDAO ->getFriends($_SESSION['userid']);
+
+?>
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -73,7 +82,17 @@
             <div></div>
             <div class="scroll" id="friendsList">
                 <div class="gridFriends">
-                    <div class="icon" id="avatarTeemo" onclick="location.href='playerprofile.php'"></div>
+
+                    <?php while ($zeile = $yourfriends->fetchArray()) : ?>
+                        <div class="icon" id="avatarTeemo" onclick="location.href='playerprofile.php'"></div>
+                        <form action="chat.php">
+                            <input class="startChat" type="submit" value="Johannes">
+                        </form>
+                    <?php endwhile; ?>
+
+
+
+                    <!--<div class="icon" id="avatarTeemo" onclick="location.href='playerprofile.php'"></div>
                     <form action="chat.php">
                         <input class="startChat" type="submit" value="Johannes">
                     </form>
@@ -91,7 +110,7 @@
                     <div class="icon" id="avatarSpook" onclick="location.href='playerprofile.php'"></div>
                     <form action="chat.php">
                         <input class="startChat" type="submit" value="Florian">
-                    </form>
+                    </form>-->
                 </div>
             </div>
         </div>
