@@ -1,5 +1,5 @@
 <?php
-include "php/actions/session.php";
+require_once "php/actions/session.php";
 startSession();
 
 include "db/PlayerListDAO.php";
@@ -67,6 +67,9 @@ if(isset($_SESSION['gamechoice'])){
                 <h1>Spiele verwalten</h1>  
                 <div class="input-wrapper">
                     <select class="selectbox" name="game" onchange="this.form.submit()" required>
+                        <optgroup id="option-choosed" label="Gewählt">
+                            <option value='<?php echo $gamechoice?>' selected='selected'><?php echo $gamechoice?></option>
+
                         <optgroup label="Meine Spiele">
                         <?php foreach($games as $game):?>
                             <?php if($game=='csgo'):?>
@@ -85,7 +88,7 @@ if(isset($_SESSION['gamechoice'])){
                         </optgroup>
                         <optgroup label="Weitere Spiele hinzufügen">
                             <?php if(!in_array('csgo', $games)):?>
-                                <option value='csgo'>CS:GO</option>
+                                <option value='CS:GO'>CS:GO</option>
                             <?php endif;?>
                             <?php if(!in_array('lol', $games)):?>
                                 <option value='League of Legends'>League of Legends</option>
@@ -148,7 +151,7 @@ if(isset($_SESSION['gamechoice'])){
         <form class="box" action="php/actions/changeProfileAction.php" method="post">
             <h1>Icon ändern</h1>
             <?php include "php/pieces/icons.php";?>
-            <input class="submit-btn"  type="submit" name="changesubmit" value="Speichern">
+            <input class="submit-btn"  type="submit" name="iconsubmit" value="Speichern">
         </form>
 
     </main>

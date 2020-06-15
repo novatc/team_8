@@ -1,7 +1,7 @@
 <?php
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
+require_once "php/actions/session.php";
+startSession();
+
 include "db/PlayerListDAO.php";
 
 $playerlist = new PlayerListDAO("sqlite:db/Database.db");
@@ -84,16 +84,19 @@ $playerlist = new PlayerListDAO("sqlite:db/Database.db");
             <?php $infolist = $playerlist->getPlayerInfo("lol");?>
             <?php if (isset($list) && count($list) > 0) { ?>
                 <ul class="cardview" id="lol-players">
-                    <?php foreach ($list as $playeritem) {?>
+                    <?php foreach ($list as $playeritem) {
+                        $playerID = $playeritem->userid;
+                        $playername = $playerlist->getPlayerByID($playerID);
+                        ?>
 
                         <li class="card">
                             <div class="container" id="payer1" onclick="location.href='playerprofile.php'">
                                 <div class="content">
                                     <h2><?php echo htmlspecialchars($playeritem->username) ?></h2>
                                     <ul>
-                                        <li>Nickname: <?php echo htmlspecialchars($playeritem->username) ?></li>
-                                        <li>Role: <?php echo htmlspecialchars($playeritem->age) ?></li>
-                                        <li>ELO:  </li>
+                                        <li>Sprache:  <?php echo htmlspecialchars($playeritem->language) ?></li>
+                                        <li>Role:  <?php echo implode(", ",$playerlist->getRoles("lol",$playeritem->userid)) ?></li>
+                                        <li>ELO: <?php echo htmlspecialchars($playerlist->getRank("lol",$playeritem->userid)) ?>  </li>
                                     </ul>
                                 </div>
                             </div>

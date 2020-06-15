@@ -1,5 +1,5 @@
 <?php
-include "php/actions/session.php";
+require_once "php/actions/session.php";
 startSession();
 
 $currentfriend = $_SESSION['frienduser'];
