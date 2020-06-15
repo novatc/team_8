@@ -88,7 +88,7 @@ if(isset($_SESSION['gamechoice'])){
                         </optgroup>
                         <optgroup label="Weitere Spiele hinzufügen">
                             <?php if(!in_array('csgo', $games)):?>
-                                <option value='csgo'>CS:GO</option>
+                                <option value='CS:GO'>CS:GO</option>
                             <?php endif;?>
                             <?php if(!in_array('lol', $games)):?>
                                 <option value='League of Legends'>League of Legends</option>
