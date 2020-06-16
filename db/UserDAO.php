@@ -218,6 +218,8 @@ class UserDAO extends UserDAOImpl
         Database::disconnect($this->dsn);
         
     }
+
+
     //chat part
     //list up all your friends in chat overview
     function getFriends($ownid) {
@@ -276,7 +278,6 @@ class UserDAO extends UserDAOImpl
         Database::disconnect($this->dsn);
     }
 
-    //use twice
     function getMessages($userid1, $userid2) {
 
         $allmessages = array();
@@ -292,10 +293,6 @@ class UserDAO extends UserDAOImpl
             if ($cmd->execute()) {
                 while ($result = $cmd->fetchObject()) {
                     array_push($allmessages, $result);
-                    //extra step to get usable ids in array
-                    /*foreach($help as $chatmessage) {
-                        array_push($allmessages, $chatmessage);
-                    }*/
                 }
             }
             return $allmessages;

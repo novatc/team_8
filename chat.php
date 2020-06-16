@@ -6,15 +6,19 @@ startSession();
 
 $userDAO = new UserDAO("sqlite:db/Database.db");
 
-$currentfriend = $_SESSION['frienduser'];
+$onlymessages = array();
+$you = $userDAO->getUserByID($_SESSION['userid']);
+$youricon = $you->icon;
+
+$currentfriend = ($_SESSION['frienduser']);
 $currentfriendicon = $currentfriend->icon;
 $currentfriendname = $currentfriend->username;
 $currentfriendid = $currentfriend->userid;
 
-$yourmessages = $userDAO->getMessages($_SESSION['userid'], $currentfriendid);
-
-
-$validLogin = isset($_SESSION['user']);
+//completemessages includes the senderID, receiverID and the message itself
+$completemessages = $userDAO->getMessages($_SESSION['userid'], $currentfriendid);
+//decode stdObject to Array for usability
+$completemessages = json_decode(json_encode($completemessages), true);
 ?>
 
 <!DOCTYPE html>
@@ -56,11 +60,18 @@ $validLogin = isset($_SESSION['user']);
             </div>
                 <div class="chatbox" id="chathistory">
                     <div class="chatgrid">
-                        <?php foreach($yourmessages as $message) :
-                            if($message!=null) : ?>
-                                <div class="iconSmall" id="avatarTeemo" onclick="location.href='playerprofile.php'"></div>
+                        <!-- extract sender and message from each sent package, react accordingly whether you are sender or receiver -->
+                        <?php foreach($completemessages as $onemessage) :
+                            $senderID = reset($onemessage);
+                            $text = end($onemessage);
+                            if($senderID == $_SESSION['userid']) : ?>
+                                <div class="iconSmall" id=<?= $youricon ?> onclick="location.href='playerprofile.php'"></div>
+                                <p class="speech-bubble-self">
+                                    <?= $text ?> </p>
+                            <?php elseif($senderID != $_SESSION['userid']) : ?>
+                                <div class="iconSmall" id=<?= $currentfriendicon ?> onclick="location.href='playerprofile.php'"></div>
                                 <p class="speech-bubble">
-                                    <?= $message ?> </p>
+                                    <?= $text ?> </p>
                             <?php endif; ?>
                         <?php endforeach; ?>
                     </div>

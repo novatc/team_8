@@ -89,11 +89,28 @@ try {
     $db->exec( $sql );
     echo 'Freunde Tabelle angelegt. ';
 
-    //multiple insertions didn't work yet
-    /*$sql = "INSERT INTO User (userid, username, mail, password) VALUES
-            (1, 'Nico', 'nico@mail.de', 'Passwort'),";
-    $db->exec($sql); */
 
+    $sql = "CREATE TABLE Chat (
+      userid1 INTEGER,
+      userid2 INTEGER,
+      chatmessage TEXT
+)";
+    $db->exec($sql);
+    echo 'Chat Tabelle angelegt. ';
+
+    $sql = "INSERT INTO User (userid, username, mail, password) VALUES (1, 'Nico', 'nico@mail.de', 'Passwort')";
+    $db->exec($sql);
+
+    $sql = "INSERT INTO User (userid, username, mail, password) VALUES (2, 'Hendrick', 'hendrick@mail.de', 'Passwort')";
+    $db->exec($sql);
+
+    $sql = "INSERT INTO Friends (ownID, friendID, friends) VALUES (1, 2, 1)";
+    $db->exec($sql);
+
+    $sql = "INSERT INTO Friends (ownID, friendID, friends) VALUES (2, 1, 1)";
+    $db->exec($sql);
+
+    echo 'Zwei befreundete Beispieluser erstellt.';
 
 
 
