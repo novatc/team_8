@@ -183,7 +183,7 @@ class PlayerListDAO extends PlayerListDAOImpl
         } catch (Exception $e) {
         }
         try {
-            $sql = "SELECT userid FROM Playerlist WHERE gameid = :gameID;";
+            $sql = "SELECT userid FROM Playerlist WHERE gameid = :gameID AND status = 'active';";
             $cmd = $db->prepare($sql);
             $cmd->bindParam(':gameID', $gameID);
             $cmd->execute();
