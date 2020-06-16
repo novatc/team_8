@@ -58,8 +58,16 @@ $games = $listDAO->getGamesFromPlayer($userID);
             }          
         }
         
-        
+        function deactivate(id){ 
+            var btn = document.getElementsByClassName("container");
+            for (var i = 0; i < btn.length; i++) {
+                if(btn[i].id === id){
+                    btn[i].style.opacity = "0.5";
+                }       
+            }                 
+        } 
     </script>
+
     <header>
         <div class="mainnav">
             <?php include "php/header.php";?>
@@ -111,6 +119,7 @@ $games = $listDAO->getGamesFromPlayer($userID);
                                     </div>
                                 </li>
                             </div>
+                            <?php if($listDAO->getStatus($game,$userID)!='active'):?><script>deactivate('lol')</script><?php endif;?>
                         <?php endif;?>
                         <?php if($game=='csgo'):?>
                             <div class="wrapper">
@@ -120,6 +129,7 @@ $games = $listDAO->getGamesFromPlayer($userID);
                                     </div>
                                 </li>
                             </div>
+                            <?php if($listDAO->getStatus($game,$userID)!='active'):?><script>deactivate('csgo')</script><?php endif;?>
                         <?php endif;?>
                         <?php if($game=='rl'):?>
                             <div class="wrapper">
@@ -129,6 +139,7 @@ $games = $listDAO->getGamesFromPlayer($userID);
                                     </div>
                                 </li>
                             </div>
+                            <?php if($listDAO->getStatus($game,$userID)!='active'):?><script>deactivate('rl')</script><?php endif;?>
                         <?php endif;?>
                         <?php if($game=='val'):?>
                             <div class="wrapper">
@@ -138,6 +149,7 @@ $games = $listDAO->getGamesFromPlayer($userID);
                                     </div>    
                                 </li>
                             </div>
+                            <?php if($listDAO->getStatus($game,$userID)!='active'):?><script>deactivate('val')</script><?php endif;?>
                         <?php endif;?>
                     <?php endforeach;?>
                 </ul>
@@ -213,6 +225,7 @@ $games = $listDAO->getGamesFromPlayer($userID);
                     <script>showStats('val', 'val-stats')</script>
                     <?php endif;?> 
                 <?php endif;?>
+    
             </div>            
         </div>
     </main>
