@@ -23,12 +23,12 @@ if ($error == false) {
         $_SESSION['user'] = $_POST['username'];
         $_SESSION['userid'] = $userid;
         header('Location: ../../playerprofile.php');
-        
         exit();
     }
     else{
         echo "Login nicht erfolgreich";
-
+        header('Location: ../../login.php');
+        exit();
     }
 }
 ?>
