@@ -218,7 +218,7 @@ class UserDAO extends UserDAOImpl
         Database::disconnect($this->dsn);
         
     }
-
+    //chat part
     //list up all your friends in chat overview
     function getFriends($ownid) {
         $result = array();
@@ -230,7 +230,7 @@ class UserDAO extends UserDAOImpl
         try {
             $sql = 'SELECT friendID FROM Friends WHERE ownid = :wert';
             $cmd = $db->prepare( $sql );
-            $cmd->bindValue( ':wert', $ownid );
+            $cmd->bindParam( ':wert', $ownid );
             $cmd->execute();
 
             if ($cmd->execute()) {
@@ -249,7 +249,60 @@ class UserDAO extends UserDAOImpl
         Database::disconnect($this->dsn);
     }
 
-    function loadFriendsList($user) {
+    function saveMessage($userid1, $userid2, $message)
+    {
 
+        $db = Database::connect($this->dsn);
+
+        try {
+            $db->beginTransaction();
+            $userid1 = Database::encodeData($userid1);
+            $userid2 = Database::encodeData($userid2);
+            $message = Database::encodeData($message);
+            $sql = "INSERT INTO Chat (userid1, userid2, chatmessage) VALUES (:user1, :user2, :message);";
+            $cmd = $db->prepare( $sql );
+            $cmd->bindParam( ':user1', $userid1 );
+            $cmd->bindParam( ':user2', $userid2 );
+            $cmd->bindParam( ':message', $message );
+            $cmd->execute();
+
+            $db->commit();
+            return 0;
+
+        } catch (Exception $ex) {
+            $db->rollBack();
+            return 1;
+        }
+        Database::disconnect($this->dsn);
+    }
+
+    //use twice
+    function getMessages($userid1, $userid2) {
+
+        $allmessages = array();
+        $db = Database::connect($this->dsn);
+
+        try {
+            $sql = 'SELECT * FROM Chat WHERE userid1 = :you AND userid2 = :friend OR  userid1 = :friend AND userid2 = :you';
+            $cmd = $db->prepare( $sql );
+            $cmd->bindParam( ':you', $userid1 );
+            $cmd->bindParam( ':friend', $userid2 );
+            $cmd->execute();
+
+            if ($cmd->execute()) {
+                while ($result = $cmd->fetchObject()) {
+                    array_push($allmessages, $result);
+                    //extra step to get usable ids in array
+                    /*foreach($help as $chatmessage) {
+                        array_push($allmessages, $chatmessage);
+                    }*/
+                }
+            }
+            return $allmessages;
+
+        } catch( Exception $ex) {
+
+        }
+        Database::disconnect();
     }
 }

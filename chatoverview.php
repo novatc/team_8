@@ -38,7 +38,6 @@ $yourfriendids = $userDAO ->getFriends($_SESSION['userid']);
             <div></div>
             <div class="scroll" id="activeChats">
                 <div class="gridActiveChats">
-                    <!-- thought: need an extra wrapper div for flexbox before each "row" in the grid, did either wrap always or incorrectly though-->
                     <div class="icon" id="avatarTeemo" onclick="location.href='playerprofile.php'"></div>
                     <form action="chat.php">
                         <input class="startChat" type="submit" value="Johannes">
