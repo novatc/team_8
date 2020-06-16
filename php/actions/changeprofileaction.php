@@ -10,7 +10,7 @@ $userID = $_SESSION['userid'];
 
 if(isset($_POST['iconsubmit'])){
 
-    $icon = ((!empty($_POST['age'])) ? $_POST['icon'] : '' );
+    $icon = ((!empty($_POST['icon'])) ? $_POST['icon'] : '' );
 
     $errorcode = $userDAO->updateUser($userID, null, null, null, $icon);
 }
