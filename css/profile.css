@@ -48,26 +48,13 @@
     grid-column: 2;
 }
 
-.profile-grid .profil-header .message-wrapper{
-    justify-self: end;
-    align-self: flex-end;
-    grid-row: 1;
-    grid-column: 3;
-}
-.profile-grid .profil-header .message {
-    color: transparent;
-    background: url(../Resourcen/Navigation/chat-white-24dp.svg);
-    background-repeat: no-repeat;
-    background-position: center;
-    border-color: transparent;
-
-}
-.profile-grid .profil-header .settings-wrapper{
+.profile-grid .profil-header .options-wrapper{
     justify-self: end;
     align-self: flex-start;
     grid-row: 1;
     grid-column: 3;
 }
+
 .profile-grid .profil-header #settings-link{
     width: 25px;
     height: 25px;
@@ -81,6 +68,24 @@
     width: 25px;
     height: 25px;
     background: url(../Resourcen/Navigation/exit_to_app-white-24dp.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    display:inline-block;
+}
+.profile-grid .profil-header #message-link{
+    width: 25px;
+    height: 25px;
+    background: url(../Resourcen/Navigation/chat-white-24dp.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    display:inline-block;
+}
+.profile-grid .profil-header #friend-link{
+    width: 28px;
+    height: 28px;
+    background: url(../Resourcen/Navigation/person_add-white-24dp.svg);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;

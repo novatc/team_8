@@ -310,8 +310,7 @@ class PlayerListDAO extends PlayerListDAOImpl
 
         try {
             $db->beginTransaction();
-            $username = Database::encodeData($gameID);
-            $password = Database::encodeData($userID);
+            $userID = Database::encodeData($userID);
 
             $sql = "SELECT * FROM Playerlist WHERE userid =:userID;";
             $cmd = $db->prepare($sql);
