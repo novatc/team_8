@@ -22,21 +22,21 @@
     <div class="card-grid">
         <div class="filter">
             <h2>Filter</h2>
-            <form>
+            <form action="filterAction.php?filter=game" method="post">
                 <label class="checkbox-container">Shooter
-                    <input type="checkbox" checked="checked">
+                    <input type="checkbox" onchange="this.form.submit()">
                     <span class="checkmark"></span>
                 </label>
                 <label class="checkbox-container">Teamplay
-                    <input type="checkbox">
+                    <input type="checkbox" onchange="this.form.submit()">
                     <span class="checkmark"></span>
                 </label>
                 <label class="checkbox-container">Strategie
-                    <input type="checkbox">
+                    <input type="checkbox" onchange="this.form.submit()">
                     <span class="checkmark"></span>
                 </label>
                 <label class="checkbox-container">Arenakampf
-                    <input type="checkbox">
+                    <input type="checkbox" onchange="this.form.submit()">
                     <span class="checkmark"></span>
                 </label>
 

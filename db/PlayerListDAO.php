@@ -174,23 +174,48 @@ class PlayerListDAO extends PlayerListDAOImpl
         }
     }
 
-    function getPlayersForGame($gameID)
+    function getPlayersForGame($gameID, $ranks, $roles)
     {
         $result = array();
         $helperArry = array();
+
+        $db = Database::connect($this->dsn);
+        
         try {
-            $db = Database::connect($this->dsn);
-        } catch (Exception $e) {
-        }
-        try {
-            $sql = "SELECT userid FROM Playerlist WHERE gameid = :gameID AND status = 'active';";
+            
+            $sql = "SELECT * FROM Playerlist WHERE gameid = :gameID AND status = 'active'";
+            
+            if(count($ranks)>0){
+                $sql = $sql . " AND (rank = :rank" . 0;
+                for($i = 1; $i<count($ranks);$i++){
+                    $sql = $sql . " OR rank = :rank" . $i;
+                }
+                $sql = $sql . ")";
+            }
+            $sql = $sql . ";";
+            
             $cmd = $db->prepare($sql);
             $cmd->bindParam(':gameID', $gameID);
-            $cmd->execute();
-
+            
+            for($i = 0; $i<count($ranks);$i++){
+                $string = 'rank'. $i;
+                $cmd->bindParam($string, $ranks[$i]);
+            }
+            
             if ($cmd->execute()) {
-                while ($row = $cmd->fetchObject()) {
-                    array_push($helperArry, $row);
+                while ($entry = $cmd->fetchObject()) {
+                    if(count($roles)>0){
+                        $entryroles = Database::decodeArray($entry->role);
+                        foreach($roles as $role){
+                            if(in_array($role, $entryroles)){
+                                array_push($helperArry, $entry);
+                                break;
+                            }
+                        }
+                    }else{
+                        array_push($helperArry, $entry);
+                    }
+                    
                 }
             }
             foreach ($helperArry as $gamer) {
