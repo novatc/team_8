@@ -28,7 +28,7 @@ class UserDAO extends UserDAOImpl
     function login($username, $password)
     {
         $db = Database::connect($this->dsn);
-         
+
         try {
             $db->beginTransaction();
             $username = Database::encodeData($username);
@@ -41,10 +41,10 @@ class UserDAO extends UserDAOImpl
 
             $usernameObject = $cmd->fetchObject();
             if ($usernameObject != null){
-                $usernamepassword = $usernameObject->password;
-                $un = $usernameObject->username;
+                $hasheduserpw = $usernameObject->password;
 
-                if ($usernamepassword == $password) 
+
+                if (password_verify($password, $hasheduserpw))
                     return $usernameObject->userid;
 
 
@@ -137,12 +137,12 @@ class UserDAO extends UserDAOImpl
             $db->beginTransaction();
             $username = Database::encodeData($username);
             $email = Database::encodeData($email);
-            $password = $this->encodePassword($pwd);
+            $hashedpw = password_hash($pwd,PASSWORD_DEFAULT );
             $sql = "INSERT INTO User (username, mail, password) VALUES (:user, :email, :password);";
             $cmd = $db->prepare( $sql );
             $cmd->bindParam( ':user', $username );
             $cmd->bindParam( ':email', $email );
-            $cmd->bindParam( ':password', $pwd );
+            $cmd->bindParam( ':password', $hashedpw );
             $cmd->execute();
 
             $db->commit();
