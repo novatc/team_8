@@ -107,8 +107,6 @@ $playerlist = new PlayerListDAO("sqlite:db/Database.db");
             <?php  else: ?>
                 <p>keine Spieler gefunden</p>
             <?php endif; ?>
-
-
         </div>
     </div>
 </main>

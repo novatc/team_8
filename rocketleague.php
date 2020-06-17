@@ -81,31 +81,32 @@ $playerlist = new PlayerListDAO("sqlite:db/Database.db");
         </div>
         <div class="overview">
             <?php $list = $playerlist->getPlayersForGame("rl");?>
-            <?php if (isset($list) && count($list) > 0) { ?>
+            <?php $infolist = $playerlist->getPlayerInfo("rl");?>
+            <?php if (isset($list) && count($list) > 0): ?>
                 <ul class="cardview" id="rl-players">
-                    <?php foreach ($list as $playeritem) {
+                    <?php foreach ($list as $playeritem):
                         $playerID = $playeritem->userid;
-                        $player = $playerlist->getPlayerByID($playerID);
+                        $playername = $playerlist->getPlayerByID($playerID);
+                        $profileurl = 'playerprofile.php?id= ' . $playerID ;
                         ?>
+
                         <li class="card">
-                            <div class="container" id="payer1" onclick="location.href='playerprofile.php'">
+                            <a href='<?php echo $profileurl?>' class="container">
                                 <div class="content">
                                     <h2><?php echo htmlspecialchars($playeritem->username) ?></h2>
                                     <ul>
                                         <li>Sprache:  <?php echo htmlspecialchars($playeritem->language) ?></li>
                                         <li>Role:  <?php echo implode(", ",$playerlist->getRoles("rl",$playeritem->userid)) ?></li>
-                                        <li>ELO: <?php echo htmlspecialchars($playerlist->getRank("rl",$playeritem->userid)) ?>  </li>>
+                                        <li>ELO: <?php echo htmlspecialchars($playerlist->getRank("rl",$playeritem->userid)) ?>  </li>
                                     </ul>
                                 </div>
-                            </div>
+                            </a>
                         </li>
-                    <?php } ?>
+                    <?php endforeach; ?>
                 </ul>
-            <?php } else { ?>
+            <?php  else: ?>
                 <p>keine Spieler gefunden</p>
-            <?php } ?>
-
-
+            <?php endif; ?>
         </div>
     </div>
 
