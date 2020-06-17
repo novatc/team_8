@@ -10,19 +10,19 @@ $userID = $_SESSION['userid'];
 
 if(isset($_POST['iconsubmit'])){
 
-    $icon = ((!empty($_POST['icon'])) ? $_POST['icon'] : '' );
+    $icon =$_POST['icon'];
 
-    $errorcode = $userDAO->updateUser($userID, null, null, null, $icon);
+    $errorcode = $userDAO->updateUser($userID, -1, -1, -1, $icon);
 }
 
 if(isset($_POST['changesubmit'])){
-    $age = ((!empty($_POST['age'])) ? $_POST['age'] : null);
+    $age = $_POST['age'];
 
-    $language = ((!empty($_POST['age'])) ? $_POST['language'] : null );
+    $language = $_POST['language'];
 
-    $description = ((!empty($_POST['age'])) ? $_POST['description'] : null );
+    $description = $_POST['description'];
 
-    $errorcode = $userDAO->updateUser($userID, $age, $language, $description, null);
+    $errorcode = $userDAO->updateUser($userID, $age, $language, $description, -1);
 }
 
 

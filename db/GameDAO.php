@@ -3,8 +3,7 @@ require_once ("Database.php");
 
 abstract class GameDAOImpl
 {
-    abstract function getGames();
-    abstract function getGamesByTag($tag);
+    abstract function getGames($tags);
     abstract function getGameByID($gameID);
     abstract function getGameByName($gameNameks);
 
@@ -18,12 +17,39 @@ class GameDAO extends GameDAOImpl
         $this->dsn = $dsn;
     }
 
-    function getGames(){
+    function getGames($tags){
+        $games = array();
+        $helperArry = array();
 
-    }
-    function getGamesByTag($tag){
+        $db = Database::connect($this->dsn);
+        
+        try {
+            
+            $sql = "SELECT * FROM Games";
 
+            $cmd = $db->prepare($sql);
+            
+            if ($cmd->execute()) {
+                while ($game = $cmd->fetchObject()) {
+                    if(count($tags)>0){
+                        $gametags = Database::decodeArray($game->tags);
+                        foreach($tags as $tag){
+                            if(in_array($tag, $gametags)){
+                                array_push($games, $game);
+                                break;
+                            }
+                        }
+                    }else{
+                        array_push($games, $game);
+                    }
+                }
+            }
+            return $games;
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+        }
     }
+
     function getGameByID($gameID){
 
     }

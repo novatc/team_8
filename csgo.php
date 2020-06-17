@@ -6,6 +6,22 @@ include "db/PlayerListDAO.php";
 
 $playerlist = new PlayerListDAO("sqlite:db/Database.db");
 
+$csgoranks = ['Unranked', 'Silber', 'Gold', 'Master Guardian', 'Legendary Eagle', 'Supreme', 'Global'];
+$csgoroles = ['Sniper', 'Stratege', 'Support', 'Awper', 'Entry Fragger'];
+
+$rank =[];
+if(isset($_POST['rank']))
+    $rank = $_POST['rank'];
+
+$role =[];
+if(isset($_POST['role']))
+    $role = $_POST['role'];
+
+$_SESSION['ranks']= $rank;
+$_SESSION['roles']= $role;
+
+$list = $playerlist->getPlayersForGame("csgo", $rank, $role);
+
 ?>
 
 <!DOCTYPE html>
@@ -30,58 +46,25 @@ $playerlist = new PlayerListDAO("sqlite:db/Database.db");
     <div class="card-grid">
         <div class="filter">
             <h2>Filter</h2>
-            <form>
-                <h3>Elo:</h3>
-                <label class="checkbox-container">Master
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="checkbox-container">Diamant
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="checkbox-container">Platin
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="checkbox-container">Gold
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="checkbox-container">Silber
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="checkbox-container">Bronze
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
-                <h3>Position:</h3>
-                <label class="checkbox-container">Top Lane
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="checkbox-container">Jungle
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="checkbox-container">Mid
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="checkbox-container">Bottom
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="checkbox-container">Support
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
+            <form action="csgo.php" method="post">
+                <h3>Rang:</h3>
+                <?php foreach($csgoranks as $rank): ?>
+                    <label class="checkbox-container"><?php echo $rank?>
+                        <input type="checkbox" name="rank[]" value='<?php echo $rank?>' <?php echo (in_array($rank,$_SESSION['ranks']))? 'checked' : ''?>  onchange="this.form.submit()">
+                        <span class="checkmark"></span>
+                    </label>
+                    
+                <?php endforeach; ?>
+                <h3>Rolle:</h3>
+                <?php foreach($csgoroles as $role): ?>
+                    <label class="checkbox-container"><?php echo $role?>
+                        <input type="checkbox" name="role[]" value='<?php echo $role?>' <?php echo (in_array($role, $_SESSION['roles']))? 'checked' : ''?> onchange="this.form.submit()">
+                        <span class="checkmark"></span>
+                    </label>
+                <?php endforeach; ?> 
             </form>
         </div>
         <div class="overview">
-            <?php $list = $playerlist->getPlayersForGame("csgo");?>
-            <?php $infolist = $playerlist->getPlayerInfo("csgo");?>
             <?php if (isset($list) && count($list) > 0): ?>
                 <ul class="cardview" id="csgo-players">
                     <?php foreach ($list as $playeritem):

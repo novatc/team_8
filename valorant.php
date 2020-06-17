@@ -6,6 +6,22 @@ include "db/PlayerListDAO.php";
 
 $playerlist = new PlayerListDAO("sqlite:db/Database.db");
 
+$valranks = ['Mercenary', 'Soldier', 'Veteran', 'Hero', 'Legend', 'Mythic', 'Immortal', 'Valorant'];
+$valroles = ['Breach', 'Brimstone', 'Cypher', 'Jett', 'Omen', 'Phoenix', 'Raze', 'Reyna', 'Sage', 'Sova', 'Viper'];
+
+$rank =[];
+if(isset($_POST['rank']))
+    $rank = $_POST['rank'];
+
+$role =[];
+if(isset($_POST['role']))
+    $role = $_POST['role'];
+
+$_SESSION['ranks']= $rank;
+$_SESSION['roles']= $role;
+
+$list = $playerlist->getPlayersForGame("val", $rank, $role);
+
 ?>
 
 <!DOCTYPE html>
@@ -30,58 +46,27 @@ $playerlist = new PlayerListDAO("sqlite:db/Database.db");
     <div class="card-grid">
         <div class="filter">
             <h2>Filter</h2>
-            <form>
-                <h3>Elo:</h3>
-                <label class="checkbox-container">Master
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="checkbox-container">Diamant
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="checkbox-container">Platin
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="checkbox-container">Gold
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="checkbox-container">Silber
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="checkbox-container">Bronze
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
-                <h3>Position:</h3>
-                <label class="checkbox-container">Top Lane
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="checkbox-container">Jungle
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="checkbox-container">Mid
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="checkbox-container">Bottom
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="checkbox-container">Support
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
+            <form action="valorant.php" method="post">
+            <h3>Rang:</h3>
+                <?php foreach($valranks as $rank): ?>
+                    <label class="checkbox-container"><?php echo $rank?>
+                        <input type="checkbox" name="rank[]" value='<?php echo $rank?>' <?php echo (in_array($rank,$_SESSION['ranks']))? 'checked' : ''?>  onchange="this.form.submit()">
+                        <span class="checkmark"></span>
+                    </label>
+                    
+                <?php endforeach; ?>
+                <?php if(count($valroles)>0): ?>
+                    <h3>Charakter:</h3>
+                    <?php foreach($valroles as $role): ?>
+                        <label class="checkbox-container"><?php echo $role?>
+                            <input type="checkbox" name="role[]" value='<?php echo $role?>' <?php echo (in_array($role, $_SESSION['roles']))? 'checked' : ''?> onchange="this.form.submit()">
+                            <span class="checkmark"></span>
+                        </label>
+                    <?php endforeach; ?> 
+                <?php endif; ?>
             </form>
         </div>
         <div class="overview">
-            <?php $list = $playerlist->getPlayersForGame("val");?>
-            <?php $infolist = $playerlist->getPlayerInfo("val");?>
             <?php if (isset($list) && count($list) > 0): ?>
                 <ul class="cardview" id="val-players">
                     <?php foreach ($list as $playeritem):
