@@ -72,6 +72,8 @@
     transition: all 0.4s ease-out;
     box-shadow: 0 0 20px var(--dark-shadow);
     font-size: 70px;
+    color: var(--default-white);
+    text-decoration: none;
 }
 
 .card .container:hover{

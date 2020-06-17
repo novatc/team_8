@@ -25,24 +25,24 @@ $isLoggedIn = $_SESSION['userid'] > -1;
 <main>
     <section id="grid">
         <?php if ($isLoggedIn) { ?>
-            <div class="rightloggedin" onclick="location.href='gameoverview.php'">
+            <a href='gameoverview.php' class="rightloggedin">
 
-            </div>
+            </a>
         <?php } else { ?>
-            <div class="right" onclick="location.href='login.php'">
+            <a href='login.php' class="right">
 
-            </div>
+            </a>
         <?php } ?>
 
         <?php if ($isLoggedIn) { ?>
-            <div class="leftloggedin" onclick="location.href='playerprofile.php'">
+            <a href='playerprofile.php'class="leftloggedin">
 
-            </div>
+            </a>
         <?php } else { ?>
 
-            <div class="left" onclick="location.href='registration.php'">
+            <a href='registration.php' class="left">
 
-            </div>
+            </a>
         <?php } ?>
 
 

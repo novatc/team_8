@@ -2,7 +2,7 @@
 require_once "php/actions/session.php";
 startSession();
 
-$isLoggedIn = $_SESSION['userid']> -1;
+$isLoggedIn = $_SESSION['profileID']> -1;
 
 include "db/PlayerListDAO.php";
 $listDAO = new PlayerListDAO("sqlite:db/Database.db");
@@ -13,16 +13,28 @@ $gameDAO = new GameDAO("sqlite:db/Database.db");
 include "db/UserDAO.php";
 $userDAO = new UserDAO("sqlite:db/Database.db");
 
-$userID = $_SESSION['userid'];
-$user = $userDAO->getUserByID($userID);
-$username = $user->username;
-$description = $user->description;
-$age = $user->age;
-$language = $user->language;
-$usericon = $user->icon;
 
-$games = $listDAO->getGamesFromPlayer($userID);
+if (isset($_GET['id']))
+    $profileID = $_GET['id'];
+else
+    $profileID = $_SESSION['userid'];
 
+$user = $userDAO->getUserByID($profileID);
+$games = $listDAO->getGamesFromPlayer($profileID);
+$noData = ($user==null);
+if(!$noData){
+    $username = $user->username;
+    $description = $user->description;
+    $age = $user->age;
+    $language = $user->language;
+    $usericon = $user->icon;
+    
+    if($profileID == $_SESSION['userid'])
+        $ownprofile = true;
+    else
+        $ownprofile = false;
+    
+}
 
 ?>
 
@@ -74,26 +86,33 @@ $games = $listDAO->getGamesFromPlayer($userID);
         </div>
     </header>
     <main>
+        <?php if ($noData): ?>
+            <div class=error-wrapper>
+                <p id='error-label'>Hier gibt es nichts zusehen</p>
+            </div>
+            
+        <?php else: ?>
         <div class="profile-grid">
             <div class="profil-header">
                 <div class="picture-wrapper">
                     <div class="icon" id= <?=$usericon?>></div>
                 </div>
                 <div class="name-wrapper">
-                    <?php if ($isLoggedIn): ?>
-                        <p> Angemeldet als: <?= $username?></p>
-                        <h1><?= $username?></h1>
-                        <label><?= $description?></label>
+                    <?php if ($ownprofile): ?>
+                    <p> Angemeldet als: <?= $username?></p>
                     <?php endif; ?>
+                    <h1><?= $username?></h1>
+                    <label><?= $description?></label>
+                    
                 </div>
-                <div class="settings-wrapper">
-                    <?php if ($isLoggedIn): ?>    
+                <div class="options-wrapper">
+                    <?php if ($ownprofile): ?>    
                     <a id="settings-link" href="changeprofile.php"></a>
-                    <a id="logout-link" href="php/actions/logoutaction.php"></a>
+                    <a id="logout-link" href="php/actions/logoutAction.php"></a>
+                    <?php else:?>
+                    <a id="message-link" href="chatoverview.php"></a>
+                    <a id="friend-link" href="php/actions/addFriendAction.php"></a>
                     <?php endif; ?>
-                </div>
-                <div class="message-wrapper">
-                    <button class="message">Nachricht schreiben</button>
                 </div>
             </div>
          
@@ -119,7 +138,7 @@ $games = $listDAO->getGamesFromPlayer($userID);
                                     </div>
                                 </li>
                             </div>
-                            <?php if($listDAO->getStatus($game,$userID)!='active'):?><script>deactivate('lol')</script><?php endif;?>
+                            <?php if($listDAO->getStatus($game,$profileID)!='active'):?><script>deactivate('lol')</script><?php endif;?>
                         <?php endif;?>
                         <?php if($game=='csgo'):?>
                             <div class="wrapper">
@@ -129,7 +148,7 @@ $games = $listDAO->getGamesFromPlayer($userID);
                                     </div>
                                 </li>
                             </div>
-                            <?php if($listDAO->getStatus($game,$userID)!='active'):?><script>deactivate('csgo')</script><?php endif;?>
+                            <?php if($listDAO->getStatus($game,$profileID)!='active'):?><script>deactivate('csgo')</script><?php endif;?>
                         <?php endif;?>
                         <?php if($game=='rl'):?>
                             <div class="wrapper">
@@ -139,7 +158,7 @@ $games = $listDAO->getGamesFromPlayer($userID);
                                     </div>
                                 </li>
                             </div>
-                            <?php if($listDAO->getStatus($game,$userID)!='active'):?><script>deactivate('rl')</script><?php endif;?>
+                            <?php if($listDAO->getStatus($game,$profileID)!='active'):?><script>deactivate('rl')</script><?php endif;?>
                         <?php endif;?>
                         <?php if($game=='val'):?>
                             <div class="wrapper">
@@ -149,7 +168,7 @@ $games = $listDAO->getGamesFromPlayer($userID);
                                     </div>    
                                 </li>
                             </div>
-                            <?php if($listDAO->getStatus($game,$userID)!='active'):?><script>deactivate('val')</script><?php endif;?>
+                            <?php if($listDAO->getStatus($game,$profileID)!='active'):?><script>deactivate('val')</script><?php endif;?>
                         <?php endif;?>
                     <?php endforeach;?>
                 </ul>
@@ -161,11 +180,11 @@ $games = $listDAO->getGamesFromPlayer($userID);
                         <div class=statswrapper id="lol-stats"> 
                             <h2 class="statslabel">League of Legends</h2>
                             <div>
-                                <label class="attribute">ELO: </label><label class="value"><?php echo $listDAO->getRank($game, $userID)?></label>
+                                <label class="attribute">ELO: </label><label class="value"><?php echo $listDAO->getRank($game, $profileID)?></label>
                             </div>
-                            <?php if(count($listDAO->getRoles($game, $userID))>0):?>
+                            <?php if(count($listDAO->getRoles($game, $profileID))>0):?>
                                 <div>
-                                    <label class="attribute">Positionen: </label><label class="value"><?php echo implode(", ", $listDAO->getRoles($game, $userID))?></label>
+                                    <label class="attribute">Positionen: </label><label class="value"><?php echo implode(", ", $listDAO->getRoles($game, $profileID))?></label>
                                 </div>
                             <?php endif; ?>
                         </div> 
@@ -174,11 +193,11 @@ $games = $listDAO->getGamesFromPlayer($userID);
                         <div class=statswrapper id="csgo-stats"> 
                             <h2 class="statslabel">CS:GO</h2>
                             <div>
-                                <label class="attribute">ELO: </label><label class="value"><?php echo $listDAO->getRank($game, $userID)?></label>
+                                <label class="attribute">ELO: </label><label class="value"><?php echo $listDAO->getRank($game, $profileID)?></label>
                             </div>
-                            <?php if(count($listDAO->getRoles($game, $userID))>0):?>
+                            <?php if(count($listDAO->getRoles($game, $profileID))>0):?>
                                 <div>
-                                    <label class="attribute">Rollen: </label><label class="value"><?php echo implode(", ", $listDAO->getRoles($game, $userID))?></label>
+                                    <label class="attribute">Rollen: </label><label class="value"><?php echo implode(", ", $listDAO->getRoles($game, $profileID))?></label>
                                 </div>
                             <?php endif; ?>
                         </div>
@@ -187,11 +206,11 @@ $games = $listDAO->getGamesFromPlayer($userID);
                         <div class=statswrapper id="rl-stats"> 
                             <h2 class="statslabel">Rocket League</h2>
                             <div>
-                                <label class="attribute">ELO: </label><label class="value"><?php echo $listDAO->getRank($game, $userID)?></label>
+                                <label class="attribute">ELO: </label><label class="value"><?php echo $listDAO->getRank($game, $profileID)?></label>
                             </div>
-                            <?php if(count($listDAO->getRoles($game, $userID))>0):?>
+                            <?php if(count($listDAO->getRoles($game, $profileID))>0):?>
                                 <div>
-                                    <label class="attribute">Position: </label><label class="value"><?php echo implode(", ", $listDAO->getRoles($game, $userID))?></label>
+                                    <label class="attribute">Position: </label><label class="value"><?php echo implode(", ", $listDAO->getRoles($game, $profileID))?></label>
                                 </div>
                             <?php endif; ?>
                         </div>
@@ -200,11 +219,11 @@ $games = $listDAO->getGamesFromPlayer($userID);
                         <div class=statswrapper id="val-stats"> 
                             <h2 class="statslabel">Valorant</h2>
                             <div>
-                                <label class="attribute">ELO: </label><label class="value"><?php echo $listDAO->getRank($game, $userID)?></label>
+                                <label class="attribute">ELO: </label><label class="value"><?php echo $listDAO->getRank($game, $profileID)?></label>
                             </div>
-                            <?php if(count($listDAO->getRoles($game, $userID))>0):?>
+                            <?php if(count($listDAO->getRoles($game, $profileID))>0):?>
                                 <div>
-                                    <label class="attribute">Position: </label><label class="value"><?php echo implode(", ", $listDAO->getRoles($game, $userID))?></label>
+                                    <label class="attribute">Position: </label><label class="value"><?php echo implode(", ", $listDAO->getRoles($game, $profileID))?></label>
                                 </div>
                             <?php endif; ?>
                         </div>
@@ -228,6 +247,7 @@ $games = $listDAO->getGamesFromPlayer($userID);
     
             </div>            
         </div>
+        <?php endif; ?>
     </main>
   
     <footer>
