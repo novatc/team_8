@@ -104,6 +104,18 @@ try {
     $sql = "INSERT INTO User (userid, username, mail, password) VALUES (2, 'Hendrick', 'hendrick@mail.de', 'Passwort')";
     $db->exec($sql);
 
+    $sql = "INSERT INTO User (userid, username, mail, password) VALUES (3, 'Lucas', 'lw@mail.de', 'Passwort')";
+    $db->exec($sql);
+
+    $sql = "INSERT INTO User (userid, username, mail, password) VALUES (4, 'Tim', 'tim@mail.de', 'Passwort')";
+    $db->exec($sql);
+
+    $sql = "INSERT INTO User (userid, username, mail, password) VALUES (5, 'Tom', 'tom@mail.de', 'Passwort')";
+    $db->exec($sql);
+
+    $sql = "INSERT INTO User (userid, username, mail, password) VALUES (6, 'Johannes', 'jo@mail.de', 'Passwort')";
+    $db->exec($sql);
+
     $sql = "INSERT INTO Friends (ownID, friendID, friends) VALUES (1, 2, 1)";
     $db->exec($sql);
 
