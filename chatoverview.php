@@ -38,46 +38,24 @@ $yourfriendids = $userDAO ->getFriends($_SESSION['userid']);
             <div></div>
             <div class="scroll" id="activeChats">
                 <div class="gridActiveChats">
-                    <div class="icon" id="avatarTeemo" onclick="location.href='playerprofile.php'"></div>
-                    <form action="chat.php">
-                        <input class="startChat" type="submit" value="Johannes">
-                    </form>
-                    <div class="chatcard">
-                        <div class="chatcontainer" id="rocketleague" onclick="location.href='lol.php'">
-                            <label class="gamelabel">Rocket League</label>
-                        </div>
-                    </div>
-
-                    <div class="icon" id="avatarFuryhorn" onclick="location.href='playerprofile.php'"></div>
-                    <form action="chat.php">
-                        <input class="startChat" type="submit" value="Lucas">
-                    </form>
-                    <div class="chatcard">
-                        <div class="chatcontainer" id="valorant" onclick="location.href='lol.php'">
-                            <label class="gamelabel">Valorant</label>
-                        </div>
-                    </div>
-
-                    <div class="icon" id="avatarPingu" onclick="location.href='playerprofile.php'"></div>
-                    <form action="chat.php">
-                        <input class="startChat" type="submit" value="Tim">
-                    </form>
-                    <div class="chatcard">
-                        <div class="chatcontainer" id="csgo" onclick="location.href='lol.php'">
-                            <label class="gamelabel">CS:GO</label>
-                        </div>
-                    </div>
-
-                    <div class="icon" id="avatarRammus" onclick="location.href='playerprofile.php'"></div>
-                    <form action="chat.php">
-                        <input class="startChat" type="submit" value="Nico">
-                    </form>
-                    <div class="chatcard">
-                        <div class="chatcontainer" id="lol" onclick="location.href='lol.php'">
-                            <label class="gamelabel">League of Legends</label>
-                        </div>
-                    </div>
-
+                    <?php if(isset($_SESSION['activechats'])) : ?>
+                        <?php $array = $_SESSION['activechats']; ?>
+                        <?php foreach($array as $item) :
+                            $activeIcon = $item->icon;
+                            $activeName = $item->username;
+                            $activeID = $item->userid;
+                            $profileurl = 'playerprofile.php?id= ' . $activeID ;?>
+                            <div class="icon" id=<?= $activeIcon ?> onclick="location.href='<?php echo $profileurl?>'"></div>
+                            <form action="chat.php">
+                                <input class="startChat" type="submit" value=<?= $activeName ?>>
+                            </form>
+                            <div class="chatcard">
+                                <div class="chatcontainer" id="rl" onclick="location.href='lol.php'">
+                                    <label class="gamelabel">Rocket League</label>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 </div>
             </div>
             <div></div>
