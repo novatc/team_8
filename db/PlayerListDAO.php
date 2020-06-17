@@ -177,7 +177,7 @@ class PlayerListDAO extends PlayerListDAOImpl
     function getPlayersForGame($gameID)
     {
         $result = array();
-        $helperArry = array();
+        $helperAarry = array();
         try {
             $db = Database::connect($this->dsn);
         } catch (Exception $e) {
@@ -190,10 +190,10 @@ class PlayerListDAO extends PlayerListDAOImpl
 
             if ($cmd->execute()) {
                 while ($row = $cmd->fetchObject()) {
-                    array_push($helperArry, $row);
+                    array_push($helperAarry, $row);
                 }
             }
-            foreach ($helperArry as $gamer) {
+            foreach ($helperAarry as $gamer) {
                 $playerSql = "SELECT * FROM User WHERE userid = :obtainedUserId;";
                 $cmd = $db->prepare($playerSql);
                 $cmd->bindParam(':obtainedUserId', $gamer->userid);

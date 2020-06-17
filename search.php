@@ -5,6 +5,7 @@ startSession();
 include "db/PlayerListDAO.php";
 
 $playerlist = new PlayerListDAO("sqlite:db/Database.db");
+$playername = $_POST['']
 
 ?>
 
@@ -13,7 +14,7 @@ $playerlist = new PlayerListDAO("sqlite:db/Database.db");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team8 - LOL</title>
+    <title>Team8 - Results</title>
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/cardgrid.css">
     <link rel="stylesheet" type="text/css" href="css/playeroverview.css">
@@ -26,7 +27,7 @@ $playerlist = new PlayerListDAO("sqlite:db/Database.db");
     </div>
 </header>
 <main>
-    <h1 class="title">League of Legends</h1>
+    <h1 class="title">Ergebnisse</h1>
     <div class="card-grid">
         <div class="filter">
             <h2>Filter</h2>
@@ -56,31 +57,11 @@ $playerlist = new PlayerListDAO("sqlite:db/Database.db");
                     <input type="checkbox">
                     <span class="checkmark"></span>
                 </label>
-                <h3>Position:</h3>
-                <label class="checkbox-container">Top Lane
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="checkbox-container">Jungle
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="checkbox-container">Mid
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="checkbox-container">Bottom
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="checkbox-container">Support
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
+
             </form>
         </div>
         <div class="overview">
-            <?php $list = $playerlist->getPlayersForGame("lol");?>
+            <?php $list = $playerlist->getAllPlayers();?>
             <?php $infolist = $playerlist->getPlayerInfo("lol");?>
             <?php if (isset($list) && count($list) > 0): ?>
                 <ul class="cardview" id="lol-players">

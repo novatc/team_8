@@ -11,10 +11,10 @@ $isLoggedIn = $_SESSION['userid']> -1;
             <a id = "home-link" href="index.php">Home</a>
             <a id = "game-link" href="gameoverview.php">Spiele</a>
         </div>
-        <div class="search-wrapper">
+        <form class="search-wrapper" action="actions/searchaction.php" method="post">
             <img class = search-icon src="Resourcen/Navigation/search-black-24dp.svg">
-            <input class="search" type="text" placeholder="Suche.." name="search">
-        </div> 
+            <input class="search" type="text" placeholder="Suche.." name="search" onchange="">
+        </form>
         <div class="profil-nav">
             <?php if ($isLoggedIn): ?>
                 <a id = "message-link" href="chatoverview.php">Nachrichten</a>
