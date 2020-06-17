@@ -1,3 +1,24 @@
+<?php
+require_once "php/actions/session.php";
+startSession();
+
+include "db/GameDAO.php";
+
+$gameDAO = new GameDAO("sqlite:db/Database.db");
+
+$filtertags = ['Shooter', 'Teamplay', 'Strategie', 'Arenakampf'];
+
+
+$tags =[];
+if(isset($_POST['tags']))
+    $tags = $_POST['tags'];
+
+$_SESSION['tags']= $tags;
+
+
+$games = $gameDAO->getGames($tags);
+
+?>
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -22,57 +43,34 @@
     <div class="card-grid">
         <div class="filter">
             <h2>Filter</h2>
-            <form action="filterAction.php?filter=game" method="post">
-                <label class="checkbox-container">Shooter
-                    <input type="checkbox" onchange="this.form.submit()">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="checkbox-container">Teamplay
-                    <input type="checkbox" onchange="this.form.submit()">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="checkbox-container">Strategie
-                    <input type="checkbox" onchange="this.form.submit()">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="checkbox-container">Arenakampf
-                    <input type="checkbox" onchange="this.form.submit()">
-                    <span class="checkmark"></span>
-                </label>
-
+            <form action="gameoverview.php" method="post">
+            <?php foreach($filtertags as $tag): ?>
+                    <label class="checkbox-container"><?php echo $tag?>
+                        <input type="checkbox" name="tags[]" value='<?php echo $tag?>' <?php echo (in_array($tag,$_SESSION['tags']))? 'checked' : ''?>  onchange="this.form.submit()">
+                        <span class="checkmark"></span>
+                    </label>   
+            <?php endforeach; ?>
             </form>
         </div>
         <div class="overview">
+            <?php if (count($games) > 0): ?>   
             <ul class="cardview" >
-                <div class="wrapper">
-                    <li class="card">
-                        <div class="container" id="lol" onclick="location.href='lol.php'">
-                            <label class="gamelabel">League of Legends</label>
-                        </div>
-                    </li>
-                </div>
-                <div class="wrapper">
-                    <li class="card">
-                        <div class="container" id="val" onclick="location.href='valorant.php'">
-                            <label class="gamelabel">Valorant</label>
-                        </div>
-                    </li>
-                </div>
-                <div class="wrapper">
-                    <li class="card">
-                        <div class="container" id="rl" onclick="location.href='rocketleague.php'">
-                            <label class="gamelabel">Rocket League</label>
-                        </div>
-                    </li>
-                </div>
-                <div class="wrapper">
-                    <li class="card">
-                        <div class="container" id="csgo" onclick="location.href='csgo.php'">
-                            <label class="gamelabel">CS:GO</label>
-                        </div>
-                    </li>
-                </div>
+                <?php foreach ($games as $game):
+                    $gameID = $game->gameid;
+                    $gamename = $game->gamename;
+                    ?>
+                    <div class="wrapper">
+                        <li class="card">
+                            <div class="container" id="<?php echo $gameID?>" onclick="location.href='lol.php'">
+                                <label class="gamelabel"><?php echo $gamename?></label>
+                            </div>
+                        </li>
+                    </div>
+                <?php endforeach;?>
             </ul>
+            <?php  else: ?>
+                <p>Keine Spiele, die den Angaben entsprechen, gefunden.</p>
+            <?php endif;?>
         </div>
 </main>
 

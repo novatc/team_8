@@ -90,7 +90,7 @@ $list = $playerlist->getPlayersForGame("rl", $rank, $role);
                     <?php endforeach; ?>
                 </ul>
             <?php  else: ?>
-                <p>keine Spieler gefunden</p>
+                <p>Keine Spieler, die den Angaben entsprechen, gefunden.</p>
             <?php endif; ?>
         </div>
     </div>
