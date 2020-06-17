@@ -21,19 +21,20 @@ else
 
 $user = $userDAO->getUserByID($profileID);
 $games = $listDAO->getGamesFromPlayer($profileID);
-$username = $user->username;
-$description = $user->description;
-$age = $user->age;
-$language = $user->language;
-$usericon = $user->icon;
-
-if($profileID == $_SESSION['userid'])
-    $ownprofile = true;
-else
-    $ownprofile = false;
-
-
-
+$noData = ($user==null);
+if(!$noData){
+    $username = $user->username;
+    $description = $user->description;
+    $age = $user->age;
+    $language = $user->language;
+    $usericon = $user->icon;
+    
+    if($profileID == $_SESSION['userid'])
+        $ownprofile = true;
+    else
+        $ownprofile = false;
+    
+}
 
 ?>
 
@@ -85,6 +86,12 @@ else
         </div>
     </header>
     <main>
+        <?php if ($noData): ?>
+            <div class=error-wrapper>
+                <p id='error-label'>Hier gibt es nichts zusehen</p>
+            </div>
+            
+        <?php else: ?>
         <div class="profile-grid">
             <div class="profil-header">
                 <div class="picture-wrapper">
@@ -240,6 +247,7 @@ else
     
             </div>            
         </div>
+        <?php endif; ?>
     </main>
   
     <footer>

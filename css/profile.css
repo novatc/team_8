@@ -166,6 +166,12 @@
     padding-left: 20px;
 }
 
+.error-wrapper{
+    width: 100%;
+    text-align: center;
+    
+}
+
 /* Tablet */
 @media screen and (max-width: 1080px) {
 
