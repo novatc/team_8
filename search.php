@@ -5,8 +5,7 @@ startSession();
 include "db/PlayerListDAO.php";
 
 $playerlist = new PlayerListDAO("sqlite:db/Database.db");
-$playername = $_POST['']
-
+$search = $_GET['search'];
 ?>
 
 <!DOCTYPE html>
@@ -61,28 +60,31 @@ $playername = $_POST['']
             </form>
         </div>
         <div class="overview">
-            <?php $list = $playerlist->getAllPlayers();?>
-            <?php $infolist = $playerlist->getPlayerInfo("lol");?>
-            <?php if (isset($list) && count($list) > 0): ?>
+            <?php $searchresult = $playerlist->getPlayerByName($search);?>
+            <?php if (isset($searchresult)):
+                $playerID = $searchresult->userid;
+                $profileurl = 'playerprofile.php?id= ' . $playerID ;?>
+
                 <ul class="cardview" id="lol-players">
-                    <?php foreach ($list as $playeritem):
-                        $playerID = $playeritem->userid;
-                        $playername = $playerlist->getPlayerByID($playerID);
-                        $profileurl = 'playerprofile.php?id= ' . $playerID ;
+                    <li class="card">
+                        <a href='<?php echo $profileurl?>' class="container">
+                            <div class="content">
+                                <h2><?php echo htmlspecialchars($searchresult->username) ?></h2>
+                                <ul>
+                                    <li>Sprache:  <?php echo htmlspecialchars($searchresult->language) ?></li>
+                                    <li>Alter:  <?php echo htmlspecialchars($searchresult->age)?></li>
+
+                                </ul>
+                            </div>
+                        </a>
+                    </li>
+
+
+                    <?php foreach ($searchresult as $user):
+
                         ?>
 
-                        <li class="card">
-                            <a href='<?php echo $profileurl?>' class="container">
-                                <div class="content">
-                                    <h2><?php echo htmlspecialchars($playeritem->username) ?></h2>
-                                    <ul>
-                                        <li>Sprache:  <?php echo htmlspecialchars($playeritem->language) ?></li>
-                                        <li>Role:  <?php echo implode(", ",$playerlist->getRoles("lol",$playeritem->userid)) ?></li>
-                                        <li>ELO: <?php echo htmlspecialchars($playerlist->getRank("lol",$playeritem->userid)) ?>  </li>
-                                    </ul>
-                                </div>
-                            </a>
-                        </li>
+
                     <?php endforeach; ?>
                 </ul>
             <?php  else: ?>
