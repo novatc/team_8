@@ -302,4 +302,44 @@ class UserDAO extends UserDAOImpl
         }
         Database::disconnect();
     }
+
+    function addFriend($yourID, $friendID) {
+
+        $db = Database::connect($this->dsn);
+
+        try {
+
+            $sql = "SELECT * FROM Friends WHERE ownid = :you AND friendID = :friend OR ownid = :friend AND friendID = :you";
+            $cmd = $db->prepare( $sql );
+            $cmd->bindParam( ':you', $yourID );
+            $cmd->bindParam( ':friend', $friendID );
+            $cmd->execute();
+            if($cmd->fetchObject() != null) {
+                return null;
+            } else {
+                $yourID = Database::encodeData($yourID);
+                $friendID = Database::encodeData($friendID);
+
+                $db->beginTransaction();
+                $sql = "INSERT INTO Friends (ownid, friendID) VALUES (:you, :friend);";
+                $cmd = $db->prepare( $sql );
+                $cmd->bindParam( ':you', $yourID );
+                $cmd->bindParam( ':friend', $friendID );
+                $cmd->execute();
+
+                $sql = "INSERT INTO Friends (ownid, friendID) VALUES (:friend, :you);";
+                $cmd = $db->prepare( $sql );
+                $cmd->bindParam( ':friend', $friendID );
+                $cmd->bindParam( ':you', $yourID );
+                $cmd->execute();
+                $db->commit();
+                return 0;
+            }
+
+        } catch (Exception $ex) {
+            $db->rollBack();
+            return 1;
+        }
+        Database::disconnect($this->dsn);
+    }
 }

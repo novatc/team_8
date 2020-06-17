@@ -36,6 +36,8 @@ if(!$noData){
     
 }
 
+$_SESSION['addfriend'] = $user;
+
 ?>
 
 <!DOCTYPE html>

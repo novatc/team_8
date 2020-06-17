@@ -88,8 +88,10 @@ $yourfriendids = $userDAO ->getFriends($_SESSION['userid']);
                         $frienduser = $userDAO ->getUserByID($friend);
                         $friendicon = $frienduser->icon;
                         $friendusername = $frienduser->username;
+                        $friendID = $frienduser->userid;
+                        $profileurl = 'playerprofile.php?id= ' . $friendID ;
                         array_push($friendlist, $friendicon);?>
-                        <div class="icon" id= <?=$friendicon?> onclick="location.href='playerprofile.php'"></div>
+                        <div class="icon" id= <?=$friendicon?> onclick="location.href='<?php echo $profileurl?>'"></div>
                         <form action="php/actions/startchataction.php" method="post">
                             <input class="startChat" type="submit" name="friend" value=<?=$friendusername?>>
                         </form>
