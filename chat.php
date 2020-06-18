@@ -51,7 +51,7 @@ $completemessages = json_decode(json_encode($completemessages), true);
                         </a>
                         <label id="name"><?=$currentfriendname?></label>
                         <div class="chatcardnopadding">
-                            <div class="chatcontainer" id="rocketleague" onclick="location.href='lol.php'">
+                            <div class="chatcontainer" id="rl" onclick="location.href='lol.php'">
                                 <label class="gamelabel">Rocket League</label>
                             </div>
                         </div>
