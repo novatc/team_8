@@ -2,7 +2,7 @@
 require_once "php/actions/session.php";
 startSession();
 
-$isLoggedIn = $_SESSION['profileID']> -1;
+$isLoggedIn = $_SESSION['userid']> -1;
 
 include "db/PlayerListDAO.php";
 $listDAO = new PlayerListDAO("sqlite:db/Database.db");
