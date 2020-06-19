@@ -28,40 +28,10 @@ $search = $_GET['search'];
 <main>
     <h1 class="title">Ergebnisse</h1>
     <div class="card-grid">
-        <div class="filter">
-            <h2>Filter</h2>
-            <form action>
-                <h3>Elo:</h3>
-                <label class="checkbox-container">Master
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="checkbox-container">Diamant
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="checkbox-container">Platin
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="checkbox-container">Gold
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="checkbox-container">Silber
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="checkbox-container">Bronze
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
-
-            </form>
-        </div>
+        
         <div class="overview">
             <?php $searchresult = $playerlist->getPlayerByName($search);?>
-            <?php if (isset($searchresult)):
+            <?php if (isset($searchresult) && $searchresult!=null):
                 $playerID = $searchresult->userid;
                 $profileurl = 'playerprofile.php?id= ' . $playerID ;?>
 
