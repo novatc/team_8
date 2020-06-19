@@ -1,7 +1,7 @@
 <?php
 require_once ("Database.php");
 
-abstract class GameDAOImpl
+abstract class GameDAOInterface
 {
     abstract function getGames($tags);
     abstract function getGameByID($gameID);
@@ -9,7 +9,7 @@ abstract class GameDAOImpl
 
 }
 
-class GameDAO extends GameDAOImpl
+class GameDAO extends GameDAOInterface
 {  
     private $dsn;
 

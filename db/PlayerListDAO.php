@@ -1,7 +1,7 @@
 <?php
 require_once("Database.php");
 
-abstract class PlayerListDAOImpl
+abstract class PlayerListDAOInterface
 {
     abstract function getAllPlayers();
 
@@ -12,7 +12,7 @@ abstract class PlayerListDAOImpl
     abstract function deletePlayer($gameID, $userID);
 }
 
-class PlayerListDAO extends PlayerListDAOImpl
+class PlayerListDAO extends PlayerListDAOInterface
 {
     private $dsn;
 

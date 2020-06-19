@@ -1,7 +1,7 @@
 <?php
 require_once ("Database.php");
 
-abstract class UserDAOImpl
+abstract class UserDAOInterface
 {
 
     abstract function login($username, $password);
@@ -17,7 +17,7 @@ abstract class UserDAOImpl
 
 }
 
-class UserDAO extends UserDAOImpl
+class UserDAO extends UserDAOInterface
 {
     private $dsn;
 
