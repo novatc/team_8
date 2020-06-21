@@ -7,7 +7,7 @@ include "db/PlayerListDAO.php";
 $playerlist = new PlayerListDAO("sqlite:db/Database.db");
 
 $csgoranks = ['Unranked', 'Silber', 'Gold', 'Master Guardian', 'Legendary Eagle', 'Supreme', 'Global'];
-$csgoroles = ['Sniper', 'Stratege', 'Support', 'Awper', 'Entry Fragger'];
+$csgoroles = ['Entry Fragger', 'Stratege', 'Playmaker', 'Strat Caller', 'Lurker', 'Awper'];
 
 $rank =[];
 if(isset($_POST['rank']))

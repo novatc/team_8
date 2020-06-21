@@ -1,8 +1,8 @@
 <?php
 class Database
-{   
+{
     private static $db = null;
-    
+
 
     public static function connect($dsn)
     {
@@ -30,7 +30,7 @@ class Database
             return serialize($data);
         }else{
             return htmlspecialchars($data);
-        } 
+        }
     }
     /* Only necessary for arrays */
     public static function decodeArray($data){
