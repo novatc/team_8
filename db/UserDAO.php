@@ -65,7 +65,7 @@ class UserDAO implements UserDAOInterface
     function getUserByName($username)
     {
         $db = Database::connect($this->dsn);
-        $this->checkIfDBexists();
+
 
 
         try {
@@ -93,7 +93,6 @@ class UserDAO implements UserDAOInterface
     function getUserByID($userID)
     {
         $db = Database::connect($this->dsn);
-        $this->checkIfDBexists();
 
 
         try {
@@ -121,7 +120,7 @@ class UserDAO implements UserDAOInterface
     {
 
         $db = Database::connect($this->dsn);
-        $this->checkIfDBexists();
+
 
 
 
@@ -165,7 +164,6 @@ class UserDAO implements UserDAOInterface
 
     function updateUser($userID, $age, $language, $description, $icon){
         $db = Database::connect($this->dsn);
-        $this->checkIfDBexists();
 
 
 
@@ -251,7 +249,6 @@ class UserDAO implements UserDAOInterface
     {
 
         $db = Database::connect($this->dsn);
-        $this->checkIfDBexists();
 
 
         try {
@@ -280,7 +277,6 @@ class UserDAO implements UserDAOInterface
 
         $allmessages = array();
         $db = Database::connect($this->dsn);
-        $this->checkIfDBexists();
 
 
         try {
@@ -306,7 +302,6 @@ class UserDAO implements UserDAOInterface
     function addFriend($yourID, $friendID) {
 
         $db = Database::connect($this->dsn);
-        $this->checkIfDBexists();
 
 
         try {
@@ -349,6 +344,7 @@ class UserDAO implements UserDAOInterface
         if (file_exists($this->dsn)){
             return true;
         }else{
+            chdir("../../db/");
             include "initDB.php";
         }
     }
