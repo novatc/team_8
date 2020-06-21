@@ -9,51 +9,11 @@
     font-size: 1em;
 }
 
-
-#lol {
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    background-color: var(--lol-color);
+.game-container {
     text-align: center;
 }
-#lol-players .card .container{
-    border: 2.5px solid var(--lol-color);
-}
-
-#val {
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    background-color:  var(--valorant-color);
-    text-align: center;
-}
-#val-players .card .container{
-    border: 2.5px solid var(--valorant-color);
-}
-
-#csgo {
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    background:  var(--csgo-color);
-    text-align: center;
-}
-#csgo-players .card .container{
-    border: 2.5px solid var(--csgo-color);
-}
 
 
-#rl {
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    background-color: var(--rocket-color);
-    text-align: center;
-}
-#rl-players .card .container{
-    border: 2.5px solid var(--rocket-color);
-}
 
 
 

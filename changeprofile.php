@@ -18,7 +18,8 @@ $age = $user->age;
 $language = $user->language;
 $usericon = $user->icon;
 
-$games = $listDAO->getGamesFromPlayer($userID);
+$usergames = $listDAO->getGamesFromPlayer($userID);
+$allgames = $gameDAO->getGames([]);
 
 if(isset($_SESSION['gamechoice'])){
     $gamechoice = $_SESSION['gamechoice'];
@@ -71,34 +72,20 @@ if(isset($_SESSION['gamechoice'])){
                             <option value='<?php echo $gamechoice?>' selected='selected'><?php echo $gamechoice?></option>
 
                         <optgroup label="Meine Spiele">
-                        <?php foreach($games as $game):?>
-                            <?php if($game=='csgo'):?>
-                                <option value='CS:GO'>CS:GO</option>
-                            <?php endif;?>
-                            <?php if($game=='lol'):?>
-                                <option value='League of Legends'>League of Legends</option>
-                            <?php endif;?>
-                            <?php if($game=='rl'):?>
-                                <option value='Rocket League'>Rocket League</option>
-                            <?php endif;?>
-                            <?php if($game=='val'):?>
-                                <option value='Valorant'>Valorant</option>
-                            <?php endif;?>
+                        <?php foreach($usergames as $usergame):?>
+                            <?php foreach($allgames as $game):?>
+                                <?php if($usergame==$game->gameid):?>
+                                    <option value='<?php echo $game->gamename?>'><?php echo $game->gamename?></option>
+                                <?php endif;?>
+                            <?php endforeach;?>
                         <?php endforeach;?>
                         </optgroup>
                         <optgroup label="Weitere Spiele hinzufügen">
-                            <?php if(!in_array('csgo', $games)):?>
-                                <option value='CS:GO'>CS:GO</option>
+                        <?php foreach($allgames as $game):?>
+                            <?php if(!in_array($game->gameid, $usergames)):?>
+                                <option value='<?php echo $game->gamename?>'><?php echo $game->gamename?></option>
                             <?php endif;?>
-                            <?php if(!in_array('lol', $games)):?>
-                                <option value='League of Legends'>League of Legends</option>
-                            <?php endif;?>
-                            <?php if(!in_array('rl', $games)):?>
-                                <option value='Rocket League'>Rocket League</option>
-                            <?php endif;?>
-                            <?php if(!in_array('val', $games)):?>
-                                <option value='Valorant'>Valorant</option>
-                            <?php endif;?>
+                        <?php endforeach;?>
                         </optgroup>
                     </select>
                     <label class="left-label">Spiel</label>

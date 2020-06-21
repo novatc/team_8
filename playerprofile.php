@@ -20,7 +20,9 @@ else
     $profileID = $_SESSION['userid'];
 
 $user = $userDAO->getUserByID($profileID);
-$games = $listDAO->getGamesFromPlayer($profileID);
+$usergames = $listDAO->getGamesFromPlayer($profileID);
+$allgames = $gameDAO->getGames([]);
+
 $noData = ($user==null);
 if(!$noData){
     $username = $user->username;
@@ -131,122 +133,44 @@ $_SESSION['addfriend'] = $user;
             <h2>Meine Spiele:</h2>
             <div class="game-wrapper"> 
                 <ul class="cardview" >
-                    <?php foreach($games as $game):?>
-                        <?php if($game=='lol'):?>
-                            <div class="wrapper">
-                                <li class="card">
-                                    <div class="container" id="lol" onclick="showStats('lol', 'lol-stats')">
-                                        <label class="gamelabel">League of Legends</label>
+                    <?php foreach($usergames as $usergame):?>
+                            <?php foreach($allgames as $game):?>
+                                <?php if($usergame==$game->gameid):?>
+                                    <?php $style = "background-color: #" . $game->gamecolor ?>
+                                    <div class="wrapper">
+                                        <li class="card">
+                                            <div class="game-container" id="<?php echo "game". $game->gameid ?>" style="<?php echo $style?>" onclick="showStats('<?php echo "game" . $game->gameid ?>', '<?php echo "stats". $game->gameid?>')">
+                                                <label class="gamelabel"><?php echo $game->gamename ?></label>
+                                            </div>
+                                        </li>
                                     </div>
-                                </li>
-                            </div>
-                            <?php if($listDAO->getStatus($game,$profileID)!='active'):?><script>deactivate('lol')</script><?php endif;?>
-                        <?php endif;?>
-                        <?php if($game=='csgo'):?>
-                            <div class="wrapper">
-                                <li class="card">
-                                    <div class="container" id="csgo" onclick="showStats('csgo', 'csgo-stats')">
-                                        <label class="gamelabel">CS:GO</label>
-                                    </div>
-                                </li>
-                            </div>
-                            <?php if($listDAO->getStatus($game,$profileID)!='active'):?><script>deactivate('csgo')</script><?php endif;?>
-                        <?php endif;?>
-                        <?php if($game=='rl'):?>
-                            <div class="wrapper">
-                                <li class="card">
-                                    <div class="container" id="rl" onclick="showStats('rl', 'rl-stats')">
-                                        <label class="gamelabel">Rocket League</label>
-                                    </div>
-                                </li>
-                            </div>
-                            <?php if($listDAO->getStatus($game,$profileID)!='active'):?><script>deactivate('rl')</script><?php endif;?>
-                        <?php endif;?>
-                        <?php if($game=='val'):?>
-                            <div class="wrapper">
-                                <li class="card">
-                                    <div class="container" id="val" onclick="showStats('val', 'val-stats')">
-                                        <label class="gamelabel">Valorant</label>
-                                    </div>    
-                                </li>
-                            </div>
-                            <?php if($listDAO->getStatus($game,$profileID)!='active'):?><script>deactivate('val')</script><?php endif;?>
-                        <?php endif;?>
-                    <?php endforeach;?>
-                </ul>
-                        
+                                    <?php if($listDAO->getStatus($game->gameid,$profileID)!='active'):?><script>deactivate('<?php echo "game" . $game->gameid ?>')</script><?php endif;?>
+                                <?php endif;?>
+                            <?php endforeach;?>
+                        <?php endforeach;?>
+                </ul>              
                 <div class="game-stats">
-                
-                <?php foreach($games as $game):?>
-                    <?php if($game=='lol'):?>
-                        <div class=statswrapper id="lol-stats"> 
-                            <h2 class="statslabel">League of Legends</h2>
-                            <div>
-                                <label class="attribute">ELO: </label><label class="value"><?php echo $listDAO->getRank($game, $profileID)?></label>
-                            </div>
-                            <?php if(count($listDAO->getRoles($game, $profileID))>0):?>
-                                <div>
-                                    <label class="attribute">Positionen: </label><label class="value"><?php echo implode(", ", $listDAO->getRoles($game, $profileID))?></label>
-                                </div>
+                    <?php foreach($usergames as $usergame):?>
+                        <?php foreach($allgames as $game):?>
+                            <?php if($usergame==$game->gameid):?>
+                                <div class=statswrapper id="<?php echo "stats" . $game->gameid ?>"> 
+                                <h2 class="statslabel"><?php echo $game->gamename ?></h2>
+                                    <div>
+                                        <label class="attribute">ELO: </label><label class="value"><?php echo $listDAO->getRank($game->gameid, $profileID)?></label>
+                                    </div>
+                                    <?php if(count($listDAO->getRoles($game->gameid, $profileID))>0):?>
+                                        <div>
+                                            <label class="attribute">Positionen: </label><label class="value"><?php echo implode(", ", $listDAO->getRoles($game->gameid, $profileID))?></label>
+                                        </div>
+                                    <?php endif; ?>
+                                </div> 
                             <?php endif; ?>
-                        </div> 
-                    <?php endif;?>
-                    <?php if($game=='csgo'):?>
-                        <div class=statswrapper id="csgo-stats"> 
-                            <h2 class="statslabel">CS:GO</h2>
-                            <div>
-                                <label class="attribute">ELO: </label><label class="value"><?php echo $listDAO->getRank($game, $profileID)?></label>
-                            </div>
-                            <?php if(count($listDAO->getRoles($game, $profileID))>0):?>
-                                <div>
-                                    <label class="attribute">Rollen: </label><label class="value"><?php echo implode(", ", $listDAO->getRoles($game, $profileID))?></label>
-                                </div>
-                            <?php endif; ?>
-                        </div>
-                    <?php endif;?>
-                    <?php if($game=='rl'):?>
-                        <div class=statswrapper id="rl-stats"> 
-                            <h2 class="statslabel">Rocket League</h2>
-                            <div>
-                                <label class="attribute">ELO: </label><label class="value"><?php echo $listDAO->getRank($game, $profileID)?></label>
-                            </div>
-                            <?php if(count($listDAO->getRoles($game, $profileID))>0):?>
-                                <div>
-                                    <label class="attribute">Position: </label><label class="value"><?php echo implode(", ", $listDAO->getRoles($game, $profileID))?></label>
-                                </div>
-                            <?php endif; ?>
-                        </div>
-                    <?php endif;?>
-                    <?php if($game=='val'):?>
-                        <div class=statswrapper id="val-stats"> 
-                            <h2 class="statslabel">Valorant</h2>
-                            <div>
-                                <label class="attribute">ELO: </label><label class="value"><?php echo $listDAO->getRank($game, $profileID)?></label>
-                            </div>
-                            <?php if(count($listDAO->getRoles($game, $profileID))>0):?>
-                                <div>
-                                    <label class="attribute">Position: </label><label class="value"><?php echo implode(", ", $listDAO->getRoles($game, $profileID))?></label>
-                                </div>
-                            <?php endif; ?>
-                        </div>
-                    <?php endif; ?>
-                <?php endforeach;?>  
+                        <?php endforeach;?>
+                    <?php endforeach;?>
                 </div> 
-                <?php if(count($games)>0): ?>
-                    <?php if($games[0]=='lol'):?>
-                    <script>showStats('lol', 'lol-stats')</script>
-                    <?php endif;?>
-                    <?php if($games[0]=='csgo'):?>
-                    <script>showStats('csgo', 'csgo-stats')</script>
-                    <?php endif;?>
-                    <?php if($games[0]=='rl'):?>
-                    <script>showStats('rl', 'rl-stats')</script>
-                    <?php endif;?>
-                    <?php if($games[0]=='val'):?>
-                    <script>showStats('val', 'val-stats')</script>
-                    <?php endif;?> 
+                <?php if(count($usergames)>0): ?>
+                    <script>showStats('<?php echo "game" . $usergames[0]?>', '<?php echo "stats" . $usergames[0] ?>')</script>  
                 <?php endif;?>
-    
             </div>            
         </div>
         <?php endif; ?>

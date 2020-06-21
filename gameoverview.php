@@ -15,7 +15,6 @@ if(isset($_POST['tags']))
 
 $_SESSION['tags']= $tags;
 
-
 $games = $gameDAO->getGames($tags);
 
 ?>
@@ -58,40 +57,18 @@ $games = $gameDAO->getGames($tags);
                 <?php foreach ($games as $game):
                     $gameID = $game->gameid;
                     $gamename = $game->gamename;
+                    $gameurl = 'playeroverview.php?gameid=' . $gameID ;
+                    $style = "background-color: #" . $game->gamecolor;
                     ?>
-                    <?php if($gameID=='lol'): ?>
-                        <div class="wrapper">
-                            <li class="card">
-                                <div class="container" id="<?php echo $gameID?>" onclick="location.href='lol.php'">
-                                    <label class="gamelabel"><?php echo $gamename?></label>
-                                </div>
-                            </li>
-                        </div>
-                    <?php elseif($gameID=='csgo'):?>
-                        <div class="wrapper">
-                            <li class="card">
-                                <div class="container" id="<?php echo $gameID?>" onclick="location.href='csgo.php'">
-                                    <label class="gamelabel"><?php echo $gamename?></label>
-                                </div>
-                            </li>
-                        </div>
-                    <?php elseif($gameID=='val'):?>
-                        <div class="wrapper">
-                            <li class="card">
-                                <div class="container" id="<?php echo $gameID?>" onclick="location.href='valorant.php'">
-                                    <label class="gamelabel"><?php echo $gamename?></label>
-                                </div>
-                            </li>
-                        </div>
-                    <?php elseif($gameID=='rl'):?>
-                        <div class="wrapper">
-                            <li class="card">
-                                <div class="container" id="<?php echo $gameID?>" onclick="location.href='rocketleague.php'">
-                                    <label class="gamelabel"><?php echo $gamename?></label>
-                                </div>
-                            </li>
-                        </div>
-                    <?php endif;?>
+                    
+                    <div class="wrapper">
+                        <li class="card">
+                            <div class="game-container" id="<?php echo "game". $gameID?>" onclick="location.href='<?php echo $gameurl?>'" style="<?php echo $style?>">
+                                <label class="gamelabel"><?php echo $gamename?></label>
+                            </div>
+                        </li>
+                    </div>
+                
                 <?php endforeach;?>
             </ul>
             <?php  else: ?>

@@ -1,9 +1,5 @@
 .card .container{
     background-color: var(--dark-bg-color);
-}
-.content{
     padding: 10px;
-}
-.content{
-    font-size: 40%;
+    font-size: larger;  
 }

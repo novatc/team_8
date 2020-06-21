@@ -150,7 +150,7 @@
     overflow: hidden;
 }
 
-.card .container{
+.card .game-container{
     min-width: 200px;
     min-height: 200px;
     max-width: 200px;
@@ -160,7 +160,7 @@
     transform: scale(1);
 }
 
-.card .container:hover{
+.card .game-container:hover{
     transition: all 0.4s ease;
     cursor: pointer;
     

@@ -51,8 +51,26 @@ class GameDAO implements GameDAOInterface
     }
 
     function getGameByID($gameID){
+        $db = Database::connect($this->dsn);
+         
+        try {
+            $db->beginTransaction();
+            $gameID = Database::encodeData($gameID);
+            $sql = "SELECT * FROM Games WHERE gameid = :id";
+            $cmd = $db->prepare($sql);
+            $cmd->bindParam(":id", $gameID);
+            $cmd->execute();
 
+            $game = $cmd->fetchObject();
+            
+            return $game;
+
+        } catch (Exception $ex) {
+            return NULL;
+        }
+        Database::disconnect($this->dsn);
     }
+    
     function getGameByName($gameName){
         $db = Database::connect($this->dsn);
          

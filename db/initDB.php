@@ -24,41 +24,56 @@ try {
     
 
     $sql = "CREATE TABLE Games (
-      gameid TEXT PRIMARY KEY,
+      gameid INTEGER PRIMARY KEY,
       gamename TEXT,
+      gamecolor TEXT,
+      gameranks TEXT,
+      gameroles TEXT,
       tags TEXT   
     )";
     $db->exec( $sql );
     echo 'Spieletabelle angelegt. ';
 
-    $tags =['Strategie', 'Teamplay', 'Arenakampf'];
-    $tags = serialize($tags);
-    $sql = "INSERT INTO Games (gameid, gamename, tags) VALUES ('lol', 'League of Legends', :tags);";
+    $ranks = serialize(['Bronze', 'Silber', 'Gold', 'Platin', 'Diamant', 'Master' ]);
+    $roles = serialize(['Top Lane', 'Jungle', 'Mid', 'Bottom', 'Support']);
+    $tags = serialize(['Strategie', 'Teamplay', 'Arenakampf']);
+    $sql = "INSERT INTO Games (gamename, gamecolor, gameranks, gameroles, tags) VALUES ('League of Legends', 'dcc156', :ranks, :roles, :tags);";
     $cmd =$db->prepare( $sql );
+    $cmd->bindParam(":ranks", $ranks);
+    $cmd->bindParam(":roles", $roles);
     $cmd->bindParam(":tags", $tags);
     $cmd->execute();
     echo 'Spiel eingefügt. ';
 
-    $tags =['Strategie', 'Teamplay', 'Shooter'];
-    $tags = serialize($tags);
-    $sql = "INSERT INTO Games (gameid, gamename, tags) VALUES ('csgo', 'CS:GO', :tags);";
+    $ranks = serialize(['Unranked', 'Silber', 'Gold', 'Master Guardian', 'Legendary Eagle', 'Supreme', 'Global']);
+    $roles = serialize(['Sniper', 'Stratege', 'Support', 'Awper', 'Entry Fragger']);
+    $tags = serialize(['Strategie', 'Teamplay', 'Shooter']);
+    $sql = "INSERT INTO Games (gamename, gamecolor, gameranks, gameroles, tags) VALUES ('CS:GO', 'df6f19', :ranks, :roles, :tags);";
     $cmd =$db->prepare( $sql );
+    $cmd->bindParam(":ranks", $ranks);
+    $cmd->bindParam(":roles", $roles);
     $cmd->bindParam(":tags", $tags);
     $cmd->execute();
     echo 'Spiel eingefügt. ';
 
-    $tags =['Teamplay', 'Arenakampf'];
-    $tags = serialize($tags);
-    $sql = "INSERT INTO Games (gameid, gamename, tags) VALUES ('rl', 'Rocket League', :tags);";
+    $ranks = serialize(['Unranked', 'Bronze', 'Silber', 'Gold', 'Platin', 'Diamant', 'Master', 'Grand Champion' ]);
+    $roles = serialize([]);
+    $tags = serialize(['Teamplay', 'Arenakampf']);
+    $sql = "INSERT INTO Games (gamename, gamecolor, gameranks, gameroles, tags) VALUES ('Rocket League', '5a46be', :ranks, :roles, :tags);";
     $cmd =$db->prepare( $sql );
+    $cmd->bindParam(":ranks", $ranks);
+    $cmd->bindParam(":roles", $roles);
     $cmd->bindParam(":tags", $tags);
     $cmd->execute();
     echo 'Spiel eingefügt. ';
 
-    $tags =['Strategie', 'Teamplay', 'Shooter'];
-    $tags = serialize($tags);
-    $sql = "INSERT INTO Games (gameid, gamename, tags) VALUES ('val', 'Valorant', :tags);";
+    $ranks = serialize(['Mercenary', 'Soldier', 'Veteran', 'Hero', 'Legend', 'Mythic', 'Immortal', 'Valorant']);
+    $roles = serialize(['Breach', 'Brimstone', 'Cypher', 'Jett', 'Omen', 'Phoenix', 'Raze', 'Reyna', 'Sage', 'Sova', 'Viper']);
+    $tags = serialize(['Strategie', 'Teamplay', 'Shooter']);
+    $sql = "INSERT INTO Games (gamename, gamecolor, gameranks, gameroles, tags) VALUES ('Valorant', 'ff4655', :ranks, :roles, :tags);";
     $cmd =$db->prepare( $sql );
+    $cmd->bindParam(":ranks", $ranks);
+    $cmd->bindParam(":roles", $roles);
     $cmd->bindParam(":tags", $tags);
     $cmd->execute();
     echo 'Spiel eingefügt. ';

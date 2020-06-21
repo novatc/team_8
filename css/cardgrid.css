@@ -62,7 +62,7 @@
     overflow: hidden; 
 }
 
-.card .container{
+.card .container, .card .game-container{
     align-self: center;
     border-radius: 1%;
     min-width: 350px;
@@ -74,9 +74,10 @@
     font-size: 70px;
     color: var(--default-white);
     text-decoration: none;
+    margin: 5px;
 }
 
-.card .container:hover{
+.card .container:hover, .card .game-container:hover{
     transition: all 0.2s ease;
     cursor: pointer;
     transform: scale(1.1);
@@ -129,7 +130,7 @@
 
 /* Tablet */
 @media screen and (max-width: 1080px) {
-    .card .container{
+    .card .container, .card .game-container{
         min-width: 250px;
         min-height: 250px;
         max-width: 250px;
@@ -151,7 +152,7 @@
         grid-column: 1/6;
         grid-row: 2;
     }
-    .card .container{
+    .card .container, .card .game-container{
         min-width: 200px;
         min-height: 200px;
         max-width: 200px;
