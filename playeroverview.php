@@ -11,16 +11,16 @@ $gameDAO = new GameDAO("sqlite:db/Database.db");
 
 
 // Filter
-$rank = [];
-if(isset($_POST['rank']))
-    $rank = $_POST['rank'];
+$rankfilter = [];
+if(isset($_POST['rankfilter']))
+    $rankfilter = $_POST['rankfilter'];
 
-$role =[];
-if(isset($_POST['role']))
-    $role = $_POST['role'];
+$rolefilter =[];
+if(isset($_POST['rolefilter']))
+    $rolefilter = $_POST['rolefilter'];
 
-$_SESSION['ranks']= $rank;
-$_SESSION['roles']= $role;
+$_SESSION['ranks']= $rankfilter;
+$_SESSION['roles']= $rolefilter;
 
 
 
@@ -28,6 +28,9 @@ if (isset($_GET['gameid']))
     $gameID = $_GET['gameid'];
 
 $game = $gameDAO->getGameByID($gameID);
+$gameranks = $gameDAO->getRanksFromGame($gameID);
+$gameroles = $gameDAO->getRolesFromGame($gameID);
+
 if($game != null){
     $gamename = $game->gamename;
     $color = $game->gamecolor;
@@ -35,7 +38,7 @@ if($game != null){
 
 
 $style = "border: solid #" . $color . " 2.5px";
-$list = $playerlistDAO->getPlayersForGame($gameID, $rank, $role);
+$list = $playerlistDAO->getPlayersForGame($gameID, $rankfilter, $rolefilter);
 
 ?>
 
@@ -64,18 +67,18 @@ $list = $playerlistDAO->getPlayersForGame($gameID, $rank, $role);
             <h2>Filter</h2>
             <form method="post">
             <h3>Rang:</h3>
-                <?php foreach($valranks as $rank): ?>
+                <?php foreach($gameranks as $rank): ?>
                     <label class="checkbox-container"><?php echo $rank?>
-                        <input type="checkbox" name="rank[]" value='<?php echo $rank?>' <?php echo (in_array($rank,$_SESSION['ranks']))? 'checked' : ''?>  onchange="this.form.submit()">
+                        <input type="checkbox" name="rankfilter[]" value='<?php echo $rank?>' <?php echo (in_array($rank,$_SESSION['ranks']))? 'checked' : ''?>  onchange="this.form.submit()">
                         <span class="checkmark"></span>
                     </label>
                     
                 <?php endforeach; ?>
-                <?php if(count($valroles)>0): ?>
+                <?php if(count($gameroles)>0): ?>
                     <h3>Charakter:</h3>
-                    <?php foreach($valroles as $role): ?>
+                    <?php foreach($gameroles as $role): ?>
                         <label class="checkbox-container"><?php echo $role?>
-                            <input type="checkbox" name="role[]" value='<?php echo $role?>' <?php echo (in_array($role, $_SESSION['roles']))? 'checked' : ''?> onchange="this.form.submit()">
+                            <input type="checkbox" name="rolefilter[]" value='<?php echo $role?>' <?php echo (in_array($role, $_SESSION['roles']))? 'checked' : ''?> onchange="this.form.submit()">
                             <span class="checkmark"></span>
                         </label>
                     <?php endforeach; ?> 

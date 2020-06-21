@@ -91,6 +91,73 @@ class GameDAO implements GameDAOInterface
         }
         Database::disconnect($this->dsn);
     }
+    function getRanksFromGame($gameID){
+        $db = Database::connect($this->dsn);
+         
+        try {
+            
+            $sql = "SELECT * FROM Games WHERE gameid = :id";
+            $cmd = $db->prepare($sql);
+            $cmd->bindParam(":id", $gameID);
+            $cmd->execute();
+            $game = $cmd->fetchObject();
+
+            $ranks = Database::decodeArray($game->gameranks);
+            
+            return $ranks;
+
+        } catch (Exception $ex) {
+            return NULL;
+        }
+        Database::disconnect($this->dsn);
+    }
+    function getRolesFromGame($gameID){
+        $db = Database::connect($this->dsn);
+         
+        try {
+            
+            $sql = "SELECT * FROM Games WHERE gameid = :id";
+            $cmd = $db->prepare($sql);
+            $cmd->bindParam(":id", $gameID);
+            $cmd->execute();
+            $game = $cmd->fetchObject();
+
+            $roles = Database::decodeArray($game->gameroles);
+            
+            return $roles;
+
+        } catch (Exception $ex) {
+            return NULL;
+        }
+        Database::disconnect($this->dsn);
+    }
+    function getAllTags(){
+        $db = Database::connect($this->dsn);
+        $finaltags = []; 
+        try {
+            
+            $sql = "SELECT tags FROM Games";
+            $cmd = $db->prepare($sql);
+            $cmd->execute();
+
+            if ($cmd->execute()) {
+                while ($game = $cmd->fetchObject()) {
+                    $tags = Database::decodeArray($game->tags);
+
+                    foreach($tags as $tag) {
+                        if(!in_array($tag, $finaltags))
+                            array_push($finaltags, $tag);
+                    }
+                }
+            }
+            return $finaltags;
+
+        } catch (Exception $ex) {
+            return NULL;
+        }
+        Database::disconnect($this->dsn);
+    }
+    
 }
 
 ?>
