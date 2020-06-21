@@ -27,13 +27,14 @@ if(isset($_SESSION['registrationerror'])){
 </header>
 <main>
     <form class="box" action='php/actions/registrationAction.php'  method="post">
+        <h2 id='error-message'></h2>
         <h1>Registrieren</h1>
         <input class="login-input" type="text" name="username" placeholder="Benutzername" required>
         <input class="login-input" type="email" name="usermail" placeholder="Mail" required>
         <input class="login-input" type="password" name="password" placeholder="Passwort" required>
         <input class="login-input" type="password" name="passwordrepeat" placeholder="Passwort wiederholen" required>
         <input class="submit-btn" id="submit-form" type="submit" name="registersubmit" value="Registrieren">
-        <h4 id='error-message'></h4>
+        
     </form>
     <script>
         var label = document.getElementById("error-message");

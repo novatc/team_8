@@ -43,7 +43,7 @@
 
 #error-message{
     text-align: center;
-    color: var(--warnig-red);
+    color: var(--warnig-yellow);
 }
 
 
