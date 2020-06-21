@@ -21,6 +21,7 @@ class UserDAO implements UserDAOInterface
 {
     private $dsn;
 
+
     function __construct($dsn = "sqlite:../../db/Database.db") {
         $this->dsn = $dsn;
     }
@@ -28,6 +29,7 @@ class UserDAO implements UserDAOInterface
     function login($username, $password)
     {
         $db = Database::connect($this->dsn);
+        $this->checkIfDBexists();
 
         try {
             $db->beginTransaction();
@@ -63,7 +65,9 @@ class UserDAO implements UserDAOInterface
     function getUserByName($username)
     {
         $db = Database::connect($this->dsn);
-         
+        $this->checkIfDBexists();
+
+
         try {
             $username = Database::encodeData($username);
             $sql = "SELECT * FROM User WHERE username = :user";
@@ -89,7 +93,9 @@ class UserDAO implements UserDAOInterface
     function getUserByID($userID)
     {
         $db = Database::connect($this->dsn);
-         
+        $this->checkIfDBexists();
+
+
         try {
             $userID = Database::encodeData($userID);
             $sql = "SELECT * FROM User WHERE userid = :userid";
@@ -115,7 +121,9 @@ class UserDAO implements UserDAOInterface
     {
 
         $db = Database::connect($this->dsn);
-         
+        $this->checkIfDBexists();
+
+
 
         /* Check if username in DB */
         $id = $this->getUserByName($username);
@@ -154,23 +162,12 @@ class UserDAO implements UserDAOInterface
         }
         Database::disconnect($this->dsn);
     }
-    
-
-
-    private function validatePassword($password, $hash)
-    {
-        return password_verify($password, $hash);
-    }
-
-    private function encodePassword($password)
-    {
-        $encoded = password_hash($password, PASSWORD_DEFAULT);
-        return $encoded;
-    }
 
     function updateUser($userID, $age, $language, $description, $icon){
         $db = Database::connect($this->dsn);
-         
+        $this->checkIfDBexists();
+
+
 
         try {
             $db->beginTransaction();
@@ -219,7 +216,6 @@ class UserDAO implements UserDAOInterface
         
     }
 
-
     //chat part
     //list up all your friends in chat overview
     function getFriends($ownid) {
@@ -255,6 +251,8 @@ class UserDAO implements UserDAOInterface
     {
 
         $db = Database::connect($this->dsn);
+        $this->checkIfDBexists();
+
 
         try {
             $db->beginTransaction();
@@ -282,6 +280,8 @@ class UserDAO implements UserDAOInterface
 
         $allmessages = array();
         $db = Database::connect($this->dsn);
+        $this->checkIfDBexists();
+
 
         try {
             $sql = 'SELECT * FROM Chat WHERE userid1 = :you AND userid2 = :friend OR  userid1 = :friend AND userid2 = :you';
@@ -306,6 +306,8 @@ class UserDAO implements UserDAOInterface
     function addFriend($yourID, $friendID) {
 
         $db = Database::connect($this->dsn);
+        $this->checkIfDBexists();
+
 
         try {
 
@@ -341,5 +343,13 @@ class UserDAO implements UserDAOInterface
             return 1;
         }
         Database::disconnect($this->dsn);
+    }
+
+    function checkIfDBexists(){
+        if (file_exists($this->dsn)){
+            return true;
+        }else{
+            include "initDB.php";
+        }
     }
 }
