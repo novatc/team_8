@@ -6,7 +6,7 @@ include "db/GameDAO.php";
 
 $gameDAO = new GameDAO("sqlite:db/Database.db");
 
-$filtertags = ['Shooter', 'Teamplay', 'Strategie', 'Arenakampf'];
+$filtertags = $gameDAO->getAllTags();
 
 
 $tags =[];

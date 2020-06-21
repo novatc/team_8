@@ -1,4 +1,5 @@
 <?php
+
 class Database
 {
     private static $db = null;
@@ -36,7 +37,6 @@ class Database
     public static function decodeArray($data){
             return unserialize($data);
     }
-
 }
 
 ?>

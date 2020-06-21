@@ -1,5 +1,4 @@
 <?php
-
 try {
 
     $user = "root";
@@ -118,9 +117,6 @@ try {
     $passwort = password_hash('Passwort', PASSWORD_DEFAULT);
 
     $sql = "INSERT INTO User (userid, username, mail, password) VALUES (1, 'Nico', 'nico@mail.de', '{$passwort}')";
-    $db->exec($sql);
-
-    $sql = "INSERT INTO User (userid, username, mail, password) VALUES (7, 'Lucas', 'lucas@mail.de', '{$passwort}')";
     $db->exec($sql);
 
     $sql = "INSERT INTO User (userid, username, mail, password) VALUES (2, 'Hendrick', 'hendrick@mail.de','{$passwort}')";
