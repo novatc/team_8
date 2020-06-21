@@ -1,15 +1,15 @@
 <?php
 require_once ("Database.php");
 
-abstract class GameDAOInterface
+interface GameDAOInterface
 {
-    abstract function getGames($tags);
-    abstract function getGameByID($gameID);
-    abstract function getGameByName($gameNameks);
+    function getGames($tags);
+    function getGameByID($gameID);
+    function getGameByName($gameNameks);
 
 }
 
-class GameDAO extends GameDAOInterface
+class GameDAO implements GameDAOInterface
 {  
     private $dsn;
 

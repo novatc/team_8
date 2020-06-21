@@ -1,18 +1,18 @@
 <?php
 require_once("Database.php");
 
-abstract class PlayerListDAOInterface
+interface  PlayerListDAOInterface
 {
-    abstract function getAllPlayers();
+    function getAllPlayers();
 
-    abstract function addPlayer($gameID, $userID, $rank, $role, $status);
+    function addPlayer($gameID, $userID, $rank, $role, $status);
 
-    abstract function updatePlayer($gameID, $userID, $rank, $role, $status);
+    function updatePlayer($gameID, $userID, $rank, $role, $status);
 
-    abstract function deletePlayer($gameID, $userID);
+    function deletePlayer($gameID, $userID);
 }
 
-class PlayerListDAO extends PlayerListDAOInterface
+class PlayerListDAO implements PlayerListDAOInterface
 {
     private $dsn;
 

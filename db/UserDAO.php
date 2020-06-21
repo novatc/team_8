@@ -1,23 +1,23 @@
 <?php
 require_once ("Database.php");
 
-abstract class UserDAOInterface
+interface UserDAOInterface
 {
 
-    abstract function login($username, $password);
+    function login($username, $password);
 
-    abstract function register($username, $email, $pwd, $pwdrepeat);
+    function register($username, $email, $pwd, $pwdrepeat);
 
-    abstract function getUserByName($username);
+    function getUserByName($username);
 
-    abstract function getUserByID($username);
+    function getUserByID($username);
 
-    abstract function updateUser($userID, $age, $language, $description, $icon);
+    function updateUser($userID, $age, $language, $description, $icon);
 
 
 }
 
-class UserDAO extends UserDAOInterface
+class UserDAO implements UserDAOInterface
 {
     private $dsn;
 
