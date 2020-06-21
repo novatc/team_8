@@ -20,7 +20,7 @@ $isLoggedIn = $_SESSION['userid']> -1;
                 <a id = "message-link" href="chatoverview.php">Nachrichten</a>
                 <a id = "profil-link" href="playerprofile.php">Profil</a>  
             <?php else: ?>
-                <a class = "btn" id = "login-link" href="login.php">Anmelden</a>
+                <a class = "btn" id = "login-link" href="login.php">Login</a>
             <?php endif; ?>
         </div>
     </div>
