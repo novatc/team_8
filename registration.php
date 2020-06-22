@@ -26,7 +26,7 @@ if(isset($_SESSION['registrationerror'])){
     </div>
 </header>
 <main>
-    <form class="box" action='php/actions/registrationAction.php'  method="post">
+    <form class="box" action='php/actions/registration_action.php' method="post">
         <h2 id='error-message'></h2>
         <h1>Registrieren</h1>
         <input class="login-input" type="text" name="username" placeholder="Benutzername" required>

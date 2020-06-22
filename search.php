@@ -2,9 +2,9 @@
 require_once "php/actions/session.php";
 startSession();
 
-include "db/PlayerListDAO.php";
+include "db/player_list_dao.php";
 
-$playerlist = new PlayerListDAO("sqlite:db/Database.db");
+$playerlist = new PlayerListDAO("sqlite:db/databse.db");
 $search = $_GET['search'];
 ?>
 

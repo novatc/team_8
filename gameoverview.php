@@ -2,9 +2,9 @@
 require_once "php/actions/session.php";
 startSession();
 
-include "db/GameDAO.php";
+include "db/game_dao.php";
 
-$gameDAO = new GameDAO("sqlite:db/Database.db");
+$gameDAO = new GameDAO("sqlite:db/databse.db");
 
 $filtertags = $gameDAO->getAllTags();
 

@@ -2,11 +2,11 @@
 require_once "php/actions/session.php";
 startSession();
 
-include "db/PlayerListDAO.php";
-$playerlistDAO = new PlayerListDAO("sqlite:db/Database.db");
+include "db/player_list_dao.php";
+$playerlistDAO = new PlayerListDAO("sqlite:db/databse.db");
 
-include "db/GameDAO.php";
-$gameDAO = new GameDAO("sqlite:db/Database.db");
+include "db/game_dao.php";
+$gameDAO = new GameDAO("sqlite:db/databse.db");
 
 
 

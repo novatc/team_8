@@ -1,10 +1,10 @@
 <?php
 
-include "db/UserDAO.php";
+include "db/user_dao.php";
 include "php/actions/session.php";
 startSession();
 
-$userDAO = new UserDAO("sqlite:db/Database.db");
+$userDAO = new UserDAO("sqlite:db/databse.db");
 
 $onlymessages = array();
 $you = $userDAO->getUserByID($_SESSION['userid']);
@@ -78,7 +78,7 @@ $completemessages = json_decode(json_encode($completemessages), true);
                 </div>
 
                 <!-- Senden-->
-                <form id="messageform" action="php/actions/sendmessageaction.php" method="post">
+                <form id="messageform" action="php/actions/send_message_action.php" method="post">
                     <div class="chatbox" id="sendForm">
                         <input class="data-input" id="sendMessage" type="text" name="message" required placeholder="Schreibe eine Nachricht...">
                         <input type="submit" id="sendButton" value="Senden">

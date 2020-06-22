@@ -2,7 +2,7 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-include "../../db/PlayerListDAO.php";
+include "../../db/player_list_dao.php";
 
 $playerlist = new PlayerListDAO();
 

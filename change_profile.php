@@ -2,14 +2,14 @@
 require_once "php/actions/session.php";
 startSession();
 
-include "db/PlayerListDAO.php";
-$listDAO = new PlayerListDAO("sqlite:db/Database.db");
+include "db/player_list_dao.php";
+$listDAO = new PlayerListDAO("sqlite:db/databse.db");
 
-include "db/GameDAO.php";
-$gameDAO = new GameDAO("sqlite:db/Database.db");
+include "db/game_dao.php";
+$gameDAO = new GameDAO("sqlite:db/databse.db");
 
-include "db/UserDAO.php";
-$userDAO = new UserDAO("sqlite:db/Database.db");
+include "db/user_dao.php";
+$userDAO = new UserDAO("sqlite:db/databse.db");
 
 $userID = $_SESSION['userid'];
 $user = $userDAO->getUserByID($userID);
@@ -64,7 +64,7 @@ if(isset($_SESSION['gamechoice'])){
             <input class="submit-btn"  type="submit" name="changesubmit" value="Speichern">
         </form>
         <div class="box"> 
-            <form  action="php/actions/choosegameaction.php" method="post">
+            <form action="php/actions/choose_game_action.php" method="post">
                 <h1>Spiele verwalten</h1>  
                 <div class="input-wrapper">
                     <select class="selectbox" name="game" onchange="this.form.submit()" required>
@@ -94,7 +94,7 @@ if(isset($_SESSION['gamechoice'])){
                 <input class="submit-btn" id="choose-btn" type="submit" name="gamechoicesubmit" value="Wählen">
             </form>
             <?php if($gamechoice != ''): ?>
-            <form action="php/actions/editGamesAction.php" method="post">
+            <form action="php/actions/edit_game_action.php" method="post">
                 <?php if($gamechoice == 'CS:GO'): ?>
                     <div class="gamebox">
                         <?php include "php/pieces/csgostatistics.php";?>

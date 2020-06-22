@@ -7,7 +7,7 @@ if (isset($_POST['game'])){
 }
     
 
-header('Location: ../../changeprofile.php');
+header('Location: ../../change_profile.php');
 exit();
 
 ?>

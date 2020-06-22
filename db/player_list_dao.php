@@ -1,5 +1,5 @@
 <?php
-require_once("Database.php");
+require_once("databse.php");
 
 interface  PlayerListDAOInterface
 {
@@ -16,19 +16,19 @@ class PlayerListDAO implements PlayerListDAOInterface
 {
     private $dsn;
 
-    function __construct($dsn = "sqlite:../../db/Database.db") {
+    function __construct($dsn = "sqlite:../../db/databse.db") {
         $this->dsn = $dsn;
     }
 
     function addPlayer($gameID, $userID, $rank, $role, $status)
     {
-        $gameID = Database::encodeData($gameID);
-        $userID = Database::encodeData($userID);
-        $rank = Database::encodeData($rank);
-        $role = Database::encodeData($role);
-        $status = Database::encodeData($status);
+        $gameID = databse::encodeData($gameID);
+        $userID = databse::encodeData($userID);
+        $rank = databse::encodeData($rank);
+        $role = databse::encodeData($role);
+        $status = databse::encodeData($status);
         
-        $db = Database::connect($this->dsn);
+        $db = databse::connect($this->dsn);
 
         try {
             $db->beginTransaction();
@@ -47,21 +47,21 @@ class PlayerListDAO implements PlayerListDAOInterface
 
         } catch (Exception $ex) {
             $db->rollBack();
-            Database::disconnect($this->dsn);
+            databse::disconnect($this->dsn);
             return 1;
         }
     }
 
     function updatePlayer($gameID, $userID, $rank, $role, $status)
     {
-        $gameID = Database::encodeData($gameID);
-        $userID = Database::encodeData($userID);
-        $rank = Database::encodeData($rank);
-        $role = Database::encodeData($role);
-        $status = Database::encodeData($status);
+        $gameID = databse::encodeData($gameID);
+        $userID = databse::encodeData($userID);
+        $rank = databse::encodeData($rank);
+        $role = databse::encodeData($role);
+        $status = databse::encodeData($status);
 
 
-        $db = Database::connect($this->dsn);
+        $db = databse::connect($this->dsn);
 
         try {
             $db->beginTransaction();
@@ -80,17 +80,17 @@ class PlayerListDAO implements PlayerListDAOInterface
 
         } catch (Exception $ex) {
             $db->rollBack();
-            Database::disconnect($this->dsn);
+            databse::disconnect($this->dsn);
             return 1;
         }
     }
 
     function deletePlayer($gameID, $userID)
     {
-        $gameID = Database::encodeData($gameID);
-        $userID = Database::encodeData($userID);
+        $gameID = databse::encodeData($gameID);
+        $userID = databse::encodeData($userID);
        
-        $db = Database::connect($this->dsn);
+        $db = databse::connect($this->dsn);
 
         try {
             $db->beginTransaction();
@@ -106,19 +106,19 @@ class PlayerListDAO implements PlayerListDAOInterface
 
         } catch (Exception $ex) {
             $db->rollBack();
-            Database::disconnect($this->dsn);
+            databse::disconnect($this->dsn);
             return 1;
         } 
     }
 
     function getEntry($gameID, $userID)
     {
-        $db = Database::connect($this->dsn);
+        $db = databse::connect($this->dsn);
 
         try {
             $db->beginTransaction();
-            $username = Database::encodeData($gameID);
-            $password = Database::encodeData($userID);
+            $username = databse::encodeData($gameID);
+            $password = databse::encodeData($userID);
 
             $sql = "SELECT * FROM Playerlist WHERE gameid = :gameID AND userid =:userID;";
             $cmd = $db->prepare($sql);
@@ -126,12 +126,12 @@ class PlayerListDAO implements PlayerListDAOInterface
             $cmd->bindParam(':userID', $userID);
             $cmd->execute();
 
-            Database::disconnect($this->dsn);
+            databse::disconnect($this->dsn);
 
             return $cmd->fetchObject();
 
         } catch (Exception $ex) {
-            Database::disconnect($this->dsn);
+            databse::disconnect($this->dsn);
             return -1;
         } 
     }
@@ -153,7 +153,7 @@ class PlayerListDAO implements PlayerListDAOInterface
     {
         $result = array();
 
-        $db = Database::connect($this->dsn);
+        $db = databse::connect($this->dsn);
 
         try {
             $sql = "SELECT * FROM User;";
@@ -179,7 +179,7 @@ class PlayerListDAO implements PlayerListDAOInterface
         $result = array();
         $helperArry = array();
 
-        $db = Database::connect($this->dsn);
+        $db = databse::connect($this->dsn);
 
         try {
 
@@ -205,7 +205,7 @@ class PlayerListDAO implements PlayerListDAOInterface
             if ($cmd->execute()) {
                 while ($entry = $cmd->fetchObject()) {
                     if(count($roles)>0){
-                        $entryroles = Database::decodeArray($entry->role);
+                        $entryroles = databse::decodeArray($entry->role);
                         foreach($roles as $role){
                             if(in_array($role, $entryroles)){
                                 array_push($helperArry, $entry);
@@ -243,7 +243,7 @@ class PlayerListDAO implements PlayerListDAOInterface
         $result = array();
 
         try {
-            $db = Database::connect("sqlite:db/Database.db");
+            $db = databse::connect("sqlite:db/databse.db");
         } catch (Exception $e) {
         }
         try {
@@ -272,7 +272,7 @@ class PlayerListDAO implements PlayerListDAOInterface
         $result = array();
 
         try {
-            $db = Database::connect("sqlite:db/Database.db");
+            $db = databse::connect("sqlite:db/databse.db");
         } catch (Exception $e) {
         }
         try {
@@ -283,7 +283,7 @@ class PlayerListDAO implements PlayerListDAOInterface
 
             $result = $cmd->fetchObject();
             if ($result != null) {
-                Database::disconnect();
+                databse::disconnect();
                 return $result;
             } else return false;
 
@@ -311,7 +311,7 @@ class PlayerListDAO implements PlayerListDAOInterface
             return -1; // ERROR
         } 
         if($entry != null){
-            return Database::decodeArray($entry->role);
+            return databse::decodeArray($entry->role);
         } else{
             return [];
         }
@@ -331,17 +331,17 @@ class PlayerListDAO implements PlayerListDAOInterface
 
     function getGamesFromPlayer($userID){
         $games = array();
-        $db = Database::connect($this->dsn);
+        $db = databse::connect($this->dsn);
 
         try {
             $db->beginTransaction();
-            $userID = Database::encodeData($userID);
+            $userID = databse::encodeData($userID);
 
             $sql = "SELECT * FROM Playerlist WHERE userid =:userID;";
             $cmd = $db->prepare($sql);
             $cmd->bindParam(':userID', $userID);
 
-            Database::disconnect($this->dsn);
+            databse::disconnect($this->dsn);
             if ($cmd->execute()) {
                 while ($item = $cmd->fetchObject()) {
                     array_push($games, $item->gameid);
@@ -351,7 +351,7 @@ class PlayerListDAO implements PlayerListDAOInterface
             return $games;
 
         } catch (Exception $ex) {
-            Database::disconnect($this->dsn);
+            databse::disconnect($this->dsn);
             return -1;
         } 
 
@@ -362,7 +362,7 @@ class PlayerListDAO implements PlayerListDAOInterface
         $result = array();
 
         try {
-            $db = Database::connect("sqlite:db/Database.db");
+            $db = databse::connect("sqlite:db/databse.db");
         } catch (Exception $e) {
         }
         try {
@@ -373,7 +373,7 @@ class PlayerListDAO implements PlayerListDAOInterface
 
             $result = $cmd->fetchObject();
             if ($result != null) {
-                Database::disconnect();
+                databse::disconnect();
                 return $result;
             } else return false;
 

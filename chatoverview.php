@@ -1,11 +1,11 @@
 <?php
 
-include "db/UserDAO.php";
+include "db/user_dao.php";
 include "php/actions/session.php";
 startSession();
 
 $friendlist = array();
-$userDAO = new UserDAO("sqlite:db/Database.db");
+$userDAO = new UserDAO("sqlite:db/databse.db");
 $yourfriendids = $userDAO ->getFriends($_SESSION['userid']);
 
 ?>
@@ -70,7 +70,7 @@ $yourfriendids = $userDAO ->getFriends($_SESSION['userid']);
                         $profileurl = 'playerprofile.php?id= ' . $friendID ;
                         array_push($friendlist, $friendicon);?>
                         <div class="icon" id= <?=$friendicon?> onclick="location.href='<?php echo $profileurl?>'"></div>
-                        <form action="php/actions/startchataction.php" method="post">
+                        <form action="php/actions/start_chat_action.php" method="post">
                             <input class="startChat" type="submit" name="friend" value=<?=$friendusername?>>
                         </form>
                     <?php endforeach; ?>

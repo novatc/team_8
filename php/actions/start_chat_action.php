@@ -2,7 +2,7 @@
 include "session.php";
 startSession();
 
-include "../../db/UserDAO.php";
+include "../../db/user_dao.php";
 $userDAO = new UserDAO();
 
 $frienduser = $userDAO->getUserByName($_POST['friend']);

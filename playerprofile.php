@@ -4,14 +4,14 @@ startSession();
 
 $isLoggedIn = $_SESSION['userid']> -1;
 
-include "db/PlayerListDAO.php";
-$listDAO = new PlayerListDAO("sqlite:db/Database.db");
+include "db/player_list_dao.php";
+$listDAO = new PlayerListDAO("sqlite:db/databse.db");
 
-include "db/GameDAO.php";
-$gameDAO = new GameDAO("sqlite:db/Database.db");
+include "db/game_dao.php";
+$gameDAO = new GameDAO("sqlite:db/databse.db");
 
-include "db/UserDAO.php";
-$userDAO = new UserDAO("sqlite:db/Database.db");
+include "db/user_dao.php";
+$userDAO = new UserDAO("sqlite:db/databse.db");
 
 
 if (isset($_GET['id']))
@@ -111,11 +111,11 @@ $_SESSION['addfriend'] = $user;
                 </div>
                 <div class="options-wrapper">
                     <?php if ($ownprofile): ?>    
-                    <a id="settings-link" href="changeprofile.php"></a>
+                    <a id="settings-link" href="change_profile.php"></a>
                     <a id="logout-link" href="php/actions/logoutAction.php"></a>
                     <?php else:?>
                     <a id="message-link" href="chatoverview.php"></a>
-                    <a id="friend-link" href="php/actions/addFriendAction.php"></a>
+                    <a id="friend-link" href="php/actions/add_friend_action.php"></a>
                     <?php endif; ?>
                 </div>
             </div>

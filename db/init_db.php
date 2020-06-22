@@ -3,7 +3,7 @@ try {
 
     $user = "root";
     $pw = null;
-    $dsn = "sqlite:Database.db";
+    $dsn = "sqlite:databse.db";
     $id_feld = "id INTEGER PRIMARY KEY AUTOINCREMENT,"; // SQLite-Syntax
     $db = new PDO($dsn, $user, $pw);
 

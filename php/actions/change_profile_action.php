@@ -2,7 +2,7 @@
 include "session.php";
 startSession();
 
-include "../../db/UserDAO.php";
+include "../../db/user_dao.php";
 $userDAO = new UserDAO();
 
 $posted = false;
@@ -27,7 +27,7 @@ if(isset($_POST['changesubmit'])){
 
 
 
-header('Location: ../../changeprofile.php');
+header('Location: ../../change_profile.php');
 exit();
 
 ?>

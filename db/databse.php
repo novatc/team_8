@@ -1,6 +1,6 @@
 <?php
 
-class Database
+class databse
 {
     private static $db = null;
 

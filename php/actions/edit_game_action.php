@@ -2,10 +2,10 @@
 include "session.php";
 startSession();
 
-include "../../db/PlayerListDAO.php";
+include "../../db/player_list_dao.php";
 $listDAO = new PlayerListDAO();
 
-include "../../db/GameDAO.php";
+include "../../db/game_dao.php";
 $gameDAO = new GameDAO();
 
 $gameid = $gameDAO->getGameByName($_SESSION['gamechoice'])->gameid;
@@ -40,7 +40,7 @@ if(isset($_POST['deletegame'])){
             break;
     }
 }
-header('Location: ../../changeprofile.php');
+header('Location: ../../change_profile.php');
 exit();
 
 ?>
