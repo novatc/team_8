@@ -5,7 +5,7 @@ include "php/actions/session.php";
 startSession();
 
 $friendlist = array();
-$userDAO = new UserDAO("sqlite:db/databse.db");
+$userDAO = new UserDAO("sqlite:db/Database.db");
 $yourfriendids = $userDAO ->getFriends($_SESSION['userid']);
 
 ?>

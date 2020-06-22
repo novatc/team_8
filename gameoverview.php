@@ -4,7 +4,7 @@ startSession();
 
 include "db/game_dao.php";
 
-$gameDAO = new GameDAO("sqlite:db/databse.db");
+$gameDAO = new GameDAO("sqlite:db/Database.db");
 
 $filtertags = $gameDAO->getAllTags();
 

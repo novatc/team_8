@@ -1,5 +1,5 @@
 <?php
-require_once("databse.php");
+require_once("Database.php");
 
 interface GameDAOInterface
 {
@@ -13,7 +13,7 @@ class GameDAO implements GameDAOInterface
 {  
     private $dsn;
 
-    function __construct($dsn = "sqlite:../../db/databse.db") {
+    function __construct($dsn = "sqlite:../../db/Database.db") {
         $this->dsn = $dsn;
     }
 
@@ -21,7 +21,7 @@ class GameDAO implements GameDAOInterface
         $games = array();
         $helperArry = array();
 
-        $db = databse::connect($this->dsn);
+        $db = database::connect($this->dsn);
         
         try {
             
@@ -32,7 +32,7 @@ class GameDAO implements GameDAOInterface
             if ($cmd->execute()) {
                 while ($game = $cmd->fetchObject()) {
                     if(count($tags)>0){
-                        $gametags = databse::decodeArray($game->tags);
+                        $gametags = database::decodeArray($game->tags);
                         foreach($tags as $tag){
                             if(in_array($tag, $gametags)){
                                 array_push($games, $game);
@@ -51,11 +51,11 @@ class GameDAO implements GameDAOInterface
     }
 
     function getGameByID($gameID){
-        $db = databse::connect($this->dsn);
+        $db = database::connect($this->dsn);
          
         try {
             $db->beginTransaction();
-            $gameID = databse::encodeData($gameID);
+            $gameID = database::encodeData($gameID);
             $sql = "SELECT * FROM Games WHERE gameid = :id";
             $cmd = $db->prepare($sql);
             $cmd->bindParam(":id", $gameID);
@@ -68,15 +68,15 @@ class GameDAO implements GameDAOInterface
         } catch (Exception $ex) {
             return NULL;
         }
-        databse::disconnect($this->dsn);
+        database::disconnect($this->dsn);
     }
     
     function getGameByName($gameName){
-        $db = databse::connect($this->dsn);
+        $db = database::connect($this->dsn);
          
         try {
             $db->beginTransaction();
-            $gameName = databse::encodeData($gameName);
+            $gameName = database::encodeData($gameName);
             $sql = "SELECT * FROM Games WHERE gamename = :name";
             $cmd = $db->prepare($sql);
             $cmd->bindParam(":name", $gameName);
@@ -89,10 +89,10 @@ class GameDAO implements GameDAOInterface
         } catch (Exception $ex) {
             return NULL;
         }
-        databse::disconnect($this->dsn);
+        database::disconnect($this->dsn);
     }
     function getRanksFromGame($gameID){
-        $db = databse::connect($this->dsn);
+        $db = database::connect($this->dsn);
          
         try {
             
@@ -102,17 +102,17 @@ class GameDAO implements GameDAOInterface
             $cmd->execute();
             $game = $cmd->fetchObject();
 
-            $ranks = databse::decodeArray($game->gameranks);
+            $ranks = database::decodeArray($game->gameranks);
             
             return $ranks;
 
         } catch (Exception $ex) {
             return NULL;
         }
-        databse::disconnect($this->dsn);
+        database::disconnect($this->dsn);
     }
     function getRolesFromGame($gameID){
-        $db = databse::connect($this->dsn);
+        $db = database::connect($this->dsn);
          
         try {
             
@@ -122,17 +122,17 @@ class GameDAO implements GameDAOInterface
             $cmd->execute();
             $game = $cmd->fetchObject();
 
-            $roles = databse::decodeArray($game->gameroles);
+            $roles = database::decodeArray($game->gameroles);
             
             return $roles;
 
         } catch (Exception $ex) {
             return NULL;
         }
-        databse::disconnect($this->dsn);
+        database::disconnect($this->dsn);
     }
     function getAllTags(){
-        $db = databse::connect($this->dsn);
+        $db = database::connect($this->dsn);
         $finaltags = []; 
         try {
             
@@ -142,7 +142,7 @@ class GameDAO implements GameDAOInterface
 
             if ($cmd->execute()) {
                 while ($game = $cmd->fetchObject()) {
-                    $tags = databse::decodeArray($game->tags);
+                    $tags = database::decodeArray($game->tags);
 
                     foreach($tags as $tag) {
                         if(!in_array($tag, $finaltags))
@@ -155,7 +155,7 @@ class GameDAO implements GameDAOInterface
         } catch (Exception $ex) {
             return NULL;
         }
-        databse::disconnect($this->dsn);
+        database::disconnect($this->dsn);
     }
     
 }

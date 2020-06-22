@@ -5,13 +5,13 @@ startSession();
 $isLoggedIn = $_SESSION['userid']> -1;
 
 include "db/player_list_dao.php";
-$listDAO = new PlayerListDAO("sqlite:db/databse.db");
+$listDAO = new PlayerListDAO("sqlite:db/Database.db");
 
 include "db/game_dao.php";
-$gameDAO = new GameDAO("sqlite:db/databse.db");
+$gameDAO = new GameDAO("sqlite:db/Database.db");
 
 include "db/user_dao.php";
-$userDAO = new UserDAO("sqlite:db/databse.db");
+$userDAO = new UserDAO("sqlite:db/Database.db");
 
 
 if (isset($_GET['id']))
@@ -28,6 +28,11 @@ if(!$noData){
     $username = $user->username;
     $description = $user->description;
     $age = $user->age;
+    // Berechne Alter
+    $date = new DateTime($age);
+    $now = new DateTime();
+    $age_in_years = $now->diff($date)->y;
+
     $language = $user->language;
     $usericon = $user->icon;
     
@@ -112,7 +117,7 @@ $_SESSION['addfriend'] = $user;
                 <div class="options-wrapper">
                     <?php if ($ownprofile): ?>    
                     <a id="settings-link" href="change_profile.php"></a>
-                    <a id="logout-link" href="php/actions/logoutAction.php"></a>
+                    <a id="logout-link" href="php/actions/logout_action.php"></a>
                     <?php else:?>
                     <a id="message-link" href="chatoverview.php"></a>
                     <a id="friend-link" href="php/actions/add_friend_action.php"></a>
@@ -124,7 +129,7 @@ $_SESSION['addfriend'] = $user;
             <h2>Beschreibung:</h2>
             <div class="description">
                 <div>
-                    <label class="attribute">Alter: </label><label class="value"><?= $age?></label>
+                    <label class="attribute">Alter: </label><label class="value"><?= $age_in_years?></label>
                 </div>
                 <div>
                     <label class="attribute">Sprachen: </label><label class="value"><?= $language?></label>

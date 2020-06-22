@@ -3,13 +3,13 @@ require_once "php/actions/session.php";
 startSession();
 
 include "db/player_list_dao.php";
-$listDAO = new PlayerListDAO("sqlite:db/databse.db");
+$listDAO = new PlayerListDAO("sqlite:db/Database.db");
 
 include "db/game_dao.php";
-$gameDAO = new GameDAO("sqlite:db/databse.db");
+$gameDAO = new GameDAO("sqlite:db/Database.db");
 
 include "db/user_dao.php";
-$userDAO = new UserDAO("sqlite:db/databse.db");
+$userDAO = new UserDAO("sqlite:db/Database.db");
 
 $userID = $_SESSION['userid'];
 $user = $userDAO->getUserByID($userID);
@@ -46,14 +46,14 @@ if(isset($_SESSION['gamechoice'])){
         </div>
     </header>
     <main>
-        <form class="box" action="php/actions/changeProfileAction.php" method="post">
+        <form class="box" action="php/actions/change_profile_action.php" method="post">
             <h1>Profil anpassen</h1>
             <div class="input-wrapper">
                 <textarea name="description" class="textarea-input" cols="30" rows="10"><?= $description?></textarea>
                 <label class="top-label">Beschreibung</label>
             </div> 
             <div class="input-wrapper">
-                <input class="data-input" type="number" name="age" value= "<?= $age?>">
+                <input class="data-input" type="date" name="age" value= "<?= $age?>">
                 <label class="left-label">Alter</label>
             </div>
             <div class="input-wrapper">

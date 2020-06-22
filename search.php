@@ -4,7 +4,7 @@ startSession();
 
 include "db/player_list_dao.php";
 
-$playerlist = new PlayerListDAO("sqlite:db/databse.db");
+$playerlist = new PlayerListDAO("sqlite:db/Database.db");
 $search = $_GET['search'];
 ?>
 

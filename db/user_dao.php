@@ -1,5 +1,5 @@
 <?php
-require_once("databse.php");
+require_once("Database.php");
 
 interface UserDAOInterface
 {
@@ -22,19 +22,19 @@ class UserDAO implements UserDAOInterface
     private $dsn;
 
 
-    function __construct($dsn = "sqlite:../../db/databse.db") {
+    function __construct($dsn = "sqlite:../../db/Database.db") {
         $this->dsn = $dsn;
     }
     
     function login($username, $password)
     {
-        $db = databse::connect($this->dsn);
+        $db = database::connect($this->dsn);
         $this->checkIfDBexists();
 
         try {
             $db->beginTransaction();
-            $username = databse::encodeData($username);
-            $password = databse::encodeData($password);
+            $username = database::encodeData($username);
+            $password = database::encodeData($password);
 
             $sql = "SELECT * FROM User WHERE username = :user";
             $cmd = $db->prepare($sql);
@@ -51,12 +51,12 @@ class UserDAO implements UserDAOInterface
 
 
             }
-            databse::disconnect($this->dsn);
+            database::disconnect($this->dsn);
             return false;
 
 
         } catch (Exception $ex) {
-            databse::disconnect($this->dsn);
+            database::disconnect($this->dsn);
             return false;
         }
     }
@@ -64,12 +64,12 @@ class UserDAO implements UserDAOInterface
     /* Gets User, returns false if User not in DB */
     function getUserByName($username)
     {
-        $db = databse::connect($this->dsn);
+        $db = database::connect($this->dsn);
 
 
 
         try {
-            $username = databse::encodeData($username);
+            $username = database::encodeData($username);
             $sql = "SELECT * FROM User WHERE username = :user";
             $cmd = $db->prepare($sql);
             $cmd->bindParam(':user', $username);
@@ -79,24 +79,24 @@ class UserDAO implements UserDAOInterface
             if ( $username != null) {
                 return $user;
             } else {
-                databse::disconnect($this->dsn);
+                database::disconnect($this->dsn);
                 return false;
             }
-            databse::disconnect($this->dsn);
+            database::disconnect($this->dsn);
         } catch (Exception $ex) {
             echo ("Failure:") . $ex->getMessage();
         }
-        databse::disconnect($this->dsn);
+        database::disconnect($this->dsn);
     }
 
     /* Gets User, returns false if User not in DB */
     function getUserByID($userID)
     {
-        $db = databse::connect($this->dsn);
+        $db = database::connect($this->dsn);
 
 
         try {
-            $userID = databse::encodeData($userID);
+            $userID = database::encodeData($userID);
             $sql = "SELECT * FROM User WHERE userid = :userid";
             $cmd = $db->prepare($sql);
             $cmd->bindParam(':userid', $userID);
@@ -106,20 +106,20 @@ class UserDAO implements UserDAOInterface
             if ( $user != null) {
                 return $user;
             } else {
-                databse::disconnect($this->dsn);
+                database::disconnect($this->dsn);
                 return false;
             }
-            databse::disconnect($this->dsn);
+            database::disconnect($this->dsn);
         } catch (Exception $ex) {
             echo ("Failure:") . $ex->getMessage();
         }
-        databse::disconnect($this->dsn);
+        database::disconnect($this->dsn);
     }
 
     function register($username, $email, $pwd, $pwdrepeat)
     {
 
-        $db = databse::connect($this->dsn);
+        $db = database::connect($this->dsn);
 
 
 
@@ -142,8 +142,8 @@ class UserDAO implements UserDAOInterface
 
         try {
             $db->beginTransaction();
-            $username = databse::encodeData($username);
-            $email = databse::encodeData($email);
+            $username = database::encodeData($username);
+            $email = database::encodeData($email);
             $hashedpw = password_hash($pwd,PASSWORD_DEFAULT );
             $sql = "INSERT INTO User (username, mail, password) VALUES (:user, :email, :password);";
             $cmd = $db->prepare( $sql );
@@ -159,11 +159,11 @@ class UserDAO implements UserDAOInterface
             $db->rollBack();
             return 4;
         }
-        databse::disconnect($this->dsn);
+        database::disconnect($this->dsn);
     }
 
     function updateUser($userID, $age, $language, $description, $icon){
-        $db = databse::connect($this->dsn);
+        $db = database::connect($this->dsn);
 
 
 
@@ -171,7 +171,7 @@ class UserDAO implements UserDAOInterface
             $db->beginTransaction();
 
             if($age!= -1){
-                $language = databse::encodeData($language);
+                $language = database::encodeData($language);
                 $sql = "UPDATE User SET age = :age WHERE userid = :userid;";
                 $cmd = $db->prepare( $sql );
                 $cmd->bindParam( ':userid', $userID );
@@ -180,7 +180,7 @@ class UserDAO implements UserDAOInterface
                 
             }
             if($language!=-1){
-                $language = databse::encodeData($language);
+                $language = database::encodeData($language);
                 $sql = "UPDATE User SET language = :language WHERE userid = :userid;";
                 $cmd = $db->prepare( $sql );
                 $cmd->bindParam( ':userid', $userID );
@@ -188,7 +188,7 @@ class UserDAO implements UserDAOInterface
                 $cmd->execute();
             }
             if($description!=-1){
-                $description = databse::encodeData($description);
+                $description = database::encodeData($description);
                 $sql = "UPDATE User SET description = :description WHERE userid = :userid;";
                 $cmd = $db->prepare( $sql );
                 $cmd->bindParam( ':userid', $userID );
@@ -196,7 +196,7 @@ class UserDAO implements UserDAOInterface
                 $cmd->execute();
             }
             if($icon!=-1){
-                $icon = databse::encodeData($icon);
+                $icon = database::encodeData($icon);
                 $sql = "UPDATE User SET icon = :icon WHERE userid = :userid;";
                 $cmd = $db->prepare( $sql );
                 $cmd->bindParam( ':userid', $userID );
@@ -210,7 +210,7 @@ class UserDAO implements UserDAOInterface
             $db->rollBack();
             return 1;
         }
-        databse::disconnect($this->dsn);
+        database::disconnect($this->dsn);
         
     }
 
@@ -220,7 +220,7 @@ class UserDAO implements UserDAOInterface
         $result = array();
 
         try {
-            $db = databse::connect($this->dsn);
+            $db = database::connect($this->dsn);
         } catch (Exception $e) {
         }
         try {
@@ -242,20 +242,20 @@ class UserDAO implements UserDAOInterface
         } catch(Exception $ex) {
             echo ("Failure:") . $ex->getMessage();
         }
-        databse::disconnect($this->dsn);
+        database::disconnect($this->dsn);
     }
 
     function saveMessage($userid1, $userid2, $message)
     {
 
-        $db = databse::connect($this->dsn);
+        $db = database::connect($this->dsn);
 
 
         try {
             $db->beginTransaction();
-            $userid1 = databse::encodeData($userid1);
-            $userid2 = databse::encodeData($userid2);
-            $message = databse::encodeData($message);
+            $userid1 = database::encodeData($userid1);
+            $userid2 = database::encodeData($userid2);
+            $message = database::encodeData($message);
             $sql = "INSERT INTO Chat (userid1, userid2, chatmessage) VALUES (:user1, :user2, :message);";
             $cmd = $db->prepare( $sql );
             $cmd->bindParam( ':user1', $userid1 );
@@ -270,13 +270,13 @@ class UserDAO implements UserDAOInterface
             $db->rollBack();
             return 1;
         }
-        databse::disconnect($this->dsn);
+        database::disconnect($this->dsn);
     }
 
     function getMessages($userid1, $userid2) {
 
         $allmessages = array();
-        $db = databse::connect($this->dsn);
+        $db = database::connect($this->dsn);
 
 
         try {
@@ -296,12 +296,12 @@ class UserDAO implements UserDAOInterface
         } catch( Exception $ex) {
 
         }
-        databse::disconnect();
+        database::disconnect();
     }
 
     function addFriend($yourID, $friendID) {
 
-        $db = databse::connect($this->dsn);
+        $db = database::connect($this->dsn);
 
 
         try {
@@ -314,8 +314,8 @@ class UserDAO implements UserDAOInterface
             if($cmd->fetchObject() != null) {
                 return null;
             } else {
-                $yourID = databse::encodeData($yourID);
-                $friendID = databse::encodeData($friendID);
+                $yourID = database::encodeData($yourID);
+                $friendID = database::encodeData($friendID);
 
                 $db->beginTransaction();
                 $sql = "INSERT INTO Friends (ownid, friendID) VALUES (:you, :friend);";
@@ -337,7 +337,7 @@ class UserDAO implements UserDAOInterface
             $db->rollBack();
             return 1;
         }
-        databse::disconnect($this->dsn);
+        database::disconnect($this->dsn);
     }
 
     function checkIfDBexists(){

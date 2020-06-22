@@ -4,7 +4,7 @@ include "db/user_dao.php";
 include "php/actions/session.php";
 startSession();
 
-$userDAO = new UserDAO("sqlite:db/databse.db");
+$userDAO = new UserDAO("sqlite:db/Database.db");
 
 $onlymessages = array();
 $you = $userDAO->getUserByID($_SESSION['userid']);

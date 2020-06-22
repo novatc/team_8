@@ -3,10 +3,10 @@ require_once "php/actions/session.php";
 startSession();
 
 include "db/player_list_dao.php";
-$playerlistDAO = new PlayerListDAO("sqlite:db/databse.db");
+$playerlistDAO = new PlayerListDAO("sqlite:db/Database.db");
 
 include "db/game_dao.php";
-$gameDAO = new GameDAO("sqlite:db/databse.db");
+$gameDAO = new GameDAO("sqlite:db/Database.db");
 
 
 
