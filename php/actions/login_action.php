@@ -5,30 +5,34 @@ startSession();
 include "../../db/user_dao.php";
 $userDAO = new UserDAO();
 
-$error = false;
+$empty = false;
 $required = array('username', 'password');
 
-foreach ($required as $field) {
-    if (empty($_POST[$field])) {
-        $error = true;
+
+/* Check if input field empty */
+foreach ($required as $field){
+    if (empty($_POST[$field])){
+        $empty = true;
+        $_SESSION['registrationerror'] = 1;
     }
 }
-if ($error == false) {
-    $name = $_POST['username'];
-    $pwd = $_POST['password'];
 
+
+if(!$empty){
+    $username = $_POST['username'];
+    $pwd = $_POST['password'];
     
-    $userid = $userDAO->login($name, $pwd);
-    if ($userid!=false) {
-        $_SESSION['user'] = $_POST['username'];
-        $_SESSION['userid'] = $userid;
+    $errorcode = $userDAO->login($username, $pwd);
+    $_SESSION['loginerror'] = $errorcode;
+    if ($errorcode == 0){
+        $_SESSION['user'] = $username;
+        $_SESSION['userid'] = $userDAO->getUserByName($username)->userid;
         header('Location: ../../playerprofile.php');
         exit();
-    }
-    else{
-        echo "Login nicht erfolgreich";
+    } else{
         header('Location: ../../login.php');
         exit();
     }
 }
+
 ?>

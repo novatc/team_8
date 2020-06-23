@@ -21,7 +21,7 @@ class GameDAO implements GameDAOInterface
         $games = array();
         $helperArry = array();
 
-        $db = database::connect($this->dsn);
+        $db = Database::connect($this->dsn);
         
         try {
             
@@ -32,7 +32,7 @@ class GameDAO implements GameDAOInterface
             if ($cmd->execute()) {
                 while ($game = $cmd->fetchObject()) {
                     if(count($tags)>0){
-                        $gametags = database::decodeArray($game->tags);
+                        $gametags = Database::decodeArray($game->tags);
                         foreach($tags as $tag){
                             if(in_array($tag, $gametags)){
                                 array_push($games, $game);
@@ -51,11 +51,11 @@ class GameDAO implements GameDAOInterface
     }
 
     function getGameByID($gameID){
-        $db = database::connect($this->dsn);
+        $db = Database::connect($this->dsn);
          
         try {
             $db->beginTransaction();
-            $gameID = database::encodeData($gameID);
+            $gameID = Database::encodeData($gameID);
             $sql = "SELECT * FROM Games WHERE gameid = :id";
             $cmd = $db->prepare($sql);
             $cmd->bindParam(":id", $gameID);
@@ -68,15 +68,15 @@ class GameDAO implements GameDAOInterface
         } catch (Exception $ex) {
             return NULL;
         }
-        database::disconnect($this->dsn);
+        Database::disconnect($this->dsn);
     }
     
     function getGameByName($gameName){
-        $db = database::connect($this->dsn);
+        $db = Database::connect($this->dsn);
          
         try {
             $db->beginTransaction();
-            $gameName = database::encodeData($gameName);
+            $gameName = Database::encodeData($gameName);
             $sql = "SELECT * FROM Games WHERE gamename = :name";
             $cmd = $db->prepare($sql);
             $cmd->bindParam(":name", $gameName);
@@ -89,10 +89,10 @@ class GameDAO implements GameDAOInterface
         } catch (Exception $ex) {
             return NULL;
         }
-        database::disconnect($this->dsn);
+        Database::disconnect($this->dsn);
     }
     function getRanksFromGame($gameID){
-        $db = database::connect($this->dsn);
+        $db = Database::connect($this->dsn);
          
         try {
             
@@ -102,17 +102,17 @@ class GameDAO implements GameDAOInterface
             $cmd->execute();
             $game = $cmd->fetchObject();
 
-            $ranks = database::decodeArray($game->gameranks);
+            $ranks = Database::decodeArray($game->gameranks);
             
             return $ranks;
 
         } catch (Exception $ex) {
             return NULL;
         }
-        database::disconnect($this->dsn);
+        Database::disconnect($this->dsn);
     }
     function getRolesFromGame($gameID){
-        $db = database::connect($this->dsn);
+        $db = Database::connect($this->dsn);
          
         try {
             
@@ -122,17 +122,17 @@ class GameDAO implements GameDAOInterface
             $cmd->execute();
             $game = $cmd->fetchObject();
 
-            $roles = database::decodeArray($game->gameroles);
+            $roles = Database::decodeArray($game->gameroles);
             
             return $roles;
 
         } catch (Exception $ex) {
             return NULL;
         }
-        database::disconnect($this->dsn);
+        Database::disconnect($this->dsn);
     }
     function getAllTags(){
-        $db = database::connect($this->dsn);
+        $db = Database::connect($this->dsn);
         $finaltags = []; 
         try {
             
@@ -142,7 +142,7 @@ class GameDAO implements GameDAOInterface
 
             if ($cmd->execute()) {
                 while ($game = $cmd->fetchObject()) {
-                    $tags = database::decodeArray($game->tags);
+                    $tags = Database::decodeArray($game->tags);
 
                     foreach($tags as $tag) {
                         if(!in_array($tag, $finaltags))
@@ -155,7 +155,7 @@ class GameDAO implements GameDAOInterface
         } catch (Exception $ex) {
             return NULL;
         }
-        database::disconnect($this->dsn);
+        Database::disconnect($this->dsn);
     }
     
 }

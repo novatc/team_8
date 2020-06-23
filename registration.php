@@ -49,25 +49,31 @@ if(isset($_SESSION['registrationerror'])){
             </script>
             <?php break;
             
-        case '1': ?>
+        case 1: ?>
             <script>
                 var label = document.getElementById("error-message");
-                label.innerHTML = "Nutzername bereits vergeben!";   
+                label.innerHTML = "Bitte alle Felder ausfüllen!";   
             </script>
             <?php break;
         case 2: ?>
             <script>
                 var label = document.getElementById("error-message");
-                label.innerHTML = "Passwörter stimmen nicht überein!";   
+                label.innerHTML = "Nutzername bereits vergeben!";   
             </script>
             <?php break;
         case 3: ?>
             <script>
                 var label = document.getElementById("error-message");
-                label.innerHTML = "E-Mail Adresse ungültig!";   
+                label.innerHTML = "Passwörter stimmen nicht überein!";   
             </script>
             <?php break;
         case 4: ?>
+            <script>
+                var label = document.getElementById("error-message");
+                label.innerHTML = "E-Mail Adresse ungültig!";   
+            </script>
+            <?php break;
+        case 5: ?>
             <script>
                 var label = document.getElementById("error-message");
                 label.innerHTML = "Huch etwas ist schief gelaufen. Bitte versuchen Sie es erneut!";   

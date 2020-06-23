@@ -5,25 +5,20 @@ startSession();
 include "../../db/user_dao.php";
 $userDAO = new UserDAO();
 
-$error = false;
+$empty = false;
 $required = array('username', 'usermail', 'password', 'passwordrepeat');
 
 
 /* Check if input field empty */
 foreach ($required as $field){
     if (empty($_POST[$field])){
-        $error = true;
-        ?>
-        <script>
-            var label = document.getElementById("error-message");
-            label.innerHTML = "Bitte alles ausfüllen!";   
-        </script>
-        <?php 
+        $empty = true;
+        $_SESSION['registrationerror'] = 1;
     }
 }
 
 
-if(!$error){
+if(!$empty){
     $username = $_POST['username'];
     $email = $_POST['usermail'];
     $pwd = $_POST['password'];
