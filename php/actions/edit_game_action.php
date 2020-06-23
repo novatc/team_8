@@ -1,11 +1,8 @@
 <?php
-include "session.php";
-updateSession();
-
-include "../../db/player_list_dao.php";
+require_once "../../db/player_list_dao.php";
 $listDAO = new PlayerListDAO();
 
-include "../../db/game_dao.php";
+require_once "../../db/game_dao.php";
 $gameDAO = new GameDAO();
 
 $gameid = $gameDAO->getGameByName($_SESSION['gamechoice'])->gameid;

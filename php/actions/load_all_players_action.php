@@ -1,8 +1,5 @@
 <?php
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
-include "../../db/player_list_dao.php";
+require_once "../../db/player_list_dao.php";
 
 $playerlist = new PlayerListDAO();
 

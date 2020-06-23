@@ -37,7 +37,6 @@ if(!$noData){
         $age_in_years ='';
     }
     
-
     $language = $user->language;
     $usericon = $user->icon;
     
@@ -45,10 +44,12 @@ if(!$noData){
         $ownprofile = true;
     else
         $ownprofile = false;
-    
+}else{
+    header('Location: login.php');
+    exit();
 }
-
 $_SESSION['addfriend'] = $user;
+
 
 ?>
 
@@ -100,12 +101,6 @@ $_SESSION['addfriend'] = $user;
         </div>
     </header>
     <main>
-        <?php if ($noData): ?>
-            <div class=error-wrapper>
-                <p id='error-label'>Hier gibt es nichts zusehen</p>
-            </div>
-            
-        <?php else: ?>
         <div class="profile-grid">
             <div class="profil-header">
                 <div class="picture-wrapper">
@@ -185,10 +180,10 @@ $_SESSION['addfriend'] = $user;
                 <?php endif;?>
             </div>            
         </div>
-        <?php endif; ?>
     </main>
   
     <footer>
+            <a href= "php/actions/delete.php">Löschen</a>
             <div class="footer">
                 <?php include "php/footer.php";?>
             </div>

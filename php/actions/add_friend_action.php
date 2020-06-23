@@ -1,8 +1,5 @@
 <?php
-include "session.php";
-updateSession();
-
-include "../../db/user_dao.php";
+require_once "../../db/user_dao.php";
 $userDAO = new UserDAO();
 
 $you = $_SESSION['userid'];

@@ -1,8 +1,8 @@
 <?php
-include "session.php";
-updateSession();
+require_once "session.php";
+updateSessionFromAction();
 
-include "../../db/user_dao.php";
+require_once "../../db/user_dao.php";
 $userDAO = new UserDAO();
 
 $empty = false;
