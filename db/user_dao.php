@@ -268,7 +268,6 @@ class UserDAO implements UserDAOInterface
 
         $db = Database::connect($this->dsn);
 
-
         try {
 
             $sql = "SELECT * FROM Friends WHERE id1 = :you AND id2 = :friend OR id1 = :friend AND id2 = :you";
@@ -289,11 +288,6 @@ class UserDAO implements UserDAOInterface
                 $cmd->bindParam( ':friend', $friendtwo );
                 $cmd->execute();
 
-                $sql = "INSERT INTO Friends (id1, id2) VALUES (:friend, :you);";
-                $cmd = $db->prepare( $sql );
-                $cmd->bindParam( ':friend', $friendtwo );
-                $cmd->bindParam( ':you', $friendone );
-                $cmd->execute();
                 $db->commit();
                 return 0;
             }
@@ -314,6 +308,8 @@ class UserDAO implements UserDAOInterface
         } catch (Exception $e) {
         }
         try {
+
+            $db->beginTransaction();
             $sql = 'SELECT id2 FROM Friends WHERE id1 = :wert';
             $cmd = $db->prepare( $sql );
             $cmd->bindParam( ':wert', $ownid );
@@ -327,10 +323,26 @@ class UserDAO implements UserDAOInterface
                     }
                 }
             }
+
+            $sql = 'SELECT id1 FROM Friends WHERE id2 = :wert';
+            $cmd = $db->prepare( $sql );
+            $cmd->bindParam( ':wert', $ownid );
+            $cmd->execute();
+
+            if ($cmd->execute()) {
+                while ($help = $cmd->fetchObject()) {
+                    //extra step to get usable ids in array
+                    foreach($help as $friendid) {
+                        array_push($result, $friendid);
+                    }
+                }
+            }
+            $db->commit();
             return $result;
 
         } catch(Exception $ex) {
             echo ("Failure:") . $ex->getMessage();
+            $db->rollBack();
             return 1;
         }
     }
