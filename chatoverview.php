@@ -45,14 +45,11 @@ $yourfriendids = $userDAO ->getFriends($_SESSION['userid']);
                             $activeName = $item->username;
                             $activeID = $item->userid;
                             $profileurl = 'playerprofile.php?id= ' . $activeID ;?>
-                            <div class="icon" id=<?= $activeIcon ?> onclick="location.href='<?php echo $profileurl?>'"></div>
+                            <div class="icon" id=<?= htmlspecialchars($activeIcon) ?> onclick="location.href='<?php echo htmlspecialchars($profileurl)?>'"></div>
                             <form action="chat.php">
-                                <input class="startChat" type="submit" value=<?= $activeName ?>>
+                                <input class="startChat" type="submit" value=<?= htmlspecialchars($activeName) ?>>
                             </form>
                             <div class="chatcard">
-                                <div class="chatcontainer" id="rl" onclick="location.href='lol.php'">
-                                    <label class="gamelabel">Rocket League</label>
-                                </div>
                             </div>
                         <?php endforeach; ?>
                     <?php endif; ?>
@@ -69,9 +66,9 @@ $yourfriendids = $userDAO ->getFriends($_SESSION['userid']);
                         $friendID = $frienduser->userid;
                         $profileurl = 'playerprofile.php?id= ' . $friendID ;
                         array_push($friendlist, $friendicon);?>
-                        <div class="icon" id= <?=$friendicon?> onclick="location.href='<?php echo $profileurl?>'"></div>
+                        <div class="icon" id= <?= htmlspecialchars($friendicon) ?> onclick="location.href='<?php echo htmlspecialchars($profileurl)?>'"></div>
                         <form action="php/actions/start_chat_action.php" method="post">
-                            <input class="startChat" type="submit" name="friend" value=<?=$friendusername?>>
+                            <input class="startChat" type="submit" name="friend" value=<?= htmlspecialchars($friendusername) ?>>
                         </form>
                     <?php endforeach; ?>
 
