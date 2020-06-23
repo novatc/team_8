@@ -121,14 +121,10 @@ class Database
             )";
             $db->exec( $sql );
             
-            // Create Friends table
-            // ownid = your own id,
-            // friendID = id of your friend,
             $sql = "CREATE TABLE IF NOT EXISTS Friends (
-              ownid INTEGER,
-              friendID INTEGER,
-              friends BOOLEAN,
-              FOREIGN KEY (ownid) REFERENCES User(userid)
+              id1 INTEGER,
+              id2 INTEGER,
+              FOREIGN KEY (id1) REFERENCES User(userid)
             )";
             $db->exec( $sql );
         

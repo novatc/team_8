@@ -22,10 +22,10 @@ $db->exec($sql);
 $sql = "INSERT INTO User (userid, username, mail, password) VALUES (6, 'Johannes', 'jo@mail.de', '{$passwort}')";
 $db->exec($sql);
 
-$sql = "INSERT INTO Friends (ownID, friendID, friends) VALUES (1, 2, 1)";
+$sql = "INSERT INTO Friends (id1, id2) VALUES (1, 2)";
 $db->exec($sql);
 
-$sql = "INSERT INTO Friends (ownID, friendID, friends) VALUES (2, 1, 1)";
+$sql = "INSERT INTO Friends (id1, id2) VALUES (2, 1)";
 $db->exec($sql);
 
 echo 'Sechs Besipieluser und davon zwei befreundete Beispieluser erstellt.';
