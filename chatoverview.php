@@ -71,28 +71,6 @@ $yourfriendids = $userDAO ->getFriends($_SESSION['userid']);
                             <input class="startChat" type="submit" name="friend" value=<?= htmlspecialchars($friendusername) ?>>
                         </form>
                     <?php endforeach; ?>
-
-
-
-                    <!--<div class="icon" id="avatarTeemo" onclick="location.href='playerprofile.php'"></div>
-                    <form action="chat.php">
-                        <input class="startChat" type="submit" value="Johannes">
-                    </form>
-
-                    <div class="icon" id="avatarZac" onclick="location.href='playerprofile.php'"></div>
-                    <form action="chat.php">
-                        <input class="startChat" type="submit" value="Phil">
-                    </form>
-
-                    <div class="icon" id="avatarSquid" onclick="location.href='playerprofile.php'"></div>
-                    <form action="chat.php">
-                        <input class="startChat" type="submit" value="Hendrick">
-                    </form>
-
-                    <div class="icon" id="avatarSpook" onclick="location.href='playerprofile.php'"></div>
-                    <form action="chat.php">
-                        <input class="startChat" type="submit" value="Florian">
-                    </form>-->
                 </div>
             </div>
         </div>
