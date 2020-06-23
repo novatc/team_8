@@ -1,6 +1,6 @@
 <?php
 require_once "php/actions/session.php";
-startSession();
+updateSession();
 
 if(isset($_SESSION['loginerror'])){
     $errorcode = $_SESSION['loginerror'];

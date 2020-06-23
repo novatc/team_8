@@ -1,6 +1,6 @@
 <?php
 include "session.php";
-startSession();
+updateSession();
 header('Location: ../../search.php');
 
 

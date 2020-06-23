@@ -1,6 +1,6 @@
 <?php
 include "session.php";
-startSession();
+updateSession();
 
 session_unset();
 session_destroy();

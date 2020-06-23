@@ -1,6 +1,6 @@
 <?php
 include "session.php";
-startSession();
+updateSession();
 
 include "../../db/user_dao.php";
 $userDAO = new UserDAO();

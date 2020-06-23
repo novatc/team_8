@@ -1,6 +1,6 @@
 <?php
 include "session.php";
-startSession();
+updateSession();
 
 include "../../db/player_list_dao.php";
 $listDAO = new PlayerListDAO();

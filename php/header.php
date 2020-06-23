@@ -1,6 +1,6 @@
 <?php
 require_once "actions/session.php";
-startSession();
+updateSession();
 
 $isLoggedIn = $_SESSION['userid']> -1;
 ?>

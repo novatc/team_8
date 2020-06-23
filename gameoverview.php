@@ -1,8 +1,8 @@
 <?php
 require_once "php/actions/session.php";
-startSession();
+updateSession();
 
-include "db/game_dao.php";
+require_once "db/game_dao.php";
 
 $gameDAO = new GameDAO("sqlite:db/Database.db");
 

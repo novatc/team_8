@@ -1,8 +1,8 @@
 <?php
 
-include "db/user_dao.php";
-include "php/actions/session.php";
-startSession();
+require_once "db/user_dao.php";
+require_once "php/actions/session.php";
+updateSession();
 
 $userDAO = new UserDAO("sqlite:db/Database.db");
 

@@ -1,6 +1,6 @@
 <?php
 require_once "php/actions/session.php";
-startSession();
+updateSession();
 
 include "db/player_list_dao.php";
 

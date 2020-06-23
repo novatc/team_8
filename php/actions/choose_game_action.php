@@ -1,6 +1,6 @@
 <?php
 include "session.php";
-startSession();
+updateSession();
 
 if (isset($_POST['game'])){
     $_SESSION['gamechoice'] = $_POST['game']; 

@@ -1,6 +1,6 @@
 <?php
 require_once "php/actions/session.php";
-startSession();
+updateSession();
 
 if(isset($_SESSION['registrationerror'])){
     $errorcode = $_SESSION['registrationerror'];

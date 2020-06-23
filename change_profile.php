@@ -1,14 +1,14 @@
 <?php
 require_once "php/actions/session.php";
-startSession();
+updateSession();
 
-include "db/player_list_dao.php";
+require_once "db/player_list_dao.php";
 $listDAO = new PlayerListDAO("sqlite:db/Database.db");
 
-include "db/game_dao.php";
+require_once "db/game_dao.php";
 $gameDAO = new GameDAO("sqlite:db/Database.db");
 
-include "db/user_dao.php";
+require_once "db/user_dao.php";
 $userDAO = new UserDAO("sqlite:db/Database.db");
 
 $userID = $_SESSION['userid'];
