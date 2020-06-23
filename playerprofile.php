@@ -183,7 +183,6 @@ $_SESSION['addfriend'] = $user;
     </main>
   
     <footer>
-            <a href= "php/actions/delete.php">Löschen</a>
             <div class="footer">
                 <?php include "php/footer.php";?>
             </div>

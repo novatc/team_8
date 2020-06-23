@@ -1,6 +1,5 @@
 <?php
 
-
 function updateSession(){#
     require_once "db/user_dao.php";
     $userDAO = new UserDAO("sqlite:db/Database.db");

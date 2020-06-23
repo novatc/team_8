@@ -1,4 +1,7 @@
 <?php
+require_once "session.php";
+updateSessionFromAction();
+
 require_once "../../db/user_dao.php";
 $userDAO = new UserDAO();
 

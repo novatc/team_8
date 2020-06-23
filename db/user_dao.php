@@ -32,14 +32,6 @@ class UserDAO implements UserDAOInterface
     function __construct($dsn = "sqlite:../../db/Database.db") {
         $this->dsn = $dsn;
     }
-    function deleteUser(){
-        $db = Database::connect($this->dsn);
-
-        $sql = "DELETE FROM User ;";
-        $cmd = $db->prepare($sql);
-        $cmd->execute();
-        
-    }
     function login($username, $password)
     {
         $db = Database::connect($this->dsn);

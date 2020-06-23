@@ -1,4 +1,7 @@
 <?php
+require_once "session.php";
+updateSessionFromAction();
+
 require_once "../../db/player_list_dao.php";
 
 $playerlist = new PlayerListDAO();
