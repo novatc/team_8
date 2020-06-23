@@ -213,37 +213,6 @@ class UserDAO implements UserDAOInterface
         
     }
 
-    //chat part
-    //list up all your friends in chat overview
-    function getFriends($ownid) {
-        $result = array();
-
-        try {
-            $db = Database::connect($this->dsn);
-        } catch (Exception $e) {
-        }
-        try {
-            $sql = 'SELECT friendID FROM Friends WHERE ownid = :wert';
-            $cmd = $db->prepare( $sql );
-            $cmd->bindParam( ':wert', $ownid );
-            $cmd->execute();
-
-            if ($cmd->execute()) {
-                while ($help = $cmd->fetchObject()) {
-                    //extra step to get usable ids in array
-                    foreach($help as $friendid) {
-                        array_push($result, $friendid);
-                    }
-                }
-            }
-            return $result;
-
-        } catch(Exception $ex) {
-            echo ("Failure:") . $ex->getMessage();
-            return 1;
-        }
-    }
-
     function saveMessage($userid1, $userid2, $message)
     {
 
@@ -296,35 +265,35 @@ class UserDAO implements UserDAOInterface
         }
     }
 
-    function addFriend($yourID, $friendID) {
+    function addFriend($friendone, $friendtwo) {
 
         $db = Database::connect($this->dsn);
 
 
         try {
 
-            $sql = "SELECT * FROM Friends WHERE ownid = :you AND friendID = :friend OR ownid = :friend AND friendID = :you";
+            $sql = "SELECT * FROM Friends WHERE id1 = :you AND id2 = :friend OR id1 = :friend AND id2 = :you";
             $cmd = $db->prepare( $sql );
-            $cmd->bindParam( ':you', $yourID );
-            $cmd->bindParam( ':friend', $friendID );
+            $cmd->bindParam( ':you', $friendone );
+            $cmd->bindParam( ':friend', $friendtwo );
             $cmd->execute();
             if($cmd->fetchObject() != null) {
                 return null;
             } else {
-                $yourID = Database::encodeData($yourID);
-                $friendID = Database::encodeData($friendID);
+                $friendone = Database::encodeData($friendone);
+                $friendtwo = Database::encodeData($friendtwo);
 
                 $db->beginTransaction();
-                $sql = "INSERT INTO Friends (ownid, friendID) VALUES (:you, :friend);";
+                $sql = "INSERT INTO Friends (id1, id2) VALUES (:you, :friend);";
                 $cmd = $db->prepare( $sql );
-                $cmd->bindParam( ':you', $yourID );
-                $cmd->bindParam( ':friend', $friendID );
+                $cmd->bindParam( ':you', $friendone );
+                $cmd->bindParam( ':friend', $friendtwo );
                 $cmd->execute();
 
-                $sql = "INSERT INTO Friends (ownid, friendID) VALUES (:friend, :you);";
+                $sql = "INSERT INTO Friends (id1, id2) VALUES (:friend, :you);";
                 $cmd = $db->prepare( $sql );
-                $cmd->bindParam( ':friend', $friendID );
-                $cmd->bindParam( ':you', $yourID );
+                $cmd->bindParam( ':friend', $friendtwo );
+                $cmd->bindParam( ':you', $friendone );
                 $cmd->execute();
                 $db->commit();
                 return 0;
@@ -332,6 +301,37 @@ class UserDAO implements UserDAOInterface
 
         } catch (Exception $ex) {
             $db->rollBack();
+            return 1;
+        }
+    }
+
+    //chat part
+    //list up all your friends in chat overview
+    function getFriends($ownid) {
+        $result = array();
+
+        try {
+            $db = Database::connect($this->dsn);
+        } catch (Exception $e) {
+        }
+        try {
+            $sql = 'SELECT id2 FROM Friends WHERE id1 = :wert';
+            $cmd = $db->prepare( $sql );
+            $cmd->bindParam( ':wert', $ownid );
+            $cmd->execute();
+
+            if ($cmd->execute()) {
+                while ($help = $cmd->fetchObject()) {
+                    //extra step to get usable ids in array
+                    foreach($help as $friendid) {
+                        array_push($result, $friendid);
+                    }
+                }
+            }
+            return $result;
+
+        } catch(Exception $ex) {
+            echo ("Failure:") . $ex->getMessage();
             return 1;
         }
     }

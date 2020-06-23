@@ -121,14 +121,10 @@ class Database
             )";
             $db->exec( $sql );
             
-            // Create Friends table
-            // ownid = your own id,
-            // friendID = id of your friend,
             $sql = "CREATE TABLE IF NOT EXISTS Friends (
-              ownid INTEGER,
-              friendID INTEGER,
-              friends BOOLEAN,
-              FOREIGN KEY (ownid) REFERENCES User(userid)
+              id1 INTEGER,
+              id2 INTEGER,
+              FOREIGN KEY (id1) REFERENCES User(userid)
             )";
             $db->exec( $sql );
         
@@ -146,23 +142,6 @@ class Database
             $db->rollBack();
             echo 'Fehler: '. $e->getMessage();
         }
-
-        $passwort = password_hash('Passwort', PASSWORD_DEFAULT);
-
-        $sql = "INSERT INTO User (userid, username, mail, password) VALUES (1, 'Nico', 'nico@mail.de', '{$passwort}')";
-        $db->exec($sql);
-
-        $sql = "INSERT INTO User (userid, username, mail, password) VALUES (2, 'Hendrick', 'hendrick@mail.de','{$passwort}')";
-        $db->exec($sql);
-
-        $sql = "INSERT INTO User (userid, username, mail, password) VALUES (4, 'Tim', 'tim@mail.de', '{$passwort}')";
-        $db->exec($sql);
-
-        $sql = "INSERT INTO User (userid, username, mail, password) VALUES (5, 'Tom', 'tom@mail.de', '{$passwort}')";
-        $db->exec($sql);
-
-        $sql = "INSERT INTO User (userid, username, mail, password) VALUES (6, 'Johannes', 'jo@mail.de', '{$passwort}')";
-        $db->exec($sql);
 
     }
 }
