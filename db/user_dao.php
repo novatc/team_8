@@ -14,6 +14,13 @@ interface UserDAOInterface
 
     function updateUser($userID, $age, $language, $description, $icon);
 
+    function getFriends($userID);
+
+    function saveMessage($id1, $id2, $message);
+
+    function getMessages($id1, $id2);
+
+    function addFriend($id1, $id2);
 
 }
 
