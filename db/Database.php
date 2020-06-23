@@ -124,8 +124,6 @@ class Database
             // Create Friends table
             // ownid = your own id,
             // friendID = id of your friend,
-            // friends = 0,1 friends or not
-            // no way to add friends yet, have to add rows manually to database
             $sql = "CREATE TABLE IF NOT EXISTS Friends (
               ownid INTEGER,
               friendID INTEGER,
@@ -148,6 +146,23 @@ class Database
             $db->rollBack();
             echo 'Fehler: '. $e->getMessage();
         }
+
+        $passwort = password_hash('Passwort', PASSWORD_DEFAULT);
+
+        $sql = "INSERT INTO User (userid, username, mail, password) VALUES (1, 'Nico', 'nico@mail.de', '{$passwort}')";
+        $db->exec($sql);
+
+        $sql = "INSERT INTO User (userid, username, mail, password) VALUES (2, 'Hendrick', 'hendrick@mail.de','{$passwort}')";
+        $db->exec($sql);
+
+        $sql = "INSERT INTO User (userid, username, mail, password) VALUES (4, 'Tim', 'tim@mail.de', '{$passwort}')";
+        $db->exec($sql);
+
+        $sql = "INSERT INTO User (userid, username, mail, password) VALUES (5, 'Tom', 'tom@mail.de', '{$passwort}')";
+        $db->exec($sql);
+
+        $sql = "INSERT INTO User (userid, username, mail, password) VALUES (6, 'Johannes', 'jo@mail.de', '{$passwort}')";
+        $db->exec($sql);
 
     }
 }
