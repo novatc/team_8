@@ -135,7 +135,7 @@ if(isset($_SESSION['gamechoice'])){
             <?php endif; ?>
         </div>
 
-        <form class="box" action="php/actions/changeProfileAction.php" method="post">
+        <form class="box" action="php/actions/change_profile_action.php" method="post">
             <h1>Icon ändern</h1>
             <?php include "php/pieces/icons.php";?>
             <input class="submit-btn"  type="submit" name="iconsubmit" value="Speichern">

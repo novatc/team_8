@@ -47,13 +47,10 @@ $completemessages = json_decode(json_encode($completemessages), true);
                 <div class="description">
                     <div class="headgrid">
                         <a href="playerprofile.php">
-                            <div class="iconChatHead" id=<?=$currentfriendicon?>></div>
+                            <div class="iconChatHead" id=<?= htmlspecialchars($currentfriendicon) ?>></div>
                         </a>
-                        <label id="name"><?=$currentfriendname?></label>
+                        <label id="name"><?= htmlspecialchars($currentfriendname)?></label>
                         <div class="chatcardnopadding">
-                            <div class="chatcontainer" id="rl" onclick="location.href='lol.php'">
-                                <label class="gamelabel">Rocket League</label>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -65,13 +62,13 @@ $completemessages = json_decode(json_encode($completemessages), true);
                             $senderID = reset($onemessage);
                             $text = end($onemessage);
                             if($senderID == $_SESSION['userid']) : ?>
-                                <div class="iconSmall" id=<?= $youricon ?> onclick="location.href='playerprofile.php'"></div>
+                                <div class="iconSmall" id=<?= htmlspecialchars($youricon) ?> onclick="location.href='playerprofile.php'"></div>
                                 <p class="speech-bubble-self">
-                                    <?= $text ?> </p>
+                                    <?= htmlspecialchars($text) ?> </p>
                             <?php elseif($senderID != $_SESSION['userid']) : ?>
-                                <div class="iconSmall" id=<?= $currentfriendicon ?> onclick="location.href='playerprofile.php'"></div>
+                                <div class="iconSmall" id=<?= htmlspecialchars($currentfriendicon) ?> onclick="location.href='playerprofile.php'"></div>
                                 <p class="speech-bubble">
-                                    <?= $text ?> </p>
+                                    <?= htmlspecialchars($text) ?> </p>
                             <?php endif; ?>
                         <?php endforeach; ?>
                     </div>

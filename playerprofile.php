@@ -124,7 +124,9 @@ $_SESSION['addfriend'] = $user;
                     <a id="settings-link" href="change_profile.php"></a>
                     <a id="logout-link" href="php/actions/logout_action.php"></a>
                     <?php else:?>
-                    <a id="message-link" href="chatoverview.php"></a>
+                    <form action="php/actions/start_chat_action.php" method="post">
+                        <input type="submit" id="message-link" name="friend" value=<?= htmlspecialchars($username) ?>>
+                    </form>
                     <a id="friend-link" href="php/actions/add_friend_action.php"></a>
                     <?php endif; ?>
                 </div>

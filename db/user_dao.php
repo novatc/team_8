@@ -14,6 +14,13 @@ interface UserDAOInterface
 
     function updateUser($userID, $age, $language, $description, $icon);
 
+    function getFriends($userID);
+
+    function saveMessage($id1, $id2, $message);
+
+    function getMessages($id1, $id2);
+
+    function addFriend($id1, $id2);
 
 }
 
@@ -233,15 +240,14 @@ class UserDAO implements UserDAOInterface
 
         } catch(Exception $ex) {
             echo ("Failure:") . $ex->getMessage();
+            return 1;
         }
-        Database::disconnect($this->dsn);
     }
 
     function saveMessage($userid1, $userid2, $message)
     {
 
         $db = Database::connect($this->dsn);
-
 
         try {
             $db->beginTransaction();
@@ -262,7 +268,6 @@ class UserDAO implements UserDAOInterface
             $db->rollBack();
             return 1;
         }
-        Database::disconnect($this->dsn);
     }
 
     function getMessages($userid1, $userid2) {
@@ -286,9 +291,9 @@ class UserDAO implements UserDAOInterface
             return $allmessages;
 
         } catch( Exception $ex) {
-
+            echo ("Failure:") . $ex->getMessage();
+            return 1;
         }
-        Database::disconnect();
     }
 
     function addFriend($yourID, $friendID) {
@@ -329,7 +334,6 @@ class UserDAO implements UserDAOInterface
             $db->rollBack();
             return 1;
         }
-        Database::disconnect($this->dsn);
     }
 
     function checkIfDBexists(){
