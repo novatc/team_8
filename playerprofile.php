@@ -28,10 +28,15 @@ if(!$noData){
     $username = $user->username;
     $description = $user->description;
     $age = $user->age;
-    // Berechne Alter
-    $date = new DateTime($age);
-    $now = new DateTime();
-    $age_in_years = $now->diff($date)->y;
+    if($age!=null){
+        // Berechne Alter
+        $date = new DateTime($age);
+        $now = new DateTime();
+        $age_in_years = $now->diff($date)->y;
+    }else{
+        $age_in_years ='';
+    }
+    
 
     $language = $user->language;
     $usericon = $user->icon;
