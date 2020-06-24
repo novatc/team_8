@@ -82,7 +82,7 @@
     background-position: center;
     display:inline-block;
 }
-profile-grid .profil-header #add-friend-link{
+.profile-grid .profil-header #add-friend-link{
     width: 28px;
     height: 28px;
     background: url(../Resourcen/Navigation/friend_add-white-24dp.svg);

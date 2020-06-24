@@ -11,6 +11,6 @@ $friendID = $newfriend->userid;
 
 $error = $userDAO->addFriend($you, $friendID);
 
-header('Location: ../../chatoverview.php');
+header('Location: ../../playerprofile.php?id=' . $friendID);
 
 ?>

@@ -126,7 +126,7 @@ $_SESSION['addfriend'] = $user;
                         <?php if ($isFriend): ?> 
                             <a id="friend-link"></a>
                         <?php else: ?>
-                            <a id="add-friend-link" href="php/actions/add_friend_action.php">bitte einfügen</a>
+                            <a id="add-friend-link" href="php/actions/add_friend_action.php"></a>
                         <?php endif; ?>
                     <?php endif; ?>
                 </div>
