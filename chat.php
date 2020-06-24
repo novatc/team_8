@@ -4,6 +4,11 @@ require_once "db/user_dao.php";
 require_once "php/actions/session.php";
 updateSession();
 
+if($_SESSION['userid']==-1){
+    header('Location: login.php?dest=chat');
+    exit();
+}
+
 $userDAO = new UserDAO("sqlite:db/Database.db");
 
 $onlymessages = array();

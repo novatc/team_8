@@ -13,7 +13,10 @@ function updateSession(){#
     $userid = $_SESSION['userid'];
     if($userid != -1){
         if($userDAO->getUserByID($userid) == false){
-            $_SESSION['userid'] = -1;
+            session_unset();
+            session_destroy();
+            session_start();
+            $_SESSION['userid']= -1;
         }
             
     }
@@ -32,7 +35,10 @@ function updateSessionFromAction(){
     $userid = $_SESSION['userid'];
     if($userid != -1){
         if($userDAO->getUserByID($userid) == false){
-            $_SESSION['userid'] = -1;
+            session_unset();
+            session_destroy();
+            session_start();
+            $_SESSION['userid']= -1;
         }
             
     }

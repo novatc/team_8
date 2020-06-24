@@ -2,11 +2,16 @@
 require_once "php/actions/session.php";
 updateSession();
 
+if (isset($_GET['dest']))
+    $_SESSION['loginDest'] = $_GET['dest'];
+
 if(isset($_SESSION['loginerror'])){
     $errorcode = $_SESSION['loginerror'];
 }else{
     $errorcode = 0;
 }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="de">

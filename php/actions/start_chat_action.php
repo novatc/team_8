@@ -5,7 +5,7 @@ updateSessionFromAction();
 require_once "../../db/user_dao.php";
 $userDAO = new UserDAO();
 
-$frienduser = $userDAO->getUserByName($_POST['friend']);
+$frienduser = $userDAO->getUserByName($_GET['friend']);
 $_SESSION['frienduser'] = $frienduser;
 
 if(!isset($_SESSION['activechats'])) {

@@ -45,7 +45,7 @@ if(!$noData){
     else
         $ownprofile = false;
 }else{
-    header('Location: login.php');
+    header('Location: login.php?dest=profile');
     exit();
 }
 $_SESSION['addfriend'] = $user;
@@ -119,9 +119,7 @@ $_SESSION['addfriend'] = $user;
                     <a id="settings-link" href="change_profile.php"></a>
                     <a id="logout-link" href="php/actions/logout_action.php"></a>
                     <?php else:?>
-                    <form action="php/actions/start_chat_action.php" method="post">
-                        <input type="submit" id="message-link" name="friend" value=<?= htmlspecialchars($username) ?>>
-                    </form>
+                    <a id="message-link" href="php/actions/start_chat_action.php?friend=<?php echo $username?>" ></a>
                     <a id="friend-link" href="php/actions/add_friend_action.php"></a>
                     <?php endif; ?>
                 </div>

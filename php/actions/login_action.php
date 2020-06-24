@@ -27,8 +27,28 @@ if(!$empty){
     if ($errorcode == 0){
         $_SESSION['user'] = $username;
         $_SESSION['userid'] = $userDAO->getUserByName($username)->userid;
-        header('Location: ../../playerprofile.php');
-        exit();
+        if(isset($_SESSION['loginDest'])){
+            switch ($_SESSION['loginDest']){
+                case 'profile':
+                    header('Location: ../../playerprofile.php');
+                    exit();
+                    break;
+                case 'chat':
+                    header('Location: ../../chatoverview.php');
+                    exit();
+                    break;
+                case 'change':
+                    header('Location: ../../change_profile.php');
+                    exit();
+                    break;
+            }
+                
+
+        }else{
+            header('Location: ../../playerprofile.php');
+            exit();
+        }
+        
     } else{
         header('Location: ../../login.php');
         exit();

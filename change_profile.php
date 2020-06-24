@@ -14,7 +14,7 @@ $userDAO = new UserDAO("sqlite:db/Database.db");
 $userID = $_SESSION['userid'];
 
 if($userID == -1){
-    header('Location: login.php');
+    header('Location: login.php?dest=change');
     exit();
 }
 
