@@ -8,20 +8,27 @@ $userDAO = new UserDAO();
 $isLoggedIn = $_SESSION['userid']>-1;
 
 if($isLoggedIn){
-    
-    $frienduser = $userDAO->getUserByName($_GET['user']);
+
+    $frienduser = $userDAO->getUserByName($_POST['friend']);
     $_SESSION['frienduser'] = $frienduser;
-    
+    $friendname = $frienduser->username;
+
     if(!isset($_SESSION['activechats'])) {
         $setactivechats = array();
         array_push($setactivechats, $frienduser);
         $_SESSION['activechats'] = $setactivechats;
+
+        //need help array to check for duplicates because full user object can't be counted and checked for unique
+        $preventduplicates = array();
+        array_push($preventduplicates, $friendname);
+        $_SESSION['preventchatduplicates'] = $preventduplicates;
     } else {
-        array_push($_SESSION['activechats'], $frienduser);
-        //didn't find good method to stop duplicates yet.
-        /*if(count(array_unique($_SESSION['activechats'])) < count($_SESSION['activechats'])) {
-            $error = array_pop($_SESSION['activechats']);
-        }*/
+        array_push($_SESSION['preventchatduplicates'], $friendname);
+        if(count(array_unique($_SESSION['preventchatduplicates'])) < count($_SESSION['preventchatduplicates'])) {
+            array_pop($_SESSION['preventchatduplicates']);
+        } else {
+            array_push($_SESSION['activechats'], $frienduser);
+        }
     }
 }
 header('Location: ../../chat.php');

@@ -51,8 +51,8 @@ $yourfriendids = $userDAO ->getFriends($_SESSION['userid']);
                             $activeID = $item->userid;
                             $profileurl = 'playerprofile.php?id= ' . $activeID ;?>
                             <div class="icon" id=<?= htmlspecialchars($activeIcon) ?> onclick="location.href='<?php echo htmlspecialchars($profileurl)?>'"></div>
-                            <form action="chat.php">
-                                <input class="startChat" type="submit" value="<?php echo htmlspecialchars($activeName)?>">
+                            <form action="php/actions/start_chat_action.php?user=<?php echo $activeName?>" method="post">
+                                <input class="startChat" type="submit" name="friend" value="<?php echo htmlspecialchars($activeName)?>">
                             </form>
                             <div class="chatcard">
                             </div>
