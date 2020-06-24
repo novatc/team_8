@@ -22,7 +22,7 @@ if(!$empty){
     $username = $_POST['username'];
     $email = $_POST['usermail'];
     $pwd = $_POST['password'];
-    $pwdrepeat = $_POST['password'];
+    $pwdrepeat = $_POST['passwordrepeat'];
     $errorcode = $userDAO->register($username, $email, $pwd, $pwdrepeat);
     $_SESSION['registrationerror'] = $errorcode;
     if ($errorcode == 0){

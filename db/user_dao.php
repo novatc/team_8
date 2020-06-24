@@ -73,11 +73,11 @@ class UserDAO implements UserDAOInterface
             return 2;
         }
         // ToDo Passwort vergleich
-        /* Check if password and passwordrepeat are identical
-        if(strcmp($PWD, $pwdrepeat)!==0){ 
+        // Check if password and passwordrepeat are identical
+        if($pwd != $pwdrepeat){ 
            return 3;
         }
-        */
+        
         /* Check if email is correct*/
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
             return 4;
