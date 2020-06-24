@@ -5,25 +5,30 @@ updateSessionFromAction();
 require_once "../../db/user_dao.php";
 $userDAO = new UserDAO();
 
-$posted = false;
-$userID = $_SESSION['userid'];
+$isLoggedIn = $_SESSION['userid']>-1;
 
-if(isset($_POST['iconsubmit'])){
+if($isLoggedIn){
+    $posted = false;
+    $userID = $_SESSION['userid'];
 
-    $icon =$_POST['icon'];
+    if(isset($_POST['iconsubmit'])){
 
-    $errorcode = $userDAO->updateUser($userID, -1, -1, -1, $icon);
+        $icon =$_POST['icon'];
+
+        $errorcode = $userDAO->updateUser($userID, -1, -1, -1, $icon);
+    }
+
+    if(isset($_POST['changesubmit'])){
+        $age = $_POST['age'];
+
+        $language = $_POST['language'];
+
+        $description = $_POST['description'];
+
+        $errorcode = $userDAO->updateUser($userID, $age, $language, $description, -1);
+    }
 }
 
-if(isset($_POST['changesubmit'])){
-    $age = $_POST['age'];
-
-    $language = $_POST['language'];
-
-    $description = $_POST['description'];
-
-    $errorcode = $userDAO->updateUser($userID, $age, $language, $description, -1);
-}
 
 
 
