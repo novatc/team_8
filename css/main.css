@@ -46,7 +46,6 @@ footer {
     body{
         overflow: auto;
         -ms-overflow-style: none;
-        scrollbar-width: none;
     }
     /* Chrome, Safari, newer versions of Opera */
     body::-webkit-scrollbar { display: none; }
