@@ -119,7 +119,7 @@ $_SESSION['addfriend'] = $user;
                     <?php if ($ownprofile): ?>    
                     <a id="settings-link" href="change_profile.php"></a>
                     <a id="logout-link" href="php/actions/logout_action.php"></a>
-                    <?php else: ?>
+                    <?php elseif($isLoggedIn): ?>
                         <form action="php/actions/start_chat_action.php" method="post">
                             <input type="submit" id="message-link" name="friend" value=<?php htmlspecialchars($username) ?>>
                         </form>
