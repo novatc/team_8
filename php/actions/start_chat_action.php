@@ -9,7 +9,7 @@ $isLoggedIn = $_SESSION['userid']>-1;
 
 if($isLoggedIn){
 
-    $frienduser = $userDAO->getUserByName($_POST['friend']);
+    $frienduser = $userDAO->getUserByName($_GET['user']);
     $_SESSION['frienduser'] = $frienduser;
     $friendname = $frienduser->username;
 
