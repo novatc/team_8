@@ -347,6 +347,27 @@ class UserDAO implements UserDAOInterface
         }
     }
 
+    function isFriend($friendone, $friendtwo) {
+
+        $db = Database::connect($this->dsn);
+
+        try {
+            $sql = "SELECT * FROM Friends WHERE id1 = :you AND id2 = :friend OR id1 = :friend AND id2 = :you";
+            $cmd = $db->prepare( $sql );
+            $cmd->bindParam( ':you', $friendone );
+            $cmd->bindParam( ':friend', $friendtwo );
+            $cmd->execute();
+            if($cmd->fetchObject() != null) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception $ex) {
+            return false;
+        }
+    }
+
+
     function checkIfDBexists(){
         if (file_exists($this->dsn)){
             return true;

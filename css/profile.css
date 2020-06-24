@@ -82,19 +82,10 @@
     background-position: center;
     display:inline-block;
 }
-.profile-grid .profil-header #friend-link{
+profile-grid .profil-header #add-friend-link{
     width: 28px;
     height: 28px;
-    background: url(../Resourcen/Navigation/person_add-white-24dp.svg);
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    display:inline-block;
-}
-.profile-grid .profil-header #message-link{
-    width: 25px;
-    height: 25px;
-    background: url(../Resourcen/Navigation/chat-white-24dp.svg);
+    background: url(../Resourcen/Navigation/friend_add-white-24dp.svg);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -103,12 +94,13 @@
 .profile-grid .profil-header #friend-link{
     width: 28px;
     height: 28px;
-    background: url(../Resourcen/Navigation/person_add-white-24dp.svg);
+    background: url(../Resourcen/Navigation/friends-white-24dp.svg);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
     display:inline-block;
 }
+
 .profile-grid .profil-body{
     grid-row: 2;
     grid-column: 2; 

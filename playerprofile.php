@@ -44,6 +44,7 @@ if(!$noData){
         $ownprofile = true;
     else
         $ownprofile = false;
+        $isFriend = $userDAO->isFriend($_SESSION['userid'], $profileID);
 }else{
     header('Location: login.php?dest=profile');
     exit();
@@ -118,11 +119,15 @@ $_SESSION['addfriend'] = $user;
                     <?php if ($ownprofile): ?>    
                     <a id="settings-link" href="change_profile.php"></a>
                     <a id="logout-link" href="php/actions/logout_action.php"></a>
-                    <?php else:?>
-                    <form action="php/actions/start_chat_action.php" method="post">
-                        <input type="submit" id="message-link" name="friend" value=<?= htmlspecialchars($username) ?>>
-                    </form>
-                        <a id="friend-link" href="php/actions/add_friend_action.php"></a>
+                    <?php else: ?>
+                        <form action="php/actions/start_chat_action.php" method="post">
+                            <input type="submit" id="message-link" name="friend" value=<?php htmlspecialchars($username) ?>>
+                        </form>
+                        <?php if ($isFriend): ?> 
+                            <a id="friend-link"></a>
+                        <?php else: ?>
+                            <a id="add-friend-link" href="php/actions/add_friend_action.php">bitte einfügen</a>
+                        <?php endif; ?>
                     <?php endif; ?>
                 </div>
             </div>
