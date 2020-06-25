@@ -45,7 +45,8 @@ $games = $gameDAO->getGames($tags);
             <form action="gameoverview.php" method="post">
             <?php foreach($filtertags as $tag): ?>
                     <label class="checkbox-container"><?php echo $tag?>
-                        <input type="checkbox" name="tags[]" value='<?php echo $tag?>' <?php echo (in_array($tag,$_SESSION['tags']))? 'checked' : ''?>  onchange="this.form.submit()">
+                        <input type="checkbox" name="tags[]" value='<?php echo $tag?>' <?php echo
+                        (in_array($tag,$_SESSION['tags']))? 'checked' : ''?>  onchange="this.form.submit()">
                         <span class="checkmark"></span>
                     </label>   
             <?php endforeach; ?>
@@ -60,15 +61,13 @@ $games = $gameDAO->getGames($tags);
                     $gameurl = 'playeroverview.php?gameid=' . $gameID ;
                     $style = "background-color: #" . $game->gamecolor;
                     ?>
-                    
-                    <div class="wrapper">
+
+                    <li class="wrapper">
                         <li class="card">
                             <div class="game-container" id="<?php echo "game". $gameID?>" onclick="location.href='<?php echo $gameurl?>'" style="<?php echo $style?>">
                                 <label class="gamelabel"><?php echo $gamename?></label>
                             </div>
-                        </li>
-                    </div>
-                
+
                 <?php endforeach;?>
             </ul>
             <?php  else: ?>
