@@ -33,7 +33,13 @@ $search = $_GET['search'];
             <?php $searchresult = $playerlist->getPlayerByName($search);?>
             <?php if (isset($searchresult) && $searchresult!=null):
                 $playerID = $searchresult->userid;
-                $profileurl = 'playerprofile.php?id= ' . $playerID ;?>
+                $profileurl = 'playerprofile.php?id= ' . $playerID ;
+                $age = $searchresult ->age;
+                $date = new DateTime($age);
+                $now = new DateTime();
+                $age_in_years = $now ->diff($date)->y
+
+                ?>
 
                 <ul class="cardview" id="lol-players">
                     <li class="card">
@@ -42,7 +48,7 @@ $search = $_GET['search'];
                                 <h2><?php echo htmlspecialchars($searchresult->username) ?></h2>
                                 <ul>
                                     <li>Sprache:  <?php echo htmlspecialchars($searchresult->language) ?></li>
-                                    <li>Alter:  <?php echo htmlspecialchars($searchresult->age)?></li>
+                                    <li>Alter:  <?php echo htmlspecialchars($age_in_years)?></li>
 
                                 </ul>
                             </div>

@@ -150,7 +150,8 @@ $_SESSION['addfriend'] = $user;
                                     <?php $style = "background-color: #" . $game->gamecolor ?>
                                     <div class="wrapper">
                                         <li class="card">
-                                            <div class="game-container" id="<?php echo "game". $game->gameid ?>" style="<?php echo $style?>" onclick="showStats('<?php echo "game" . $game->gameid ?>', '<?php echo "stats". $game->gameid?>')">
+                                            <div
+                                                    class="game-container" id="<?php echo "game". $game->gameid ?>" style="<?php echo $style?>" onclick="showStats('<?php echo "game" . $game->gameid ?>', '<?php echo "stats". $game->gameid?>')">
                                                 <label class="gamelabel"><?php echo $game->gamename ?></label>
                                             </div>
                                         </li>
