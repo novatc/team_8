@@ -38,7 +38,7 @@ header nav a{
     color: var(--default-white);
     font-weight: bold;
     text-decoration: none;
-    min-width: 50px;
+    min-width: 40px;
     max-width: 100px;
     text-align: center;
 }
@@ -115,21 +115,23 @@ header .search:hover, .search:focus {
     border: 2px solid var(--orange);
 }
 
-.footer a{
-    color: var(--default-white);
-}
+
 
 /* Tablet */
 @media screen and (max-width: 1080px) {
-    header nav .grid-container {
-        height: 60px;
-        line-height: 60px;
-    }
+
 }
 /* Smartphone */
 @media screen and (max-width: 780px) {
     header nav a {
-        width: 18%;
+        width: 15%;
+    }
+    header nav .search-wrapper{
+        height: 25px;
+    }
+    header nav .search {  
+        font-size: 14.5px;
     }
 }
+
 
