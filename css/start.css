@@ -28,12 +28,18 @@
     transition: 0.33s;
     opacity: 1.0;
 }
-
+.start-img{
+    height: max-content;
+    width: auto;
+}
 
 #grid {
     display: grid;
-    grid-template-columns: 50% 50%;
-    grid-template-rows:   50% 50%;    
+    margin: auto;
+    height: calc(100vh - 80px - 20px - 50px);
+    width: calc(100vh - 80px - 20px - 50px);
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows:   1fr 1fr;    
     background-image: url(../Resourcen/Logo/logo_purple.png);
     background-repeat: no-repeat;
     background-size: contain;
