@@ -13,7 +13,7 @@ $isLoggedIn = $_SESSION['userid']> -1;
         </div>
         <form class="search-wrapper" action="search.php" method="get">
             <img class = search-icon src="Resourcen/Navigation/search-black-24dp.svg">
-            <input class="search" type="text" placeholder="Nach Nutzer suchen..." name="search">
+            <input class="search" type="text" placeholder="Nutzer suchen..." name="search">
         </form>
         <div class="profil-nav">
             <?php if ($isLoggedIn): ?>

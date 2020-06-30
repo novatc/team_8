@@ -102,7 +102,7 @@ header nav .search-icon {
     left: 2px;
 }
 header nav .search {   
-    font-size: 17px;
+    font-size: 15px;
     border-radius: 5px;
     width: calc(100% - 5px - max(25px, 6%));
     padding-left: max(25px, 6%);
