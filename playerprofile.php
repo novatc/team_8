@@ -77,7 +77,7 @@ $_SESSION['addfriend'] = $user;
                     stats[i].style.display = "none";
                 }      
             }       
-            var btn = document.getElementsByClassName("container");
+            var btn = document.getElementsByClassName("game-container");
             for (var i = 0; i < btn.length; i++) {
                 if(btn[i].id === btnID){
                     btn[i].style.transform = "scale(1.1)";
@@ -88,7 +88,7 @@ $_SESSION['addfriend'] = $user;
         }
         
         function deactivate(id){ 
-            var btn = document.getElementsByClassName("container");
+            var btn = document.getElementsByClassName("game-container");
             for (var i = 0; i < btn.length; i++) {
                 if(btn[i].id === id){
                     btn[i].style.opacity = "0.5";
@@ -150,8 +150,7 @@ $_SESSION['addfriend'] = $user;
                                     <?php $style = "background-color: #" . $game->gamecolor ?>
                                     <div class="wrapper">
                                         <li class="card">
-                                            <div
-                                                    class="game-container" id="<?php echo "game". $game->gameid ?>" style="<?php echo $style?>" onclick="showStats('<?php echo "game" . $game->gameid ?>', '<?php echo "stats". $game->gameid?>')">
+                                            <div class="game-container" id="<?php echo "game". $game->gameid ?>" style="<?php echo $style?>" onclick="showStats('<?php echo "game" . $game->gameid ?>', '<?php echo "stats". $game->gameid?>')">
                                                 <label class="gamelabel"><?php echo $game->gamename ?></label>
                                             </div>
                                         </li>
