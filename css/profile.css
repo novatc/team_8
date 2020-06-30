@@ -33,13 +33,6 @@
     grid-row: 1;
     grid-column: 1;
 }
-    
-.profile-grid .profil-header .picture-wrapper img{
-    width: 120px;
-    height: 120px;
-    object-fit: cover;
-    border: 3px solid var(--light-bg-color);
-}
 
 .profile-grid .profil-header .name-wrapper{
     align-items: center;
@@ -220,10 +213,6 @@
         justify-self: left;
         grid-row: 1;
         grid-column: 1;
-    }
-    .profile-grid .profil-header .picture-wrapper img{
-        width: 75px;
-        height: 75px; 
     }
     .profile-grid .profil-header .message-wrapper{
         justify-self: end;

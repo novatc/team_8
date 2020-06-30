@@ -24,26 +24,21 @@ $isLoggedIn = $_SESSION['userid'] > -1;
 
 <main>
     <section id="grid">
-        <?php if ($isLoggedIn) { ?>
-            <a href='gameoverview.php' class="rightloggedin">
-
+        <?php if ($isLoggedIn): ?>
+            <a href='playerprofile.php'  class="right">
+                <img class="start-img" src="Resourcen/Logo/team8_logo01-orange_profil-text.svg">
             </a>
-        <?php } else { ?>
+            <a href='gameoverview.php' class="left">
+                <img class="start-img" src="Resourcen/Logo/team8_logo01-orange_spiele-text.svg">
+            </a>
+        <?php else: ?>
             <a href='login.php' class="right">
-
+                <img class="start-img" src="Resourcen/Logo/team8_logo01-orange_login-text.svg">
             </a>
-        <?php } ?>
-
-        <?php if ($isLoggedIn) { ?>
-            <a href='playerprofile.php'class="leftloggedin">
-
-            </a>
-        <?php } else { ?>
-
             <a href='registration.php' class="left">
-
+                <img class="start-img" src="Resourcen/Logo/team8_logo01-orange_registrieren-text.svg">
             </a>
-        <?php } ?>
+        <?php endif; ?>
 
 
     </section>
