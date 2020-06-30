@@ -64,10 +64,9 @@ $games = $gameDAO->getGames($tags);
 
                     <li class="wrapper">
                         <li class="card">
-                            <div class="game-container" id="<?php echo "game". $gameID?>" onclick="location.href='<?php echo $gameurl?>'" style="<?php echo $style?>">
+                            <a href='<?php echo $gameurl?>' class="game-container" id="<?php echo "game". $gameID?>" style="<?php echo $style?>">
                                 <label class="gamelabel"><?php echo $gamename?></label>
-                            </div>
-
+                            </a>
                 <?php endforeach;?>
             </ul>
             <?php  else: ?>
