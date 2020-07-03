@@ -37,8 +37,12 @@ if(!$empty){
                     header('Location: ../../chatoverview.php');
                     exit();
                     break;
-                case 'change':
-                    header('Location: ../../change_profile.php');
+                case 'edit_profile':
+                    header('Location: ../../edit_profile.php');
+                    exit();
+                    break;
+                case 'edit_games':
+                    header('Location: ../../edit_games.php');
                     exit();
                     break;
             }

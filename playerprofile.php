@@ -118,14 +118,14 @@ $_SESSION['addfriend'] = $user;
                 </div>
                 <div class="options-wrapper">
                     <?php if ($ownprofile): ?>    
-                    <a id="settings-link" href="change_profile.php"></a>
-                    <a id="logout-link" href="php/actions/logout_action.php"></a>
+                    <a class="profile-btn" id="edit-profile" href="edit_profile.php"></a>
+                    <a class="profile-btn" id="logout-link" href="php/actions/logout_action.php"></a>
                     <?php elseif($isLoggedIn): ?>
-                        <a id="message-link" href="php/actions/start_chat_action.php?user=<?php echo $username?>"></a>
+                        <a class="profile-btn" id="message-link" href="php/actions/start_chat_action.php?user=<?php echo $username?>"></a>
                         <?php if ($isFriend): ?> 
-                            <a id="friend-link"></a>
+                            <a class="profile-btn" id="friend-link"></a>
                         <?php else: ?>
-                            <a id="add-friend-link" href="php/actions/add_friend_action.php"></a>
+                            <a class="profile-btn" id="add-friend-link" href="php/actions/add_friend_action.php"></a>
                         <?php endif; ?>
                     <?php endif; ?>
                 </div>
@@ -143,6 +143,7 @@ $_SESSION['addfriend'] = $user;
             </div>
             <h2>Meine Spiele:</h2>
             <div class="game-wrapper"> 
+                <a class="profile-btn" id="edit-games" href="edit_games.php"></a>
                 <ul class="cardview" >
                     <?php foreach($usergames as $usergame):?>
                             <?php foreach($allgames as $game):?>

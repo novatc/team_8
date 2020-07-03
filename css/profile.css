@@ -48,50 +48,36 @@
     grid-column: 3;
 }
 
-.profile-grid .profil-header #settings-link{
+.profile-btn{
     width: 25px;
     height: 25px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    display:inline-block;
+}
+#edit-profile{
     background: url(../Resourcen/Navigation/settings-white-24dp.svg);
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    display:inline-block;
 }
-.profile-grid .profil-header #logout-link{
-    width: 25px;
-    height: 25px;
+#logout-link{
     background: url(../Resourcen/Navigation/exit_to_app-white-24dp.svg);
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    display:inline-block;
 }
-.profile-grid .profil-header #message-link{
-    width: 25px;
-    height: 25px;
+#message-link{
     background: url(../Resourcen/Navigation/chat-white-24dp.svg);
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    display:inline-block;
 }
-.profile-grid .profil-header #add-friend-link{
-    width: 28px;
-    height: 28px;
+#add-friend-link{
     background: url(../Resourcen/Navigation/friend_add-white-24dp.svg);
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    display:inline-block;
 }
-.profile-grid .profil-header #friend-link{
+#friend-link{
     width: 28px;
     height: 28px;
     background: url(../Resourcen/Navigation/friends-white-24dp.svg);
+}
+#edit-games{
+    background: url(../Resourcen/Navigation/edit-white-24dp.svg);
     background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    display:inline-block;
+    float: right;
+    padding-left: 5px;
 }
 
 .profile-grid .profil-body{

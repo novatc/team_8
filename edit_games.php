@@ -14,7 +14,7 @@ $userDAO = new UserDAO("sqlite:db/Database.db");
 $userID = $_SESSION['userid'];
 
 if($userID == -1){
-    header('Location: login.php?dest=change');
+    header('Location: login.php?dest=edit_games');
     exit();
 }
 
@@ -52,23 +52,6 @@ if(isset($_SESSION['gamechoice'])){
         </div>
     </header>
     <main>
-        <form class="box" action="php/actions/change_profile_action.php" method="post">
-            <h1>Profil anpassen</h1>
-            <div class="input-wrapper">
-                <textarea name="description" class="textarea-input" cols="30" rows="10"><?= $description?></textarea>
-                <label class="top-label">Beschreibung</label>
-            </div> 
-            <div class="input-wrapper">
-                <input class="data-input" type="date" name="age" value= "<?= ($age)?>">
-                <label class="left-label">Alter</label>
-            </div>
-            <div class="input-wrapper">
-                <input class="data-input" type="text" name="language" value= "<?= ($language)?>">
-                <label class="left-label">Sprachen</label>
-            </div>
-        
-            <input class="submit-btn"  type="submit" name="changesubmit" value="Speichern">
-        </form>
         <div class="box"> 
             <form action="php/actions/choose_game_action.php" method="post">
                 <h1>Spiele verwalten</h1>  
@@ -140,12 +123,6 @@ if(isset($_SESSION['gamechoice'])){
             </form>
             <?php endif; ?>
         </div>
-
-        <form class="box" action="php/actions/change_profile_action.php" method="post">
-            <h1>Icon ändern</h1>
-            <?php include "php/pieces/icons.php";?>
-            <input class="submit-btn"  type="submit" name="iconsubmit" value="Speichern">
-        </form>
 
     </main>
     <script>

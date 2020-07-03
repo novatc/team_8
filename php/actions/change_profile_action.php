@@ -11,28 +11,22 @@ if($isLoggedIn){
     $posted = false;
     $userID = $_SESSION['userid'];
 
-    if(isset($_POST['iconsubmit'])){
+    $icon = $_POST['icon'];
 
-        $icon =$_POST['icon'];
+    $age = $_POST['age'];
 
-        $errorcode = $userDAO->updateUser($userID, -1, -1, -1, $icon);
-    }
+    $language = $_POST['language'];
 
-    if(isset($_POST['changesubmit'])){
-        $age = $_POST['age'];
+    $description = $_POST['description'];
 
-        $language = $_POST['language'];
+    $errorcode = $userDAO->updateUser($userID, $age, $language, $description, $icon);
 
-        $description = $_POST['description'];
-
-        $errorcode = $userDAO->updateUser($userID, $age, $language, $description, -1);
-    }
 }
 
 
 
 
-header('Location: ../../change_profile.php');
+header('Location: ../../edit_profile.php');
 exit();
 
 ?>
