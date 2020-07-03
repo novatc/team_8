@@ -83,7 +83,7 @@ if(isset($_SESSION['gamechoice'])){
                 <input class="submit-btn" id="choose-btn" type="submit" name="gamechoicesubmit" value="Wählen">
             </form>
             <?php if($gamechoice != ''): ?>
-            <form action="php/actions/edit_game_action.php" method="post">
+            <form action="php/actions/edit_games_action.php" method="post">
                 <?php if($gamechoice == 'CS:GO'): ?>
                     <div class="gamebox">
                         <?php include "php/pieces/csgostatistics.php";?>
