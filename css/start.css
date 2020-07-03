@@ -5,17 +5,11 @@
     grid-row: 2;
     grid-column: 1;
     opacity: 0.9;
-    text-align: center;
-    vertical-align: middle;
-    float: left;
 }
 .right{
     grid-row: 1;
     grid-column: 2;
     opacity: 0.9;
-    text-align: center;
-    vertical-align: middle;
-    float: left;
 }
 
 .left:hover{
@@ -29,21 +23,21 @@
     opacity: 1.0;
 }
 .start-img{
-    height: max-content;
+    height: 100%;
     width: auto;
 }
 
 #grid {
     display: grid;
     margin: auto;
-    height: calc(100vh - 80px - 20px - 50px);
-    width: calc(100vh - 80px - 20px - 50px);
+    height: min(calc(100vh - 80px - 20px - 50px), 100vw);
+    width: min(calc(100vh - 80px - 20px - 50px), 100vw);
     grid-template-columns: 1fr 1fr;
     grid-template-rows:   1fr 1fr;    
     background-image: url(../Resourcen/Logo/logo_purple.png);
     background-repeat: no-repeat;
     background-size: contain;
-    background-position: center;
+    background-position: center; 
 }
 
 /* Tablet */
