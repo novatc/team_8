@@ -55,15 +55,15 @@ if(isset($_SESSION['gamechoice'])){
         <form class="box" action="php/actions/change_profile_action.php" method="post">
             <h1>Profil anpassen</h1>
             <div class="input-wrapper">
-                <textarea name="description" class="textarea-input" cols="30" rows="10"><?= htmlspecialchars($description)?></textarea>
+                <textarea name="description" class="textarea-input" cols="30" rows="10"><?= $description?></textarea>
                 <label class="top-label">Beschreibung</label>
             </div> 
             <div class="input-wrapper">
-                <input class="data-input" type="date" name="age" value= "<?= htmlspecialchars($age)?>">
+                <input class="data-input" type="date" name="age" value= "<?= ($age)?>">
                 <label class="left-label">Alter</label>
             </div>
             <div class="input-wrapper">
-                <input class="data-input" type="text" name="language" value= "<?= htmlspecialchars($language)?>">
+                <input class="data-input" type="text" name="language" value= "<?= ($language)?>">
                 <label class="left-label">Sprachen</label>
             </div>
         
@@ -75,13 +75,13 @@ if(isset($_SESSION['gamechoice'])){
                 <div class="input-wrapper">
                     <select class="selectbox" name="game" onchange="this.form.submit()" required>
                         <optgroup id="option-choosed" label="Gewählt">
-                            <option value='<?php echo $gamechoice?>' selected='selected'><?php echo htmlspecialchars($gamechoice)?></option>
+                            <option value='<?php echo $gamechoice?>' selected='selected'><?php echo $gamechoice?></option>
 
                         <optgroup label="Meine Spiele">
                         <?php foreach($usergames as $usergame):?>
                             <?php foreach($allgames as $game):?>
                                 <?php if($usergame==$game->gameid):?>
-                                    <option value='<?php echo $game->gamename?>'><?php echo htmlspecialchars($game->gamename)?></option>
+                                    <option value='<?php echo $game->gamename?>'><?php echo $game->gamename?></option>
                                 <?php endif;?>
                             <?php endforeach;?>
                         <?php endforeach;?>
@@ -89,7 +89,7 @@ if(isset($_SESSION['gamechoice'])){
                         <optgroup label="Weitere Spiele hinzufügen">
                         <?php foreach($allgames as $game):?>
                             <?php if(!in_array($game->gameid, $usergames)):?>
-                                <option value='<?php echo $game->gamename?>'><?php echo htmlspecialchars($game->gamename)?></option>
+                                <option value='<?php echo $game->gamename?>'><?php echo $game->gamename?></option>
                             <?php endif;?>
                         <?php endforeach;?>
                         </optgroup>

@@ -45,10 +45,10 @@ $search = $_GET['search'];
                     <li class="card">
                         <a href='<?php echo $profileurl?>' class="container">
                             <div class="content">
-                                <h2><?php echo htmlspecialchars($searchresult->username) ?></h2>
+                                <h2><?php echo $searchresult->username ?></h2>
                                 <ul>
-                                    <li>Sprache:  <?php echo htmlspecialchars($searchresult->language) ?></li>
-                                    <li>Alter:  <?php echo htmlspecialchars($age_in_years)?></li>
+                                    <li>Sprache:  <?php echo $searchresult->language ?></li>
+                                    <li>Alter:  <?php echo $age_in_years?></li>
 
                                 </ul>
                             </div>

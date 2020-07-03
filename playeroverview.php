@@ -97,11 +97,11 @@ $list = $playerlistDAO->getPlayersForGame($gameID, $rankfilter, $rolefilter);
                         <li class="card">
                             <a href='<?php echo $profileurl?>' class="container" style="<?php echo $style?>">
                                 
-                                    <h2><?php echo htmlspecialchars($playeritem->username) ?></h2>
+                                    <h2><?php echo $playeritem->username ?></h2>
                                     <ul>
-                                        <li>Sprache:  <?php echo htmlspecialchars($playeritem->language) ?></li>
+                                        <li>Sprache:  <?php echo $playeritem->language ?></li>
                                         <li>Role:  <?php echo implode(", ",$playerlistDAO->getRoles($gameID, $playeritem->userid)) ?></li>
-                                        <li>ELO: <?php echo htmlspecialchars($playerlistDAO->getRank($gameID, $playeritem->userid)) ?>  </li>
+                                        <li>ELO: <?php echo $playerlistDAO->getRank($gameID, $playeritem->userid) ?>  </li>
                                     </ul>
                                 
                             </a>

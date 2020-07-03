@@ -169,7 +169,7 @@ class UserDAO implements UserDAOInterface
             $db->beginTransaction();
 
             if($age!= -1){
-                $language = Database::encodeData($language);
+                $age = Database::encodeData($age);
                 $sql = "UPDATE User SET age = :age WHERE userid = :userid;";
                 $cmd = $db->prepare( $sql );
                 $cmd->bindParam( ':userid', $userID );

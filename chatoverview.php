@@ -50,9 +50,9 @@ $yourfriendids = $userDAO ->getFriends($_SESSION['userid']);
                             $activeName = $item->username;
                             $activeID = $item->userid;
                             $profileurl = 'playerprofile.php?id= ' . $activeID ;?>
-                            <div class="icon" id=<?= htmlspecialchars($activeIcon) ?> onclick="location.href='<?php echo htmlspecialchars($profileurl)?>'"></div>
+                            <div class="icon" id=<?= $activeIcon ?> onclick="location.href='<?php echo $profileurl?>'"></div>
                             <form action="php/actions/start_chat_action.php?user=<?php echo $activeName?>" method="post">
-                                <input class="startChat" type="submit" name="friend" value="<?php echo htmlspecialchars($activeName)?>">
+                                <input class="startChat" type="submit" name="friend" value="<?php echo $activeName?>">
                             </form>
                             <div class="chatcard">
                             </div>
@@ -71,9 +71,9 @@ $yourfriendids = $userDAO ->getFriends($_SESSION['userid']);
                         $friendID = $frienduser->userid;
                         $profileurl = 'playerprofile.php?id= ' . $friendID ;
                         array_push($friendlist, $friendicon);?>
-                        <div class="icon" id= <?= htmlspecialchars($friendicon) ?> onclick="location.href='<?php echo htmlspecialchars($profileurl)?>'"></div>
+                        <div class="icon" id= <?= $friendicon ?> onclick="location.href='<?php echo $profileurl?>'"></div>
                         <form action="php/actions/start_chat_action.php?user=<?php echo $friendusername?>" method="post">
-                            <input class="startChat" type="submit" name="friend" value="<?php echo htmlspecialchars($friendusername) ?>">
+                            <input class="startChat" type="submit" name="friend" value="<?php echo $friendusername ?>">
                         </form>
                     <?php endforeach; ?>
                 </div>
