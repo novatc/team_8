@@ -30,10 +30,8 @@ if(!$empty){
         $_SESSION['userid'] = $userDAO->getUserByName($username)->userid;
         header('Location: ../../playerprofile.php');
         exit();
-    } else{
-        header('Location: ../../registration.php');
-        exit();
-    }
+    } 
 }
-   
+header('Location: ../../registration.php');
+        exit();
 ?>
