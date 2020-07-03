@@ -13,7 +13,10 @@
 html{
     color: var(--default-white);
     font-family: SemiBold;
-    font-size: large;
+    font-size: medium;
+}
+a{
+    color: var(--light-purple);
 }
 body{
     background-color: var(--main-bg-color);
