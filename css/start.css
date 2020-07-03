@@ -23,8 +23,8 @@
     opacity: 1.0;
 }
 .start-img{
-    height: 100%;
     width: auto;
+    height: auto;
 }
 
 #grid {
