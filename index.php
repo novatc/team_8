@@ -16,6 +16,7 @@ $isLoggedIn = $_SESSION['userid'] > -1;
     <link rel="stylesheet" type="text/css" href="css/games.css">
 </head>
 <body>
+<script src="quotes.js"></script>
 <header>
     <div class="mainnav">
         <?php include "php/header.php"; ?>
@@ -23,6 +24,15 @@ $isLoggedIn = $_SESSION['userid'] > -1;
 </header>
 
 <main>
+    <div class="blockquote-wrapper">
+        <div class="blockquote">
+            <h1 id = "quote">
+
+            </h1>
+            <h4 id="author">&mdash;</h4>
+        </div>
+    </div>
+
     <section id="grid">
         <?php if ($isLoggedIn): ?>
             <a href='playerprofile.php'  class="right">
