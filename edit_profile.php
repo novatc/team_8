@@ -52,7 +52,7 @@ if(isset($_SESSION['gamechoice'])){
         </div>
     </header>
     <main>
-        <form class="box" action="php/actions/change_profile_action.php" method="post">
+        <form class="box" action="php/actions/edit_profile_action.php" method="post">
             <h1>Profil anpassen</h1>
             <div class="input-wrapper">
                 <textarea name="description" class="textarea-input" cols="30" rows="10"><?= $description?></textarea>

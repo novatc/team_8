@@ -26,7 +26,7 @@ if($isLoggedIn){
 
 
 
-header('Location: ../../edit_profile.php');
+header('Location: ../../playerprofile.php');
 exit();
 
 ?>

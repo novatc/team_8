@@ -39,13 +39,10 @@ if($isLoggedIn){
             case true:
                 $listDAO->updatePlayer($gameid, $userid, $rank, $roles, $status);
                 break;
-            default:
-                // TODO Errormessage
-                break;
         }
     }
 }
-header('Location: ../../edit_games.php');
+header('Location: ../../playerprofile.php');
 exit();
 
 ?>
