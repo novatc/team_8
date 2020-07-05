@@ -33,6 +33,12 @@ if(isset($_SESSION['registrationerror'])){
         <input class="login-input" type="email" name="usermail" placeholder="Mail" required>
         <input class="login-input" type="password" name="password" placeholder="Passwort" required>
         <input class="login-input" type="password" name="passwordrepeat" placeholder="Passwort wiederholen" required>
+
+        <label class="checkbox-container">Ich habe die <a href="terms_of_use.php">Nutzungsbedingungen</a> gelesen und akzeptiere diese.
+            <input type="checkbox" name="acceptterms" value='terms'>
+            <span class="checkmark"></span>
+        </label>  
+         
         <input class="submit-btn" id="submit-form" type="submit" name="registersubmit" value="Registrieren">
         
     </form>
@@ -77,6 +83,12 @@ if(isset($_SESSION['registrationerror'])){
             <script>
                 var label = document.getElementById("error-message");
                 label.innerHTML = "Huch etwas ist schief gelaufen. Bitte versuchen Sie es erneut!";   
+            </script>
+            <?php break;
+        case 6: ?>
+            <script>
+                var label = document.getElementById("error-message");
+                label.innerHTML = "Bitte akzeptieren Sie die Nutzungsbedingungen!";   
             </script>
             <?php break;
         }

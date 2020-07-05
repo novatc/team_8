@@ -12,13 +12,17 @@ $required = array('username', 'usermail', 'password', 'passwordrepeat');
 /* Check if input field empty */
 foreach ($required as $field){
     if (empty($_POST[$field])){
-        $empty = true;
+        $error = true;
         $_SESSION['registrationerror'] = 1;
     }
 }
+if(empty($_POST['acceptterms'])){
+    $error = true;
+    $_SESSION['registrationerror'] = 6;
+}
 
 
-if(!$empty){
+if(!$error){
     $username = $_POST['username'];
     $email = $_POST['usermail'];
     $pwd = $_POST['password'];
