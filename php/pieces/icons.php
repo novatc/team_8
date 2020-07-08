@@ -1,5 +1,5 @@
 <?php
-$icons = ['avatarTeemo', 'avatarBard', 'avatarZac', 'avatarFuryhorn', 'avatarPingu', 'avatarSquid','avatarSpook', 'avatarRammus'];
+$icons = ['iconBC', 'iconLee', 'iconFizz', 'iconGaren', 'iconGragas', 'iconGraves', 'iconKennen', 'iconSinged', 'iconZiggs'];
 ?>
 
 <div class=icon-wrapper>  

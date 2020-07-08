@@ -46,38 +46,41 @@
     border-radius: 50%;
 }
 
-#avatarTeemo {
-    background-image: url("../Resourcen/Icons/Teemo.jpg");
+#iconBC {
+    background-image: url("../Resourcen/Icons/iconBC.jpg");
 }
 
-#avatarBard {
-    background-image: url("../Resourcen/Icons/Bard.jpg");
+#iconFizz {
+    background-image: url("../Resourcen/Icons/iconFizz.jpg");
 }
 
-#avatarFuryhorn {
-    background-image: url("../Resourcen/Icons/Furyhorn.png");
+#iconGaren {
+    background-image: url("../Resourcen/Icons/iconGaren.jpg");
 }
 
-#avatarPingu {
-    background-image: url("../Resourcen/Icons/Featherknight.png");
+#iconGragas {
+    background-image: url("../Resourcen/Icons/iconGragas.jpg");
 }
 
-#avatarRammus {
-    background-image: url("../Resourcen/Icons/Rammus.jpg");
+#iconGraves {
+    background-image: url("../Resourcen/Icons/iconGraves.jpg");
 }
 
-#avatarZac {
-    background-image: url("../Resourcen/Icons/Zac.jpg");
+#iconKennen {
+    background-image: url("../Resourcen/Icons/iconKennen.jpg");
 }
 
-#avatarSquid {
-    background-image: url("../Resourcen/Icons/Squid.jpg");
+#iconLee {
+    background-image: url("../Resourcen/Icons/iconLee.jpg");
 }
 
-#avatarSpook {
-    background-image: url("../Resourcen/Icons/Spooky.jpg");
+#iconSinged {
+    background-image: url("../Resourcen/Icons/iconSinged.jpg");
 }
 
+#iconZiggs {
+    background-image: url("../Resourcen/Icons/iconZiggs.jpg");
+}
 @media screen and (max-width: 800px) {
     .icon {
         border-radius: 50%;
