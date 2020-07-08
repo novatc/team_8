@@ -19,6 +19,7 @@ $currentfriend = ($_SESSION['frienduser']);
 $currentfriendicon = $currentfriend->icon;
 $currentfriendname = $currentfriend->username;
 $currentfriendid = $currentfriend->userid;
+$friendprofile = $profileurl = 'playerprofile.php?id= ' . $currentfriendid;
 
 //completemessages includes the senderID, receiverID and the message itself
 $completemessages = $userDAO->getMessages($_SESSION['userid'], $currentfriendid);
@@ -51,7 +52,7 @@ $completemessages = json_decode(json_encode($completemessages), true);
             <div class="chatbox" id="chatheader">
                 <div class="description">
                     <div class="headgrid">
-                        <a href="playerprofile.php">
+                        <a href="chat.php">
                             <div class="iconChatHead" id=<?= $currentfriendicon ?>></div>
                         </a>
                         <label id="name"><?= $currentfriendname?></label>
@@ -71,7 +72,7 @@ $completemessages = json_decode(json_encode($completemessages), true);
                                 <p class="speech-bubble-self">
                                     <?= ($text) ?> </p>
                             <?php elseif($senderID != $_SESSION['userid']) : ?>
-                                <div class="iconSmall" id=<?= $currentfriendicon ?> onclick="location.href='playerprofile.php'"></div>
+                                <div class="iconSmall" id=<?= $currentfriendicon ?> onclick="location.href='<?php echo $friendprofile?>'"></div>
                                 <p class="speech-bubble">
                                     <?= $text ?> </p>
                             <?php endif; ?>

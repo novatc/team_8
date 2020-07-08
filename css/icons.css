@@ -81,6 +81,10 @@
 #iconZiggs {
     background-image: url("../Resourcen/Icons/iconZiggs.jpg");
 }
+
+#iconPlaceholder {
+    background-image: url("../Resourcen/Icons/iconZiggs.jpg");
+}
 @media screen and (max-width: 800px) {
     .icon {
         border-radius: 50%;
