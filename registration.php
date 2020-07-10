@@ -34,7 +34,7 @@ if(isset($_SESSION['registrationerror'])){
         <input class="login-input" type="password" name="password" placeholder="Passwort" required>
         <input class="login-input" type="password" name="passwordrepeat" placeholder="Passwort wiederholen" required>
 
-        <label class="checkbox-container">Ich habe die <a href="terms_of_use.php">Nutzungsbedingungen</a> gelesen und akzeptiere diese.
+        <label class="checkbox-container">Ich habe die <a href="terms_of_use.php">Nutzungsbedingungen</a> und <a href="data_protection.php">Datenschutzbestimmungen</a> gelesen und akzeptiere diese.
             <input type="checkbox" name="acceptterms" value='terms'>
             <span class="checkmark"></span>
         </label>  
