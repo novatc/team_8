@@ -1,3 +1,5 @@
+/* Diese Nutzungsbedingungen wurden kopiert und abgeändert von Youtube */
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -23,7 +25,8 @@
     <h2>Willkommen bei Team8</h2>
     
     <h3>Einführung</h3>
-    <p>Vielen Dank, dass sie sich für unseren Dienst entschieden haben.</p>
+    <p>Vielen Dank, dass sie sich für unseren Dienst entschieden haben.
+    Diese Nutzungsbedingungen wurden kopiert und abgeändert von Youtube.</p>
     
     <h3>Unser Dienst</h3>
     <p>Der Dienst bietet Gaming-Enthusiasten eine Plattform, um neue Teampartner und Freunde zu finden. 
