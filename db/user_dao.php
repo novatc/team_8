@@ -106,7 +106,7 @@ class UserDAO implements UserDAOInterface
 
             $db->commit();
             $_SESSION['registrationmessage']="";
-            return 0;
+            return $this->getUserByName($username)->userid;
 
         } catch (Exception $ex) {
             $db->rollBack();
@@ -175,7 +175,7 @@ class UserDAO implements UserDAOInterface
             $cmd->execute();
 
             $user = $cmd->fetchObject();
-            if ( $username != null) {
+            if ( $user != null) {
                 return $user;
             } else {
                 Database::disconnect($this->dsn);

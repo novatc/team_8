@@ -33,11 +33,9 @@ if(!$empty){
     }
     
     if(!$error){
-        $errorcode = $userDAO->register($username, $email, $pwd, $pwdrepeat);
-        $_SESSION['registrationerror'] = $errorcode;
-        if ($errorcode == 0){
-        
-            $_SESSION['userid'] = $userDAO->getUserByName($username)->userid;
+        $userid = $userDAO->register($username, $email, $pwd, $pwdrepeat);
+        if ($userid != -1){
+            $_SESSION['userid'] = $userid;
             header('Location: ../../playerprofile.php');
             exit();
         } 
