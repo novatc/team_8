@@ -68,7 +68,10 @@ if(isset($_SESSION['gamechoice'])){
             </div>       
             <h1>Icon ändern</h1>
             <?php include "php/pieces/icons.php";?>
-            <input class="submit-btn"  type="submit" name="submit" value="Speichern">
+            <div class="submit-wrapper">
+                <a class="submit-btn"  href="delete_account.php">Profil löschen</a>
+                <input class="submit-btn"  type="submit" name="saveprofile" value="Speichern">
+            </div>
         </form>
 
     </main>

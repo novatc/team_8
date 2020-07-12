@@ -1,4 +1,4 @@
-/* Deses Impressum wurde mit dem AdSimple Generator(https://www.adsimple.de/impressum-generator/) generiert */
+/* Dieses Impressum wurde mit dem AdSimple Generator(https://www.adsimple.de/impressum-generator/) generiert */
 <!DOCTYPE html>
 <html lang="de">
 <head>

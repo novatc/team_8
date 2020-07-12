@@ -7,10 +7,9 @@ $userDAO = new UserDAO();
 
 $isLoggedIn = $_SESSION['userid']>-1;
 
-if($isLoggedIn){
-    $posted = false;
-    $userID = $_SESSION['userid'];
+$userID = $_SESSION['userid'];
 
+if($isLoggedIn){
     $icon = $_POST['icon'];
 
     $age = $_POST['age'];
@@ -21,12 +20,13 @@ if($isLoggedIn){
 
     $errorcode = $userDAO->updateUser($userID, $age, $language, $description, $icon);
 
+    if($errorcode==0){
+        header('Location: ../../playerprofile.php');
+        exit();
+    }
 }
 
-
-
-
-header('Location: ../../playerprofile.php');
+header('Location: ../../edit_profile.php');
 exit();
 
 ?>

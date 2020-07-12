@@ -39,7 +39,9 @@ if(isset($_SESSION['loginerror'])){
         <input class="login-input" type="text" name="username" placeholder="Benutzername" required>
         <input class="login-input" type="password" name="password" placeholder="Passwort" required>
         <input class="submit-btn" id="submit-form" type="submit" name="loginsubmit" value="Login">
-        <h3 onclick="location.href='registration.php'">Noch kein Account?</h3>
+        <div class="center">
+            <a class="no-link" href='registration.php'>Noch kein Account?</a>
+        </div>
     </form>
 
     <script>

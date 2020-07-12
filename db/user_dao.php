@@ -50,16 +50,16 @@ class UserDAO implements UserDAOInterface
             if ($usernameObject != null){
                 $hasheduserpw = $usernameObject->password;
                 if (password_verify($password, $hasheduserpw))
-                    return 0;
-                else{ return 3;}
+                    return $usernameObject->userid;
+                else{ return -1;}
             }
             Database::disconnect($this->dsn);
-            return 2;
+            return -1;
 
 
         } catch (Exception $ex) {
             Database::disconnect($this->dsn);
-            return 4;
+            return -1;
         }
     }
 
@@ -103,6 +103,51 @@ class UserDAO implements UserDAOInterface
             return 5;
         }
         Database::disconnect($this->dsn);
+    }
+
+    function deleteUser($userID, $username, $password){
+        $userID = Database::encodeData($userID);
+       
+        if($userID != $this->login($username, $password)){
+            $_SESSION['deleteerror']="Falsche Nutzerdaten!";
+            return -1;
+        }
+            
+        $db = Database::connect($this->dsn);
+
+        try {
+            $db->beginTransaction();
+
+            $sql = "DELETE FROM User WHERE userid =:userid;";
+            $cmd = $db->prepare($sql);
+            $cmd->bindParam(':userid', $userID);
+            $cmd->execute();
+
+            $sql = "DELETE FROM Playerlist WHERE userid =:userid;";
+            $cmd = $db->prepare($sql);
+            $cmd->bindParam(':userid', $userID);
+            $cmd->execute();
+
+            $sql = "DELETE FROM Friends WHERE id1 =:userid OR id2 =:userid;";
+            $cmd = $db->prepare($sql);
+            $cmd->bindParam(':userid', $userID);
+            $cmd->execute();
+
+            $sql = "DELETE FROM Chat WHERE userid1 =:userid OR userid2 =:userid;";
+            $cmd = $db->prepare($sql);
+            $cmd->bindParam(':userid', $userID);
+            $cmd->execute();
+
+            $db->commit();
+            return null;
+
+        } catch (Exception $ex) {
+            $db->rollBack();
+            Database::disconnect($this->dsn);
+            $_SESSION['deleteerror']="Huch, etwas ist schief gelaufen!";
+            return -1;
+        } 
+
     }
 
     /* Gets User, returns false if User not in DB */

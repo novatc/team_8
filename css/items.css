@@ -1,5 +1,10 @@
-/* Buttons */
+/* Divs */
+.center{
+    margin: 0 auto; 
+    text-align: center
+}
 
+/* Buttons */
 .submit-btn, .btn{
     background: none;
     text-align: center;
