@@ -13,7 +13,7 @@ $required = array('username', 'password');
 foreach ($required as $field){
     if (empty($_POST[$field])){
         $empty = true;
-        $_SESSION['registrationerror'] = 1;
+        $_SESSION['loginerror']="Bitte alle Felder ausfüllen!";
     }
 }
 
@@ -22,11 +22,13 @@ if(!$empty){
     $username = $_POST['username'];
     $pwd = $_POST['password'];
     
-    $errorcode = $userDAO->login($username, $pwd);
-    $_SESSION['loginerror'] = $errorcode;
-    if ($errorcode == 0){
+    $userid = $userDAO->login($username, $pwd);
+
+    if ($userid != -1){
         $_SESSION['user'] = $username;
-        $_SESSION['userid'] = $userDAO->getUserByName($username)->userid;
+        $_SESSION['userid'] = $userid;
+
+        /* Check which Destination */
         if(isset($_SESSION['loginDest'])){
             switch ($_SESSION['loginDest']){
                 case 'profile':
@@ -46,17 +48,13 @@ if(!$empty){
                     exit();
                     break;
             }
-                
-
         }else{
             header('Location: ../../playerprofile.php');
             exit();
         }
         
-    } else{
-        header('Location: ../../login.php');
-        exit();
-    }
+    }  
 }
-
+header('Location: ../../login.php');
+exit();
 ?>

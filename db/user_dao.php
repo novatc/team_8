@@ -49,16 +49,22 @@ class UserDAO implements UserDAOInterface
             $usernameObject = $cmd->fetchObject();
             if ($usernameObject != null){
                 $hasheduserpw = $usernameObject->password;
-                if (password_verify($password, $hasheduserpw))
+                if (password_verify($password, $hasheduserpw)){
+                    $_SESSION['loginmessage']="";
                     return $usernameObject->userid;
-                else{ return -1;}
+                }else{ 
+                    $_SESSION['loginmessage']="Das Passwort ist falsch!";
+                    return -1;
+                }
             }
             Database::disconnect($this->dsn);
+            $_SESSION['loginmessage']="Nutzer existiert nicht!";
             return -1;
 
 
         } catch (Exception $ex) {
             Database::disconnect($this->dsn);
+            $_SESSION['loginmessage']="Huch, etwas ist schief gelaufen!";
             return -1;
         }
     }
