@@ -49,11 +49,6 @@ if(isset($_SESSION['user'])){
             <a class="no-link" href='registration.php'>Noch kein Account?</a>
         </div>
     </form>
-
-    <script>
-        var label = document.getElementById("error-message");
-    </script>
-
 </main>
 
 <footer>

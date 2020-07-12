@@ -76,17 +76,20 @@ class UserDAO implements UserDAOInterface
         /* Check if username in DB */
         $id = $this->getUserByName($username);
         if($id != false){
-            return 2;
+            $_SESSION['registrationmessage']="Nutzername bereits vergeben!";
+            return -1 ;
         }
         // ToDo Passwort vergleich
         // Check if password and passwordrepeat are identical
         if($pwd != $pwdrepeat){ 
-           return 3;
+            $_SESSION['registrationmessage']="Passwörter stimmen nicht überein!";
+            return -1;
         }
         
         /* Check if email is correct*/
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
-            return 4;
+            $_SESSION['registrationmessage']="E-Mail Adresse ungültig!";
+            return -1;
         }
 
         try {
@@ -102,13 +105,16 @@ class UserDAO implements UserDAOInterface
             $cmd->execute();
 
             $db->commit();
+            $_SESSION['registrationmessage']="";
             return 0;
 
         } catch (Exception $ex) {
             $db->rollBack();
-            return 5;
+            $_SESSION['registrationmessage']="Huch, etwas ist schief gelaufen!";
+            Database::disconnect($this->dsn);
+            return -1;
         }
-        Database::disconnect($this->dsn);
+        
     }
 
     function deleteUser($userID, $username, $password){
