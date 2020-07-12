@@ -8,7 +8,7 @@ if (isset($_GET['dest']))
 if(isset($_SESSION['loginmessage'])){
     $message = $_SESSION['loginmessage'];
 }else{
-    $message = 0;
+    $message = "";
 }
 
 
