@@ -11,6 +11,12 @@ if(isset($_SESSION['loginmessage'])){
     $message = "";
 }
 
+if(isset($_SESSION['user'])){
+    $username = $_SESSION['user'];
+}else{
+    $username = "";
+}
+
 
 ?>
 <!DOCTYPE html>
@@ -36,7 +42,7 @@ if(isset($_SESSION['loginmessage'])){
     <form class="box" method="post" action="php/actions/login_action.php">
         <h2 id='error-message'><?= $message?></h2>
         <h1>Login</h1>
-        <input class="login-input" type="text" name="username" placeholder="Benutzername" required>
+        <input class="login-input" type="text" name="username" placeholder="Benutzername" value= "<?=$username?>" required>
         <input class="login-input" type="password" name="password" placeholder="Passwort" required>
         <input class="submit-btn" id="submit-form" type="submit" name="loginsubmit" value="Login">
         <div class="center">

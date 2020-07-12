@@ -18,14 +18,14 @@ foreach ($required as $field){
 }
 
 
-if(!$empty){
+if(!$empty){ 
     $username = $_POST['username'];
     $pwd = $_POST['password'];
+    $_SESSION['user'] = $username;
     
     $userid = $userDAO->login($username, $pwd);
 
     if ($userid != -1){
-        $_SESSION['user'] = $username;
         $_SESSION['userid'] = $userid;
 
         /* Check which Destination */
