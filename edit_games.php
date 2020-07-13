@@ -14,6 +14,8 @@ $userDAO = new UserDAO("sqlite:db/Database.db");
 $userID = $_SESSION['userid'];
 
 if($userID == -1){
+    $message="Bitte loggen Sie sich erst ein!";
+    setcookie("loginmessage", $message, 0, "/");
     header('Location: login.php?dest=edit_games');
     exit();
 }

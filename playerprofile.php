@@ -46,6 +46,8 @@ if(!$noData){
         $ownprofile = false;
         $isFriend = $userDAO->isFriend($_SESSION['userid'], $profileID);
 }else{
+    $message="Bitte loggen Sie sich erst ein!";
+    setcookie("loginmessage", $message, 0, "/");
     header('Location: login.php?dest=profile');
     exit();
 }

@@ -5,8 +5,8 @@ updateSession();
 if (isset($_GET['dest']))
     $_SESSION['loginDest'] = $_GET['dest'];
 
-if(isset($_SESSION['loginmessage'])){
-    $message = $_SESSION['loginmessage'];
+if(isset($_COOKIE['loginmessage'])){
+    $message = $_COOKIE['loginmessage'];
 }else{
     $message = "";
 }

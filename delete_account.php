@@ -2,8 +2,8 @@
 require_once "php/actions/session.php";
 updateSession();
 
-if(isset($_SESSION['deleteerror'])){
-    $errormessage = $_SESSION['deleteerror'];
+if(isset($_COOKIE['deletionmessage'])){
+    $errormessage = $_COOKIE['deletionmessage'];
 }else{
     $errormessage = "";
 }

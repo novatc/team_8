@@ -14,7 +14,8 @@ $required = array('username', 'usermail', 'password', 'passwordrepeat');
 foreach ($required as $field){
     if (empty($_POST[$field])){
         $empty = true;
-        $_SESSION['registrationmessage'] = "Bitte alle Felder ausfüllen!";
+        $message="Bitte alle Felder ausfüllen!";
+        setcookie("registrationmessage", $message, 0, "/");
     }
 }
 
@@ -29,7 +30,8 @@ if(!$empty){
 
     if(empty($_POST['acceptterms'])){
         $error = true;
-        $_SESSION['registrationmessage'] ="Bitte akzeptieren Sie die Nutzungsbedingungen und die Datenschutzerklärung!";
+        $message="Bitte akzeptieren Sie die Nutzungsbedingungen und die Datenschutzerklärung!";
+        setcookie("registrationmessage", $message, 0, "/");
     }
     
     if(!$error){

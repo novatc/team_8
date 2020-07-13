@@ -25,11 +25,13 @@ if($isLoggedIn){
         $errorcode = $userDAO->deleteUser($userID, $username, $pwd);
 
         if($errorcode!=-1){
+            $message = "Ihr Account wurde erfolgreich gelöscht!";
+            setcookie("loginmessage", $message, 0, "/");
             header('Location: ../../login.php');
             exit();
         }
     }
 }
 header('Location: ../../delete_account.php');
-    exit();
+exit();
 ?>

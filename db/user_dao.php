@@ -50,21 +50,26 @@ class UserDAO implements UserDAOInterface
             if ($usernameObject != null){
                 $hasheduserpw = $usernameObject->password;
                 if (password_verify($password, $hasheduserpw)){
-                    $_SESSION['loginmessage']="";
+                    $message="";
+                    setcookie("loginmessage", $message, 0, "/");
                     return $usernameObject->userid;
                 }else{ 
-                    $_SESSION['loginmessage']="Das Passwort ist falsch!";
+                   
+                    $message = "Das Passwort ist falsch!";
+                    setcookie("loginmessage", $message, 0, "/");
                     return -1;
                 }
             }
             Database::disconnect($this->dsn);
-            $_SESSION['loginmessage']="Nutzer existiert nicht!";
+            $message="Nutzer existiert nicht!";
+            setcookie("loginmessage", $message, 0, "/");
             return -1;
 
 
         } catch (Exception $ex) {
             Database::disconnect($this->dsn);
-            $_SESSION['loginmessage']="Huch, etwas ist schief gelaufen!";
+            $message="Huch, etwas ist schief gelaufen!";
+            setcookie("loginmessage", $message, 0, "/");
             return -1;
         }
     }
@@ -76,19 +81,22 @@ class UserDAO implements UserDAOInterface
         /* Check if username in DB */
         $id = $this->getUserByName($username);
         if($id != false){
-            $_SESSION['registrationmessage']="Nutzername bereits vergeben!";
+            $message="Nutzername bereits vergeben!";
+            setcookie("registrationmessage", $message, 0, "/");
             return -1 ;
         }
         // ToDo Passwort vergleich
         // Check if password and passwordrepeat are identical
         if($pwd != $pwdrepeat){ 
-            $_SESSION['registrationmessage']="Passwörter stimmen nicht überein!";
+            $message="Passwörter stimmen nicht überein!";
+            setcookie("registrationmessage", $message, 0, "/");
             return -1;
         }
         
         /* Check if email is correct*/
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
-            $_SESSION['registrationmessage']="E-Mail Adresse ungültig!";
+            $message="E-Mail Adresse ungültig!";
+            setcookie("registrationmessage", $message, 0, "/");
             return -1;
         }
 
@@ -105,12 +113,14 @@ class UserDAO implements UserDAOInterface
             $cmd->execute();
 
             $db->commit();
-            $_SESSION['registrationmessage']="";
+            $message="";
+            setcookie("registrationmessage", $message, 0, "/");
             return $this->getUserByName($username)->userid;
 
         } catch (Exception $ex) {
             $db->rollBack();
-            $_SESSION['registrationmessage']="Huch, etwas ist schief gelaufen!";
+            $message="Huch, etwas ist schief gelaufen!";
+            setcookie("registrationmessage", $message, 0, "/");
             Database::disconnect($this->dsn);
             return -1;
         }
@@ -121,7 +131,8 @@ class UserDAO implements UserDAOInterface
         $userID = Database::encodeData($userID);
        
         if($userID != $this->login($username, $password)){
-            $_SESSION['deleteerror']="Falsche Nutzerdaten!";
+            $message="Falsche Nutzerdaten!";
+            setcookie("deletionmessage", $message, 0, "/");
             return -1;
         }
             
@@ -156,7 +167,8 @@ class UserDAO implements UserDAOInterface
         } catch (Exception $ex) {
             $db->rollBack();
             Database::disconnect($this->dsn);
-            $_SESSION['deleteerror']="Huch, etwas ist schief gelaufen!";
+            $message="Huch, etwas ist schief gelaufen!";
+            setcookie("deletionmessage", $message, 0, "/");
             return -1;
         } 
 

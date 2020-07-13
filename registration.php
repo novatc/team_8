@@ -2,8 +2,8 @@
 require_once "php/actions/session.php";
 updateSession();
 
-if(isset($_SESSION['registrationmessage'])){
-    $message = $_SESSION['registrationmessage'];
+if(isset($_COOKIE['registrationmessage'])){
+    $message = $_COOKIE['registrationmessage'];
 }else{
     $message = "";
 }

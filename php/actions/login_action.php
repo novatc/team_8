@@ -13,7 +13,8 @@ $required = array('username', 'password');
 foreach ($required as $field){
     if (empty($_POST[$field])){
         $empty = true;
-        $_SESSION['loginerror']="Bitte alle Felder ausfüllen!";
+        $message="Bitte alle Felder ausfüllen!";
+        setcookie("loginmessage", $message, 0, "/");
     }
 }
 
@@ -31,22 +32,27 @@ if(!$empty){
         /* Check which Destination */
         if(isset($_SESSION['loginDest'])){
             switch ($_SESSION['loginDest']){
-                case 'profile':
-                    header('Location: ../../playerprofile.php');
-                    exit();
-                    break;
                 case 'chat':
+                    $_SESSION['loginDest']="";
                     header('Location: ../../chatoverview.php');
                     exit();
                     break;
                 case 'edit_profile':
+                    $_SESSION['loginDest']="";
                     header('Location: ../../edit_profile.php');
                     exit();
                     break;
                 case 'edit_games':
+                    $_SESSION['loginDest']="";
                     header('Location: ../../edit_games.php');
                     exit();
                     break;
+                default:
+                    $_SESSION['loginDest']="";
+                    header('Location: ../../playerprofile.php');
+                    exit();
+                    break;
+
             }
         }else{
             header('Location: ../../playerprofile.php');
