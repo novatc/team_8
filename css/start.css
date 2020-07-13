@@ -34,8 +34,8 @@
 #grid {
     display: grid;
     margin: auto;
-    height: min(calc(100vh - 80px - 20px - 50px), 100vw);
-    width: min(calc(100vh - 80px - 20px - 50px), 100vw);
+    height: min(calc(100vh), 100vw);
+    width: min(calc(100vh), 100vw);
     grid-template-columns: 1fr 1fr;
     grid-template-rows:   1fr 1fr;    
     background-image: url(../Resourcen/Logo/logo_purple.png);
@@ -57,7 +57,7 @@
 .blockquote h4 {
     position: relative;
     color: #414344;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-weight: normal;
     line-height: 1;
     margin: 0;
@@ -69,16 +69,16 @@
     position: absolute;
     content: "”";
     color: rgba(255, 255, 255, 1);
-    font-size: 10rem;
+    font-size: 7rem;
     line-height: 0;
-    bottom: -43px;
+    bottom: -30px;
     right: 30px;
 }
 
 .blockquote h1 {
     position: relative;
     color: #FFFFFF;
-    font-size: 40px;
+    font-size: 30px;
     font-weight: 800;
     line-height: 1;
     margin: 0;
@@ -99,6 +99,4 @@
 }
 .blockquote-wrapper {
     display: inline;
-    height: 100vh;
-    padding: 0 20px;
 }
