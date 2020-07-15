@@ -13,16 +13,16 @@ $userDAO = new UserDAO("sqlite:db/Database.db");
 
 $onlymessages = array();
 $you = $userDAO->getUserByID($_SESSION['userid']);
-$youricon = $you->icon;
+$youriconid = $you->iconid;
 
-$currentfriend = ($_SESSION['frienduser']);
-$currentfriendicon = $currentfriend->icon;
-$currentfriendname = $currentfriend->username;
-$currentfriendid = $currentfriend->userid;
-$friendprofile = $profileurl = 'playerprofile.php?id= ' . $currentfriendid;
+$frienduser = $userDAO->getUserByID($_GET['user']);
+$friendiconid = $frienduser->iconid;
+$friendname = $frienduser->username;
+$friendid = $frienduser->userid;
+$friendprofile = $profileurl = 'playerprofile.php?id= ' . $friendid;
 
 //completemessages includes the senderID, receiverID and the message itself
-$completemessages = $userDAO->getMessages($_SESSION['userid'], $currentfriendid);
+$completemessages = $userDAO->getMessages($_SESSION['userid'], $friendid);
 //decode stdObject to Array for usability
 $completemessages = json_decode(json_encode($completemessages), true);
 ?>
@@ -37,8 +37,6 @@ $completemessages = json_decode(json_encode($completemessages), true);
     <link rel="stylesheet" type="text/css" href="css/chat.css">
     <link rel="stylesheet" type="text/css" href="css/icons.css">
     <link rel="stylesheet" type="text/css" href="css/cardgrid.css">
-    <link rel="stylesheet" type="text/css" href="css/games.css">
-
 </head>
 <body>
     <header>
@@ -53,9 +51,9 @@ $completemessages = json_decode(json_encode($completemessages), true);
                 <div class="description">
                     <div class="headgrid">
                         <a href="chat.php">
-                            <div class="iconChatHead" id=<?= $currentfriendicon ?>></div>
+                            <div class="iconChatHead" style="background-image: url('<?= 'Resourcen/Icons/' . $userDAO->getIcon($friendiconid)->filename?>');"></div>
                         </a>
-                        <label id="name"><?= $currentfriendname?></label>
+                        <label id="name"><?= $friendname?></label>
                         <div class="chatcardnopadding">
                         </div>
                     </div>
@@ -68,11 +66,11 @@ $completemessages = json_decode(json_encode($completemessages), true);
                             $senderID = reset($onemessage);
                             $text = end($onemessage);
                             if($senderID == $_SESSION['userid']) : ?>
-                                <div class="iconSmall" id=<?= ($youricon) ?> onclick="location.href='playerprofile.php'"></div>
+                                <div class="iconSmall" href='playerprofile.php' style="background-image: url('<?= 'Resourcen/Icons/' . $userDAO->getIcon($youriconid)->filename?>');"></div>
                                 <p class="speech-bubble-self">
                                     <?= ($text) ?> </p>
                             <?php elseif($senderID != $_SESSION['userid']) : ?>
-                                <div class="iconSmall" id=<?= $currentfriendicon ?> onclick="location.href='<?php echo $friendprofile?>'"></div>
+                                <div class="iconSmall" href='<?php echo $friendprofile?>' style="background-image: url('<?= 'Resourcen/Icons/' . $userDAO->getIcon($friendiconid)->filename?>');"></div>
                                 <p class="speech-bubble">
                                     <?= $text ?> </p>
                             <?php endif; ?>
@@ -81,7 +79,7 @@ $completemessages = json_decode(json_encode($completemessages), true);
                 </div>
 
                 <!-- Senden-->
-                <form id="messageform" action="php/actions/send_message_action.php" method="post">
+                <form id="messageform" action="php/actions/send_message_action.php?user=<?= $friendid?>" method="post">
                     <div class="chatbox" id="sendForm">
                         <input class="data-input" id="sendMessage" type="text" name="message" required placeholder="Schreibe eine Nachricht...">
                         <input type="submit" id="sendButton" value="Senden">

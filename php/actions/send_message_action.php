@@ -7,17 +7,19 @@ $userDAO = new UserDAO();
 
 $isLoggedIn = $_SESSION['userid']>-1;
 
-if($isLoggedIn){
+if($isLoggedIn & isset($_GET['user'])){
     //testing
     $ownid = $_SESSION['userid'];
-    $frienduser = $_SESSION['frienduser'];
+    $frienduser = $userDAO->getUserByID($_GET['user']);
     $friendid = $frienduser->userid;
     $message = $_POST['message'];
 
 
     $userDAO->saveMessage($ownid, $friendid, $message);
 }
-header('Location: ../../chat.php');
+header('Location: ../../chat.php?user='. $friendid);
 exit();
+
+
 
 ?>

@@ -10,8 +10,7 @@ $isLoggedIn = $_SESSION['userid']>-1;
 
 if($isLoggedIn){
     $you = $_SESSION['userid'];
-    $newfriend = $_SESSION['addfriend'];
-    $friendID = $newfriend->userid;
+    $friendID = $_GET['user'];
     $error = $userDAO->addFriend($you, $friendID);
 }
 

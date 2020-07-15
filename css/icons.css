@@ -46,45 +46,6 @@
     border-radius: 50%;
 }
 
-#iconBC {
-    background-image: url("../Resourcen/Icons/iconBC.jpg");
-}
-
-#iconFizz {
-    background-image: url("../Resourcen/Icons/iconFizz.jpg");
-}
-
-#iconGaren {
-    background-image: url("../Resourcen/Icons/iconGaren.jpg");
-}
-
-#iconGragas {
-    background-image: url("../Resourcen/Icons/iconGragas.jpg");
-}
-
-#iconGraves {
-    background-image: url("../Resourcen/Icons/iconGraves.jpg");
-}
-
-#iconKennen {
-    background-image: url("../Resourcen/Icons/iconKennen.jpg");
-}
-
-#iconLee {
-    background-image: url("../Resourcen/Icons/iconLee.jpg");
-}
-
-#iconSinged {
-    background-image: url("../Resourcen/Icons/iconSinged.jpg");
-}
-
-#iconZiggs {
-    background-image: url("../Resourcen/Icons/iconZiggs.jpg");
-}
-
-#iconPlaceholder {
-    background-image: url("../Resourcen/Icons/iconZiggs.jpg");
-}
 @media screen and (max-width: 800px) {
     .icon {
         border-radius: 50%;

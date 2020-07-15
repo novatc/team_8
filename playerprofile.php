@@ -38,7 +38,7 @@ if(!$noData){
     }
     
     $language = $user->language;
-    $usericon = $user->icon;
+    $usericonid = $user->iconid;
     
     if($profileID == $_SESSION['userid'])
         $ownprofile = true;
@@ -51,8 +51,6 @@ if(!$noData){
     header('Location: login.php?dest=profile');
     exit();
 }
-
-$_SESSION['addfriend'] = $user;
 
 
 ?>
@@ -108,7 +106,7 @@ $_SESSION['addfriend'] = $user;
         <div class="profile-grid">
             <div class="profil-header">
                 <div class="picture-wrapper">
-                    <div class="icon" id= <?=$usericon?>></div>
+                    <div class="icon" style="background-image: url('<?= 'Resourcen/Icons/' . $userDAO->getIcon($usericonid)->filename?>');"></div>
                 </div>
                 <div class="name-wrapper">
                     <?php if ($ownprofile): ?>
@@ -123,11 +121,12 @@ $_SESSION['addfriend'] = $user;
                     <a class="profile-btn" id="edit-profile" href="edit_profile.php"></a>
                     <a class="profile-btn" id="logout-link" href="php/actions/logout_action.php"></a>
                     <?php elseif($isLoggedIn): ?>
-                        <a class="profile-btn" id="message-link" href="php/actions/start_chat_action.php?user=<?php echo $username?>"></a>
+                        <a class="profile-btn" id="message-link" href="chat.php?user=<?= $profileID?>"></a>
+                        
                         <?php if ($isFriend): ?> 
                             <a class="profile-btn" id="friend-link"></a>
                         <?php else: ?>
-                            <a class="profile-btn" id="add-friend-link" href="php/actions/add_friend_action.php"></a>
+                            <a class="profile-btn" id="add-friend-link" href="php/actions/add_friend_action.php?user=<?= $profileID?>"></a>
                         <?php endif; ?>
                     <?php endif; ?>
                 </div>

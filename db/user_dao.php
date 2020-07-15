@@ -12,7 +12,7 @@ interface UserDAOInterface
 
     function getUserByID($username);
 
-    function updateUser($userID, $age, $language, $description, $icon);
+    function updateUser($userID, $age, $language, $description, $iconID);
 
     function getFriends($userID);
 
@@ -229,7 +229,7 @@ class UserDAO implements UserDAOInterface
 
     
 
-    function updateUser($userID, $age, $language, $description, $icon){
+    function updateUser($userID, $age, $language, $description, $iconID){
         $db = Database::connect($this->dsn);
 
 
@@ -262,12 +262,12 @@ class UserDAO implements UserDAOInterface
                 $cmd->bindParam( ':description', $description );
                 $cmd->execute();
             }
-            if($icon!=-1){
-                $icon = Database::encodeData($icon);
-                $sql = "UPDATE User SET icon = :icon WHERE userid = :userid;";
+            if($iconID!=-1){
+                $iconID = Database::encodeData($iconID);
+                $sql = "UPDATE User SET iconid = :iconid WHERE userid = :userid;";
                 $cmd = $db->prepare( $sql );
                 $cmd->bindParam( ':userid', $userID );
-                $cmd->bindParam( ':icon', $icon );
+                $cmd->bindParam( ':iconid', $iconID );
                 $cmd->execute();
             }
             $db->commit();
@@ -280,6 +280,48 @@ class UserDAO implements UserDAOInterface
         Database::disconnect($this->dsn);
         
     }
+    function getIcon($iconID){
+        $db = Database::connect($this->dsn);
+        try {
+            $iconID = Database::encodeData($iconID);
+            $sql = "SELECT * FROM Icons WHERE iconid = :iconid";
+            $cmd = $db->prepare($sql);
+            $cmd->bindParam(':iconid', $iconID);
+            $cmd->execute();
+
+            $icon = $cmd->fetchObject();
+            if ( $icon != null) {
+                Database::disconnect($this->dsn);
+                return $icon;
+            } else {
+                Database::disconnect($this->dsn);
+                return -1;
+            }
+            
+        } catch (Exception $ex) {
+            Database::disconnect($this->dsn);
+        }
+    }
+    function getAllIcons(){
+        $db = Database::connect($this->dsn);
+        try {
+            $icons = array();
+            $sql = "SELECT * FROM Icons";
+            $cmd = $db->prepare($sql);
+
+            if ($cmd->execute()) {
+                while ($icon = $cmd->fetchObject()) {
+                    array_push($icons, $icon);
+                }
+            }
+            return $icons;
+            
+        } catch (Exception $ex) {
+            Database::disconnect($this->dsn);
+        }
+    }
+    
+    
 
     function saveMessage($userid1, $userid2, $message)
     {
@@ -433,6 +475,53 @@ class UserDAO implements UserDAOInterface
             }
         } catch (Exception $ex) {
             return false;
+        }
+    }
+
+    function getChats($ownid) {
+        $result = array();
+
+        try {
+            $db = Database::connect($this->dsn);
+        } catch (Exception $e) {
+        }
+        try {
+
+            $db->beginTransaction();
+            $sql = 'SELECT DISTINCT userid1 FROM Chat WHERE userid2 = :wert';
+            $cmd = $db->prepare( $sql );
+            $cmd->bindParam( ':wert', $ownid );
+            $cmd->execute();
+
+            if ($cmd->execute()) {
+                while ($help = $cmd->fetchObject()) {
+                    //extra step to get usable ids in array
+                    foreach($help as $friendid) {
+                        array_push($result, $friendid);
+                    }
+                }
+            }
+
+            $sql = 'SELECT DISTINCT userid2 FROM Chat WHERE userid1 = :wert';
+            $cmd = $db->prepare( $sql );
+            $cmd->bindParam( ':wert', $ownid );
+            $cmd->execute();
+
+            if ($cmd->execute()) {
+                while ($help = $cmd->fetchObject()) {
+                    //extra step to get usable ids in array
+                    foreach($help as $friendid) {
+                        if(!in_array($friendid, $result))
+                            array_push($result, $friendid);
+                    }
+                }
+            }
+            $db->commit();
+            return $result;
+
+        } catch(Exception $ex) {
+            $db->rollBack();
+            return -1;
         }
     }
 

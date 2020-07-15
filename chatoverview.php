@@ -6,13 +6,14 @@ if($_SESSION['userid']==-1){
     header('Location: login.php?dest=chat');
     exit();
 }
-
+$userID = $_SESSION['userid'];
 require_once "db/user_dao.php";
 
 $friendlist = array();
 $userDAO = new UserDAO("sqlite:db/Database.db");
-$yourfriendids = $userDAO ->getFriends($_SESSION['userid']);
-
+$friendids = $userDAO->getFriends($userID);
+$chatpartnerids = $userDAO->getChats($userID);
+echo implode(", ", $chatpartnerids);
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -37,44 +38,36 @@ $yourfriendids = $userDAO ->getFriends($_SESSION['userid']);
         <h1>Chatübersicht</h1>
         <div class="chat-grid">
             <div></div>
-            <div class="boxname" id="active">Aktive Chats</div>
+            <div class="boxname" id="active">Alle Chats</div>
             <div></div>
             <div class="boxname" id="friends">Freunde</div>
             <div></div>
             <div class="scroll" id="activeChats">
                 <div class="gridActiveChats">
-                    <?php if(isset($_SESSION['activechats'])) : ?>
-                        <?php $array = $_SESSION['activechats']; ?>
-                        <?php foreach($array as $item) :
-                            $activeIcon = $item->icon;
-                            $activeName = $item->username;
-                            $activeID = $item->userid;
-                            $profileurl = 'playerprofile.php?id= ' . $activeID ;?>
-                            <div class="icon" id=<?= $activeIcon ?> onclick="location.href='<?php echo $profileurl?>'"></div>
-                            <form action="php/actions/start_chat_action.php?user=<?php echo $activeName?>" method="post">
-                                <input class="startChat" type="submit" name="friend" value="<?php echo $activeName?>">
-                            </form>
+                        <?php foreach($chatpartnerids as $partnerid) :
+                            $user = $userDAO ->getUserByID($partnerid);
+                            $iconid = $user->iconid;
+                            $name = $user->username;
+                            $id = $user->userid;
+                            $profileurl = 'playerprofile.php?id=' . $id ;?>
+                            <a class="icon" href='<?= $profileurl?>' style="background-image: url('<?= 'Resourcen/Icons/' . $userDAO->getIcon($iconid)->filename?>');"></a>
+                            <a class="startChat" href="chat.php?user=<?= $id?>"><?= $name?></a>
                             <div class="chatcard">
                             </div>
                         <?php endforeach; ?>
-                    <?php endif; ?>
                 </div>
             </div>
             <div></div>
             <div class="scroll" id="friendsList">
                 <div class="gridFriends">
 
-                    <?php foreach($yourfriendids as $friend) :
-                        $frienduser = $userDAO ->getUserByID($friend);
-                        $friendicon = $frienduser->icon;
-                        $friendusername = $frienduser->username;
-                        $friendID = $frienduser->userid;
-                        $profileurl = 'playerprofile.php?id= ' . $friendID ;
-                        array_push($friendlist, $friendicon);?>
-                        <div class="icon" id= <?= $friendicon ?> onclick="location.href='<?php echo $profileurl?>'"></div>
-                        <form action="php/actions/start_chat_action.php?user=<?php echo $friendusername?>" method="post">
-                            <input class="startChat" type="submit" name="friend" value="<?php echo $friendusername ?>">
-                        </form>
+                    <?php foreach($friendids as $friendid) :
+                        $frienduser = $userDAO ->getUserByID($friendid);
+                        $friendiconid = $frienduser->iconid;
+                        $friendname = $frienduser->username;
+                        $profileurl = 'playerprofile.php?id=' . $friendid;?>
+                        <a class="icon" href='<?= $profileurl?>' style="background-image: url('<?= 'Resourcen/Icons/' . $userDAO->getIcon($friendiconid)->filename?>');"></a>
+                        <a class="startChat" href="chat.php?user=<?= $friendid?>"><?= $friendname?></a>
                     <?php endforeach; ?>
                 </div>
             </div>

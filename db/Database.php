@@ -52,8 +52,7 @@ class Database
               age INTEGER,
               language TEXT,
               description TEXT,
-              icon TEXT,
-              chat TEXT
+              iconid INTEGER DEFAULT 0
             )";
             $db->exec( $sql );
             
@@ -68,46 +67,46 @@ class Database
             )";
             $db->exec( $sql );
 
-            // Insert games
-            $ranks = serialize(['Bronze', 'Silber', 'Gold', 'Platin', 'Diamant', 'Master' ]);
-            $roles = serialize(['Top Lane', 'Jungle', 'Mid', 'Bottom', 'Support']);
-            $tags = serialize(['Strategie', 'Teamplay', 'Arenakampf']);
-            $sql = "REPLACE INTO Games (gameid, gamename, gamecolor, gameranks, gameroles, tags) VALUES (1, 'League of Legends', 'dcc156', :ranks, :roles, :tags);";
-            $cmd =$db->prepare( $sql );
-            $cmd->bindParam(":ranks", $ranks);
-            $cmd->bindParam(":roles", $roles);
-            $cmd->bindParam(":tags", $tags);
-            $cmd->execute();
-        
-            $ranks = serialize(['Unranked', 'Silber', 'Gold', 'Master Guardian', 'Legendary Eagle', 'Supreme', 'Global']);
-            $roles = serialize(['Sniper', 'Stratege', 'Support', 'Awper', 'Entry Fragger']);
-            $tags = serialize(['Strategie', 'Teamplay', 'Shooter']);
-            $sql = "REPLACE INTO Games (gameid, gamename, gamecolor, gameranks, gameroles, tags) VALUES (2, 'CS:GO', 'df6f19', :ranks, :roles, :tags);";
-            $cmd =$db->prepare( $sql );
-            $cmd->bindParam(":ranks", $ranks);
-            $cmd->bindParam(":roles", $roles);
-            $cmd->bindParam(":tags", $tags);
-            $cmd->execute();
-        
-            $ranks = serialize(['Unranked', 'Bronze', 'Silber', 'Gold', 'Platin', 'Diamant', 'Master', 'Grand Champion' ]);
-            $roles = serialize([]);
-            $tags = serialize(['Teamplay', 'Arenakampf']);
-            $sql = "REPLACE INTO Games (gameid, gamename, gamecolor, gameranks, gameroles, tags) VALUES (3, 'Rocket League', '5a46be', :ranks, :roles, :tags);";
-            $cmd =$db->prepare( $sql );
-            $cmd->bindParam(":ranks", $ranks);
-            $cmd->bindParam(":roles", $roles);
-            $cmd->bindParam(":tags", $tags);
-            $cmd->execute();
-        
-            $ranks = serialize(['Mercenary', 'Soldier', 'Veteran', 'Hero', 'Legend', 'Mythic', 'Immortal', 'Valorant']);
-            $roles = serialize(['Breach', 'Brimstone', 'Cypher', 'Jett', 'Omen', 'Phoenix', 'Raze', 'Reyna', 'Sage', 'Sova', 'Viper']);
-            $tags = serialize(['Strategie', 'Teamplay', 'Shooter']);
-            $sql = "REPLACE INTO Games (gameid, gamename, gamecolor, gameranks, gameroles, tags) VALUES (4, 'Valorant', 'ff4655', :ranks, :roles, :tags);";
-            $cmd =$db->prepare( $sql );
-            $cmd->bindParam(":ranks", $ranks);
-            $cmd->bindParam(":roles", $roles);
-            $cmd->bindParam(":tags", $tags);
-            $cmd->execute(); 
+             // Insert games
+             $ranks = serialize(['Bronze', 'Silber', 'Gold', 'Platin', 'Diamant', 'Master' ]);
+             $roles = serialize(['Top Lane', 'Jungle', 'Mid', 'Bottom', 'Support']);
+             $tags = serialize(['Strategie', 'Teamplay', 'Arenakampf']);
+             $sql = "REPLACE INTO Games (gameid, gamename, gamecolor, gameranks, gameroles, tags) VALUES (1, 'League of Legends', 'dcc156', :ranks, :roles, :tags);";
+             $cmd =$db->prepare( $sql );
+             $cmd->bindParam(":ranks", $ranks);
+             $cmd->bindParam(":roles", $roles);
+             $cmd->bindParam(":tags", $tags);
+             $cmd->execute();
+         
+             $ranks = serialize(['Unranked', 'Silber', 'Gold', 'Master Guardian', 'Legendary Eagle', 'Supreme', 'Global']);
+             $roles = serialize(['Sniper', 'Stratege', 'Support', 'Awper', 'Entry Fragger']);
+             $tags = serialize(['Strategie', 'Teamplay', 'Shooter']);
+             $sql = "REPLACE INTO Games (gameid, gamename, gamecolor, gameranks, gameroles, tags) VALUES (2, 'CS:GO', 'df6f19', :ranks, :roles, :tags);";
+             $cmd =$db->prepare( $sql );
+             $cmd->bindParam(":ranks", $ranks);
+             $cmd->bindParam(":roles", $roles);
+             $cmd->bindParam(":tags", $tags);
+             $cmd->execute();
+         
+             $ranks = serialize(['Unranked', 'Bronze', 'Silber', 'Gold', 'Platin', 'Diamant', 'Master', 'Grand Champion' ]);
+             $roles = serialize([]);
+             $tags = serialize(['Teamplay', 'Arenakampf']);
+             $sql = "REPLACE INTO Games (gameid, gamename, gamecolor, gameranks, gameroles, tags) VALUES (3, 'Rocket League', '5a46be', :ranks, :roles, :tags);";
+             $cmd =$db->prepare( $sql );
+             $cmd->bindParam(":ranks", $ranks);
+             $cmd->bindParam(":roles", $roles);
+             $cmd->bindParam(":tags", $tags);
+             $cmd->execute();
+         
+             $ranks = serialize(['Mercenary', 'Soldier', 'Veteran', 'Hero', 'Legend', 'Mythic', 'Immortal', 'Valorant']);
+             $roles = serialize(['Breach', 'Brimstone', 'Cypher', 'Jett', 'Omen', 'Phoenix', 'Raze', 'Reyna', 'Sage', 'Sova', 'Viper']);
+             $tags = serialize(['Strategie', 'Teamplay', 'Shooter']);
+             $sql = "REPLACE INTO Games (gameid, gamename, gamecolor, gameranks, gameroles, tags) VALUES (4, 'Valorant', 'ff4655', :ranks, :roles, :tags);";
+             $cmd =$db->prepare( $sql );
+             $cmd->bindParam(":ranks", $ranks);
+             $cmd->bindParam(":roles", $roles);
+             $cmd->bindParam(":tags", $tags);
+             $cmd->execute();  
            
             // Create Playerlist table
             $sql = "CREATE TABLE IF NOT EXISTS Playerlist (
@@ -136,6 +135,27 @@ class Database
             )";
             $db->exec($sql);
         
+
+            // Create Icon table
+            $sql = "CREATE TABLE IF NOT EXISTS Icons (
+                iconid INTEGER PRIMARY KEY,
+                filename TEXT
+            )";
+            $db->exec($sql);
+            $icons = ['iconBC.jpg', 'iconLee.jpg', 'iconFizz.jpg', 'iconGaren.jpg', 'iconGragas.jpg', 'iconGraves.jpg', 'iconKennen.jpg', 'iconSinged.jpg', 'iconZiggs.jpg'];
+            $sql = "REPLACE INTO Icons (iconid, filename) VALUES (:id, :filename);";
+            $i = 0;
+            foreach($icons as $icon){
+                $cmd = $db->prepare( $sql );
+                $cmd->bindParam(":id", $i);
+                $cmd->bindParam(":filename", $icon);
+                $cmd->execute(); 
+                $i++;
+            }
+
+
+
+
             $db->commit();
         
         } catch (Exception $e){

@@ -50,7 +50,7 @@ h1 {
     background: transparent;
 }
 
-input.startChat {
+.startChat {
     background: #111111;
     min-width:140px;
     min-height:100px;
@@ -62,10 +62,14 @@ input.startChat {
     color: var(--default-white);
     font-size: 24px;
     font-family: Arial, Helvetica, sans-serif;
+    line-height: 100px;
+    vertical-align: middle;
+    text-align: center;
+    text-decoration: none;
     transition: all 0.4s ease-out;
 }
 
-input.startChat:hover {
+.startChat:hover {
     transition: all 0.4s ease;
     cursor: pointer;
     transform: scale(1.15);
@@ -159,10 +163,9 @@ input.startChat:hover {
     .chat-grid #active.boxname {
         grid-row:1;
     }
-    input.startChat {
+    .startChat {
         min-width:260px;
         max-width: 300px;
-
     }
 }
 
@@ -170,7 +173,7 @@ input.startChat:hover {
     h1 {
         text-align:center;
     }
-    input.startChat {
+    .startChat {
         min-width:120px;
         max-width: 150px;
     }
@@ -180,7 +183,7 @@ input.startChat:hover {
     .gridFriends {
         grid-template-columns: 100px 200px;
     }
-    input.startChat:hover {
+    .startChat:hover {
         transform: scale(1.0);
     }
 }

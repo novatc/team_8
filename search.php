@@ -33,11 +33,13 @@ $search = $_GET['search'];
             <?php $searchresult = $playerlist->getPlayerByName($search);?>
             <?php if (isset($searchresult) && $searchresult!=null):
                 $playerID = $searchresult->userid;
-                $profileurl = 'playerprofile.php?id= ' . $playerID ;
+                $profileurl = 'playerprofile.php?id=' . $playerID ;
                 $age = $searchresult ->age;
                 $date = new DateTime($age);
                 $now = new DateTime();
-                $age_in_years = $now ->diff($date)->y
+                $age_in_years = $now ->diff($date)->y;
+                if($age_in_years==0)
+                    $age_in_years= "~";
 
                 ?>
 
