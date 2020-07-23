@@ -83,6 +83,7 @@ $completemessages = json_decode(json_encode($completemessages), true);
                     <div class="chatbox" id="sendForm">
                         <input class="data-input" id="sendMessage" type="text" name="message" required placeholder="Schreibe eine Nachricht...">
                         <input type="submit" id="sendButton" value="Senden">
+                        <input type="hidden" name="token" value="<?=$_SESSION['token']?>"/>
                     </div>
                 </form>
             </div>

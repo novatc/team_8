@@ -93,6 +93,7 @@ if(isset($_SESSION['gamechoice'])){
                     <div class="submit-wrapper">
                         <input class="submit-btn"  type="submit" name="deletegame" value="Entfernen">
                         <input class="submit-btn"  type="submit" name="savegame" value="Speichern">
+                        <input type="hidden" name="token" value="<?=$_SESSION['token']?>"/>
                     </div>
                 <?php endif; ?>
                 <?php if($gamechoice == 'League of Legends'): ?>
@@ -102,6 +103,7 @@ if(isset($_SESSION['gamechoice'])){
                     <div class="submit-wrapper">
                         <input class="submit-btn"  type="submit" name="deletegame" value="Entfernen">
                         <input class="submit-btn"  type="submit" name="savegame" value="Speichern">
+                        <input type="hidden" name="token" value="<?=$_SESSION['token']?>"/>
                     </div>
                 <?php endif; ?>
                 <?php if($gamechoice == 'Rocket League'): ?>
@@ -111,6 +113,7 @@ if(isset($_SESSION['gamechoice'])){
                     <div class="submit-wrapper">
                         <input class="submit-btn"  type="submit" name="deletegame" value="Entfernen">
                         <input class="submit-btn"  type="submit" name="savegame" value="Speichern">
+                        <input type="hidden" name="token" value="<?=$_SESSION['token']?>"/>
                     </div>
                 <?php endif; ?>
                 <?php if($gamechoice == 'Valorant'): ?>
@@ -120,6 +123,7 @@ if(isset($_SESSION['gamechoice'])){
                     <div class="submit-wrapper">
                         <input class="submit-btn"  type="submit" name="deletegame" value="Entfernen">
                         <input class="submit-btn"  type="submit" name="savegame" value="Speichern">
+                        <input type="hidden" name="token" value="<?=$_SESSION['token']?>"/>
                     </div>
                 <?php endif; ?>
             </form>

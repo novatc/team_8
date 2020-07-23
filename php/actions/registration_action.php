@@ -2,6 +2,10 @@
 require_once "session.php";
 updateSessionFromAction();
 
+if (empty($_SESSION['token'])) {
+    $_SESSION['token'] = uniqid('', true);
+}
+
 require_once "../../db/user_dao.php";
 $userDAO = new UserDAO();
 
@@ -38,6 +42,7 @@ if(!$empty){
         $userid = $userDAO->register($username, $email, $pwd, $pwdrepeat);
         if ($userid != -1){
             $_SESSION['userid'] = $userid;
+
             header('Location: ../../playerprofile.php');
             exit();
         } 

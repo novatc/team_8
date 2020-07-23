@@ -10,6 +10,9 @@ $isLoggedIn = $_SESSION['userid']>-1;
 $userID = $_SESSION['userid'];
 
 if($isLoggedIn){
+    if ($_SESSION['token']!==$_POST['token']) {
+        die ('Ungültiger Token');
+    }
 
     /* Check if input field empty */
     foreach ($required as $field){

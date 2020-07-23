@@ -8,6 +8,10 @@ $userDAO = new UserDAO();
 $isLoggedIn = $_SESSION['userid']>-1;
 
 if($isLoggedIn & isset($_GET['user'])){
+    if ($_SESSION['token']!==$_POST['token']) {
+        die ('Ungültiger Token');
+    }
+
     //testing
     $ownid = $_SESSION['userid'];
     $frienduser = $userDAO->getUserByID($_GET['user']);

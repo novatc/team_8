@@ -62,10 +62,12 @@ if(isset($_SESSION['gamechoice'])){
             </div> 
             <div class="input-wrapper">
                 <input class="data-input" type="date" name="age" value= "<?= ($age)?>">
+                <input type="hidden" name="token" value="<?=$_SESSION['token']?>"/>
                 <label class="left-label">Alter</label>
             </div>
             <div class="input-wrapper">
                 <input class="data-input" type="text" name="language" value= "<?= ($language)?>">
+                <input type="hidden" name="token" value="<?=$_SESSION['token']?>"/>
                 <label class="left-label">Sprachen</label>
             </div>       
             <h1>Icon ändern</h1>
@@ -73,6 +75,7 @@ if(isset($_SESSION['gamechoice'])){
             <div class="submit-wrapper">
                 <a class="submit-btn"  href="delete_account.php">Profil löschen</a>
                 <input class="submit-btn"  type="submit" name="saveprofile" value="Speichern">
+                <input type="hidden" name="token" value="<?=$_SESSION['token']?>"/>
             </div>
         </form>
 
