@@ -2,11 +2,16 @@
 require_once "session.php";
 updateSessionFromAction();
 
+if (empty($_SESSION['token'])) {
+    $_SESSION['token'] = uniqid('', true);
+}
+
 require_once "../../db/user_dao.php";
 $userDAO = new UserDAO();
 
 $empty = false;
 $required = array('username', 'password');
+
 
 
 /* Check if input field empty */
@@ -63,4 +68,7 @@ if(!$empty){
 }
 header('Location: ../../login.php');
 exit();
+
+
+
 ?>

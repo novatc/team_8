@@ -10,6 +10,10 @@ $isLoggedIn = $_SESSION['userid']>-1;
 $userID = $_SESSION['userid'];
 
 if($isLoggedIn){
+    if ($_SESSION['token']!==$_POST['token']) {
+        die ('Ungültiger Token');
+    }
+
     $icon = $_POST['icon'];
 
     $age = $_POST['age'];

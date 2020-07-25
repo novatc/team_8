@@ -11,6 +11,9 @@ $gameDAO = new GameDAO();
 $isLoggedIn = $_SESSION['userid']>-1;
 
 if($isLoggedIn){
+    if($_POST['csrf'] !== $_SESSION['csrf_token']) {
+        die("Ungültiger Token");
+    }
 
     $gameid = $gameDAO->getGameByName($_SESSION['gamechoice'])->gameid;
     $userid = $_SESSION['userid'];

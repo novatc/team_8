@@ -35,6 +35,7 @@ if(isset($_COOKIE['deletionmessage'])){
         <input class="login-input" type="text" name="username" placeholder="Benutzername" required>
         <input class="login-input" type="password" name="password" placeholder="Passwort" required>
         <input class="submit-btn" id="submit-form" type="submit" name="delete" value="Löschen">
+        <input type="hidden" name="csrf" value="'.$_SESSION['csrf_token'].'">
         <div class="center">
             <a class="no-link" href='playerprofile.php'>Abbrechen</a>
         </div>
