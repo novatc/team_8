@@ -10,9 +10,12 @@
     -moz-box-shadow: 0px 0px 21px 8px var(--light-shadow);
     box-shadow: 0px 0px 21px 8px var(--light-shadow);
 }
-.box .checkbox-container{
-    margin:auto;
-    text-align: center;
+.box .checkbox-container, .box .radiobutton-container{
+    margin: auto;
+}
+.box .choice-wrapper, .box .visibility-wrapper{
+    padding-bottom: 15px;
+    margin-bottom: 10px;
 }
 .gamebox, .icon-radio {   
     outline: none;

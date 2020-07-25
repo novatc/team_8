@@ -84,50 +84,9 @@ if(isset($_SESSION['gamechoice'])){
                 </div>
                 <input class="submit-btn" id="choose-btn" type="submit" name="gamechoicesubmit" value="Wählen">
             </form>
-            <?php if($gamechoice != ''): ?>
-            <form action="php/actions/edit_games_action.php" method="post">
-                <?php if($gamechoice == 'CS:GO'): ?>
-                    <div class="gamebox">
-                        <?php include "php/pieces/csgostatistics.php";?>
-                    </div>
-                    <div class="submit-wrapper">
-                        <input class="submit-btn"  type="submit" name="deletegame" value="Entfernen">
-                        <input class="submit-btn"  type="submit" name="savegame" value="Speichern">
-                        <input type="hidden" name="token" value="<?=$_SESSION['token']?>"/>
-                    </div>
-                <?php endif; ?>
-                <?php if($gamechoice == 'League of Legends'): ?>
-                    <div class="gamebox">
-                        <?php include "php/pieces/lolstatistics.php";?>
-                    </div>
-                    <div class="submit-wrapper">
-                        <input class="submit-btn"  type="submit" name="deletegame" value="Entfernen">
-                        <input class="submit-btn"  type="submit" name="savegame" value="Speichern">
-                        <input type="hidden" name="token" value="<?=$_SESSION['token']?>"/>
-                    </div>
-                <?php endif; ?>
-                <?php if($gamechoice == 'Rocket League'): ?>
-                    <div class="gamebox">
-                        <?php include "php/pieces/rocketleaguestatistics.php";?>
-                    </div>
-                    <div class="submit-wrapper">
-                        <input class="submit-btn"  type="submit" name="deletegame" value="Entfernen">
-                        <input class="submit-btn"  type="submit" name="savegame" value="Speichern">
-                        <input type="hidden" name="token" value="<?=$_SESSION['token']?>"/>
-                    </div>
-                <?php endif; ?>
-                <?php if($gamechoice == 'Valorant'): ?>
-                    <div class="gamebox">
-                        <?php include "php/pieces/valorantstatistics.php";?>
-                        </div>
-                    <div class="submit-wrapper">
-                        <input class="submit-btn"  type="submit" name="deletegame" value="Entfernen">
-                        <input class="submit-btn"  type="submit" name="savegame" value="Speichern">
-                        <input type="hidden" name="token" value="<?=$_SESSION['token']?>"/>
-                    </div>
-                <?php endif; ?>
-            </form>
-            <?php endif; ?>
+            <?php if($gamechoice != ''): 
+                include "php/pieces/gamestats.php";
+           endif; ?>
         </div>
 
     </main>
