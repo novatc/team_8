@@ -135,7 +135,6 @@ h5{
 }
 .icon-radio .radiobutton-container input:checked ~ .icon {
     border-color: var(--orange);
-    
 }
 
 /* Inputs */
