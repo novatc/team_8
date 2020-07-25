@@ -110,7 +110,7 @@ class Database
            
             // Create Playerlist table
             $sql = "CREATE TABLE IF NOT EXISTS Playerlist (
-              gameid TEXT,
+              gameid INTEGER,
               userid INTEGER ,
               rank TEXT,
               role TEXT,
@@ -129,8 +129,8 @@ class Database
         
             // Create Chat table
             $sql = "CREATE TABLE IF NOT EXISTS Chat (
-              userid1 INTEGER,
-              userid2 INTEGER,
+              senderid INTEGER,
+              receiverid INTEGER,
               chatmessage TEXT
             )";
             $db->exec($sql);

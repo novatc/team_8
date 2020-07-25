@@ -16,7 +16,7 @@ interface UserDAOInterface
 
     function getFriends($userID);
 
-    function saveMessage($id1, $id2, $message);
+    function saveMessage($senderid, $receiverid, $message);
 
     function getMessages($id1, $id2);
 
@@ -156,7 +156,7 @@ class UserDAO implements UserDAOInterface
             $cmd->bindParam(':userid', $userID);
             $cmd->execute();
 
-            $sql = "DELETE FROM Chat WHERE userid1 =:userid OR userid2 =:userid;";
+            $sql = "DELETE FROM Chat WHERE senderid =:userid OR receiverid =:userid;";
             $cmd = $db->prepare($sql);
             $cmd->bindParam(':userid', $userID);
             $cmd->execute();
@@ -323,20 +323,20 @@ class UserDAO implements UserDAOInterface
     
     
 
-    function saveMessage($userid1, $userid2, $message)
+    function saveMessage($senderid, $receiverid, $message)
     {
 
         $db = Database::connect($this->dsn);
 
         try {
             $db->beginTransaction();
-            $userid1 = Database::encodeData($userid1);
-            $userid2 = Database::encodeData($userid2);
+            $senderid = Database::encodeData($senderid);
+            $receiverid = Database::encodeData($receiverid);
             $message = Database::encodeData($message);
-            $sql = "INSERT INTO Chat (userid1, userid2, chatmessage) VALUES (:user1, :user2, :message);";
+            $sql = "INSERT INTO Chat (senderid, receiverid, chatmessage) VALUES (:senderid, :receiverid, :message);";
             $cmd = $db->prepare( $sql );
-            $cmd->bindParam( ':user1', $userid1 );
-            $cmd->bindParam( ':user2', $userid2 );
+            $cmd->bindParam( ':senderid', $senderid );
+            $cmd->bindParam( ':receiverid', $receiverid );
             $cmd->bindParam( ':message', $message );
             $cmd->execute();
 
@@ -356,7 +356,7 @@ class UserDAO implements UserDAOInterface
 
 
         try {
-            $sql = 'SELECT * FROM Chat WHERE userid1 = :you AND userid2 = :friend OR  userid1 = :friend AND userid2 = :you';
+            $sql = 'SELECT * FROM Chat WHERE senderid = :you AND receiverid = :friend OR  senderid = :friend AND receiverid = :you';
             $cmd = $db->prepare( $sql );
             $cmd->bindParam( ':you', $userid1 );
             $cmd->bindParam( ':friend', $userid2 );
@@ -449,7 +449,7 @@ class UserDAO implements UserDAOInterface
                 }
             }
             $db->commit();
-            return $result;
+            return array_reverse($result);
 
         } catch(Exception $ex) {
             echo ("Failure:") . $ex->getMessage();
@@ -488,7 +488,7 @@ class UserDAO implements UserDAOInterface
         try {
 
             $db->beginTransaction();
-            $sql = 'SELECT DISTINCT userid1 FROM Chat WHERE userid2 = :wert';
+            $sql = 'SELECT DISTINCT senderid FROM Chat WHERE receiverid = :wert';
             $cmd = $db->prepare( $sql );
             $cmd->bindParam( ':wert', $ownid );
             $cmd->execute();
@@ -502,7 +502,7 @@ class UserDAO implements UserDAOInterface
                 }
             }
 
-            $sql = 'SELECT DISTINCT userid2 FROM Chat WHERE userid1 = :wert';
+            $sql = 'SELECT DISTINCT receiverid FROM Chat WHERE senderid = :wert';
             $cmd = $db->prepare( $sql );
             $cmd->bindParam( ':wert', $ownid );
             $cmd->execute();
@@ -517,7 +517,7 @@ class UserDAO implements UserDAOInterface
                 }
             }
             $db->commit();
-            return $result;
+            return array_reverse($result);
 
         } catch(Exception $ex) {
             $db->rollBack();
