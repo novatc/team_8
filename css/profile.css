@@ -51,31 +51,45 @@
 .profile-btn{
     width: 25px;
     height: 25px;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
     display:inline-block;
 }
 #edit-profile{
     background: url(../Resourcen/Navigation/settings-white-24dp.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
 }
 #logout-link{
     background: url(../Resourcen/Navigation/exit_to_app-white-24dp.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
 }
 #message-link{
     background: url(../Resourcen/Navigation/chat-white-24dp.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
 }
 #add-friend-link{
     background: url(../Resourcen/Navigation/friend_add-white-24dp.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
 }
 #friend-link{
     width: 28px;
     height: 28px;
     background: url(../Resourcen/Navigation/friends-white-24dp.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
 }
 #edit-games{
     background: url(../Resourcen/Navigation/edit-white-24dp.svg);
     background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
     float: right;
     padding-left: 5px;
 }

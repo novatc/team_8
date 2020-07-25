@@ -144,7 +144,7 @@ h5{
     display: flex;
     margin: auto;
 }
-.choice-wrapper, .icon-wrapper, .submit-wrapper{
+.choice-wrapper, .icon-wrapper, .submit-wrapper, .visibility-wrapper{
     position: relative;
     display: flex;
     flex-direction: row;
@@ -152,8 +152,13 @@ h5{
     margin: auto;
 }
 .choice-wrapper{
+    padding: 5px;
     border-bottom: 2px solid var(--purple);
 }
+.visibility-wrapper{
+    padding: 5px;
+}
+
 #select-icon{
     position: absolute;
     width: 30px;
