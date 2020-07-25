@@ -35,7 +35,7 @@ $chatpartnerids = $userDAO->getChats($userID);
         <h1>Chatübersicht</h1>
         <div class="chat-grid">
             <div class="scroll" id="activeChats">
-                <div class="boxname" id="active">Alle Chats</div>
+                <h2>Alle Chats</h2>
                 <div class="gridActiveChats">
                         <?php foreach($chatpartnerids as $chatpartnerid):
                             $chatpartner = $userDAO ->getUserByID($chatpartnerid);
@@ -58,9 +58,8 @@ $chatpartnerids = $userDAO->getChats($userID);
             </div>
             <div></div>
             <div class="scroll" id="friendsList">
-                <div class="boxname" id="friends">Freunde</div>
+                <h2>Freunde</h2>
                 <div class="gridFriends">
-
                     <?php foreach($friendids as $friendid) :
                         $frienduser = $userDAO ->getUserByID($friendid);
                         $friendiconid = $frienduser->iconid;
