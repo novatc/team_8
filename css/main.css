@@ -37,10 +37,6 @@ footer {
     height: 50px;
     background-color: var(--dark-bg-color);;
 }
-
-
-
-
 /* Tablet */
 @media screen and (max-width: 1080px) {
 

@@ -349,6 +349,23 @@ class UserDAO implements UserDAOInterface
         }
     }
 
+    function readMessages($userid, $chatpartnerid)
+    {
+        $db = Database::connect($this->dsn);
+        try {
+            $userid = Database::encodeData($userid);
+            $chatpartnerid = Database::encodeData($chatpartnerid);
+            $sql = "UPDATE Chat SET read = 1 WHERE senderid = :sender AND receiverid =:receiver;";
+            $cmd = $db->prepare( $sql );
+            $cmd->bindParam( ':sender', $chatpartnerid );
+            $cmd->bindParam( ':receiver', $userid );
+            $cmd->execute();
+            return 0;
+
+        } catch (Exception $ex) {
+            return -1;
+        }
+    }
     function getMessages($userid1, $userid2) {
 
         $allmessages = array();
@@ -521,6 +538,39 @@ class UserDAO implements UserDAOInterface
 
         } catch(Exception $ex) {
             $db->rollBack();
+            return -1;
+        }
+    }
+
+    function getNumberOfUnreadMessagesFromChat($userid, $chatpartnerid){
+        $db = Database::connect($this->dsn);
+
+        try {
+            $sql = "SELECT COUNT(*) AS number FROM Chat WHERE senderid = :sender AND receiverid = :receiver AND read = 0";
+            $cmd = $db->prepare( $sql );
+            $cmd->bindParam( ':sender', $chatpartnerid );
+            $cmd->bindParam( ':receiver', $userid );
+            $cmd->execute();
+
+            return $cmd->fetchObject()->number;
+            
+        } catch (Exception $ex) {
+            return -1;
+        }
+    }
+    
+    function getNumberOfAllUnreadMessages($userid){
+        $db = Database::connect($this->dsn);
+
+        try {
+            $sql = "SELECT COUNT(*) AS number FROM Chat WHERE receiverid = :receiver AND read = 0";
+            $cmd = $db->prepare( $sql );
+            $cmd->bindParam( ':receiver', $userid );
+            $cmd->execute();
+
+            return $cmd->fetchObject()->number;
+            
+        } catch (Exception $ex) {
             return -1;
         }
     }

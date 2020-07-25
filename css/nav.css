@@ -23,26 +23,31 @@ header nav .grid-container {
     line-height: 50px;
 }
 
-header nav .main-nav{
-    grid-column: 1;
-    width: 100%;   
-}
-
-header nav .profil-nav{
-    grid-column: 3;
+header .main-nav{
+    grid-column: 1;  
     width: 100%;
-    text-align: right;
 }
 
-header nav a{
+header .profil-nav{
+    grid-column: 3;
+    text-align: end;
+    width: 100%;
+}
+
+header .message-wrapper{
+    position: relative;
+    
+    display: inline-block;
+    
+}
+header a{
     color: var(--default-white);
     font-weight: bold;
     text-decoration: none;
-    min-width: 40px;
-    max-width: 100px;
     text-align: center;
+    width: 50px;
 }
-header nav #home-link{
+header #home-link{
     color: transparent; 
     background: url(../Resourcen/Logo/logo_orange.png);
     background-repeat: no-repeat;
@@ -51,7 +56,7 @@ header nav #home-link{
     display: inline-block;
 }
 
-header nav #game-link{
+header #game-link{
     color: transparent; 
     background: url(../Resourcen/Navigation/esports-white-24dp.svg);
     background-repeat: no-repeat;
@@ -59,22 +64,36 @@ header nav #game-link{
     background-position: center;
     display:inline-block;
 }
-header nav #login-link{
+header #login-link{
     font-size: 17px;
     padding: 8px 15px;
     margin-right: 5px;
     margin-left: 5px;
+    width: 100px;
 }
 
-header nav #message-link{
+header #message-link{
     color: transparent; 
     background: url(../Resourcen/Navigation/notifications-white-24dp.svg);
     background-repeat: no-repeat;
     background-size: 32px;
     background-position: center;
-    display:inline-block;
 }
-header nav #profil-link{
+header .message-counter{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    border-radius: 10px;
+    font-size: 15px;
+    text-align: center;
+    vertical-align: center;
+    background-color: var(--warnig-red);
+    right: -7px;
+    top: 2px;
+}
+header #profil-link{
+    position: static;
     color: transparent; 
     background: url(../Resourcen/Navigation/person-white-24dp.svg);
     background-repeat: no-repeat;
@@ -82,10 +101,10 @@ header nav #profil-link{
     background-position: center;
     display:inline-block;
 }
-header nav a:hover{
+header a:hover{
     background-color: var(--light-bg-color)
 }
-header nav .search-wrapper{
+header .search-wrapper{
     grid-column: 2;
     display: flex;
     width: 100%;
@@ -94,14 +113,14 @@ header nav .search-wrapper{
     margin: auto;
     position: relative;
 }
-header nav .search-icon {
+header .search-icon {
     height: max-content;
     width: auto;
     align-self: center;
     position: absolute;
     left: 2px;
 }
-header nav .search {   
+header .search {   
     font-size: 15px;
     border-radius: 5px;
     width: calc(100% - 5px - max(25px, 6%));
@@ -123,15 +142,17 @@ header .search:hover, .search:focus {
 }
 /* Smartphone */
 @media screen and (max-width: 780px) {
-    header nav a {
-        width: 15%;
-    }
-    header nav .search-wrapper{
+
+    header .search-wrapper{
         height: 25px;
     }
-    header nav .search {  
+    header .search {  
         font-size: 14.5px;
     }
 }
 
-
+@media screen and (max-width: 400px) {
+    header a{
+        width: 40px;
+    }
+}

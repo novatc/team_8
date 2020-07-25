@@ -1,14 +1,23 @@
 .chat-grid {
     display: grid;
-    grid-template-columns: 2% 40%  3% 25%;
-    grid-column-gap:100px;
+    grid-template-columns: 65% 30%;
+    grid-column-gap: 5%;
     grid-row-gap: 20px;
-    width: 100%;
-    margin: 0 auto;
+    width: 80%;
+    margin: auto;
+
 }
 
-h1 {
-    text-align: left;
+h1{
+    text-align: center;
+}
+#activeChats{
+    grid-column: 1;
+    grid-row: 1;
+}
+#friendsList{
+    grid-column: 2;
+    grid-row: 1;
 }
 
 .boxname {
@@ -18,7 +27,7 @@ h1 {
 
 .gridActiveChats {
     display: grid;
-    grid-template-columns: 130px 170px auto;
+    grid-template-columns: 130px 170px;
     grid-column-gap: 1em;
     grid-row-gap: 5em;
 }
@@ -31,26 +40,24 @@ h1 {
 }
 
 .scroll {
-    background: #111111;
-    height: 650px;
+    background: var(--dar-bg-color);
     overflow-x: hidden;
     overflow-y: scroll;
     border-style: double;
     border-color:  var(--light-bg-color);
-    padding-top:20px;
+    padding-top: 20px;
     padding-bottom: 20px;
-    padding-left:10px;
+    padding-left: 10px;
     -webkit-box-shadow: 0px 0px 21px 8px var(--light-shadow);
     -moz-box-shadow: 0px 0px 21px 8px var(--light-shadow);
     box-shadow: 0px 0px 21px 8px var(--light-shadow);
     border-radius: 24px;
 }
-::-webkit-scrollbar {
-    width: 0px;
-    background: transparent;
-}
+
+
 
 .startChat {
+    position: relative;
     background: #111111;
     min-width:140px;
     min-height:100px;
@@ -68,6 +75,19 @@ h1 {
     text-decoration: none;
     transition: all 0.4s ease-out;
 }
+.startChat .message-counter{
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    border-radius: 20px;
+    font-size: 20px;
+    text-align: center;
+    vertical-align: center;
+    background-color: var(--warnig-red);
+    right: -20px;
+    top: -10px;
+}
 
 .startChat:hover {
     transition: all 0.4s ease;
@@ -84,85 +104,36 @@ h1 {
 
 }
 
-@media screen and (max-width: 1700px) {
-    h1 {
-        text-align:center;
-    }
-    .chat-grid {
-        display: grid;
-        grid-template-columns: auto auto auto auto;
-        grid-column-gap:0px;
-        grid-row-gap: 20px;
-        width: 100%;
-        margin: 0 auto;
-    }
-
-}
-
-@media screen and (max-width: 1200px) {
-    h1 {
-        text-align:center;
-    }
-    .chat-grid {
-        display: grid;
-        grid-template-columns: 5% auto 5%;
-        grid-column-gap:0px;
-        grid-row-gap: 20px;
-        width: 100%;
-        margin: 0 auto;
-    }
-    .scroll {
-        width: 98%;
-        grid-column:2;
-    }
-    .boxname {
-        grid-column:2;
-    }
-    .gridActive {
-        grid-template-columns: 1000px;
-    }
-    .gridFriends {
-        grid-template-columns: auto 250px auto 250px;
-    }
-    .chat-grid #friends.boxname {
-        grid-row:3;
-    }
-    .chat-grid #active.boxname {
-        grid-row:1;
-    }
-
-}
-
 /* Smartphone */
 @media screen and (max-width: 780px) {
-    h1 {
-        text-align:center;
-    }
+
     .chat-grid {
         display: grid;
-        grid-template-columns: 5% auto 5%;
-        grid-column-gap:0px;
+        grid-template-columns: 100%;
+        grid-column-gap: 0px;
         grid-row-gap: 20px;
         width: 100%;
-        margin: 0 auto;
+    }
+    #activeChats{
+        width: 90%;
+        margin: auto;
+        grid-column: 1;
+        grid-row: 1;
+    }
+    #friendsList{
+        margin: auto;
+        width: 90%;
+        grid-column: 1;
+        grid-row: 2;
     }
     .gridActiveChats {
-        grid-template-columns: 150px 150px 0;
+        grid-template-columns: 150px 150px;
     }
 
     .gridFriends {
         grid-template-columns: 150px 150px;
     }
 
-    .scroll {
-        width:98%;
-    }
-    .chat-grid #friends.boxname {
-        grid-row:3;
-    }
-    .chat-grid #active.boxname {
-        grid-row:1;
-    }
     .startChat {
         min-width:260px;
         max-width: 300px;
@@ -170,18 +141,16 @@ h1 {
 }
 
 @media screen and (max-width: 550px) {
-    h1 {
-        text-align:center;
-    }
+
     .startChat {
         min-width:120px;
         max-width: 150px;
     }
     .gridActiveChats {
-        grid-template-columns: 100px 400px auto;
+        grid-template-columns: 100px auto;
     }
     .gridFriends {
-        grid-template-columns: 100px 200px;
+        grid-template-columns: 100px auto;
     }
     .startChat:hover {
         transform: scale(1.0);

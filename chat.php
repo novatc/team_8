@@ -8,23 +8,33 @@ if($_SESSION['userid']==-1){
     header('Location: login.php?dest=chat');
     exit();
 }
+if(!isset($_GET['user'])){
+    header('Location: chatoverview.php');
+    exit();
+}
+
 
 $userDAO = new UserDAO("sqlite:db/Database.db");
 
 $onlymessages = array();
-$you = $userDAO->getUserByID($_SESSION['userid']);
-$youriconid = $you->iconid;
+$userID = $_SESSION['userid'];
+$user = $userDAO->getUserByID($userID);
+$usericonid = $user->iconid;
 
-$frienduser = $userDAO->getUserByID($_GET['user']);
-$friendiconid = $frienduser->iconid;
-$friendname = $frienduser->username;
-$friendid = $frienduser->userid;
-$friendprofile = $profileurl = 'playerprofile.php?id= ' . $friendid;
+$chatpartnerID = $_GET['user'];
+$chatpartner = $userDAO->getUserByID($chatpartnerID);
+$chatpartnericonid = $chatpartner->iconid;
+$chatpartnername = $chatpartner->username;
+$chatpartnerid = $chatpartner->userid;
+$chatpartnerprofile = $profileurl = 'playerprofile.php?id= ' . $chatpartnerid;
 
 //completemessages includes the senderID, receiverID and the message itself
-$completemessages = $userDAO->getMessages($_SESSION['userid'], $friendid);
+$completemessages = $userDAO->getMessages($_SESSION['userid'], $chatpartnerid);
 //decode stdObject to Array for usability
 $completemessages = json_decode(json_encode($completemessages), true);
+
+// Read messages
+$userDAO->readMessages($userID, $chatpartnerID);
 ?>
 
 <!DOCTYPE html>
@@ -51,9 +61,9 @@ $completemessages = json_decode(json_encode($completemessages), true);
                 <div class="description">
                     <div class="headgrid">
                         <a href="chat.php">
-                            <div class="iconChatHead" style="background-image: url('<?= 'Resourcen/Icons/' . $userDAO->getIcon($friendiconid)->filename?>');"></div>
+                            <div class="iconChatHead" style="background-image: url('<?= 'Resourcen/Icons/' . $userDAO->getIcon($chatpartnericonid)->filename?>');"></div>
                         </a>
-                        <label id="name"><?= $friendname?></label>
+                        <label id="name"><?= $chatpartnername?></label>
                         <div class="chatcardnopadding">
                         </div>
                     </div>
@@ -66,11 +76,11 @@ $completemessages = json_decode(json_encode($completemessages), true);
                             $senderID = reset($onemessage);
                             $text = end($onemessage);
                             if($senderID == $_SESSION['userid']) : ?>
-                                <div class="iconSmall" href='playerprofile.php' style="background-image: url('<?= 'Resourcen/Icons/' . $userDAO->getIcon($youriconid)->filename?>');"></div>
+                                <div class="iconSmall" href='playerprofile.php' style="background-image: url('<?= 'Resourcen/Icons/' . $userDAO->getIcon($usericonid)->filename?>');"></div>
                                 <p class="speech-bubble-self">
                                     <?= ($text) ?> </p>
                             <?php elseif($senderID != $_SESSION['userid']) : ?>
-                                <div class="iconSmall" href='<?php echo $friendprofile?>' style="background-image: url('<?= 'Resourcen/Icons/' . $userDAO->getIcon($friendiconid)->filename?>');"></div>
+                                <div class="iconSmall" href='<?php echo $chatpartnerprofile?>' style="background-image: url('<?= 'Resourcen/Icons/' . $userDAO->getIcon($chatpartnericonid)->filename?>');"></div>
                                 <p class="speech-bubble">
                                     <?= $text ?> </p>
                             <?php endif; ?>
@@ -79,7 +89,7 @@ $completemessages = json_decode(json_encode($completemessages), true);
                 </div>
 
                 <!-- Senden-->
-                <form id="messageform" action="php/actions/send_message_action.php?user=<?= $friendid?>" method="post">
+                <form id="messageform" action="php/actions/send_message_action.php?user=<?= $chatpartnerid?>" method="post">
                     <div class="chatbox" id="sendForm">
                         <input class="data-input" id="sendMessage" type="text" name="message" required placeholder="Schreibe eine Nachricht...">
                         <input type="submit" id="sendButton" value="Senden">

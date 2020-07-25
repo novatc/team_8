@@ -131,7 +131,8 @@ class Database
             $sql = "CREATE TABLE IF NOT EXISTS Chat (
               senderid INTEGER,
               receiverid INTEGER,
-              chatmessage TEXT
+              read BIT DEFAULT 0,
+              chatmessage TEXT              
             )";
             $db->exec($sql);
         

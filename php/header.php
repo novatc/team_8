@@ -2,14 +2,17 @@
 require_once "actions/session.php";
 updateSession();
 
-$isLoggedIn = $_SESSION['userid']> -1;
+require_once "db/user_dao.php";
+$userDAO = new UserDAO("sqlite:db/Database.db");
+$userID = $_SESSION['userid'];
+$isLoggedIn = $userID > -1;
 ?>
 
 <nav>
     <div class="grid-container">
         <div class="main-nav">
-            <a id = "home-link" href="index.php">Home</a>
-            <a id = "game-link" href="gameoverview.php">Spiele</a>
+            <a id = "home-link" href="index.php">XX</a>
+            <a id = "game-link" href="gameoverview.php">XX</a>
         </div>
         <form class="search-wrapper" action="search.php" method="get">
             <img class = search-icon src="Resourcen/Navigation/search-black-24dp.svg">
@@ -17,8 +20,16 @@ $isLoggedIn = $_SESSION['userid']> -1;
         </form>
         <div class="profil-nav">
             <?php if ($isLoggedIn): ?>
-                <a id = "message-link" href="chatoverview.php">Nachrichten</a>
-                <a id = "profil-link" href="playerprofile.php">Profil</a>  
+                <div class="message-wrapper">
+                    <a id = "message-link" href="chatoverview.php">XX</a>
+                    <?php
+                        $num = $userDAO->getNumberOfAllUnreadMessages($userID);
+                        if($num>0): 
+                    ?>
+                            <label class="message-counter"><?= $num ?></label>
+                    <?php endif?>
+                </div>
+                <a id = "profil-link" href="playerprofile.php">XX</a>  
             <?php else: ?>
                 <a class = "btn" id = "login-link" href="login.php?dest=profile">Login</a>
             <?php endif; ?>
