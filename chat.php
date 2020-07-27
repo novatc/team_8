@@ -47,6 +47,7 @@ $userDAO->readMessages($userID, $chatpartnerID);
     <link rel="stylesheet" type="text/css" href="css/chat.css">
     <link rel="stylesheet" type="text/css" href="css/icons.css">
     <link rel="stylesheet" type="text/css" href="css/cardgrid.css">
+    
 </head>
 <body>
     <header>
@@ -76,11 +77,11 @@ $userDAO->readMessages($userID, $chatpartnerID);
                             $senderID = reset($onemessage);
                             $text = end($onemessage);
                             if($senderID == $_SESSION['userid']) : ?>
-                                <div class="iconSmall" href='playerprofile.php' style="background-image: url('<?= 'Resourcen/Icons/' . $userDAO->getIcon($usericonid)->filename?>');"></div>
+                                <div class="iconSmall" style="background-image: url('<?= 'Resourcen/Icons/' . $userDAO->getIcon($usericonid)->filename?>');"></div>
                                 <p class="speech-bubble-self">
                                     <?= ($text) ?> </p>
                             <?php elseif($senderID != $_SESSION['userid']) : ?>
-                                <div class="iconSmall" href='<?php echo $chatpartnerprofile?>' style="background-image: url('<?= 'Resourcen/Icons/' . $userDAO->getIcon($chatpartnericonid)->filename?>');"></div>
+                                <div class="iconSmall" style="background-image: url('<?= 'Resourcen/Icons/' . $userDAO->getIcon($chatpartnericonid)->filename?>');"></div>
                                 <p class="speech-bubble">
                                     <?= $text ?> </p>
                             <?php endif; ?>
