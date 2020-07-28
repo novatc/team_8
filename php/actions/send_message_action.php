@@ -18,8 +18,8 @@ if($isLoggedIn & isset($_GET['user'])){
     $friendid = $frienduser->userid;
     $message = $_POST['message'];
 
-
-    $userDAO->saveMessage($ownid, $friendid, $message);
+    if($message!="")
+        $userDAO->saveMessage($ownid, $friendid, $message);
 }
 header('Location: ../../chat.php?user='. $friendid);
 exit();

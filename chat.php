@@ -59,7 +59,7 @@ $userDAO->readMessages($userID, $chatpartnerID);
         <div id="wholechat">
             <!-- Header-->
             <div class="chatbox" id="chatheader">
-                <div class="description">
+                
                     <div class="headgrid">
                         <a href="chat.php">
                             <div class="iconChatHead" style="background-image: url('<?= 'Resourcen/Icons/' . $userDAO->getIcon($chatpartnericonid)->filename?>');"></div>
@@ -68,7 +68,7 @@ $userDAO->readMessages($userID, $chatpartnerID);
                         <div class="chatcardnopadding">
                         </div>
                     </div>
-                </div>
+                
             </div>
                 <div class="chatbox" id="chathistory">
                     <div class="chatgrid">
@@ -77,23 +77,31 @@ $userDAO->readMessages($userID, $chatpartnerID);
                             $senderID = reset($onemessage);
                             $text = end($onemessage);
                             if($senderID == $_SESSION['userid']) : ?>
-                                <div class="iconSmall" style="background-image: url('<?= 'Resourcen/Icons/' . $userDAO->getIcon($usericonid)->filename?>');"></div>
                                 <p class="speech-bubble-self">
                                     <?= ($text) ?> </p>
+                                <div class="icon-self" style="background-image: url('<?= 'Resourcen/Icons/' . $userDAO->getIcon($usericonid)->filename?>');"></div>
+                                
                             <?php elseif($senderID != $_SESSION['userid']) : ?>
-                                <div class="iconSmall" style="background-image: url('<?= 'Resourcen/Icons/' . $userDAO->getIcon($chatpartnericonid)->filename?>');"></div>
-                                <p class="speech-bubble">
+                                <div class="icon-user" style="background-image: url('<?= 'Resourcen/Icons/' . $userDAO->getIcon($chatpartnericonid)->filename?>');"></div>
+                                <p class="speech-bubble-user">
                                     <?= $text ?> </p>
                             <?php endif; ?>
                         <?php endforeach; ?>
                     </div>
                 </div>
+                <script>
+                    var chat = document.getElementById("chathistory");
+                    chat.scrollTop = chat.scrollHeight;
+                </script>
 
                 <!-- Senden-->
                 <form id="messageform" action="php/actions/send_message_action.php?user=<?= $chatpartnerid?>" method="post">
                     <div class="chatbox" id="sendForm">
-                        <input class="data-input" id="sendMessage" type="text" name="message" required placeholder="Schreibe eine Nachricht...">
-                        <input type="submit" id="sendButton" value="Senden">
+                        <div class="wrapper">
+                            <input class="messageInput" type="text" name="message" placeholder="Schreibe eine Nachricht...">
+                            <input type="submit" class="submitMessage" value="Senden">
+                        </div>
+
                         <input type="hidden" name="token" value="<?=$_SESSION['token']?>"/>
                     </div>
                 </form>

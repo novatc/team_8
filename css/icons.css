@@ -11,10 +11,8 @@
 
 .iconChatHead {
     border-radius: 50%;
-    min-width: 10vh;
-    min-height: 10vh;
-    max-width: 10vh;
-    max-height: 10vh;
+    width: 10vh;
+    height: 10vh;
     background-size: cover;
     border-style: groove;
     transition: all 0.4s ease-out;
@@ -72,5 +70,12 @@
         background-size: cover;
         border-style: groove;
         transition: all 0.4s ease-out;
+    }
+}
+
+@media screen and (max-height: 800px) {
+    .iconChatHead {      
+        width: 7vh;
+        height: 7vh;
     }
 }
