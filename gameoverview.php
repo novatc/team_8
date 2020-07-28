@@ -26,9 +26,6 @@ $games = $gameDAO->getGames($tags);
     <title>Team8 - Spieleseite</title>
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/cardgrid.css">
-    <link rel="stylesheet" type="text/css" href="css/games.css">
-
-
 </head>
 <body>
 

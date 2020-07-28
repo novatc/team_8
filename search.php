@@ -16,7 +16,6 @@ $search = $_GET['search'];
     <title>Team8 - Results</title>
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/cardgrid.css">
-    <link rel="stylesheet" type="text/css" href="css/playeroverview.css">
     <link rel="stylesheet" type="text/css" href="css/games.css">
 </head>
 <body>
@@ -27,9 +26,7 @@ $search = $_GET['search'];
 </header>
 <main>
     <h1 class="title">Ergebnisse</h1>
-    <div class="card-grid">
-        
-        <div class="overview">
+    
             <?php $searchresult = $playerlist->getPlayerByName($search);?>
             <?php if (isset($searchresult) && $searchresult!=null):
                 $playerID = $searchresult->userid;
@@ -43,11 +40,13 @@ $search = $_GET['search'];
 
                 ?>
 
-                <ul class="cardview" id="lol-players">
+                <ul class="cardview" id="search-result">
                     <li class="card">
                         <a href='<?php echo $profileurl?>' class="container">
                             <div class="content">
-                                <h2><?php echo $searchresult->username ?></h2>
+                                <div class="name-wrapper" >
+                                        <h1><?php echo $searchresult->username ?></h1>
+                                    </div>
                                 <ul>
                                     <li>Sprache:  <?php echo $searchresult->language ?></li>
                                     <li>Alter:  <?php echo $age_in_years?></li>
@@ -68,8 +67,7 @@ $search = $_GET['search'];
             <?php  else: ?>
                 <p>keine Spieler gefunden</p>
             <?php endif; ?>
-        </div>
-    </div>
+       
 </main>
 
 <footer>

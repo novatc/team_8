@@ -1,6 +1,9 @@
 @charset "utf-8";
 @import url(items.css);
-
+@font-face {
+    src: url(../Resourcen/Fonts/EvolventaBold-55Xv.ttf);
+    font-family: Evolvent;
+}
 .card-grid {
     display: grid;
     grid-template-columns: repeat(5,1fr);
@@ -64,16 +67,46 @@
 .card .container, .card .game-container{
     align-self: center;
     border-radius: 1%;
-    min-width: 350px;
-    min-height: 350px;
-    max-width: 350px;
-    max-height: 350px;
+    width: 350px;
+    height: 350px;
     transition: all 0.4s ease-out;
     box-shadow: 0 0 20px var(--dark-shadow);
     font-size: 70px;
     color: var(--default-white);
     text-decoration: none;
     margin: 5px;
+}
+
+.game-container {
+    text-align: center;
+}
+
+.gamelabel{
+    color: var(--dark-bg-color);
+    text-shadow: 0 0 10px white;
+    font-family: Evolvent;
+    font-size: 1em;
+}
+.card .container{
+    background-color: var(--default-bg-color);
+    font-size: larger;  
+}
+#search-result{
+    justify-content: center;
+}
+#search-result .container{
+    border: solid var(--purple) 2.5px;
+}
+
+.card .name-wrapper{
+    text-align: center;
+    height: 90px;
+    background-color: var(--dark-bg-color);
+    margin-bottom: 10px;
+}
+.card h1{
+    margin: auto;
+    padding-top: 10px;
 }
 
 .card .container:hover, .card .game-container:hover{
@@ -129,12 +162,21 @@
 
 /* Tablet */
 @media screen and (max-width: 1080px) {
-    .card .container, .card .game-container{
-        min-width: 250px;
-        min-height: 250px;
-        max-width: 250px;
-        max-height: 250px;
-        font-size: 50px;
+    .card .game-container{
+        width: 250px;
+        height: 250px;
+        font-size: 40px;
+    }
+    .card .container{
+        width: 250px;
+        height: 250px;
+    }
+    .card .name-wrapper{
+        height: 60px;
+        margin-bottom: 5px;
+    }
+    .card h1{
+        font-size: x-large;
     }
     .card {
         padding: 12px;
@@ -154,12 +196,17 @@
     .cardview{
         justify-content: center;
     }
-    .card .container, .card .game-container{
-        min-width: 200px;
-        min-height: 200px;
-        max-width: 200px;
-        max-height: 200px;
-        font-size: 40px;
+    .card .game-container{
+        width: 200px;
+        height: 200px;
+        font-size: 35px;
+    }
+    .card .container{
+        width: 200px;
+        height: 230px;
+    }
+    .card .name-wrapper{
+        height: 50px;
     }
     .card {
         padding: 15px;

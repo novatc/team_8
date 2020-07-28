@@ -1,5 +1,10 @@
 @charset "utf-8";
 
+@font-face {
+    src: url(../Resourcen/Fonts/EvolventaBold-55Xv.ttf);
+    font-family: Evolvent;
+}
+
 .profile-grid{
     justify-self: center;
     display: grid;
@@ -149,6 +154,17 @@
     transition: all 0.4s ease;
     cursor: pointer;
     
+}
+
+.gamelabel{
+    color: var(--dark-bg-color);
+    text-shadow: 0 0 10px white;
+    font-family: Evolvent;
+    font-size: 1em;
+}
+
+.game-container {
+    text-align: center;
 }
 
 .description{

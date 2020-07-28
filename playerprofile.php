@@ -63,7 +63,6 @@ if(!$noData){
     <title>Team8 - Profil</title>
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/profile.css">
-    <link rel="stylesheet" type="text/css" href="css/games.css">
     <link rel="stylesheet" type="text/css" href="css/icons.css">
 </head>
 <body>

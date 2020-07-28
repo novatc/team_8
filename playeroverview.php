@@ -50,8 +50,6 @@ $list = $playerlistDAO->getPlayersForGame($gameID, $rankfilter, $rolefilter);
     <title>Team8 - <?php echo $gamename?></title>
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/cardgrid.css">
-    <link rel="stylesheet" type="text/css" href="css/playeroverview.css">
-    <link rel="stylesheet" type="text/css" href="css/games.css">
     <link rel="stylesheet" type="text/css" href="css/colors.css">
 </head>
 <body>
@@ -96,14 +94,14 @@ $list = $playerlistDAO->getPlayersForGame($gameID, $rankfilter, $rolefilter);
 
                         <li class="card">
                             <a href='<?php echo $profileurl?>' class="container" style="<?php echo $style?>">
-                                
-                                    <h2><?php echo $playeritem->username ?></h2>
+                                    <div class="name-wrapper" >
+                                        <h1><?php echo $playeritem->username ?></h1>
+                                    </div>
                                     <ul>
                                         <li>Sprache:  <?php echo $playeritem->language ?></li>
                                         <li>Role:  <?php echo implode(", ",$playerlistDAO->getRoles($gameID, $playeritem->userid)) ?></li>
                                         <li>ELO: <?php echo $playerlistDAO->getRank($gameID, $playeritem->userid) ?>  </li>
                                     </ul>
-                                
                             </a>
                         </li>
                     <?php endforeach; ?>
