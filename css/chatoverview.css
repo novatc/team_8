@@ -34,7 +34,7 @@ h2 {
 .gridFriends {
     display: grid;
     grid-template-columns: 130px 300px;
-    grid-column-gap: 0.5em;
+    grid-column-gap: 1em;
     grid-row-gap: 5em;
 }
 
@@ -42,6 +42,7 @@ h2 {
     background: var(--dar-bg-color);
     overflow-x: hidden;
     overflow-y: scroll;
+    height: calc(100vh - 400px);
     border-style: double;
     border-color:  var(--light-bg-color);
     padding-top: 20px;
@@ -106,21 +107,21 @@ h2 {
     border-radius: 1%;
 
 }
-@media screen and (max-width: 1700px) {
+
+@media screen and (max-width: 1500px) {
     h1 {
         text-align:center;
     }
     .chat-grid {
         display: grid;
-        grid-template-columns: auto auto auto auto;
-        grid-column-gap:5px;
+        grid-template-columns: 47% 47%;
+        grid-column-gap:6%;
         grid-row-gap: 20px;
         width: 100%;
         margin: 0 auto;
     }
 
 }
-
 
 /* Smartphone */
 @media screen and (max-width: 780px) {
@@ -131,6 +132,10 @@ h2 {
         grid-column-gap: 0px;
         grid-row-gap: 20px;
         width: 100%;
+    }
+    .scroll{
+        height: auto;
+        overflow-y: hidden;
     }
     #activeChats{
         width: 90%;
@@ -161,14 +166,18 @@ h2 {
 @media screen and (max-width: 550px) {
 
     .startChat {
-        min-width:120px;
-        max-width: 150px;
+        min-width:100px;
+        max-width: 130px;
+        min-height:70px;
+        max-height:70px;
+        line-height: 70px;
     }
     .gridActiveChats {
-        grid-template-columns: 100px auto;
+        grid-template-columns: 80px auto;
+        grid-column-gap: 0.5em;
     }
     .gridFriends {
-        grid-template-columns: 100px auto;
+        grid-template-columns: 80px auto;
     }
     .startChat:hover {
         transform: scale(1.0);

@@ -39,15 +39,12 @@ footer {
 }
 /* Tablet */
 @media screen and (max-width: 1080px) {
-
+    main{
+        overflow: hidden;
+    }
 }
 /* Smartphone */
 @media screen and (max-width: 780px) {
-    /* Firefox, Internet Explorer +10 */
-    body{
-        overflow: auto;
-        -ms-overflow-style: none;
-    }
-    /* Chrome, Safari, newer versions of Opera */
-    body::-webkit-scrollbar { display: none; }
+
+    
 }

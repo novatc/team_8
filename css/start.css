@@ -4,7 +4,6 @@
     font-family: SemiBold;
 }
 
-
 .left{
     grid-row: 2;
     grid-column: 1;
@@ -34,8 +33,8 @@
 #grid {
     display: grid;
     margin: auto;
-    height: min(calc(100vh), 100vw);
-    width: min(calc(100vh), 100vw);
+    height: min(100vh, 95vw);
+    width: min(100vh, 95vw);
     grid-template-columns: 1fr 1fr;
     grid-template-rows:   1fr 1fr;    
     background-image: url(../Resourcen/Logo/logo_purple.png);
@@ -43,16 +42,6 @@
     background-size: contain;
     background-position: center; 
 }
-
-/* Tablet */
-@media screen and (max-width: 1080px) {
-
-}
-/* Smartphone */
-@media screen and (max-width: 780px) {
-   
-}
-
 
 .blockquote h4 {
     position: relative;
@@ -90,7 +79,7 @@
     color: #ffffff;
     padding: 30px 0;
     width: 100%;
-    max-width: 500px;
+    max-width: 800px;
     z-index: 1;
     margin: 80px auto;
     align-self: center;
@@ -99,4 +88,16 @@
 }
 .blockquote-wrapper {
     display: inline;
+}
+
+
+/* Tablet */
+@media screen and (max-width: 1080px) {
+    .blockquote{
+        max-width: 400px;
+    }
+}
+/* Smartphone */
+@media screen and (max-width: 780px) {
+   
 }

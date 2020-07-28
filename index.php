@@ -13,7 +13,6 @@ $isLoggedIn = $_SESSION['userid'] > -1;
     <title>Team8</title>
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/start.css">
-    <link rel="stylesheet" type="text/css" href="css/games.css">
 </head>
 <body>
 <script src="quotes.js"></script>
