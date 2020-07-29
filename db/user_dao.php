@@ -6,9 +6,9 @@ interface UserDAOInterface
 
     function login($username, $password);
 
-    function register($username, $email, $pwd, $pwdrepeat);
+    function register($username, $email, $pwd, $pwdrepeat, $googleaccount);
 
-    function getUserByName($username);
+    function getUserByName($username, $googleaccount);
 
     function getUserByID($username);
 
@@ -41,7 +41,7 @@ class UserDAO implements UserDAOInterface
             $username = Database::encodeData($username);
             $password = Database::encodeData($password);
 
-            $sql = "SELECT * FROM User WHERE username = :user";
+            $sql = "SELECT * FROM User WHERE username = :user AND google=0";
             $cmd = $db->prepare($sql);
             $cmd->bindParam(":user", $username);
             $cmd->execute();
@@ -52,6 +52,9 @@ class UserDAO implements UserDAOInterface
                 if (password_verify($password, $hasheduserpw)){
                     $message="";
                     setcookie("loginmessage", $message, 0, "/");
+                    if (empty($_SESSION['token'])) {
+                        $_SESSION['token'] = uniqid('', true);
+                    }
                     return $usernameObject->userid;
                 }else{ 
                    
@@ -74,12 +77,12 @@ class UserDAO implements UserDAOInterface
         }
     }
 
-    function register($username, $email, $pwd, $pwdrepeat)
+    function register($username, $email, $pwd, $pwdrepeat, $googleaccount)
     {
         $db = Database::connect($this->dsn);
 
         /* Check if username in DB */
-        $id = $this->getUserByName($username);
+        $id = $this->getUserByName($username, 0);
         if($id != false){
             $message="Nutzername bereits vergeben!";
             setcookie("registrationmessage", $message, 0, "/");
@@ -105,17 +108,21 @@ class UserDAO implements UserDAOInterface
             $username = Database::encodeData($username);
             $email = Database::encodeData($email);
             $hashedpw = password_hash($pwd,PASSWORD_DEFAULT );
-            $sql = "INSERT INTO User (username, mail, password) VALUES (:user, :email, :password);";
+            $sql = "INSERT INTO User (username, mail, password, google) VALUES (:user, :email, :password, :google);";
             $cmd = $db->prepare( $sql );
             $cmd->bindParam( ':user', $username );
             $cmd->bindParam( ':email', $email );
             $cmd->bindParam( ':password', $hashedpw );
+            $cmd->bindParam( ':google', $googleaccount );
             $cmd->execute();
 
             $db->commit();
             $message="";
             setcookie("registrationmessage", $message, 0, "/");
-            return $this->getUserByName($username)->userid;
+            if (empty($_SESSION['token'])) {
+                $_SESSION['token'] = uniqid('', true);
+            }
+            return $this->getUserByName($username, 0)->userid;
 
         } catch (Exception $ex) {
             $db->rollBack();
@@ -125,6 +132,51 @@ class UserDAO implements UserDAOInterface
             return -1;
         }
         
+    }
+    function googleLoginAndRegister($username, $email){
+        $db = Database::connect($this->dsn);
+
+        try {
+            $db->beginTransaction();
+            $username = Database::encodeData($username);
+            $email = Database::encodeData($email);
+            $google = 1;
+            $sql = "SELECT * FROM User WHERE username = :user AND google=1";
+            $cmd = $db->prepare($sql);
+            $cmd->bindParam(":user", $username);
+            $cmd->execute();
+
+            $usernameObject = $cmd->fetchObject();
+            if ($usernameObject != null){
+                    $message="";
+                    setcookie("loginmessage", $message, 0, "/");
+                    $db->commit();
+                    
+                    return $usernameObject->userid;
+            }else{
+                
+                $sql = "INSERT INTO User (username, mail, google) VALUES (:user, :email, :google);";
+                $cmd = $db->prepare( $sql );
+                $cmd->bindParam( ':user', $username );
+                $cmd->bindParam( ':email', $email );
+                $cmd->bindParam( ':google', $google);
+                $cmd->execute();
+                $message="";
+                setcookie("loginmessage", $message, 0, "/");
+                $db->commit();
+                if (empty($_SESSION['token'])) {
+                    $_SESSION['token'] = uniqid('', true);
+                }
+                return $this->getUserByName($username, 1)->userid;
+            }
+            
+        } catch (Exception $ex) {
+            $db->rollBack();
+            Database::disconnect($this->dsn);
+            $message="Huch, etwas ist schief gelaufen!";
+            setcookie("loginmessage", $message, 0, "/");
+            return -1;
+        }
     }
 
     function deleteUser($userID, $username, $password){
@@ -175,15 +227,16 @@ class UserDAO implements UserDAOInterface
     }
 
     /* Gets User, returns false if User not in DB */
-    function getUserByName($username)
+    function getUserByName($username, $googleaccount)
     {
         $db = Database::connect($this->dsn);
 
         try {
             $username = Database::encodeData($username);
-            $sql = "SELECT * FROM User WHERE username = :user";
+            $sql = "SELECT * FROM User WHERE username = :user AND google = :google";
             $cmd = $db->prepare($sql);
             $cmd->bindParam(':user', $username);
+            $cmd->bindParam(':google', $googleaccount);
             $cmd->execute();
 
             $user = $cmd->fetchObject();

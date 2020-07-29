@@ -20,7 +20,18 @@
 .submit-btn:hover, .btn:hover{
     background:  var(--orange);;
 }
-
+#google-wrapper{
+    margin: auto;
+    text-align: center;
+}
+.google-btn{
+    display: block;
+    margin: auto;
+}
+.google-img{
+    width: 50px;
+    height: auto;
+}
 /* Headings */
 h1{
     font-size: xx-large;

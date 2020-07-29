@@ -2,10 +2,6 @@
 require_once "session.php";
 updateSessionFromAction();
 
-if (empty($_SESSION['token'])) {
-    $_SESSION['token'] = uniqid('', true);
-}
-
 require_once "../../db/user_dao.php";
 $userDAO = new UserDAO();
 

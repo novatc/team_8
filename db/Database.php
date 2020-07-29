@@ -49,6 +49,7 @@ class Database
               username TEXT,
               mail TEXT,
               password TEXT,
+              google BIT DEFAULT 0,
               age INTEGER,
               language TEXT,
               description TEXT,

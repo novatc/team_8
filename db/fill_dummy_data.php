@@ -6,16 +6,16 @@ $db = Database::connect("sqlite:Database.db");
 // Beispiel Nutzer
 // Passwort der Beispieluser ist 'Passwort'!
 $passwort = password_hash('Passwort', PASSWORD_DEFAULT);
-$sql = "REPLACE INTO User (userid, username, mail, password, age, language, description, iconid) VALUES (1, 'Nico', 'nico@mail.de', '{$passwort}', '1999-04-04', 'Deutsch, Englisch, Französisch', 'Hallo und Herzlich Wilkommen!', 2)";
+$sql = "REPLACE INTO User (userid, username, mail, password, google, age, language, description, iconid) VALUES (1, 'Nico', 'nico@mail.de', '{$passwort}', 0, '1999-04-04', 'Deutsch, Englisch, Französisch', 'Hallo und Herzlich Wilkommen!', 2)";
 $db->exec($sql);
 
-$sql = "REPLACE INTO User (userid, username, mail, password, age, language, description, iconid) VALUES (2, 'Lucas', 'lucas@mail.de', '{$passwort}', '1996-08-27', 'Deutsch, Englisch und vieles mehr', 'Hallo, ich bins der Lucas.', 5)";
+$sql = "REPLACE INTO User (userid, username, mail, password, google, age, language, description, iconid) VALUES (2, 'Lucas', 'lucas@mail.de', '{$passwort}', 0, '1996-08-27', 'Deutsch, Englisch und vieles mehr', 'Hallo, ich bins der Lucas.', 5)";
 $db->exec($sql);
 
-$sql = "REPLACE INTO User (userid, username, mail, password, age, language, description, iconid) VALUES (3, 'Johannes', 'jo@mail.de', '{$passwort}', '1998-12-26', 'Latein, Deutsch, Englisch', 'Gut Kick!', 3)";
+$sql = "REPLACE INTO User (userid, username, mail, password, google, age, language, description, iconid) VALUES (3, 'Johannes', 'jo@mail.de', '{$passwort}', 0, '1998-12-26', 'Latein, Deutsch, Englisch', 'Gut Kick!', 3)";
 $db->exec($sql);
 
-$sql = "REPLACE INTO User (userid, username, mail, password, age, language, description, iconid) VALUES (4, 'Bot', 'jo@mail.de', '{$passwort}', '200-01-01', 'Python', 'Hallo, ich bin ein Bot!', 0)";
+$sql = "REPLACE INTO User (userid, username, mail, password, google, age, language, description, iconid) VALUES (4, 'Bot', 'jo@mail.de', '{$passwort}', 0, '200-01-01', 'Python', 'Hallo, ich bin ein Bot!', 0)";
 $db->exec($sql);
 
 // Bespielfreunde
