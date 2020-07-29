@@ -31,12 +31,7 @@ main {
     margin-right: 2%;
     min-height: calc(100vh - 80px - 20px - 50px);
 }
-footer {
-    padding-left: 10px;
-    padding-right: 10px;
-    height: 50px;
-    background-color: var(--dark-bg-color);;
-}
+
 /* Tablet */
 @media screen and (max-width: 1080px) {
     main{
