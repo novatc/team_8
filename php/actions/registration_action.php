@@ -12,7 +12,7 @@ if (empty($_SESSION['token'])) {
 if (array_key_exists('registersubmit', $_POST)){
     //echo "<pre>";print_r($_POST);echo "</pre>";
     $responseKey = $_POST['g-recaptcha-response'];
-    $response = file_get_contents($url.'?secret='.$publicKey.'&response='.$responseKey);
+    $response = file_get_contents($url.'?secret='.$publicKey.'&response='.$responseKey.'&remoteip='.$_SERVER['REMOTE_ADDR']);
     $response = json_decode($response);
     //echo "<pre>";print_r($response);echo "</pre>";
 
@@ -22,6 +22,8 @@ if (array_key_exists('registersubmit', $_POST)){
     }
     else{
         echo 'Teil der Roboterapokalypse';
+        echo "<pre>";print_r($response);echo "</pre>";
+
         die();
     }
 

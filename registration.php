@@ -62,7 +62,6 @@ if (isset($_SESSION['email'])) {
         <input class="submit-btn" id="submit-form" type="submit" name="registersubmit" value="Registrieren">
     </form>
 
-    <p><?php $response ?></p>
 </main>
 <footer>
     <div class="footer">
