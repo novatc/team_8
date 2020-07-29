@@ -90,8 +90,8 @@ if($_SESSION['userid']!=-1){
             <a class="no-link" href='registration.php'>Noch kein Account?</a>
         </div>
     </form>
-    <div id="google-wrapper">
-        <a class="google-btn" href="<?=$google_client->createAuthUrl()?>"><img id="google-img" src="Resourcen/sign-in-with-google.png" /></a>
+    <div class="google-wrapper">
+        <a class="google-btn" href="<?=$google_client->createAuthUrl()?>"><img class="google-img" src="Resourcen/sign-in-with-google.png" /></a>
     </div>
     
 

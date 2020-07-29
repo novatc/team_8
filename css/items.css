@@ -20,16 +20,13 @@
 .submit-btn:hover, .btn:hover{
     background:  var(--orange);;
 }
-#google-wrapper{
-    margin: auto;
+.google-wrapper{
+    justify-self: center;
     text-align: center;
-}
-.google-btn{
-    display: block;
-    margin: auto;
+    margin: 0 auto;
 }
 .google-img{
-    width: 50px;
+    width: 170px;
     height: auto;
 }
 /* Headings */
