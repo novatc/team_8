@@ -1,10 +1,32 @@
 <?php
 require_once "session.php";
 updateSessionFromAction();
+$publicKey = "6LedxrcZAAAAACLlR3gcWywrkX6TSETOzoln7wAO";
+$url = "https://www.google.com/recaptcha/api/siteverify";
 
 if (empty($_SESSION['token'])) {
     $_SESSION['token'] = uniqid('', true);
 }
+
+
+if (array_key_exists('registersubmit', $_POST)){
+    //echo "<pre>";print_r($_POST);echo "</pre>";
+    $responseKey = $_POST['g-recaptcha-response'];
+    $response = file_get_contents($url.'?secret='.$publicKey.'&response='.$responseKey);
+    $response = json_decode($response);
+    //echo "<pre>";print_r($response);echo "</pre>";
+
+    if ($response->success == 1){
+        echo 'DU bis Mensch';
+
+    }
+    else{
+        echo 'Teil der Roboterapokalypse';
+        die();
+    }
+
+}
+
 
 require_once "../../db/user_dao.php";
 $userDAO = new UserDAO();
