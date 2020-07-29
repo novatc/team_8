@@ -83,6 +83,7 @@ if(isset($_SESSION['gamechoice'])){
                     <div id="select-icon"></div>
                 </div>
                 <input class="submit-btn" id="choose-btn" type="submit" name="gamechoicesubmit" value="Wählen">
+                <input type="hidden" name="token" value="<?=$_SESSION['token']?>"/>
             </form>
             <?php if($gamechoice != ''): 
                 include "php/pieces/gamestats.php";
