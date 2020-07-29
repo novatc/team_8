@@ -39,7 +39,7 @@ if(!$empty){
     }
     
     if(!$error){
-        $userid = $userDAO->register($username, $email, $pwd, $pwdrepeat);
+        $userid = $userDAO->register($username, $email, $pwd, $pwdrepeat, 0);
         if ($userid != -1){
             $_SESSION['userid'] = $userid;
 

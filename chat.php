@@ -89,16 +89,11 @@ $userDAO->readMessages($userID, $chatpartnerID);
                         <?php endforeach; ?>
                     </div>
                 </div>
-                <script>
-                    var chat = document.getElementById("chathistory");
-                    chat.scrollTop = chat.scrollHeight;
-                </script>
-
                 <!-- Senden-->
                 <form id="messageform" action="php/actions/send_message_action.php?user=<?= $chatpartnerid?>" method="post">
                     <div class="chatbox" id="sendForm">
                         <div class="wrapper">
-                            <input class="messageInput" type="text" name="message" placeholder="Schreibe eine Nachricht...">
+                            <input class="messageInput" id="messageInput" type="text" name="message" placeholder="Schreibe eine Nachricht...">
                             <input type="submit" class="submitMessage" value="Senden">
                         </div>
 
@@ -110,6 +105,13 @@ $userDAO->readMessages($userID, $chatpartnerID);
         </div>
         <!-- Ende wrapper -->
     </main>
+    <script>
+        var chat = document.getElementById("chathistory");
+        chat.scrollTop = chat.scrollHeight;
+        var input = document.getElementById('messageInput');
+        input.focus();
+        input.select();
+    </script>
     <footer>
             <div class="footer">
                 <?php include "php/footer.php";?>
