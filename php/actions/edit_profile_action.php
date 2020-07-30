@@ -10,24 +10,24 @@ $isLoggedIn = $_SESSION['userid']>-1;
 $userID = $_SESSION['userid'];
 
 if($isLoggedIn){
-    if ($_SESSION['token']!==$_POST['token']) {
-        die ('Ungültiger Token');
+    if ($_POST['csrf'] == $_SESSION['csrf_token']) {
+        
+        $icon = $_POST['icon'];
+
+        $age = $_POST['age'];
+
+        $language = $_POST['language'];
+
+        $description = $_POST['description'];
+
+        $errorcode = $userDAO->updateUser($userID, $age, $language, $description, $icon);
+
+        if($errorcode==0){
+            header('Location: ../../playerprofile.php');
+            exit();
+        }
     }
 
-    $icon = $_POST['icon'];
-
-    $age = $_POST['age'];
-
-    $language = $_POST['language'];
-
-    $description = $_POST['description'];
-
-    $errorcode = $userDAO->updateUser($userID, $age, $language, $description, $icon);
-
-    if($errorcode==0){
-        header('Location: ../../playerprofile.php');
-        exit();
-    }
 }
 
 header('Location: ../../edit_profile.php');

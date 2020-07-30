@@ -52,9 +52,7 @@ class UserDAO implements UserDAOInterface
                 if (password_verify($password, $hasheduserpw)){
                     $message="";
                     setcookie("loginmessage", $message, 0, "/");
-                    if (empty($_SESSION['token'])) {
-                        $_SESSION['token'] = uniqid('', true);
-                    }
+                    
                     return $usernameObject->userid;
                 }else{ 
                    
@@ -119,8 +117,8 @@ class UserDAO implements UserDAOInterface
             $db->commit();
             $message="";
             setcookie("registrationmessage", $message, 0, "/");
-            if (empty($_SESSION['token'])) {
-                $_SESSION['token'] = uniqid('', true);
+            if (empty($_SESSION['csrf_token'])) {
+                $_SESSION['csrf_token'] = uniqid('', true);
             }
             return $this->getUserByName($username, 0)->userid;
 
@@ -151,7 +149,9 @@ class UserDAO implements UserDAOInterface
                     $message="";
                     setcookie("loginmessage", $message, 0, "/");
                     $db->commit();
-                    
+                    if (empty($_SESSION['csrf_token'])) {
+                        $_SESSION['csrf_token'] = uniqid('', true);
+                    }
                     return $usernameObject->userid;
             }else{
                 
@@ -164,8 +164,8 @@ class UserDAO implements UserDAOInterface
                 $message="";
                 setcookie("loginmessage", $message, 0, "/");
                 $db->commit();
-                if (empty($_SESSION['token'])) {
-                    $_SESSION['token'] = uniqid('', true);
+                if (empty($_SESSION['csrf_token'])) {
+                    $_SESSION['csrf_token'] = uniqid('', true);
                 }
                 return $this->getUserByName($username, 1)->userid;
             }

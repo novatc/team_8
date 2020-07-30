@@ -11,39 +11,38 @@ $gameDAO = new GameDAO();
 $isLoggedIn = $_SESSION['userid']>-1;
 
 if($isLoggedIn){
-    if($_POST['csrf'] !== $_SESSION['csrf_token']) {
-        die("Ungültiger Token");
-    }
-
-    $gameid = $gameDAO->getGameByName($_SESSION['gamechoice'])->gameid;
-    $userid = $_SESSION['userid'];
+    if($_POST['csrf'] == $_SESSION['csrf_token']) {
+        $gameid = $gameDAO->getGameByName($_SESSION['gamechoice'])->gameid;
+        $userid = $_SESSION['userid'];
 
 
-    if(isset($_POST['deletegame'])){
-        $errorcode = $listDAO->deletePlayer($gameid, $userid);
+        if(isset($_POST['deletegame'])){
+            $errorcode = $listDAO->deletePlayer($gameid, $userid);
 
-    }elseif(isset($_POST['savegame'])){   
+        }elseif(isset($_POST['savegame'])){   
 
-        $rank = $_POST['rank'];
-        $roles =[];
-        if(isset($_POST['role']))
-            $roles = $_POST['role'];
-        if(isset($_POST['visible'])) {
-            $status = 'active';
-        } else{
-            $status = 'inactive';
-        }
+            $rank = $_POST['rank'];
+            $roles =[];
+            if(isset($_POST['role']))
+                $roles = $_POST['role'];
+            if(isset($_POST['visible'])) {
+                $status = 'active';
+            } else{
+                $status = 'inactive';
+            }
 
-        /* Check if player is already in playerlist for specific game*/
-        switch($listDAO->alreadyIncluded($gameid, $userid)){
-            case false:
-                $listDAO->addPlayer($gameid, $userid, $rank, $roles, $status);
-                break;
-            case true:
-                $listDAO->updatePlayer($gameid, $userid, $rank, $roles, $status);
-                break;
+            /* Check if player is already in playerlist for specific game*/
+            switch($listDAO->alreadyIncluded($gameid, $userid)){
+                case false:
+                    $listDAO->addPlayer($gameid, $userid, $rank, $roles, $status);
+                    break;
+                case true:
+                    $listDAO->updatePlayer($gameid, $userid, $rank, $roles, $status);
+                    break;
+            }
         }
     }
+
 }
 header('Location: ../../playerprofile.php');
 exit();
