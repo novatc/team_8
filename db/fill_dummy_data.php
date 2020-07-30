@@ -18,12 +18,6 @@ $db->exec($sql);
 $sql = "REPLACE INTO User (userid, username, mail, password, google, age, language, description, iconid) VALUES (4, 'Bot', 'jo@mail.de', '{$passwort}', 0, '200-01-01', 'Python', 'Hallo, ich bin ein Bot!', 0)";
 $db->exec($sql);
 
-
-for ($i= 4; $i<100;$i++){
-    $sql = "REPLACE INTO User (userid, username, mail, password, google, age, language, description, iconid) VALUES ({$i}, 'Bot'+{$i}, 'jo@mail.de', '{$passwort}', 0, '200-01-01', 'Python', 'Hallo, ich bin ein Bot!', 0)";
-    $db->exec($sql);
-}
-
 // Bespielfreunde
 $sql = "REPLACE INTO Friends (id1, id2) VALUES (1, 2)";
 $db->exec($sql);
@@ -38,84 +32,76 @@ $db->exec($sql);
 
 // Nico
 $roles = serialize(['Top Lane','Jungle']);
-$sql = "INSERT INTO Playerlist (gameid, userid, rank, role, status) VALUES (1, 1, 'Gold', :roles, 'active')";
+$sql = "REPLACE INTO Playerlist (gameid, userid, rank, role, status) VALUES (1, 1, 'Gold', :roles, 'active')";
 $cmd =$db->prepare( $sql );
 $cmd->bindParam(":roles", $roles);
 $cmd->execute();
 
 $roles = serialize(['Sniper','Support']);
-$sql = "INSERT INTO Playerlist (gameid, userid, rank, role, status) VALUES (2, 1, 'Silber', :roles, 'active' )";
+$sql = "REPLACE INTO Playerlist (gameid, userid, rank, role, status) VALUES (2, 1, 'Silber', :roles, 'active' )";
 $cmd =$db->prepare( $sql );
 $cmd->bindParam(":roles", $roles);
 $cmd->execute();
 
 $roles = serialize([]);
-$sql = "INSERT INTO Playerlist (gameid, userid, rank, role, status) VALUES (3, 1, 'Diamant', :roles, 'inactive' )";
+$sql = "REPLACE INTO Playerlist (gameid, userid, rank, role, status) VALUES (3, 1, 'Diamant', :roles, 'inactive' )";
 $cmd =$db->prepare( $sql );
 $cmd->bindParam(":roles", $roles);
 $cmd->execute();
 
-
-for($i = 4; $i<100;$i++){
-    $roles = serialize(['Entry Fragger']);
-    $sql = "INSERT INTO Playerlist (gameid, userid, rank, role, status) VALUES (2, {$i}, 'Global', :roles, 'active' )";
-    $cmd =$db->prepare( $sql );
-    $cmd->bindParam(":roles", $roles);
-    $cmd->execute();
-}
 // Lucas
 $roles = serialize(['Entry Fragger']);
-$sql = "INSERT INTO Playerlist (gameid, userid, rank, role, status) VALUES (2, 2, 'Global', :roles, 'active' )";
+$sql = "REPLACE INTO Playerlist (gameid, userid, rank, role, status) VALUES (2, 2, 'Global', :roles, 'active' )";
 $cmd =$db->prepare( $sql );
 $cmd->bindParam(":roles", $roles);
 $cmd->execute();
 
 $roles = serialize([]);
-$sql = "INSERT INTO Playerlist (gameid, userid, rank, role, status) VALUES (3, 2, 'Diamant', :roles, 'active' )";
+$sql = "REPLACE INTO Playerlist (gameid, userid, rank, role, status) VALUES (3, 2, 'Diamant', :roles, 'active' )";
 $cmd =$db->prepare( $sql );
 $cmd->bindParam(":roles", $roles);
 $cmd->execute();
 
 $roles = serialize([]);
-$sql = "INSERT INTO Playerlist (gameid, userid, rank, role, status) VALUES (4, 2, 'Mercenary', :roles, 'inactive' )";
+$sql = "REPLACE INTO Playerlist (gameid, userid, rank, role, status) VALUES (4, 2, 'Mercenary', :roles, 'inactive' )";
 $cmd =$db->prepare( $sql );
 $cmd->bindParam(":roles", $roles);
 $cmd->execute();
 
 // Johannes
 $roles = serialize([]);
-$sql = "INSERT INTO Playerlist (gameid, userid, rank, role, status) VALUES (3, 3, 'Grand Champion', :roles, 'active' )";
+$sql = "REPLACE INTO Playerlist (gameid, userid, rank, role, status) VALUES (3, 3, 'Grand Champion', :roles, 'active' )";
 $cmd =$db->prepare( $sql );
 $cmd->bindParam(":roles", $roles);
 $cmd->execute();
 
 $roles = serialize(['Breach','Viper']);
-$sql = "INSERT INTO Playerlist (gameid, userid, rank, role, status) VALUES (4, 3, 'Hero', :roles, 'active' )";
+$sql = "REPLACE INTO Playerlist (gameid, userid, rank, role, status) VALUES (4, 3, 'Hero', :roles, 'active' )";
 $cmd =$db->prepare( $sql );
 $cmd->bindParam(":roles", $roles);
 $cmd->execute();
 
 $roles = serialize(['Top Lane','Mid']);
-$sql = "INSERT INTO Playerlist (gameid, userid, rank, role, status) VALUES (1, 4, 'Gold', :roles, 'inactive' )";
+$sql = "REPLACE INTO Playerlist (gameid, userid, rank, role, status) VALUES (1, 4, 'Gold', :roles, 'inactive' )";
 $cmd =$db->prepare( $sql );
 $cmd->bindParam(":roles", $roles);
 $cmd->execute();
 
 // Bot
 $roles = serialize(['Phoenix','Reyna']);
-$sql = "INSERT INTO Playerlist (gameid, userid, rank, role, status) VALUES (4, 4, 'Valorant', :roles, 'active' )";
+$sql = "REPLACE INTO Playerlist (gameid, userid, rank, role, status) VALUES (4, 4, 'Valorant', :roles, 'active' )";
 $cmd =$db->prepare( $sql );
 $cmd->bindParam(":roles", $roles);
 $cmd->execute();
 
 $roles = serialize(['Jungle','Mid']);
-$sql = "INSERT INTO Playerlist (gameid, userid, rank, role, status) VALUES (1, 4, 'Bronze', :roles, 'active' )";
+$sql = "REPLACE INTO Playerlist (gameid, userid, rank, role, status) VALUES (1, 4, 'Bronze', :roles, 'active' )";
 $cmd =$db->prepare( $sql );
 $cmd->bindParam(":roles", $roles);
 $cmd->execute();
 
 $roles = serialize(['Awper']);
-$sql = "INSERT INTO Playerlist (gameid, userid, rank, role, status) VALUES (2, 4, 'Supreme', :roles, 'inactive' )";
+$sql = "REPLACE INTO Playerlist (gameid, userid, rank, role, status) VALUES (2, 4, 'Supreme', :roles, 'inactive' )";
 $cmd =$db->prepare( $sql );
 $cmd->bindParam(":roles", $roles);
 $cmd->execute();
@@ -123,22 +109,22 @@ $cmd->execute();
 
 
 // Chats
-$sql = "INSERT INTO Chat (senderid, receiverid, chatmessage) VALUES (1, 2, 'Hallo Lucas')";
+$sql = "REPLACE INTO Chat (senderid, receiverid, chatmessage) VALUES (1, 2, 'Hallo Lucas')";
 $db->exec($sql);
 
-$sql = "INSERT INTO Chat (senderid, receiverid, chatmessage) VALUES (2, 1, 'Was geht?')";
+$sql = "REPLACE INTO Chat (senderid, receiverid, chatmessage) VALUES (2, 1, 'Was geht?')";
 $db->exec($sql);
 
-$sql = "INSERT INTO Chat (senderid, receiverid, chatmessage) VALUES (2, 4, 'Hey, Lust ner Runde Valorant zu spielen?')";
+$sql = "REPLACE INTO Chat (senderid, receiverid, chatmessage) VALUES (2, 4, 'Hey, Lust ner Runde Valorant zu spielen?')";
 $db->exec($sql);
 
-$sql = "INSERT INTO Chat (senderid, receiverid, chatmessage) VALUES (4, 2, 'Ja, klar!')";
+$sql = "REPLACE INTO Chat (senderid, receiverid, chatmessage) VALUES (4, 2, 'Ja, klar!')";
 $db->exec($sql);
 
-$sql = "INSERT INTO Chat (senderid, receiverid, chatmessage) VALUES (3, 2, 'Moinsen')";
+$sql = "REPLACE INTO Chat (senderid, receiverid, chatmessage) VALUES (3, 2, 'Moinsen')";
 $db->exec($sql);
 
-$sql = "INSERT INTO Chat (senderid, receiverid, chatmessage) VALUES (3, 1, 'Hey Nico')";
+$sql = "REPLACE INTO Chat (senderid, receiverid, chatmessage) VALUES (3, 1, 'Hey Nico')";
 $db->exec($sql);
 
 echo 'Dummy Data eingefügt!';
