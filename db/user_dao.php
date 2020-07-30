@@ -52,7 +52,9 @@ class UserDAO implements UserDAOInterface
                 if (password_verify($password, $hasheduserpw)){
                     $message="";
                     setcookie("loginmessage", $message, 0, "/");
-                    
+                    if (empty($_SESSION['csrf_token'])) {
+                        $_SESSION['csrf_token'] = uniqid('', true);
+                    }
                     return $usernameObject->userid;
                 }else{ 
                    
