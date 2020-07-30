@@ -11,14 +11,7 @@ $userID = $_SESSION['userid'];
 
 if($isLoggedIn){
     if($_POST['csrf'] == $_SESSION['csrf_token']) {
-        /* Check if input field empty */
-    foreach ($required as $field){
-        if (empty($_POST[$field])){
-            $empty = true;
-        }
-    }
 
-    if(!$empty){
         $username = $_POST['username'];
         $pwd = $_POST['password'];
         
@@ -30,7 +23,6 @@ if($isLoggedIn){
             header('Location: ../../login.php');
             exit();
         }
-    }
     }
 }
 header('Location: ../../delete_account.php');

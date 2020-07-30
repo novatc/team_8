@@ -181,10 +181,34 @@ class UserDAO implements UserDAOInterface
         }
     }
 
+    function isGoogleAccount($userID){
+        $db = Database::connect($this->dsn);
+
+        try {
+            $userID = Database::encodeData($userID);
+            $sql = "SELECT * FROM User WHERE userid = :userid and google=1";
+            $cmd = $db->prepare($sql);
+            $cmd->bindParam(':userid', $userID);
+            $cmd->execute();
+
+            $user = $cmd->fetchObject();
+            if ( $user != null) {
+                return true;
+            } else {
+                Database::disconnect($this->dsn);
+                return false;
+            }
+            Database::disconnect($this->dsn);
+        } catch (Exception $ex) {
+            return false;
+        }
+        Database::disconnect($this->dsn);
+    }
+
     function deleteUser($userID, $username, $password){
         $userID = Database::encodeData($userID);
        
-        if($userID != $this->login($username, $password)){
+        if(($userID != $this->login($username, $password)) and ($userID != $this->getUserByName($username, 1)->userid)){
             $message="Falsche Nutzerdaten!";
             setcookie("deletionmessage", $message, 0, "/");
             return -1;
