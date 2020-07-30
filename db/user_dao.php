@@ -88,7 +88,6 @@ class UserDAO implements UserDAOInterface
             setcookie("registrationmessage", $message, 0, "/");
             return -1 ;
         }
-        // ToDo Passwort vergleich
         // Check if password and passwordrepeat are identical
         if($pwd != $pwdrepeat){ 
             $message="Passwörter stimmen nicht überein!";
