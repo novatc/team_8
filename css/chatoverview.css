@@ -59,14 +59,12 @@ h2 {
     background: transparent;
 }
 
-
 .startChat {
+    display: inline-block;
     position: relative;
     background: #111111;
-    min-width:140px;
-    min-height:100px;
-    max-width: 150px;
-    max-height: 100px;
+    width: 230px;
+    height: 100px;
     box-shadow: 0 0 80px var(--dark-shadow);
     border: 2px solid var(--default-white);
     border-radius:24px;
@@ -74,11 +72,13 @@ h2 {
     font-size: 24px;
     font-family: Arial, Helvetica, sans-serif;
     line-height: 100px;
-    vertical-align: middle;
     text-align: center;
     text-decoration: none;
     transition: all 0.4s ease-out;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
+
 .startChat .message-counter{
     position: absolute;
     width: 36px;
@@ -124,7 +124,7 @@ h2 {
 }
 
 /* Smartphone */
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 850px) {
 
     .chat-grid {
         display: grid;
@@ -156,20 +156,16 @@ h2 {
     .gridFriends {
         grid-template-columns: 150px 150px;
     }
-
-    .startChat {
-        min-width:260px;
-        max-width: 300px;
+    .startChat{
+        width: 250px;
     }
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 400px) {
 
     .startChat {
-        min-width:100px;
-        max-width: 130px;
-        min-height:70px;
-        max-height:70px;
+        width:180px;
+        height:70px;
         line-height: 70px;
     }
     .gridActiveChats {

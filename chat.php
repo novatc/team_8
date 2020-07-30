@@ -35,6 +35,7 @@ $completemessages = json_decode(json_encode($completemessages), true);
 
 // Read messages
 $userDAO->readMessages($userID, $chatpartnerID);
+
 ?>
 
 <!DOCTYPE html>
@@ -96,8 +97,7 @@ $userDAO->readMessages($userID, $chatpartnerID);
                             <input class="messageInput" id="messageInput" type="text" name="message" placeholder="Schreibe eine Nachricht...">
                             <input type="submit" class="submitMessage" value="Senden">
                         </div>
-
-                        <input type="hidden" name="token" value="<?=$_SESSION['token']?>"/>
+                        <input type="hidden" name="csrf" value="<?=$_SESSION['csrf_token']?>">
                     </div>
                 </form>
             </div>

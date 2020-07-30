@@ -40,7 +40,7 @@
     <div class="submit-wrapper">
         <input class="submit-btn"  type="submit" name="deletegame" value="Entfernen">
         <input class="submit-btn"  type="submit" name="savegame" value="Speichern">
-        <input type="hidden" name="token" value="<?=$_SESSION['token']?>"/>
+        <input type="hidden" name="csrf" value="<?=$_SESSION['csrf_token']?>">
     </div>
     
 </form>
