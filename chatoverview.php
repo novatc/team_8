@@ -43,15 +43,17 @@ $chatpartnerids = $userDAO->getChats($userID);
                             $name = $chatpartner->username;
                             $profileurl = 'playerprofile.php?id=' . $chatpartnerid ;?>
                             <a class="icon" href='<?= $profileurl?>' style="background-image: url('<?= 'Resourcen/Icons/' . $userDAO->getIcon($iconid)->filename?>');"></a>
-                            <a class="startChat" href="chat.php?user=<?= $chatpartnerid?>">
-                                <?= $name?>
+                            <div class="chat-container">
+                                <a class="startChat" href="chat.php?user=<?= $chatpartnerid?>">
+                                    <?= $name?> 
+                                </a>
                                 <?php
                                     $num = $userDAO->getNumberOfUnreadMessagesFromChat($userID, $chatpartnerid);
                                     if($num>0): 
                                 ?>
                                         <label class="message-counter"><?= $num ?></label>
                                 <?php endif?>
-                            </a>
+                            </div>
                             
                         <?php endforeach; ?>
                 </div>
