@@ -5,6 +5,7 @@ updateSessionFromAction();
 if($_POST['csrf'] !== $_SESSION['csrf_token']) {
     die("Ungültiger Token");
 }else{
+
     if (isset($_POST['game'])){
         $_SESSION['gamechoice'] = $_POST['game'];
     }

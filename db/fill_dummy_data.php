@@ -18,6 +18,12 @@ $db->exec($sql);
 $sql = "REPLACE INTO User (userid, username, mail, password, google, age, language, description, iconid) VALUES (4, 'Bot', 'jo@mail.de', '{$passwort}', 0, '200-01-01', 'Python', 'Hallo, ich bin ein Bot!', 0)";
 $db->exec($sql);
 
+
+for ($i= 4; $i<100;$i++){
+    $sql = "REPLACE INTO User (userid, username, mail, password, google, age, language, description, iconid) VALUES ({$i}, 'Bot'+{$i}, 'jo@mail.de', '{$passwort}', 0, '200-01-01', 'Python', 'Hallo, ich bin ein Bot!', 0)";
+    $db->exec($sql);
+}
+
 // Bespielfreunde
 $sql = "REPLACE INTO Friends (id1, id2) VALUES (1, 2)";
 $db->exec($sql);
@@ -49,6 +55,14 @@ $cmd =$db->prepare( $sql );
 $cmd->bindParam(":roles", $roles);
 $cmd->execute();
 
+
+for($i = 4; $i<100;$i++){
+    $roles = serialize(['Entry Fragger']);
+    $sql = "INSERT INTO Playerlist (gameid, userid, rank, role, status) VALUES (2, {$i}, 'Global', :roles, 'active' )";
+    $cmd =$db->prepare( $sql );
+    $cmd->bindParam(":roles", $roles);
+    $cmd->execute();
+}
 // Lucas
 $roles = serialize(['Entry Fragger']);
 $sql = "INSERT INTO Playerlist (gameid, userid, rank, role, status) VALUES (2, 2, 'Global', :roles, 'active' )";
@@ -110,7 +124,7 @@ $cmd->execute();
 
 // Chats
 $sql = "INSERT INTO Chat (senderid, receiverid, chatmessage) VALUES (1, 2, 'Hallo Lucas')";
-$db->exec($sql); 
+$db->exec($sql);
 
 $sql = "INSERT INTO Chat (senderid, receiverid, chatmessage) VALUES (2, 1, 'Was geht?')";
 $db->exec($sql);
@@ -127,5 +141,5 @@ $db->exec($sql);
 $sql = "INSERT INTO Chat (senderid, receiverid, chatmessage) VALUES (3, 1, 'Hey Nico')";
 $db->exec($sql);
 
-echo 'Dummy Data eingefügt!';        
+echo 'Dummy Data eingefügt!';
 ?>

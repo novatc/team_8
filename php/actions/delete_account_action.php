@@ -10,8 +10,8 @@ $isLoggedIn = $_SESSION['userid']>-1;
 $userID = $_SESSION['userid'];
 
 if($isLoggedIn){
-    if ($_SESSION['token']!==$_POST['token']) {
-        die ('Ungültiger Token');
+    if($_POST['csrf'] !== $_SESSION['csrf_token']) {
+        die("Ungültiger Token");
     }
 
     /* Check if input field empty */
