@@ -16,7 +16,7 @@
 </div>
 <script type="text/javascript">
     var start = 0;
-    var limit = 15
+    var limit = 30
     var reachedMax = false
 
     $(window).scroll(function () {
