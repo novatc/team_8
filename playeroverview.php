@@ -108,7 +108,7 @@ $list = $playerlistDAO->getPlayersForGame($gameID, $rankfilter, $rolefilter);
 </main>
 <script>
     var start = 0;
-    var limit = 15;
+    var limit = 12;
     var reachedMax = false;
 
     $(window).scroll(function () {
