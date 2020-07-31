@@ -76,7 +76,6 @@ $chatpartnerids = $userDAO->getChats($userID);
         </div>
     </main>
 
-    
     <footer>
             <div class="footer">
                 <?php include "php/footer.php";?>

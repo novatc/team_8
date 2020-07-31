@@ -22,14 +22,14 @@ $user = $userDAO->getUserByID($userID);
 $usericonid = $user->iconid;
 
 $chatpartnerID = $_GET['user'];
+$_SESSION['chatpartner']= $chatpartnerID;
 $chatpartner = $userDAO->getUserByID($chatpartnerID);
 $chatpartnericonid = $chatpartner->iconid;
 $chatpartnername = $chatpartner->username;
-$chatpartnerid = $chatpartner->userid;
-$chatpartnerprofile = $profileurl = 'playerprofile.php?id= ' . $chatpartnerid;
+$chatpartnerprofile = $profileurl = 'playerprofile.php?id= ' . $chatpartnerID;
 
 //completemessages includes the senderID, receiverID and the message itself
-$completemessages = $userDAO->getMessages($_SESSION['userid'], $chatpartnerid);
+$completemessages = $userDAO->getMessages($_SESSION['userid'], $chatpartnerID);
 //decode stdObject to Array for usability
 $completemessages = json_decode(json_encode($completemessages), true);
 
@@ -49,7 +49,17 @@ $userDAO->readMessages($userID, $chatpartnerID);
     <link rel="stylesheet" type="text/css" href="css/icons.css">
     <link rel="stylesheet" type="text/css" href="css/cardgrid.css">
     
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        function autoRefresh_chat()
+        {
+            $("#chat").load("load_chat.php").show();
+        }
+        
+        setInterval('autoRefresh_chat()', 1000);
+    </script>
 </head>
+
 <body>
     <header>
         <div class="mainnav">
@@ -62,6 +72,7 @@ $userDAO->readMessages($userID, $chatpartnerID);
             <div class="chatbox" id="chatheader">
                 
                     <div class="headgrid">
+                        <input type="hidden" name="receiver" value="<?=$chatpartnerID?>">
                         <a href="chat.php">
                             <div class="iconChatHead" style="background-image: url('<?= 'Resourcen/Icons/' . $userDAO->getIcon($chatpartnericonid)->filename?>');"></div>
                         </a>
@@ -72,26 +83,14 @@ $userDAO->readMessages($userID, $chatpartnerID);
                 
             </div>
                 <div class="chatbox" id="chathistory">
-                    <div class="chatgrid">
-                        <!-- extract sender and message from each sent package, react accordingly whether you are sender or receiver -->
-                        <?php foreach($completemessages as $onemessage) :
-                            $senderID = reset($onemessage);
-                            $text = end($onemessage);
-                            if($senderID == $_SESSION['userid']) : ?>
-                                <p class="speech-bubble-self">
-                                    <?= ($text) ?> </p>
-                                <div class="icon-self" style="background-image: url('<?= 'Resourcen/Icons/' . $userDAO->getIcon($usericonid)->filename?>');"></div>
-                                
-                            <?php elseif($senderID != $_SESSION['userid']) : ?>
-                                <div class="icon-user" style="background-image: url('<?= 'Resourcen/Icons/' . $userDAO->getIcon($chatpartnericonid)->filename?>');"></div>
-                                <p class="speech-bubble-user">
-                                    <?= $text ?> </p>
-                            <?php endif; ?>
-                        <?php endforeach; ?>
+                    <div class="chatgrid" id="chat">
+                    <?php
+                        include("load_chat.php");
+                    ?> 
                     </div>
                 </div>
                 <!-- Senden-->
-                <form id="messageform" action="php/actions/send_message_action.php?user=<?= $chatpartnerid?>" method="post">
+                <form action="php/actions/send_message_action.php?user=<?= $chatpartnerID?>" method="post" id="messageform" name="messageform">
                     <div class="chatbox" id="sendForm">
                         <div class="wrapper">
                             <input class="messageInput" id="messageInput" type="text" name="message" placeholder="Schreibe eine Nachricht...">
