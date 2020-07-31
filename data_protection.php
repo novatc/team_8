@@ -178,6 +178,14 @@
     <p>Wenn Sie also unsere Webseite verwenden, erklären Sie sich einverstanden, dass Google LLC und deren Vertreter automatisch Daten erheben, bearbeiten und nutzen.</p>
     <p>Etwas mehr über reCAPTCHA erfahren Sie auf der Webentwickler-Seite von Google auf <a href="https://developers.google.com/recaptcha/" target="_blank" rel="noopener noreferrer">https://developers.google.com/recaptcha/</a>. Google geht hier zwar auf die technische Entwicklung der reCAPTCHA näher ein, doch genaue Informationen über Datenspeicherung und datenschutzrelevanten Themen sucht man auch dort vergeblich. Eine gute Übersicht über die grundsätzliche Verwendung von Daten bei Google finden Sie in der hauseigenen Datenschutzerklärung auf <a href="https://policies.google.com/privacy?hl=de&amp;tid=311199187" target="_blank" rel="noopener noreferrer">https://www.google.com/intl/de/policies/privacy/</a>.</p>
 
+    <h2 class="adsimple-311199267">Eingebettete Social Media Elemente Datenschutzerklärung</h2>
+    <p>Wir binden auf unserer Webseite Elemente von Social Media Diensten, wie dem Google Login, ein um Bilder, Videos und Texte anzuzeigen.<br />
+    Durch den Besuch von Seiten die diese Elemente darstellen, werden Daten von Ihrem Browser zum jeweiligen Social Media Dienst übertragen und dort gespeichert. Wir haben keinen Zugriff auf diese Daten.<br />
+    Die folgenden Links führen Sie zu den Seiten der jeweiligen Social Media Dienste wo erklärt wird, wie diese mit Ihren Daten umgehen:</p>
+    <ul class="adsimple-311199267">
+    <li class="adsimple-311199267">Google Datenschutzerklärung: <a class="adsimple-311199267" href="https://policies.google.com/privacy?hl=de&amp;tid=311199267" target="_blank" rel="noopener">https://policies.google.com/privacy?hl=de</a>
+    </li>
+    </ul>
 
 
 
