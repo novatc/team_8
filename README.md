@@ -40,6 +40,15 @@ Spielübersicht (gameoverview.php):
 Spielerübersicht (playeroverview.php):
 
 Chatübersicht (chatoverview.php):
-
+* Hier wird dem angemeldeten User eine Übersicht seiner Chats präsentiert, bestehend aus zwei Teilen.
+    * Freundesliste: hier werden alle User angezeigt, mit dem der angemeldete User befreundet ist.
+    * Alle Chats: hier kann der User alle seine aktiven Chats verfolgen.
+* Die User werden sowohl in der Freundesliste als auch in den aktiven Chats jeweils mit ihrem Icon und ihrem Usernamen angezeigt.
+    * klickt man auf das Icon des Users, gelangt man zu seinem Profil.
+    * klickt man auf den Namen des Users, wird man zum Chat (chat.php) mit diesem User weitergeleitet.
+    
 Chat mit einer Person (chat.php):
-
+* Hier wird eine Chatbox mit dem ausgewählten User angezeigt.
+    * Es werden alle bisher ausgetauschten Nachrichten angezeigt.
+        * Die eigenen Nachrichten und die des anderen Users haben unterschiedliche Farben und werden zusammen mit dem Icon angezeigt.
+    * **(unvollständig) Es wurde beim Chat kein AJAX benutzt. Das heißt, bei jedem Versenden einer Nachricht wird die Chatseite mit der neuen Nachricht neu geladen.
