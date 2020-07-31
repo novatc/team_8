@@ -59,26 +59,25 @@ if (isset($_SESSION['gamechoice'])) {
             <h1>Spiele verwalten</h1>
             <div class="input-wrapper">
                 <select class="selectbox" name="game" onchange="this.form.submit()" required>
-                    <option value="">Choose</option>
                     <optgroup id="option-choosed" label="Gewählt">
                         <option value='<?php echo $gamechoice ?>' selected='selected'><?php echo $gamechoice ?></option>
-
-                        <optgroup label="Meine Spiele">
-                            <?php foreach ($usergames as $usergame): ?>
-                                <?php foreach ($allgames as $game): ?>
-                                    <?php if ($usergame == $game->gameid): ?>
-                                        <option value='<?php echo $game->gamename ?>'><?php echo $game->gamename ?></option>
-                                    <?php endif; ?>
-                                <?php endforeach; ?>
-                            <?php endforeach; ?>
-                        </optgroup>
-                        <optgroup label="Weitere Spiele hinzufügen">
+                    </optgroup>
+                    <optgroup label="Meine Spiele">
+                        <?php foreach ($usergames as $usergame): ?>
                             <?php foreach ($allgames as $game): ?>
-                                <?php if (!in_array($game->gameid, $usergames)): ?>
+                                <?php if ($usergame == $game->gameid): ?>
                                     <option value='<?php echo $game->gamename ?>'><?php echo $game->gamename ?></option>
                                 <?php endif; ?>
                             <?php endforeach; ?>
-                        </optgroup>
+                        <?php endforeach; ?>
+                    </optgroup>
+                    <optgroup label="Weitere Spiele hinzufügen">
+                        <?php foreach ($allgames as $game): ?>
+                            <?php if (!in_array($game->gameid, $usergames)): ?>
+                                <option value='<?php echo $game->gamename ?>'><?php echo $game->gamename ?></option>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </optgroup>
                 </select>
                 <label class="left-label">Spiel</label>
                 <div id="select-icon"></div>

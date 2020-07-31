@@ -19,11 +19,12 @@ Suche (im Header integriert)
 Login (login.php):
 * Hier kann sich ein bereits registrierter Nutzer mit seinem Benutzernamen und Passwort einloggen.
 * Alternativ steht auch ein Login über die Google APi zur Verfügung.
+    * Dieser funktioniert aber nur wenn die Adresse "http://localhost/team8/login.php" ist, da nur für diese Adresse ein Key vorliegt.   
     * Bei dieser Methode wird überprüft, ob der Google nutzer bereits in der Datenbank eingetragen ist. Ist dies der Fall wird er eingeloggt. Ansonsten wird ein neuer Nutzer angelegt. Dabei wird der Nutzername aus dem Google Account übernommen.
     * Es ist einem Googlenutzer nicht möglich sich über das Loginformular einzuloggen, da kein Passwort für ihn angelegt wird. Er muss immer den Google-button nutzen.
     * **(Bug)** Es ist möglich das ein Google-Nutzer den gleichen Nutzernamen wie ein normaler Nutzer besitzt, dieses führt jedoch zu keinen Problemen, da diese noch über eine Endeutige ID unterschieden werden. Allerdings kann es für  
     * Benutzer der Website verwirrend sein, wenn zwei Nutzer den gleichen Nutzernamen besitzen.
-
+    
 Registrierung (registration.php):
 
 Spielerprofil (playerprofile.php):
@@ -51,4 +52,4 @@ Chat mit einer Person (chat.php):
 * Hier wird eine Chatbox mit dem ausgewählten User angezeigt.
     * Es werden alle bisher ausgetauschten Nachrichten angezeigt.
         * Die eigenen Nachrichten und die des anderen Users haben unterschiedliche Farben und werden zusammen mit dem Icon angezeigt.
-    
+    * Der Chat ist Live
