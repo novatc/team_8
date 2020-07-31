@@ -143,7 +143,9 @@ if(!$noData){
             </div>
             <h2>Meine Spiele:</h2>
             <div class="game-wrapper"> 
-                <a class="profile-btn" id="edit-games" href="edit_games.php"></a>
+                <?php if ($ownprofile): ?>
+                    <a class="profile-btn" id="edit-games" href="edit_games.php"></a>
+                <?php endif; ?>
                 <ul class="cardview" >
                     <?php foreach($usergames as $usergame):?>
                             <?php foreach($allgames as $game):?>
