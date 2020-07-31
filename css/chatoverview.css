@@ -26,8 +26,8 @@ h2 {
 
 .gridActiveChats {
     display: grid;
-    width: 350px;
-    grid-template-columns: 100px 230px;
+    width: 450px;
+    grid-template-columns: 100px 330px;
     grid-column-gap: 30px;
     grid-row-gap: 20px;
     margin: auto;

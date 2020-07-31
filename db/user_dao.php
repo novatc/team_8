@@ -140,9 +140,10 @@ class UserDAO implements UserDAOInterface
             $username = Database::encodeData($username);
             $email = Database::encodeData($email);
             $google = 1;
-            $sql = "SELECT * FROM User WHERE username = :user AND google=1";
+            $sql = "SELECT * FROM User WHERE username = :user AND mail = :email AND google=1";
             $cmd = $db->prepare($sql);
             $cmd->bindParam(":user", $username);
+            $cmd->bindParam(":email", $email);
             $cmd->execute();
 
             $usernameObject = $cmd->fetchObject();
@@ -487,19 +488,32 @@ class UserDAO implements UserDAOInterface
                 $friendone = Database::encodeData($friendone);
                 $friendtwo = Database::encodeData($friendtwo);
 
-                $db->beginTransaction();
                 $sql = "INSERT INTO Friends (id1, id2) VALUES (:you, :friend);";
                 $cmd = $db->prepare( $sql );
                 $cmd->bindParam( ':you', $friendone );
                 $cmd->bindParam( ':friend', $friendtwo );
                 $cmd->execute();
-
-                $db->commit();
                 return 0;
             }
 
         } catch (Exception $ex) {
-            $db->rollBack();
+            return 1;
+        }
+    }
+    function removeFriend($friendone, $friendtwo) {
+
+        $db = Database::connect($this->dsn);
+
+        try {
+            $sql = "DELETE FROM Friends WHERE id1 = :you AND id2 = :friend OR id1 = :friend AND id2 = :you";
+            $cmd = $db->prepare( $sql );
+            $cmd->bindParam( ':you', $friendone );
+            $cmd->bindParam( ':friend', $friendtwo );
+            $cmd->execute();
+            return 0;
+            
+
+        } catch (Exception $ex) {
             return 1;
         }
     }

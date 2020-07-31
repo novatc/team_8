@@ -123,7 +123,7 @@ if(!$noData){
                         <a class="profile-btn" id="message-link" href="chat.php?user=<?= $profileID?>"></a>
                         
                         <?php if ($isFriend): ?> 
-                            <a class="profile-btn" id="friend-link"></a>
+                            <a class="profile-btn" id="friend-link" href="php/actions/remove_friend_action.php?user=<?= $profileID?>"></a>
                         <?php else: ?>
                             <a class="profile-btn" id="add-friend-link" href="php/actions/add_friend_action.php?user=<?= $profileID?>"></a>
                         <?php endif; ?>
