@@ -19,4 +19,12 @@ Login (login.php):
 * Alternativ steht auch ein Login über die Google APi zur Verfügung.
     * Bei dieser Methode wird überprüft, ob der Google nutzer bereits in der Datenbank eingetragen ist. Ist dies der Fall wird er eingeloggt. Ansonsten wird ein neuer Nutzer angelegt. Dabei wird der Nutzername aus dem Google Account übernommen.
     * Es ist einem Googlenutzer nicht möglich sich über das Loginformular einzuloggen, da kein Passwort für ihn angelegt wird. Er muss immer den Google-button nutzen.
-    * **(Bug)** Es ist möglich das ein Google-Nutzer den gleichen Nutzernamen wie ein normaler nutzer besitzt, dieses führt jedoch zu keinen Problemen, da diese noch über eine Endeutige ID unterschieden werden. Allerdings kann es für den Nutzer verwirrend sein, wenn zwei Nutzer den gleichen Nutzernamen besitzen.
+    * **(Bug)** Es ist möglich das ein Google-Nutzer den gleichen Nutzernamen wie ein normaler Nutzer besitzt, dieses führt jedoch zu keinen Problemen, da diese noch über eine Endeutige ID unterschieden werden. Allerdings kann es für  
+    * Benutzer der Website verwirrend sein, wenn zwei Nutzer den gleichen Nutzernamen besitzen.
+
+Registrierung (registration.php):
+
+Spielerprofil (playerprofile.php):
+* Hier wird das Profil eines Nutzer angezeigt.
+* Ist es nicht das eigene Profil kann dem Nutzer eine Nachricht geschrieben werden oder er kann als Freund hinzugefügt werden.
+    * **(Bug)** Fügt man einen Nutzer als Freund hinzu muss der andere dieses bis jetzt noch nicht bestätigen, sondern die Freundschaft wird einfach "erstellt".
