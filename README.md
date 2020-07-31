@@ -7,5 +7,5 @@ Gruppenmitglieder:
 
 Zum Betrieb allgemeine, notwendige Informationen:
 * Die Webseite wird mit einer gefüllten Datenbank abgegeben, sollte diese gelöscht werden wird einen neue Datenbank erzeugt, in der keine Beispieldaten eingefügt worden sind.
-* Neue Beispieldaten können über das PHP-Script fill_dummy-data.php (Pfad: http://localhost/.../team8/db/fill_dummy_data.php) eingefügte werden.
-* 
+* 4 Beispiel Nutzer können über das PHP-Script fill_dummy-data.php (Pfad: http://localhost/.../team8/db/fill_dummy_data.php) eingefügte werden.
+    * Die Benutzernamen sind "Nico", "Lucas", "Johannes" und "Bot" und dass Passwort aller Beispielnutzer ist "Passwort".
