@@ -26,5 +26,10 @@ Registrierung (registration.php):
 
 Spielerprofil (playerprofile.php):
 * Hier wird das Profil eines Nutzer angezeigt.
-* Ist es nicht das eigene Profil kann dem Nutzer eine Nachricht geschrieben werden oder er kann als Freund hinzugefügt werden.
-    * **(Bug)** Fügt man einen Nutzer als Freund hinzu muss der andere dieses bis jetzt noch nicht bestätigen, sondern die Freundschaft wird einfach "erstellt".
+* Ist es nicht das eigene Profil kann dem Nutzer eine Nachricht geschrieben werden (Nachrichtensymbol im Profilheader) oder er kann als Freund hinzugefügt/gelöscht werden (Personensymbol im Profilheader).
+    * **(Bug)** Fügt man einen Nutzer als Freund hinzu muss der andere dieses bis jetzt noch nicht bestätigen, sondern die Freundschaft wird einfach "erstellt". Der andere Nutzer kann die Freundschaft aber natürlich auch wieder annulieren/löschen.
+* Ist es das eigene Profil kann der Nutzer über das Zahnradsymbol seine Daten(Beschreibung, Alter, Sprachen, Icon) bearbeiten oder sein Profil ganz löschen.
+    * Zum Löschen muss der Nutzer noch einmal Benutzername und Passwort zum Bestätigen eingeben (Nur der Nutzername bei Googlenutzern). Im Anschluss werden jegliche Chats, Einträge und sonstiges von diesem Nutzer gelöscht.
+* Über das Stiftsymbol über den Spielen im eigenen Profil kann der Nutzer seine Spiele bearbeiten, neue hinzufügen oder eigene Entfernen.
+    * über die Checkbox "Ich möchte das Spieler mich über dieses Spiel finden" kann der Nutzer einstellen ob er in der Spielerübersicht dieses Spiels angezeigt wird. Ist der Haken nicht gesetzt wird das Spiel nur im Profil angezeigt, andere Nutzer finden ihn aber nicht über das Spiel.
+    * 
