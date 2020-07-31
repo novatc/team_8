@@ -38,10 +38,9 @@ Login (login.php):
     * Es ist einem Googlenutzer nicht möglich sich über das Loginformular einzuloggen, da kein Passwort für ihn angelegt wird. Er muss immer den Google-button nutzen.
     * **(Bug)** Es ist möglich das ein Google-Nutzer den gleichen Nutzernamen wie ein normaler Nutzer besitzt, dieses führt jedoch zu keinen Problemen, da diese noch über eine Endeutige ID unterschieden werden. Allerdings kann es für  
     * Benutzer der Website verwirrend sein, wenn zwei Nutzer den gleichen Nutzernamen besitzen.
-    
+   
+
 Registrierung (registration.php):
-
-
 * Eine klassische Registrierung ist möglich, der Nutzer muss hierfür eine gültige Mailadresse besitzen und einen einzigartigen Namen
 wählen. Mit dem gewählten Namen ist der Nutzer für andere Nutzer sichtbar. Zum Schutz vor Bots und Spam muss bei der Registrierung
 ein reCAPTCHA von Google gelöst werden. Ist ein nicht bereits vergebener Nutzername gewählt, eine gültige Email angegeben,
@@ -65,6 +64,7 @@ Spielübersicht (gameoverview.php):
 Spielerübersicht (playeroverview.php):
 * Hier ist eine Übersicht von allen Spielern eines Spiels, wenn man auf eine Karte klickt gelangt man zum Profil des Spielers.
 * Mit den Filtern kann man die Spieler filtern, sind mehrere Filter einer Filteroption aktiv werden diese als Oder-Verknüpft (Option A oder B muss erfüllt sein).
+* Bei der Spielerübersicht werdn mittels infinit scroll zulange Wartezeiten verhindert.
 
 Chatübersicht (chatoverview.php):
 * Hier wird dem angemeldeten User eine Übersicht seiner Chats präsentiert, bestehend aus zwei Teilen.
