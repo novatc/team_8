@@ -1,25 +1,30 @@
 **Team8**
 
-Team8 ist eine Webseite, die die Suche nach „Teammates“ für ein beliebiges Onlinespiel erleichtern soll. Dabei kann eine Person, die die Webseite nutzen möchte, um Personen zu spielen zu finden, hat zwei Möglichkeiten:
-*  Sie registriert sich und erstellt eine Anzeige in der sie sich selbst bewirbt (Spiel, Rolle, Anzahl der gesuchten Spieler, Beschreibung etc.) und angibt nach was sie sucht. Hierbei fungiert die Person als Anbieter.
-*  Sie sucht direkt nach Spielern und durchsucht dabei, bereits bestehende Anzeigen. Dabei stehen ihr verschiedene Suchkriterien zur Verfügung mit denen sie zum Beispiel nach einem bestimmten Spiel filtern kann. Hierbei handelt die Person als Leser.
+Gruppenmitglieder:
+* Lucas Wagner
+* Nico Schönfisch
+* Johannes Scheibe
 
-Die ausgesuchten Spieler können dann eine Freundschaftsanfrage annehemn und danach ihren 'ingame' Namen austauschen
+Zum Betrieb allgemeine, notwendige Informationen:
+* Die Webseite wird mit einer gefüllten Datenbank abgegeben, sollte diese gelöscht werden wird einen neue Datenbank erzeugt, in der keine Beispieldaten eingefügt worden sind.
+* 4 Beispiel Nutzer können über das PHP-Script fill_dummy-data.php (Pfad: http://localhost/.../team8/db/fill_dummy_data.php) eingefügte werden.
+    * Die Benutzernamen sind "Nico", "Lucas", "Johannes" und "Bot" und dass Passwort aller Beispielnutzer ist "Passwort".
 
-**Ziel:** Unser Ziel ist es Personen eine Plattform zugeben, mit denen sie neue Leute kennenlernen können und das alles im Rahmen des Online-Gamings.
+Funktionen und Erklärung der Webseite:
 
-**Zielgruppe:** Die Webseite richtet sich vor allem an Jugendliche und junge Erwachsene, die ihrer Freizeit gerne mit Online-Spielen vertreiben. 
+Startseite (index.php):
 
-**Unterstütze Geräte:** Ziel ist es das die Webseite sowohl auf mobilen Geräten als auch Desktopcomputern mit verschiedenen Auflösungen nutzbar ist.
+Login (login.php):
+* Hier kann sich ein bereits registrierter Nutzer mit seinem Benutzernamen und Passwort einloggen.
+* Alternativ steht auch ein Login über die Google APi zur Verfügung.
+    * Bei dieser Methode wird überprüft, ob der Google nutzer bereits in der Datenbank eingetragen ist. Ist dies der Fall wird er eingeloggt. Ansonsten wird ein neuer Nutzer angelegt. Dabei wird der Nutzername aus dem Google Account übernommen.
+    * Es ist einem Googlenutzer nicht möglich sich über das Loginformular einzuloggen, da kein Passwort für ihn angelegt wird. Er muss immer den Google-button nutzen.
+    * **(Bug)** Es ist möglich das ein Google-Nutzer den gleichen Nutzernamen wie ein normaler Nutzer besitzt, dieses führt jedoch zu keinen Problemen, da diese noch über eine Endeutige ID unterschieden werden. Allerdings kann es für  
+    * Benutzer der Website verwirrend sein, wenn zwei Nutzer den gleichen Nutzernamen besitzen.
 
-**Einschränkungen:** Zunächst soll nur eine bestimmte Auswahl an Spielen unterstützt werden
+Registrierung (registration.php):
 
-
-**Aufbau:** Nach dem Aufrufen der Seite bekommt der Nutzer die Auswahl zwischen diversen Spielen. Hat er das für ihn 
-interessante Spiel gewählt, geht es weiter zu einer Spielerübersicht, über die er alle Spieler des Spieles 
-sehen kann.
-Über Filteroptionen lässt sich die Auswahl auf individuelle Kriterien beschränken.
-Ist ein passender Spieler gefunden, kann man sich sein Profil genauer anschauen, hier findet man dann mehr 
-Informationen über den Spielstil des Spielers.
-Interaktionen zwischen den Nutzeren finden über Freundschaftsanfragen und Nachtichten statt.
-Eine einheitliche Navigationsleiste stellt dabei die Hauptnavigation dar.
+Spielerprofil (playerprofile.php):
+* Hier wird das Profil eines Nutzer angezeigt.
+* Ist es nicht das eigene Profil kann dem Nutzer eine Nachricht geschrieben werden oder er kann als Freund hinzugefügt werden.
+    * **(Bug)** Fügt man einen Nutzer als Freund hinzu muss der andere dieses bis jetzt noch nicht bestätigen, sondern die Freundschaft wird einfach "erstellt".
