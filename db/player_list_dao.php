@@ -446,32 +446,6 @@ class PlayerListDAO implements PlayerListDAOInterface
 
     }
 
-    function getPlayerByName($userName)
-    {
-        $result = array();
-
-        try {
-            $db = Database::connect("sqlite:db/Database.db");
-        } catch (Exception $e) {
-        }
-        try {
-            $sql = "SELECT * FROM User WHERE username = :userName;";
-            $cmd = $db->prepare($sql);
-            $cmd->bindParam(':userName', $userName);
-            $cmd->execute();
-
-            $result = $cmd->fetchObject();
-            if ($result != null) {
-                Database::disconnect();
-                return $result;
-            } else return false;
-
-        } catch (Exception $ex) {
-            echo $ex->getMessage();
-        }
-    }
-
-
 }
 
 ?>

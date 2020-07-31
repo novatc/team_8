@@ -2,9 +2,9 @@
 require_once "php/actions/session.php";
 updateSession();
 
-include "db/player_list_dao.php";
+require_once "db/user_dao.php";
 
-$playerlist = new PlayerListDAO("sqlite:db/Database.db");
+$userDAO = new UserDAO("sqlite:db/Database.db");
 $search = $_GET['search'];
 ?>
 
@@ -26,47 +26,38 @@ $search = $_GET['search'];
 </header>
 <main>
     <h1 class="title">Ergebnisse</h1>
+    <ul class="cardview" id="search-result">
+        <?php $searchresult = $userDAO->searchUser($search); ?>
+        <?php foreach ($searchresult as $user):
+                    $userID = $user->userid;
+                    $username = $user->username;
+                    $profileurl = 'playerprofile.php?id=' . $userID;
+                    $userICON = $user->iconid;
+                    $ICON = $userDAO->getIcon($userICON)->filename;
+                    $age = $user->age;
+                    $date = new DateTime($age);
+                    $now = new DateTime();
+                    $age_in_years = $now->diff($date)->y;
+                    if ($age_in_years == 0)
+                        $age_in_years = "~";
 
-    <?php $searchresult = $playerlist->getPlayerByName($search); ?>
-    <?php if (isset($searchresult) && $searchresult != null):
-        $playerID = $searchresult->userid;
-        $profileurl = 'playerprofile.php?id=' . $playerID;
-        $age = $searchresult->age;
-        $date = new DateTime($age);
-        $now = new DateTime();
-        $age_in_years = $now->diff($date)->y;
-        if ($age_in_years == 0)
-            $age_in_years = "~";
+                    ?>
 
-        ?>
-
-        <ul class="cardview" id="search-result">
-            <li class="card">
-                <a href='<?php echo $profileurl ?>' class="container">
-                    <div class="content">
-                        <div class="name-wrapper">
-                            <h1><?php echo $searchresult->username ?></h1>
-                        </div>
-                        <ul>
-                            <li>Sprache: <?php echo $searchresult->language ?></li>
-                            <li>Alter: <?php echo $age_in_years ?></li>
-
-                        </ul>
-                    </div>
-                </a>
-            </li>
-
-
-            <?php foreach ($searchresult as $user):
-
-                ?>
-
-
-            <?php endforeach; ?>
-        </ul>
-    <?php else: ?>
-        <p>keine Spieler gefunden</p>
-    <?php endif; ?>
+                    <li class="card" style="">
+                        <a href='<?php echo $profileurl ?>' class="container"
+                            style="background-image:  url('<?= 'Resourcen/Icons/' . $ICON ?>') ">
+                            <div class="name-wrapper"
+                                    style="background-image:  url('<?= 'Resourcen/Icons/' . $ICON ?> ') ">
+                                <h1><?php echo $username ?></h1>
+                            </div>
+                            <ul>
+                                <li>Sprache: <?php echo $user->language ?></li>
+                                <li>Alter: <?php echo $age_in_years ?></li>
+                            </ul>
+                        </a>
+                    </li>
+                <?php endforeach; ?>
+    </ul>
 
 </main>
 

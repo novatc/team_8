@@ -306,7 +306,30 @@ class UserDAO implements UserDAOInterface
         Database::disconnect($this->dsn);
     }
 
-    
+
+     function searchUser($username)
+    {
+        $db = Database::connect($this->dsn);
+
+        try {
+            $username = Database::encodeData($username);
+            $username = "%{$username}%";
+            $sql = "SELECT * FROM User WHERE (username LIKE :name)";
+            $cmd = $db->prepare($sql);
+            $cmd->bindParam(':name', $username);
+
+            $users = array();
+            
+            if ($cmd->execute()) {
+                while ($item = $cmd->fetchObject()) {
+                    array_push($users, $item);
+                }
+            }
+            return $users;
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+        }
+    }
 
     function updateUser($userID, $age, $language, $description, $iconID){
         $db = Database::connect($this->dsn);
