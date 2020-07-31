@@ -5,6 +5,10 @@ updateSession();
 require_once "db/player_list_dao.php";
 $playerlistDAO = new PlayerListDAO("sqlite:db/Database.db");
 
+require_once "db/user_dao.php";
+$userListDAO = new UserDAO("sqlite:db/Database.db");
+
+
 require_once "db/game_dao.php";
 $gameDAO = new GameDAO("sqlite:db/Database.db");
 
@@ -92,18 +96,27 @@ $list = $playerlistDAO->getPlayersForGame($gameID, $rankfilter, $rolefilter);
                         $playerID = $playeritem->userid;
                         $playername = $playerlistDAO->getPlayerByID($playerID);
                         $profileurl = 'playerprofile.php?id=' . $playerID;
+                        $user = $userListDAO->getUserByID($playerID);
+                        $userICON = $user->iconid;
+                        $ICON = $userListDAO->getIcon($userICON)->filename
                         ?>
 
-                        <li class="card" style="background-image: url('Resourcen\Logo\logo_orange.png');">
-                            <a href='<?php echo $profileurl ?>' class="container" style="<?php echo $style ?>">
-                                <div class="name-wrapper">
+                        <li class="card" style="">
+                            <a href='<?php echo $profileurl ?>' class="container"
+                               style="background-image:  url('<?= 'Resourcen/Icons/' . $ICON ?>') ">
+                                <div class="name-wrapper"
+                                     style="background-image:  url('<?= 'Resourcen/Icons/' . $ICON ?> ') ">
                                     <h1><?php echo $playeritem->username ?></h1>
                                 </div>
                                 <ul>
                                     <li>Sprache: <?php echo $playeritem->language ?></li>
                                     <li>
-                                        Role: <?php echo implode(", ", $playerlistDAO->getRoles($gameID, $playeritem->userid)) ?></li>
-                                    <li>ELO: <?php echo $playerlistDAO->getRank($gameID, $playeritem->userid) ?>  </li>
+                                        Role: <?php echo implode(", ", $playerlistDAO->getRoles($gameID, $playeritem->userid)) ?>
+                                    </li>
+
+                                    <li>
+                                        ELO: <?php echo $playerlistDAO->getRank($gameID, $playeritem->userid) ?>
+                                    </li>
                                 </ul>
                             </a>
                         </li>
