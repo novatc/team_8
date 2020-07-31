@@ -10,9 +10,11 @@ Zum Betrieb allgemeine, notwendige Informationen:
 * 4 Beispiel Nutzer können über das PHP-Script fill_dummy-data.php (Pfad: http://localhost/.../team8/db/fill_dummy_data.php) eingefügte werden.
     * Die Benutzernamen sind "Nico", "Lucas", "Johannes" und "Bot" und dass Passwort aller Beispielnutzer ist "Passwort".
 
-Funktionen und Erklärung der Webseite:
+Funktionen und Erklärung der wichtigsten Webseiten:
 
 Startseite (index.php):
+
+Suche (im Header integriert)
 
 Login (login.php):
 * Hier kann sich ein bereits registrierter Nutzer mit seinem Benutzernamen und Passwort einloggen.
@@ -26,5 +28,27 @@ Registrierung (registration.php):
 
 Spielerprofil (playerprofile.php):
 * Hier wird das Profil eines Nutzer angezeigt.
-* Ist es nicht das eigene Profil kann dem Nutzer eine Nachricht geschrieben werden oder er kann als Freund hinzugefügt werden.
-    * **(Bug)** Fügt man einen Nutzer als Freund hinzu muss der andere dieses bis jetzt noch nicht bestätigen, sondern die Freundschaft wird einfach "erstellt".
+* Ist es nicht das eigene Profil kann dem Nutzer eine Nachricht geschrieben werden (Nachrichtensymbol im Profilheader) oder er kann als Freund hinzugefügt/gelöscht werden (Personensymbol im Profilheader).
+    * **(Bug)** Fügt man einen Nutzer als Freund hinzu muss der andere dieses bis jetzt noch nicht bestätigen, sondern die Freundschaft wird einfach "erstellt". Der andere Nutzer kann die Freundschaft aber natürlich auch wieder annulieren/löschen.
+* Ist es das eigene Profil kann der Nutzer über das Zahnradsymbol seine Daten(Beschreibung, Alter, Sprachen, Icon) bearbeiten oder sein Profil ganz löschen.
+    * Zum Löschen muss der Nutzer noch einmal Benutzername und Passwort zum Bestätigen eingeben (Nur der Nutzername bei Googlenutzern). Im Anschluss werden jegliche Chats, Einträge und sonstiges von diesem Nutzer gelöscht.
+* Über das Stiftsymbol über den Spielen im eigenen Profil kann der Nutzer seine Spiele bearbeiten, neue hinzufügen oder eigene Entfernen.
+    * über die Checkbox "Ich möchte das Spieler mich über dieses Spiel finden" kann der Nutzer einstellen ob er in der Spielerübersicht dieses Spiels angezeigt wird. Ist der Haken nicht gesetzt wird das Spiel nur im Profil angezeigt, andere Nutzer finden ihn aber nicht über das Spiel.
+
+Spielübersicht (gameoverview.php):
+
+Spielerübersicht (playeroverview.php):
+
+Chatübersicht (chatoverview.php):
+* Hier wird dem angemeldeten User eine Übersicht seiner Chats präsentiert, bestehend aus zwei Teilen.
+    * Freundesliste: hier werden alle User angezeigt, mit dem der angemeldete User befreundet ist.
+    * Alle Chats: hier kann der User alle seine aktiven Chats verfolgen.
+* Die User werden sowohl in der Freundesliste als auch in den aktiven Chats jeweils mit ihrem Icon und ihrem Usernamen angezeigt.
+    * klickt man auf das Icon des Users, gelangt man zu seinem Profil.
+    * klickt man auf den Namen des Users, wird man zum Chat (chat.php) mit diesem User weitergeleitet.
+    
+Chat mit einer Person (chat.php):
+* Hier wird eine Chatbox mit dem ausgewählten User angezeigt.
+    * Es werden alle bisher ausgetauschten Nachrichten angezeigt.
+        * Die eigenen Nachrichten und die des anderen Users haben unterschiedliche Farben und werden zusammen mit dem Icon angezeigt.
+    

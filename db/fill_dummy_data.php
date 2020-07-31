@@ -22,7 +22,7 @@ $db->exec($sql);
 $sql = "REPLACE INTO Friends (id1, id2) VALUES (1, 2)";
 $db->exec($sql);
 
-$sql = "REPLACE INTO Friends (id1, id2) VALUES (2, 1)";
+$sql = "REPLACE INTO Friends (id1, id2) VALUES (1, 4)";
 $db->exec($sql);
 
 $sql = "REPLACE INTO Friends (id1, id2) VALUES (2, 3)";
