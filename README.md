@@ -41,8 +41,12 @@ Spielerprofil (playerprofile.php):
     * über die Checkbox "Ich möchte das Spieler mich über dieses Spiel finden" kann der Nutzer einstellen ob er in der Spielerübersicht dieses Spiels angezeigt wird. Ist der Haken nicht gesetzt wird das Spiel nur im Profil angezeigt, andere Nutzer finden ihn aber nicht über das Spiel.
 
 Spielübersicht (gameoverview.php):
+* Hier ist eine Übersicht von allen Spielen, wenn man auf eine Karte klickt erhällt man eine Übersicht über alle Spieler die das Spiel spielen.
+* Mit den Filtern kann man die Spiele filtern, sind mehrere Filter einer Filteroption aktiv werden diese als Oder-Verknüpft (Option A oder B muss erfüllt sein).
 
 Spielerübersicht (playeroverview.php):
+* Hier ist eine Übersicht von allen Spielern eines Spiels, wenn man auf eine Karte klickt gelangt man zum Profil des Spielers.
+* Mit den Filtern kann man die Spieler filtern, sind mehrere Filter einer Filteroption aktiv werden diese als Oder-Verknüpft (Option A oder B muss erfüllt sein).
 
 Chatübersicht (chatoverview.php):
 * Hier wird dem angemeldeten User eine Übersicht seiner Chats präsentiert, bestehend aus zwei Teilen.
@@ -51,7 +55,8 @@ Chatübersicht (chatoverview.php):
 * Die User werden sowohl in der Freundesliste als auch in den aktiven Chats jeweils mit ihrem Icon und ihrem Usernamen angezeigt.
     * klickt man auf das Icon des Users, gelangt man zu seinem Profil.
     * klickt man auf den Namen des Users, wird man zum Chat (chat.php) mit diesem User weitergeleitet.
-    
+* Auch hier werden für jeden Chat die ungelesenen Nachrichten angezeigt. **(BUG)** Jedoch ist auch hier das Ganze nicht Life und muss erst implementiert werden.
+
 Chat mit einer Person (chat.php):
 * Hier wird eine Chatbox mit dem ausgewählten User angezeigt.
     * Es werden alle bisher ausgetauschten Nachrichten angezeigt.
