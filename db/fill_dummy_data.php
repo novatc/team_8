@@ -127,6 +127,8 @@ $db->exec($sql);
 $sql = "REPLACE INTO Chat (senderid, receiverid, chatmessage) VALUES (3, 1, 'Hey Nico')";
 $db->exec($sql);
 
+$sql = "REPLACE INTO Chat (senderid, receiverid, chatmessage) VALUES (1, 3, 'Hallo!')";
+$db->exec($sql);
 $message = "Datenbank erfolgreich gefüllt.";
 setcookie("loginmessage", $message, 0, "/");
 header('Location: ../login.php');

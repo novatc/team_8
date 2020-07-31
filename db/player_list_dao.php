@@ -247,7 +247,7 @@ class PlayerListDAO implements PlayerListDAOInterface
 
         try {
 
-            $sql = "SELECT * FROM Playerlist WHERE gameid = :gameID AND status = 'active' LIMIT $start, $limit";
+            $sql = "SELECT * FROM Playerlist WHERE gameid = :gameID AND status = 'active'";
 
             if(count($ranks)>0){
                 $sql = $sql . " AND (rank = :rank" . 0;
@@ -256,7 +256,7 @@ class PlayerListDAO implements PlayerListDAOInterface
                 }
                 $sql = $sql . ")";
             }
-            $sql = $sql . ";";
+            $sql = $sql . " LIMIT $start, $limit;";
 
             $cmd = $db->prepare($sql);
             $cmd->bindParam(':gameID', $gameID);
