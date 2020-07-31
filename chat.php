@@ -50,11 +50,12 @@ $userDAO->readMessages($userID, $chatpartnerID);
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
-        $(document).ready(function()
+    $(document).ready(function()
         {
             $(document).bind('keypress', function(e) {
                 if(e.keyCode==13){
-                    $('#messageInput').submit();
+                    $('#messageform').submit();
+                    $('#messageInput').val("");
                 }
             });
         });
