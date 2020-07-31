@@ -51,4 +51,4 @@ Chat mit einer Person (chat.php):
 * Hier wird eine Chatbox mit dem ausgewählten User angezeigt.
     * Es werden alle bisher ausgetauschten Nachrichten angezeigt.
         * Die eigenen Nachrichten und die des anderen Users haben unterschiedliche Farben und werden zusammen mit dem Icon angezeigt.
-    * **(unvollständig) Es wurde beim Chat kein AJAX benutzt. Das heißt, bei jedem Versenden einer Nachricht wird die Chatseite mit der neuen Nachricht neu geladen.
+    
