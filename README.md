@@ -14,7 +14,9 @@ Funktionen und Erklärung der wichtigsten Webseiten:
 
 Startseite (index.php):
 
-Suche (im Header integriert)
+Header:
+* Der Header ist auf jeder SEite eingebunden. Er stellt die Hauptnavigation dar.
+* Über die Suche kann man Spieler über den Benutzernamen finden.
 
 Login (login.php):
 * Hier kann sich ein bereits registrierter Nutzer mit seinem Benutzernamen und Passwort einloggen.
