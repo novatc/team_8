@@ -41,11 +41,11 @@ $games = $gameDAO->getGames($tags);
             <h2>Filter</h2>
             <form action="gameoverview.php" method="post">
                 <?php foreach ($filtertags as $tag): ?>
-                    <span class="checkbox-container"><?php echo $tag ?>
+                    <label class="checkbox-container"><?php echo $tag ?>
                         <input type="checkbox" name="tags[]" value='<?php echo $tag ?>' <?php echo
                         (in_array($tag, $_SESSION['tags'])) ? 'checked' : '' ?>  onchange="this.form.submit()">
                         <span class="checkmark"></span>
-                    </span>
+                </label>
                 <?php endforeach; ?>
             </form>
         </div>

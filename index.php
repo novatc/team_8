@@ -28,7 +28,7 @@ $isLoggedIn = $_SESSION['userid'] > -1;
             <h1 id="quote">
 
             </h1>
-            <h4 id="author">&mdash;</h4>
+            <h4 id="author"></h4>
         </div>
     </div>
 

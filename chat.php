@@ -37,7 +37,6 @@ $completemessages = json_decode(json_encode($completemessages), true);
 $userDAO->readMessages($userID, $chatpartnerID);
 
 ?>
-
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -70,39 +69,36 @@ $userDAO->readMessages($userID, $chatpartnerID);
         <div id="wholechat">
             <!-- Header-->
             <div class="chatbox" id="chatheader">
-                
-                    <div class="headgrid">
-                        <input type="hidden" name="receiver" value="<?=$chatpartnerID?>">
-                        <a href="chat.php">
-                            <div class="iconChatHead" style="background-image: url('<?= 'Resourcen/Icons/' . $userDAO->getIcon($chatpartnericonid)->filename?>');"></div>
-                        </a>
-                        <label id="name"><?= $chatpartnername?></label>
-                        <div class="chatcardnopadding">
-                        </div>
-                    </div>
-                
-            </div>
-                <div class="chatbox" id="chathistory">
-                    <div class="chatgrid" id="chat">
-                    <?php
-                        include("load_chat.php");
-                    ?> 
+            
+                <div class="headgrid">
+                    <input type="hidden" name="receiver" value="<?=$chatpartnerID?>">
+                    <a href="chat.php">
+                        <div class="iconChatHead" style="background-image: url('<?= 'Resourcen/Icons/' . $userDAO->getIcon($chatpartnericonid)->filename?>');"></div>
+                    </a>
+                    <label id="name"><?= $chatpartnername?></label>
+                    <div class="chatcardnopadding">
                     </div>
                 </div>
-                <!-- Senden-->
-                <form action="php/actions/send_message_action.php?user=<?= $chatpartnerID?>" method="post" id="messageform" name="messageform">
-                    <div class="chatbox" id="sendForm">
-                        <div class="wrapper">
-                            <input class="messageInput" id="messageInput" type="text" name="message" placeholder="Schreibe eine Nachricht...">
-                            <input type="submit" class="submitMessage" value="Senden">
-                        </div>
-                        <input type="hidden" name="csrf" value="<?=$_SESSION['csrf_token']?>">
-                    </div>
-                </form>
+            
             </div>
-            <!-- Ende textbereich -->
+            <div class="chatbox" id="chathistory">
+                <div class="chatgrid" id="chat">
+                <?php
+                    include("load_chat.php");
+                ?> 
+                </div>
+            </div>
+            <!-- Senden-->
+            <form action="php/actions/send_message_action.php?user=<?= $chatpartnerID?>" method="post" id="messageform" name="messageform">
+                <div class="chatbox" id="sendForm">
+                    <div class="wrapper">
+                        <input class="messageInput" id="messageInput" type="text" name="message" placeholder="Schreibe eine Nachricht...">
+                        <input type="submit" class="submitMessage" value="Senden">
+                    </div>
+                    <input type="hidden" name="csrf" value="<?=$_SESSION['csrf_token']?>">
+                </div>
+            </form>
         </div>
-        <!-- Ende wrapper -->
     </main>
     <script>
         var chat = document.getElementById("chathistory");
@@ -112,9 +108,9 @@ $userDAO->readMessages($userID, $chatpartnerID);
         input.select();
     </script>
     <footer>
-            <div class="footer">
-                <?php include "php/footer.php";?>
-            </div>
+        <div class="footer">
+            <?php include "php/footer.php";?>
+        </div>
     </footer>
 </body>
 </html>
