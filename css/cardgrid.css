@@ -61,7 +61,7 @@
     display: flex;
     padding: 28px;
     flex-direction: column;
-    overflow: hidden; 
+    overflow: hidden;
 }
 
 .card .container, .card .game-container{
@@ -72,13 +72,14 @@
     transition: all 0.4s ease-out;
     box-shadow: 0 0 20px var(--dark-shadow);
     font-size: 70px;
-    color: var(--default-white);
     text-decoration: none;
     margin: 5px;
+
 }
 
 .game-container {
     text-align: center;
+    color: var(--default-white);
 }
 
 .gamelabel{
@@ -88,9 +89,13 @@
     font-size: 1em;
 }
 .card .container{
-    background-color: var(--default-bg-color);
-    font-size: larger;  
+    background-color: var(--default-black);
+    font-size: larger;
+    color: var(--orange);
+
 }
+
+
 #search-result{
     justify-content: center;
 }
