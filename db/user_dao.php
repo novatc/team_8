@@ -422,8 +422,7 @@ class UserDAO implements UserDAOInterface
             Database::disconnect($this->dsn);
         }
     }
-    
-    
+
 
     function saveMessage($senderid, $receiverid, $message)
     {
