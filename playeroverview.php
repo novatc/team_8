@@ -94,7 +94,7 @@ $list = $playerlistDAO->getPlayersForGame($gameID, $rankfilter, $rolefilter);
                         $profileurl = 'playerprofile.php?id=' . $playerID;
                         ?>
 
-                        <li class="card">
+                        <li class="card" style="background-image: url('Resourcen\Logo\logo_orange.png');">
                             <a href='<?php echo $profileurl ?>' class="container" style="<?php echo $style ?>">
                                 <div class="name-wrapper">
                                     <h1><?php echo $playeritem->username ?></h1>

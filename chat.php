@@ -50,12 +50,49 @@ $userDAO->readMessages($userID, $chatpartnerID);
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
+        $(document).ready(function()
+        {
+            $(document).bind('keypress', function(e) {
+                if(e.keyCode==13){
+                    $('#messageInput').submit();
+                }
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        function post()
+        {
+        var message = document.getElementById("messageInput").value;
+        var receiver = document.getElementById("receiver").value;
+        var csrf = document.getElementById("csrf").value
+        if(message && receiver){
+            $.ajax
+            ({
+            type: 'post',
+            url: 'php/actions/send_message_action.php',
+            data: 
+            {
+                user_message:message,
+                receiver_id:receiver,
+                csrf:csrf
+            },
+            success: function (response) 
+            {
+                document.getElementById("messageInput").value="";
+            }
+            });
+        }
+        
+        return false;
+        }
+    </script>
+    <script>
         function autoRefresh_chat()
         {
             $("#chat").load("load_chat.php").show();
         }
         
-        setInterval('autoRefresh_chat()', 1000);
+        setInterval('autoRefresh_chat()', 2000);
     </script>
 </head>
 
@@ -71,7 +108,7 @@ $userDAO->readMessages($userID, $chatpartnerID);
             <div class="chatbox" id="chatheader">
             
                 <div class="headgrid">
-                    <input type="hidden" name="receiver" value="<?=$chatpartnerID?>">
+                    <input type="hidden" id="receiver" value="<?=$chatpartnerID?>">
                     <a href="chat.php">
                         <div class="iconChatHead" style="background-image: url('<?= 'Resourcen/Icons/' . $userDAO->getIcon($chatpartnericonid)->filename?>');"></div>
                     </a>
@@ -89,13 +126,13 @@ $userDAO->readMessages($userID, $chatpartnerID);
                 </div>
             </div>
             <!-- Senden-->
-            <form action="php/actions/send_message_action.php?user=<?= $chatpartnerID?>" method="post" id="messageform" name="messageform">
+            <form action="#" method="post" onsubmit="return post();" id="messageform" name="messageform">
                 <div class="chatbox" id="sendForm">
                     <div class="wrapper">
-                        <input class="messageInput" id="messageInput" type="text" name="message" placeholder="Schreibe eine Nachricht...">
-                        <input type="submit" class="submitMessage" value="Senden">
+                        <input type="text" class="messageInput" id="messageInput" placeholder="Schreibe eine Nachricht...">
+                        <input type="submit" class="submitMessage" id="submitMessage" value="Senden">
                     </div>
-                    <input type="hidden" name="csrf" value="<?=$_SESSION['csrf_token']?>">
+                    <input type="hidden" name="csrf" id="csrf" value="<?=$_SESSION['csrf_token']?>">
                 </div>
             </form>
         </div>

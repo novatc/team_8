@@ -195,6 +195,9 @@ label#name {
     background-color: var(--white-bg-color);
     color: var(--default-black);
     border-width: 0px;
+    line-height: 30px;
+    vertical-align: middle;
+    resize:none;
 }
 
 /* Width */

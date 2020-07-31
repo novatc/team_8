@@ -420,11 +420,11 @@ class UserDAO implements UserDAOInterface
             $cmd->execute();
 
             $db->commit();
-            return 0;
+            return true;
 
         } catch (Exception $ex) {
             $db->rollBack();
-            return 1;
+            return false;
         }
     }
 

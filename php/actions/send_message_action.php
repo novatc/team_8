@@ -10,19 +10,14 @@ $ownid = $_SESSION['userid'];
 $frienduser = $userDAO->getUserByID($_GET['user']);
 $friendid = $frienduser->userid;
 
-if($isLoggedIn & isset($_GET['user'])){
+if($isLoggedIn && isset($_POST['user_message']) && isset($_POST['receiver_id'])){
     if ($_POST['csrf'] == $_SESSION['csrf_token']) {
 
-        $message = $_POST['message'];
-
+        $message = $_POST['user_message'];
+        $friendid = $_POST['receiver_id'];
         if($message!="")
-            $userDAO->saveMessage($ownid, $friendid, $message);
-    }
-
+            $insert = $userDAO->saveMessage($ownid, $friendid, $message);
+    
+    }   
 }
-header('Location: ../../chat.php?user='. $friendid);
-exit();
-
-
-
 ?>
