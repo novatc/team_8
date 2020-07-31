@@ -16,7 +16,9 @@ Startseite (index.php):
 
 Header:
 * Der Header ist auf jeder SEite eingebunden. Er stellt die Hauptnavigation dar.
-* Über die Suche kann man Spieler über den Benutzernamen finden.
+* Über die Suche kann man Spieler über den Benutzernamen finden. DAbei muss nur ein Teil des Namens übereinstimmen.
+* Neue Benachrichtigungen werden als roter Kreis mit Nummer über der Glocke angezeigt.
+* **(Bug)** Die Benachrichtigungen sind noch nicht live. Die SEite muss also erst aktualisiert werden.
 
 Login (login.php):
 * Hier kann sich ein bereits registrierter Nutzer mit seinem Benutzernamen und Passwort einloggen.
