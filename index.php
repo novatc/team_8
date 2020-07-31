@@ -25,7 +25,7 @@ $isLoggedIn = $_SESSION['userid'] > -1;
 <main>
     <div class="blockquote-wrapper">
         <div class="blockquote">
-            <h1 id = "quote">
+            <h1 id="quote">
 
             </h1>
             <h4 id="author">&mdash;</h4>
@@ -34,29 +34,29 @@ $isLoggedIn = $_SESSION['userid'] > -1;
 
     <section id="grid">
         <?php if ($isLoggedIn): ?>
-            <a href='playerprofile.php'  class="right">
-                <img class="start-img" src="Resourcen/Logo/team8_logo01-orange_profil-text.svg">
+            <a href='playerprofile.php' class="right">
+                <img class="start-img" src="Resourcen/Logo/team8_logo01-orange_profil-text.svg" alt="Profil">
             </a>
             <a href='gameoverview.php' class="left">
-                <img class="start-img" src="Resourcen/Logo/team8_logo01-orange_spiele-text.svg">
+                <img class="start-img" src="Resourcen/Logo/team8_logo01-orange_spiele-text.svg" alt="Spiele">
             </a>
         <?php else: ?>
             <a href='login.php' class="right">
-                <img class="start-img" src="Resourcen/Logo/team8_logo01-orange_login-text.svg">
+                <img class="start-img" src="Resourcen/Logo/team8_logo01-orange_login-text.svg" alt="Login">
             </a>
             <a href='registration.php' class="left">
-                <img class="start-img" src="Resourcen/Logo/team8_logo01-orange_registrieren-text.svg">
+                <img class="start-img" src="Resourcen/Logo/team8_logo01-orange_registrieren-text.svg"
+                     alt="Registrieren">
             </a>
         <?php endif; ?>
 
 
     </section>
 </main>
-<footer>
-    <div class="footer">
-        <?php include "php/footer.php"; ?>
-    </div>
-</footer>
+
+<div class="footer">
+    <?php include "php/footer.php"; ?>
+</div>
 
 </body>
 </html>

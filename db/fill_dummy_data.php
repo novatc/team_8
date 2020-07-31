@@ -4,7 +4,7 @@ require_once("Database.php");
 $db = Database::connect("sqlite:Database.db");
 
 // Beispiel Nutzer
-// Passwort der Beispieluser ist 'Passwort'!
+// Passwort der Beispieluser ist 'Passwort'!+
 $passwort = password_hash('Passwort', PASSWORD_DEFAULT);
 $sql = "REPLACE INTO User (userid, username, mail, password, google, age, language, description, iconid) VALUES (1, 'Nico', 'nico@mail.de', '{$passwort}', 0, '1999-04-04', 'Deutsch, Englisch, Französisch', 'Hallo und Herzlich Wilkommen!', 2)";
 $db->exec($sql);

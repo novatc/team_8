@@ -13,8 +13,8 @@ $userDAO = new UserDAO("sqlite:db/Database.db");
 
 $userID = $_SESSION['userid'];
 
-if($userID == -1){
-    $message="Bitte loggen Sie sich erst ein!";
+if ($userID == -1) {
+    $message = "Bitte loggen Sie sich erst ein!";
     setcookie("loginmessage", $message, 0, "/");
     header('Location: login.php?dest=edit_games');
     exit();
@@ -24,14 +24,13 @@ $user = $userDAO->getUserByID($userID);
 $description = $user->description;
 $age = $user->age;
 $language = $user->language;
-$usericon = $user->icon;
 
 $usergames = $listDAO->getGamesFromPlayer($userID);
 $allgames = $gameDAO->getGames([]);
 
-if(isset($_SESSION['gamechoice'])){
+if (isset($_SESSION['gamechoice'])) {
     $gamechoice = $_SESSION['gamechoice'];
-}else{
+} else {
     $gamechoice = '';
 }
 
@@ -48,60 +47,59 @@ if(isset($_SESSION['gamechoice'])){
     <link rel="stylesheet" type="text/css" href="css/icons.css">
 </head>
 <body>
-    
-    <header>
-        <div class="mainnav">
-            <?php include "php/header.php";?>
-        </div>
-    </header>
-    <main>
-        <div class="box"> 
-            <form action="php/actions/choose_game_action.php" method="post">
-                <h1>Spiele verwalten</h1>  
-                <div class="input-wrapper">
-                    <select class="selectbox" name="game" onchange="this.form.submit()" required>
-                        <optgroup id="option-choosed" label="Gewählt">
-                            <option value='<?php echo $gamechoice?>' selected='selected'><?php echo $gamechoice?></option>
+
+<header>
+    <div class="mainnav">
+        <?php include "php/header.php"; ?>
+    </div>
+</header>
+<main>
+    <div class="box">
+        <form action="php/actions/choose_game_action.php" method="post">
+            <h1>Spiele verwalten</h1>
+            <div class="input-wrapper">
+                <select class="selectbox" name="game" onchange="this.form.submit()" required>
+                    <option value="">Choose</option>
+                    <optgroup id="option-choosed" label="Gewählt">
+                        <option value='<?php echo $gamechoice ?>' selected='selected'><?php echo $gamechoice ?></option>
 
                         <optgroup label="Meine Spiele">
-                        <?php foreach($usergames as $usergame):?>
-                            <?php foreach($allgames as $game):?>
-                                <?php if($usergame==$game->gameid):?>
-                                    <option value='<?php echo $game->gamename?>'><?php echo $game->gamename?></option>
-                                <?php endif;?>
-                            <?php endforeach;?>
-                        <?php endforeach;?>
+                            <?php foreach ($usergames as $usergame): ?>
+                                <?php foreach ($allgames as $game): ?>
+                                    <?php if ($usergame == $game->gameid): ?>
+                                        <option value='<?php echo $game->gamename ?>'><?php echo $game->gamename ?></option>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            <?php endforeach; ?>
                         </optgroup>
                         <optgroup label="Weitere Spiele hinzufügen">
-                        <?php foreach($allgames as $game):?>
-                            <?php if(!in_array($game->gameid, $usergames)):?>
-                                <option value='<?php echo $game->gamename?>'><?php echo $game->gamename?></option>
-                            <?php endif;?>
-                        <?php endforeach;?>
+                            <?php foreach ($allgames as $game): ?>
+                                <?php if (!in_array($game->gameid, $usergames)): ?>
+                                    <option value='<?php echo $game->gamename ?>'><?php echo $game->gamename ?></option>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
                         </optgroup>
-                    </select>
-                    <label class="left-label">Spiel</label>
-                    <div id="select-icon"></div>
-                </div>
-                <input class="submit-btn" id="choose-btn" type="submit" name="gamechoicesubmit" value="Wählen">
-                <input type="hidden" name="csrf" value="<?=$_SESSION['csrf_token']?>">
-            </form>
-            <?php if($gamechoice != ''): 
-                include "php/pieces/gamestats.php";
-           endif; ?>
-        </div>
-
-    </main>
-    <script>
-        var btn = document.getElementById("choose-btn");
-        btn.style.display = "none";   
-        var option = document.getElementById("option-choosed");
-        option.style.display = "none";             
-    </script>
-    <footer>
-            <div class="footer">
-                <?php include "php/footer.php";?>
+                </select>
+                <label class="left-label">Spiel</label>
+                <div id="select-icon"></div>
             </div>
-    </footer>
+            <input class="submit-btn" id="choose-btn" type="submit" name="gamechoicesubmit" value="Wählen">
+            <input type="hidden" name="csrf" value="<?= $_SESSION['csrf_token'] ?>">
+        </form>
+        <?php if ($gamechoice != ''):
+            include "php/pieces/gamestats.php";
+        endif; ?>
+    </div>
+
+</main>
+<script>
+    var btn = document.getElementById("choose-btn");
+    btn.style.display = "none";
+    var option = document.getElementById("option-choosed");
+    option.style.display = "none";
+</script>
+<div class="footer">
+    <?php include "php/footer.php"; ?>
+</div>
 </body>
 </html>

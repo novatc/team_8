@@ -15,7 +15,7 @@ $isLoggedIn = $userID > -1;
             <a id = "game-link" href="gameoverview.php">XX</a>
         </div>
         <form class="search-wrapper" action="search.php" method="get">
-            <img class = search-icon src="Resourcen/Navigation/search-black-24dp.svg">
+            <img class = search-icon src="Resourcen/Navigation/search-black-24dp.svg" alt="Search">
             <input class="search" type="text" placeholder="Nutzer suchen..." name="search">
         </form>
         <div class="profil-nav">

@@ -63,11 +63,9 @@ if (isset($_SESSION['email'])) {
     </form>
 
 </main>
-<footer>
-    <div class="footer">
-        <?php include "php/footer.php"; ?>
-    </div>
-</footer>
+<div class="footer">
+    <?php include "php/footer.php"; ?>
+</div>
 </body>
 </html>
 

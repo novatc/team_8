@@ -26,55 +26,55 @@ $search = $_GET['search'];
 </header>
 <main>
     <h1 class="title">Ergebnisse</h1>
-    
-            <?php $searchresult = $playerlist->getPlayerByName($search);?>
-            <?php if (isset($searchresult) && $searchresult!=null):
-                $playerID = $searchresult->userid;
-                $profileurl = 'playerprofile.php?id=' . $playerID ;
-                $age = $searchresult ->age;
-                $date = new DateTime($age);
-                $now = new DateTime();
-                $age_in_years = $now ->diff($date)->y;
-                if($age_in_years==0)
-                    $age_in_years= "~";
+
+    <?php $searchresult = $playerlist->getPlayerByName($search); ?>
+    <?php if (isset($searchresult) && $searchresult != null):
+        $playerID = $searchresult->userid;
+        $profileurl = 'playerprofile.php?id=' . $playerID;
+        $age = $searchresult->age;
+        $date = new DateTime($age);
+        $now = new DateTime();
+        $age_in_years = $now->diff($date)->y;
+        if ($age_in_years == 0)
+            $age_in_years = "~";
+
+        ?>
+
+        <ul class="cardview" id="search-result">
+            <li class="card">
+                <a href='<?php echo $profileurl ?>' class="container">
+                    <div class="content">
+                        <div class="name-wrapper">
+                            <h1><?php echo $searchresult->username ?></h1>
+                        </div>
+                        <ul>
+                            <li>Sprache: <?php echo $searchresult->language ?></li>
+                            <li>Alter: <?php echo $age_in_years ?></li>
+
+                        </ul>
+                    </div>
+                </a>
+            </li>
+
+
+            <?php foreach ($searchresult as $user):
 
                 ?>
 
-                <ul class="cardview" id="search-result">
-                    <li class="card">
-                        <a href='<?php echo $profileurl?>' class="container">
-                            <div class="content">
-                                <div class="name-wrapper" >
-                                        <h1><?php echo $searchresult->username ?></h1>
-                                    </div>
-                                <ul>
-                                    <li>Sprache:  <?php echo $searchresult->language ?></li>
-                                    <li>Alter:  <?php echo $age_in_years?></li>
 
-                                </ul>
-                            </div>
-                        </a>
-                    </li>
+            <?php endforeach; ?>
+        </ul>
+    <?php else: ?>
+        <p>keine Spieler gefunden</p>
+    <?php endif; ?>
 
-
-                    <?php foreach ($searchresult as $user):
-
-                        ?>
-
-
-                    <?php endforeach; ?>
-                </ul>
-            <?php  else: ?>
-                <p>keine Spieler gefunden</p>
-            <?php endif; ?>
-       
 </main>
 
-<footer>
-    <div class="footer">
-        <?php include "php/footer.php"; ?>
-    </div>
-</footer>
+
+<div class="footer">
+    <?php include "php/footer.php"; ?>
+</div>
+
 
 </body>
 </html>

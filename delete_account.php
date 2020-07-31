@@ -2,9 +2,9 @@
 require_once "php/actions/session.php";
 updateSession();
 
-if(isset($_COOKIE['deletionmessage'])){
+if (isset($_COOKIE['deletionmessage'])) {
     $errormessage = $_COOKIE['deletionmessage'];
-}else{
+} else {
     $errormessage = "";
 }
 
@@ -35,15 +35,15 @@ $isGoogleAcc = $userDAO->isGoogleAccount($userID);
 
 <main>
     <form class="box" method="post" action="php/actions/delete_account_action.php">
-        <h2 id='error-message'><?= $errormessage?></h2>
+        <h2 id='error-message'><?= $errormessage ?></h2>
         <h1>Account löschen</h1>
         <p>Wenn Sie sich sicher sind, dass Sie Ihren Account löschen wollen geben Sie bitte Ihre Nutzerdaten ein.</p>
         <input class="login-input" type="text" name="username" placeholder="Benutzername" required>
-        <?php if(!$isGoogleAcc): ?>
+        <?php if (!$isGoogleAcc): ?>
             <input class="login-input" type="password" name="password" placeholder="Passwort" required>
         <?php endif; ?>
         <input class="submit-btn" id="submit-form" type="submit" name="delete" value="Löschen">
-        <input type="hidden" name="csrf" value="<?=$_SESSION['csrf_token']?>">
+        <input type="hidden" name="csrf" value="<?= $_SESSION['csrf_token'] ?>">
         <div class="center">
             <a class="no-link" href='playerprofile.php'>Abbrechen</a>
         </div>
@@ -55,10 +55,10 @@ $isGoogleAcc = $userDAO->isGoogleAccount($userID);
 
 </main>
 
-<footer>
-    <div class="footer">
-        <?php include "php/footer.php"; ?>
-    </div>
-</footer>
+
+<div class="footer">
+    <?php include "php/footer.php"; ?>
+</div>
+
 </body>
 </html>
