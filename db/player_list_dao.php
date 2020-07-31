@@ -174,95 +174,6 @@ class PlayerListDAO implements PlayerListDAOInterface
         }
     }
 
-    function getPlayersLimit($start, $limit)
-    {
-        $result = array();
-
-        $db = Database::connect($this->dsn);
-
-        try {
-            $sql = "SELECT * FROM User LIMIT $start, $limit";
-            $cmd = $db->prepare($sql);
-            $cmd->execute();
-
-
-            if ($cmd->execute()) {
-                while ($row = $cmd->fetchObject()) {
-                    array_push($result, $row);
-                }
-            }
-            return $result;
-
-
-        } catch (Exception $ex) {
-            echo $ex->getMessage();
-        }
-    }
-
-    function get15PlayersForGame($gameID, $ranks, $roles)
-    {
-        $result = array();
-        $helperArry = array();
-
-        $db = Database::connect($this->dsn);
-
-        try {
-
-            $sql = "SELECT * FROM Playerlist WHERE gameid = :gameID AND status = 'active' LIMIT 15";
-
-            if(count($ranks)>0){
-                $sql = $sql . " AND (rank = :rank" . 0;
-                for($i = 1; $i<count($ranks);$i++){
-                    $sql = $sql . " OR rank = :rank" . $i;
-                }
-                $sql = $sql . ")";
-            }
-            $sql = $sql . ";";
-
-            $cmd = $db->prepare($sql);
-            $cmd->bindParam(':gameID', $gameID);
-
-            for($i = 0; $i<count($ranks);$i++){
-                $string = 'rank'. $i;
-                $cmd->bindParam($string, $ranks[$i]);
-            }
-
-            if ($cmd->execute()) {
-                while ($entry = $cmd->fetchObject()) {
-                    if(count($roles)>0){
-                        $entryroles = Database::decodeArray($entry->role);
-                        foreach($roles as $role){
-                            if(in_array($role, $entryroles)){
-                                array_push($helperArry, $entry);
-                                break;
-                            }
-                        }
-                    }else{
-                        array_push($helperArry, $entry);
-                    }
-
-                }
-            }
-            foreach ($helperArry as $gamer) {
-                $playerSql = "SELECT * FROM User WHERE userid = :obtainedUserId;";
-                $cmd = $db->prepare($playerSql);
-                $cmd->bindParam(':obtainedUserId', $gamer->userid);
-                $cmd->execute();
-
-                if ($cmd->execute()) {
-                    while ($item = $cmd->fetchObject()) {
-                        array_push($result, $item);
-                    }
-                }
-            }
-            return $result;
-
-
-        } catch (Exception $ex) {
-            echo $ex->getMessage();
-        }
-    }
-
     function getPlayersForGame($gameID, $ranks, $roles)
     {
         $result = array();
@@ -327,12 +238,77 @@ class PlayerListDAO implements PlayerListDAOInterface
         }
     }
 
+    function getPlayersForGameWithLimit($gameID, $ranks, $roles, $start, $limit)
+    {
+        $result = array();
+        $helperArry = array();
+
+        $db = Database::connect($this->dsn);
+
+        try {
+
+            $sql = "SELECT * FROM Playerlist WHERE gameid = :gameID AND status = 'active' LIMIT $start, $limit";
+
+            if(count($ranks)>0){
+                $sql = $sql . " AND (rank = :rank" . 0;
+                for($i = 1; $i<count($ranks);$i++){
+                    $sql = $sql . " OR rank = :rank" . $i;
+                }
+                $sql = $sql . ")";
+            }
+            $sql = $sql . ";";
+
+            $cmd = $db->prepare($sql);
+            $cmd->bindParam(':gameID', $gameID);
+
+            for($i = 0; $i<count($ranks);$i++){
+                $string = 'rank'. $i;
+                $cmd->bindParam($string, $ranks[$i]);
+            }
+
+            if ($cmd->execute()) {
+                while ($entry = $cmd->fetchObject()) {
+                    if(count($roles)>0){
+                        $entryroles = Database::decodeArray($entry->role);
+                        foreach($roles as $role){
+                            if(in_array($role, $entryroles)){
+                                array_push($helperArry, $entry);
+                                break;
+                            }
+                        }
+                    }else{
+                        array_push($helperArry, $entry);
+                    }
+
+                }
+            }
+            // get the Users
+            foreach ($helperArry as $gamer) {
+                $playerSql = "SELECT * FROM User WHERE userid = :obtainedUserId;";
+                $cmd = $db->prepare($playerSql);
+                $cmd->bindParam(':obtainedUserId', $gamer->userid);
+                $cmd->execute();
+
+                if ($cmd->execute()) {
+                    while ($item = $cmd->fetchObject()) {
+                        array_push($result, $item);
+                    }
+                }
+            }
+            return $result;
+
+
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+        }
+    }
+
     function getPlayerInfo($gameID)
     {
         $result = array();
 
         try {
-            $db = Database::connect("sqlite:db/Database.db");
+            $db = Database::connect($this->dsn);
         } catch (Exception $e) {
         }
         try {
@@ -360,10 +336,9 @@ class PlayerListDAO implements PlayerListDAOInterface
     {
         $result = array();
 
-        try {
-            $db = Database::connect("sqlite:db/Database.db");
-        } catch (Exception $e) {
-        }
+
+        $db = Database::connect($this->dsn);
+        
         try {
             $sql = "SELECT * FROM Playerlist WHERE userid = :userId;";
             $cmd = $db->prepare($sql);

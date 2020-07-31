@@ -53,6 +53,9 @@ $list = $playerlistDAO->getPlayersForGame($gameID, $rankfilter, $rolefilter);
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/cardgrid.css">
     <link rel="stylesheet" type="text/css" href="css/colors.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+            integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
 </head>
 <body>
 <header>
@@ -62,6 +65,7 @@ $list = $playerlistDAO->getPlayersForGame($gameID, $rankfilter, $rolefilter);
 </header>
 <main>
     <h1 class="title"> <?php echo $gamename ?></h1>
+    <input type="hidden" id="gameid" value="<?=$gameID?>">
     <div class="card-grid">
         <div class="filter">
             <h2>Filter</h2>
@@ -92,35 +96,7 @@ $list = $playerlistDAO->getPlayersForGame($gameID, $rankfilter, $rolefilter);
         <div class="overview">
             <?php if (isset($list) && count($list) > 0): ?>
                 <ul class="cardview">
-                    <?php foreach ($list as $playeritem):
-                        $playerID = $playeritem->userid;
-                        $playername = $playerlistDAO->getPlayerByID($playerID);
-                        $profileurl = 'playerprofile.php?id=' . $playerID;
-                        $user = $userListDAO->getUserByID($playerID);
-                        $userICON = $user->iconid;
-                        $ICON = $userListDAO->getIcon($userICON)->filename
-                        ?>
 
-                        <li class="card" style="">
-                            <a href='<?php echo $profileurl ?>' class="container"
-                               style="background-image:  url('<?= 'Resourcen/Icons/' . $ICON ?>') ">
-                                <div class="name-wrapper"
-                                     style="background-image:  url('<?= 'Resourcen/Icons/' . $ICON ?> ') ">
-                                    <h1><?php echo $playeritem->username ?></h1>
-                                </div>
-                                <ul>
-                                    <li>Sprache: <?php echo $playeritem->language ?></li>
-                                    <li>
-                                        Role: <?php echo implode(", ", $playerlistDAO->getRoles($gameID, $playeritem->userid)) ?>
-                                    </li>
-
-                                    <li>
-                                        ELO: <?php echo $playerlistDAO->getRank($gameID, $playeritem->userid) ?>
-                                    </li>
-                                </ul>
-                            </a>
-                        </li>
-                    <?php endforeach; ?>
                 </ul>
             <?php else: ?>
                 <p>keine Spieler gefunden</p>
@@ -130,7 +106,47 @@ $list = $playerlistDAO->getPlayersForGame($gameID, $rankfilter, $rolefilter);
 
 
 </main>
+<script>
+    var start = 0;
+    var limit = 15;
+    var reachedMax = false;
 
+    $(window).scroll(function () {
+        if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight) {
+            getData()
+        }
+
+    })
+
+    $(document).ready(function () {
+        getData()
+    });
+
+    function getData() {
+        if (reachedMax) return
+
+        var gameid = document.getElementById("gameid").value;
+
+        $.ajax({
+            url: 'php/actions/load_players.php',
+            method: 'POST',
+            data: {
+                getData: 1,
+                start: start,
+                limit: limit,
+                game: gameid,
+            },
+            success: function (response) {
+                if (response === 'reachedMax') {
+                    reachedMax = true
+                } else {
+                    start += limit
+                    $(".cardview").append(response)
+                }
+            }
+        })
+    }
+</script>
 <div class="footer">
     <?php include "php/footer.php"; ?>
 </div>

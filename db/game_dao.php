@@ -6,7 +6,9 @@ interface GameDAOInterface
     function getGames($tags);
     function getGameByID($gameID);
     function getGameByName($gameNameks);
-
+    function getRanksFromGame($gameID);
+    function getRolesFromGame($gameID);
+    function getAllTags();
 }
 
 class GameDAO implements GameDAOInterface
