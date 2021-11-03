@@ -3,7 +3,7 @@ require_once "session.php";
 updateSessionFromAction();
 $publicKey = "6LedxrcZAAAAACLlR3gcWywrkX6TSETOzoln7wAO";
 $url = "https://www.google.com/recaptcha/api/siteverify";
-$privatKey = "6LedxrcZAAAAAGeIYBp8yEzQf3DibxZmUiEUseol";
+$privatKey = "PRIVATE_KEY";
 
 if (empty($_SESSION['token'])) {
     $_SESSION['token'] = uniqid('', true);
