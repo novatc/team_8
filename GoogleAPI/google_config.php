@@ -13,10 +13,10 @@ if(file_exists('GoogleAPI/vendor/autoload.php') ){
 $google_client = new Google_Client();
 
 //Set the OAuth 2.0 Client ID
-$google_client->setClientId('972566574192-8bi62ksmrmthhpn4q4e11q5is0p6vm4r.apps.googleusercontent.com');
+$google_client->setClientId('CLIENT_ID');
 
 //Set the OAuth 2.0 Client Secret key
-$google_client->setClientSecret('_qgEJEnJphojJq46Iwdj8xhF');
+$google_client->setClientSecret('CLIENT_SECRET');
 
 //Set the OAuth 2.0 Redirect URI
 $google_client->setRedirectUri('http://localhost/team8/login.php');
